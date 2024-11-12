@@ -33,6 +33,9 @@
 
   programs.home-manager.enable = true;
 
+  #home.file."Downloads/" = lib.file.mkOutOfStoreSymlink /shared/Downloads;
+  #home.file.".config/fsh/catppuccin-mocha.ini".source = ./catppuccin-mocha.ini;
+
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
 }

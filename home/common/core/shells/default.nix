@@ -1,4 +1,4 @@
-{
+{ pkgs, ... }: {
   imports = [
     ./bash.nix
     ./zsh.nix
@@ -13,6 +13,8 @@
     v = "nvim";
     vi = "nvim";
     vim = "nvim";
+    # ll
+    ll = "ls -al";
     # grep
     grep = "grep --color=auto";
     # network
@@ -36,6 +38,6 @@
     TERM = "xterm-256color";
     USE_EDITOR = "$EDITOR";
     VISUAL = "$EDITOR";
-    BROWSER = "brave";
+    BROWSER = "firefox";
   };
 }

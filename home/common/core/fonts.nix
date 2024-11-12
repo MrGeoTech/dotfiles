@@ -2,7 +2,7 @@
   fonts.fontconfig.enable = true;
   home.packages = with pkgs; [
     (nerdfonts.override {
-      fonts = ["FiraCode" "CascadiaCode" "FantasqueSansMono"];
+      fonts = ["FiraCode" "CascadiaCode" "FantasqueSansMono" "IosevkaTerm" "Iosevka"];
     })
     font-awesome
     noto-fonts
@@ -15,6 +15,5 @@
     monaspace
     maple-mono
     maple-mono-otf
-    iosevka
   ];
 }

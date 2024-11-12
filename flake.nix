@@ -13,6 +13,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # secrets
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs-stable.follows = "nixpkgs";
+    };
+
     # hyprland
     hyprland = {
       url = "github:hyprwm/hyprland";

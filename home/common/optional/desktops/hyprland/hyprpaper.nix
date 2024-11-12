@@ -2,9 +2,9 @@
   services.hyprpaper = {
     enable = true;
     settings = {
-      preload = ["~/Pictures/wallpapers/red_night.png"];
+      preload = ["/home/mrgeotech/.config/hypr/wallpaper.jpg"];
       wallpaper = [
-        ",~/Pictures/wallpapers/red_night.png"
+        ",/home/mrgeotech/.config/hypr/wallpaper.jpg"
       ];
     };
   };

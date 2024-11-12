@@ -9,14 +9,13 @@
         layer = "top";
         position = "top";
         mod = "dock";
-        margin-left = 9;
-        margin-right = 9;
-        margin-top = 4;
+        margin-left = 0;
+        margin-right = 0;
+        margin-top = 0;
         margin-bottom = 0;
         reload_style_on_change = true;
-        spacing = 4;
+        spacing = 0;
         modules-left = [
-          "custom/spacer"
           "hyprland/workspaces"
           "hyprland/window"
         ];
@@ -26,18 +25,9 @@
         modules-right = [
           "pulseaudio"
           "network"
-          "memory"
-          "cpu"
-          "backlight"
           "battery"
-          "battery#bat2"
-          "tray"
         ];
 
-        # Module configuration: Left
-        "custom/spacer" = {
-          format = "   ";
-        };
         "hyprland/workspaces" = {
           disable-scroll = false;
           all-outputs = false;
@@ -56,64 +46,48 @@
             urgent = " ";
           };
         };
-        "wlr/taskbar" = {
-          all-outputs = false;
-          format = "{icon}";
-          icon-size = 13;
-          tooltip = true;
-          tooltip-format = "{title}";
-          active-first = false;
-        };
         "hyprland/window" = {
           max-length = 50;
-          format = "<i>{title}</i>";
-          separate-outputs = true;
+          format = "<i> </i>";
+          separate-outputs = false;
           icon = true;
           icon-size = 13;
         };
 
         # Module configuration: Center
         clock = {
-          format = "<b> {:%a %b[%m] %d ▒  %I:%M %p}</b>";
-          tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
-          format-alt = "{:%H:%M %Y-%m-%d}";
+          format = "{:%a, %b %d  %I:%M %p}";
+	  tooltip = true;
+          tooltip-format = "<tt><small>{calendar}</small></tt>";
         };
 
         # Module configuration: Right
         pulseaudio = {
-          format = "{volume}% {icon} {format_source}";
-          format-bluetooth = "{volume}% {icon} {format_source}";
-          format-bluetooth-muted = " {icon} {format_source}";
-          format-muted = " {format_source}";
-          format-source = "{volume}% ";
-          format-source-muted = "";
+          format = "{icon} {format_source}";
+          format-bluetooth = "{icon} {format_source} ";
+          format-bluetooth-muted = "{icon} {format_source} ";
+          format-muted = "{icon} {format_source}";
+          format-source = " ";
+          format-source-muted = " ";
           format-icons = {
-            headphone = "";
-            hands-free = "";
-            headset = "";
-            phone = "";
-            portable = "";
-            car = "";
-            default = ["" "" ""];
+            headphone = " ";
+            hands-free = " ";
+            headset = " ";
+            phone = " ";
+            portable = " ";
+            car = " ";
+            default = [" " " " " "];
           };
           on-click = "pavucontrol";
         };
         network = {
-          format-wifi = "{essid} ({signalStrength}%) ";
-          format-ethernet = "{ipaddr}/{cidr} ";
-          tooltip-format = "{ifname} via {gwaddr} ";
-          format-linked = "{ifname} (No IP) ";
-          format-disconnected = "Disconnected ⚠";
+          format-wifi = "{ipaddr} ({signalStrength}%)  ";
+          format-ethernet = "{ipaddr}  ";
+	  tooltip = true;
+          tooltip-format = "{essid} ({gwaddr}) via {ifname}";
+          format-linked = "<No IP>  ";
+          format-disconnected = "Disconnected ⚠ ";
           format-alt = "{ifname}: {ipaddr}/{cidr}";
-        };
-        cpu = {
-          format = "{usage}%  ";
-          tooltip = false;
-        };
-        memory = {format = "{}%  ";};
-        backlight = {
-          format = "{percent}% {icon}";
-          format-icons = ["" "" "" "" "" "" "" "" ""];
         };
         battery = {
           states = {
@@ -122,15 +96,10 @@
             critical = 15;
           };
           format = "{capacity}% {icon}";
-          format-charging = "{capacity}% ";
-          format-plugged = "{capacity}% ";
+          format-charging = "{capacity}%  ";
+          format-plugged = "{capacity}%  ";
           format-alt = "{time} {icon}";
-          format-icons = ["" "" "" "" ""];
-        };
-        "battery#bat2" = {bat = "BAT2";};
-        tray = {
-          icon-size = 18;
-          spacing = 10;
+          format-icons = [" " " " " " " " " "];
         };
       };
     };

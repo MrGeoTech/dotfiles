@@ -9,7 +9,6 @@
     ./common/optional/apps/linux-only.nix
     ./common/optional/apps/wezterm
     ./common/optional/apps/alacritty
-    ./common/optional/apps/ulauncher
     ./common/optional/apps/rofi
     ./common/optional/apps/wofi
     ./common/optional/desktops/waybar

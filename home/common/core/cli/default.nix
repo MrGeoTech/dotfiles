@@ -16,7 +16,6 @@
     ./nvim
     ./ripgrep.nix
     ./scripts.nix
-    ./oh-my-posh
     ./tmux
     ./yazi
     ./zoxide.nix
@@ -38,6 +37,7 @@
     pciutils
     procs
     tldr
+    thefuck
     unrar
     unzip
     curl

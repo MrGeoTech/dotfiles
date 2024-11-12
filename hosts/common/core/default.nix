@@ -13,6 +13,7 @@
     ./nix.nix
     ./pipewire.nix
     ./services.nix
+    ./steam.nix
     ./zsh.nix
   ];
 

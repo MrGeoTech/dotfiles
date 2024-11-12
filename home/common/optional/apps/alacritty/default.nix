@@ -2,7 +2,5 @@
   imports = [
     ./config.nix
   ];
-  home.packages = with pkgs; [
-    alacritty
-  ];
+  home.packages = with pkgs; [ alacritty ];
 }

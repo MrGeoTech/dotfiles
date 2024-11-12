@@ -1,10 +1,10 @@
 {pkgs, ...}: {
   imports = [
     ./gpg.nix
+    ./firefox.nix
   ];
   home.packages = with pkgs; [
     appimage-run
-    firefox
     eog
     gparted
     libgcc

@@ -411,7 +411,31 @@
         "hyprland": "hyprland",
         "hyprland-plugins": "hyprland-plugins",
         "nix-colors": "nix-colors",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "sops-nix": "sops-nix"
+      }
+    },
+    "sops-nix": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "nixpkgs-stable": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1731008979,
+        "narHash": "sha256-yN1NxvmqV8UltLkqYBWTeZNgpD/eyh/7LM58caHiEfE=",
+        "owner": "Mic92",
+        "repo": "sops-nix",
+        "rev": "fe63071416471abdab06caa234122932a7c4b980",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Mic92",
+        "repo": "sops-nix",
+        "type": "github"
       }
     },
     "systems": {

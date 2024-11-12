@@ -19,16 +19,7 @@
       ",highres,auto,1"
     ];
 
-  workspaceRules =
-    if hostName == "mrgeotech-pc"
-    then [
-      "4, monitor:HDMI-A-1"
-      "5, monitor:HDMI-A-1"
-      "9, monitor:HDMI-A-1"
-    ]
-    else [];
-
-  kbOptions = "caps:swapescape";
+  kbOptions = "caps:escape";
 in {
   wayland.windowManager.hyprland = {
     enable = true;
@@ -43,9 +34,6 @@ in {
       exec-once = [
         "hyprpaper"
         "hyprctl setcursor Bibata-Original-Ice 24"
-        "1password"
-        "sleep 10; morgen"
-        "clickup-latest"
       ];
       env = [
         "XCURSOR_SIZE,24"
@@ -57,16 +45,18 @@ in {
         kb_model = "";
         kb_rules = "";
         kb_options = kbOptions;
+	numlock_by_default = true;
+	natural_scroll = true;
         follow_mouse = 1;
-        touchpad = {
-          natural_scroll = false;
-        };
+	touchpad = {
+	  natural_scroll = true;
+	};
         sensitivity = 0; # -1.0 - 1.0, 0 means no modification.
       };
       general = {
-        gaps_in = 5;
-        gaps_out = 5;
-        border_size = 4;
+        gaps_in = 0;
+        gaps_out = 0;
+        border_size = 0;
         "col.active_border" = "$mauve";
         "col.inactive_border" = "$surface0";
         layout = "dwindle";
@@ -75,7 +65,7 @@ in {
         "col.border_active" = "$mauve";
         "col.border_inactive" = "$surface0";
         groupbar = {
-          font_family = "Maple Mono";
+          font_family = "IosevkaTerm";
           font_size = 12;
           gradients = true;
           text_color = "$crust";
@@ -84,9 +74,9 @@ in {
         };
       };
       decoration = {
-        rounding = 10;
+        rounding = 0;
         active_opacity = 1.0;
-        inactive_opacity = 0.95;
+        inactive_opacity = 0.9;
         dim_inactive = true;
         dim_strength = 0.1;
         blur = {
@@ -95,45 +85,21 @@ in {
           passes = 2;
           popups = true;
         };
-        drop_shadow = true;
-        shadow_range = 4;
-        shadow_render_power = 3;
-        "col.shadow" = "$base";
       };
       binds = {
         movefocus_cycles_fullscreen = false;
         workspace_center_on = 1;
         focus_preferred_method = 0;
       };
-      animations = {
-        enabled = true;
-        bezier = [
-          "wind, 0.05, 0.9, 0.1, 1.05"
-          "winIn, 0.1, 1.1, 0.1, 1.1"
-          "winOut, 0.3, -0.3, 0, 1"
-          "liner, 1, 1, 1, 1"
-        ];
-        animation = [
-          "windows, 1, 6, wind, slide"
-          "windowsIn, 1, 6, winIn, slide"
-          "windowsOut, 1, 5, winOut, slide"
-          "windowsMove, 1, 5, wind, slide"
-          "border, 1, 1, liner"
-          "borderangle, 1, 200, liner, loop"
-          "fade, 1, 10, default"
-          "workspaces, 1, 5, wind"
-        ];
-      };
       dwindle = {
-        pseudotile = true;
-        preserve_split = true;
-        force_split = 2;
-        default_split_ratio = 1.2;
+        pseudotile = false;
+        force_split = 0;
+        default_split_ratio = 1.0;
       };
       master = {
         new_status = "slave";
       };
-      gestures = {workspace_swipe = false;};
+      gestures = {workspace_swipe = true;};
       misc = {
         disable_hyprland_logo = true;
         mouse_move_enables_dpms = true;
@@ -148,71 +114,59 @@ in {
         "noshadow,title:^(.*Ulauncher.*)$"
         "dimaround,title:^(.*ulauncher.*)$"
         "dimaround,title:^(.*Ulauncher.*)$"
-        # Floating kitty terminal window rules
-        "float,class:^(kitty-float)$"
-        "move 10% 59%,class:^(kitty-float)$"
-        "size 80% 40%,class:^(kitty-float)$"
-        # Set new window workspaces
-        "workspace 3,class:^(.*code.*)$"
-        "workspace 4,class:^(Morgen)$"
-        "workspace 5,class:^(Slack)$"
-        "workspace 7,class:^(ClickUp)$"
-        "workspace 8,class:^(obsidian)$"
-        "workspace 9,class:^(Zotero)$"
+	"noblur,focus:1"
       ];
-      # Set workspace rules
-      workspace = workspaceRules;
       # Keybindings
       "$mainMod" = "SUPER";
       "$subMod" = "SUPER_SHIFT";
       "$tetMod" = "SUPER_CTRL";
       bind =
         [
-          "$mainMod, return, exec, kitty"
-          "$subMod, return, exec, hdrop kitty --class 'kitty-float'"
-          "$subMod, Q, killactive,"
-          "$subMod, E, exit,"
-          "$subMod, M, exec, pkill waybar && waybar"
-          "$mainMod, E, exec, nautilus"
-          "$mainMod, C, exec, clickup-latest"
-          "$mainMod, R, exec, ulauncher"
-          "$tetMod, S, togglesplit,"
-          "$tetMod, R, exec, ~/.config/hypr/scripts/screenshot.sh region"
-          "$tetMod, M, exec, ~/.config/hypr/scripts/screenshot.sh activemonitor"
-          "$tetMod, W, exec, ~/.config/hypr/scripts/screenshot.sh activewindow"
+          "$mainMod, SUPER_L, exec, rofi -show run"
+          "$mainMod, T, exec, alacritty"
+          "$mainMod, B, exec, firefox"
+          "$mainMod, F, exec, nautilus"
+	  "$mainMod, O, exec, obsidian"
+          "$mainMod, Q, killactive,"
+          "$mainMod, E, exit,"
+	  "$subMod, E, exec, shutdown now"
+          "$mainMod, M, exec, pkill waybar && waybar"
+          "$mainMod, S, togglesplit,"
+          "$subMod, space, exec, rofi -show window"
+          "$subMod, S, exec, rofi -show ssh"
+          "$mainMod, PRINT, exec, ~/.config/hypr/scripts/screenshot.sh region"
+          "$mainMod, PRINT&M, exec, ~/.config/hypr/scripts/screenshot.sh activemonitor"
+          "$mainMod, PRINT&W, exec, ~/.config/hypr/scripts/screenshot.sh activewindow"
           # Move focus with mainMod + arrow keys
-          "$mainMod, h, movefocus, l"
-          "$mainMod, l, movefocus, r"
-          "$mainMod, k, movefocus, u"
-          "$mainMod, j, movefocus, d"
+          "$mainMod, LEFT, movefocus, l"
+          "$mainMod, RIGHT, movefocus, r"
+          "$mainMod, UP, movefocus, u"
+          "$mainMod, DOWN, movefocus, d"
           # Groups
           "$tetMod, G, togglegroup"
-          "$tetMod, h, moveintogroup, l"
-          "$tetMod, l, moveintogroup, r"
-          "$tetMod, k, moveintogroup, u"
-          "$tetMod, j, moveintogroup, d"
-          "$tetMod, n, changegroupactive, f"
-          "$tetMod, p, changegroupactive, b"
+          "$tetMod, H, moveintogroup, l"
+          "$tetMod, L, moveintogroup, r"
+          "$tetMod, K, moveintogroup, u"
+          "$tetMod, J, moveintogroup, d"
+          "$tetMod, N, changegroupactive, f"
+          "$tetMod, P, changegroupactive, b"
           # Move to next/previous workspace with subMod + h/l
-          "$subMod, H, workspace, m-1"
-          "$subMod, L, workspace, m+1"
+          "$mainMod, <, workspace, m-1"
+          "$mainMod, >, workspace, m+1"
           # Resize windows with subMod + h,j,k,l
-          "$subMod, left, resizeactive, -10 0"
-          "$subMod, down, resizeactive, 0 10"
-          "$subMod, up, resizeactive, 0 -10"
-          "$subMod, right, resizeactive, 10 0"
+          "$subMod, LEFT, resizeactive, -10 0"
+          "$subMod, DOWN, resizeactive, 0 10"
+          "$subMod, UP, resizeactive, 0 -10"
+          "$subMod, RIGHT, resizeactive, 10 0"
           # Scroll through existing workspaces with mainMod + scroll
-          "$mainMod, mouse_down, workspace, m-1"
-          "$mainMod, mouse_up, workspace, m+1"
+          "$mainMod, MOUSE_DOWN, workspace, m-1"
+          "$mainMod, MOUSE_UP, workspace, m+1"
           # Layout toggles
-          "$mainMod, t, layoutmsg, togglesplit"
-          "$mainMod, s, layoutmsg, swapsplit"
-          "$mainMod, w, swapnext"
-          "$mainMod, m, fullscreen, 1"
-          "$subMod, m, fullscreen, 0"
-          "$mainMod, f, togglefloating"
+          "$subMod, F, fullscreen, 0"
+          "$subMod, M, fullscreen, 1"
+          "$tetMod, F, togglefloating"
           # Move current workspace to another monitor
-          # NOTE: This will only work on mrgeotech-pc (assuming vert=1, top=2 and bottom=3)
+	  # TODO: Update with correct monitor
           "$tetMod, 1, movecurrentworkspacetomonitor, HDMI-A-1"
           "$tetMod, 2, movecurrentworkspacetomonitor, DP-1"
           "$tetMod, 3, movecurrentworkspacetomonitor, DP-2"

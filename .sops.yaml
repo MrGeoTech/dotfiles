@@ -1,0 +1,7 @@
+keys:
+  - &mrgeotech age1lzmtnphwetzl3dx696slq0llq2lq5ykfc5whlgx8strfa0vcgyeq7euc6m
+creation_rules:
+  - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
+    key_groups:
+      - age:
+        - *mrgeotech
