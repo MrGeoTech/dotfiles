@@ -2,12 +2,14 @@
   pkgs,
   config,
   inputs,
+  #catppuccin,
   ...
 }: let
   ifTheyExist = groups: builtins.filter (group: builtins.hasAttr group config.users.groups) groups;
 in {
   imports = [
     inputs.sops-nix.nixosModules.sops
+    #catppuccin.homeManagerModules.catppuccin
   ];
   users.users.mrgeotech = {
     isNormalUser = true;

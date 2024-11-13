@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ hostname, pkgs, ... }: {
   imports = [
     ./bash.nix
     ./zsh.nix
@@ -28,6 +28,8 @@
     # ps
     ps = "ps auxf";
     psgrep = "ps aux | grep -v grep | grep -i -e VSZ -e";
+    # update
+    update = "sudo nixos-rebuild switch --flake \"/etc/nixos#$(hostname)\"";
   };
   home.sessionPath = [
     "$HOME/.local/bin"

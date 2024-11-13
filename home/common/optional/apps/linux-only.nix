@@ -11,8 +11,8 @@
     libreoffice-fresh
     libsForQt5.okular
     lshw
-    nautilus
     obsidian
+    resources
     psmisc
     seahorse
     signal-desktop

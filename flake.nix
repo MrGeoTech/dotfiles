@@ -29,12 +29,16 @@
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
     };
+
+    # catppuccin
+    catppuccin.url = "github:catppuccin/nix";
   };
 
   outputs = {
     self,
     nixpkgs,
     home-manager,
+    catppuccin,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -70,6 +74,7 @@
         modules = [
           ./hosts/mrgeotech-pc
           home-manager.nixosModules.home-manager
+          catppuccin.nixosModules.catppuccin
           ({config, ...}: {
             home-manager.extraSpecialArgs = {
               inherit inputs outputs;
@@ -85,6 +90,7 @@
         modules = [
           ./hosts/mrgeotech-laptop
           home-manager.nixosModules.home-manager
+          catppuccin.nixosModules.catppuccin
           ({config, ...}: {
             home-manager.extraSpecialArgs = {
               inherit inputs outputs;
@@ -100,6 +106,7 @@
         modules = [
           ./hosts/mrgeotech-testing
           home-manager.nixosModules.home-manager
+          catppuccin.nixosModules.catppuccin
           ({config, ...}: {
             home-manager.extraSpecialArgs = {
               inherit inputs outputs;

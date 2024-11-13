@@ -7,7 +7,7 @@
     enableZshIntegration = true;
     settings = {
       manager = {
-        show_hidden = false;
+        show_hidden = true;
         sort_by = "alphabetical";
         sort_sensitive = false;
         sort_dir_first = true;

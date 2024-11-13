@@ -14,13 +14,7 @@
 
   nixpkgs = {
     overlays = builtins.attrValues outputs.overlays;
-    config = {
-      allowUnfree = true;
-      permittedInsecurePackages = [
-        "electron-27.3.11"
-        "electron-28.3.3"
-      ];
-    };
+    config.allowUnfree = true;
   };
 
   nix = {

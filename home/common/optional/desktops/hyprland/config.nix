@@ -125,8 +125,9 @@ in {
           "$mainMod, SUPER_L, exec, rofi -show run"
           "$mainMod, T, exec, alacritty"
           "$mainMod, B, exec, firefox"
-          "$mainMod, F, exec, nautilus"
+          "$mainMod, F, exec, alacritty -e yazi"
 	  "$mainMod, O, exec, obsidian"
+	  "$mainMod, G, exec, steam"
           "$mainMod, Q, killactive,"
           "$mainMod, E, exit,"
 	  "$subMod, E, exec, shutdown now"
@@ -150,17 +151,21 @@ in {
           "$tetMod, J, moveintogroup, d"
           "$tetMod, N, changegroupactive, f"
           "$tetMod, P, changegroupactive, b"
-          # Move to next/previous workspace with subMod + h/l
-          "$mainMod, <, workspace, m-1"
-          "$mainMod, >, workspace, m+1"
+          # Move to next/previous workspace with mainMod + ['<','>']
+          "$mainMod, COMMA, workspace, r-1"
+          "$mainMod, PERIOD, workspace, r+1"
+          # Move window to next/previous workspace with submod + ['<','>']
+          "$subMod, COMMA, movetoworkspace, r-1"
+          "$subMod, PERIOD, movetoworkspace, r+1"
           # Resize windows with subMod + h,j,k,l
           "$subMod, LEFT, resizeactive, -10 0"
           "$subMod, DOWN, resizeactive, 0 10"
           "$subMod, UP, resizeactive, 0 -10"
           "$subMod, RIGHT, resizeactive, 10 0"
           # Scroll through existing workspaces with mainMod + scroll
-          "$mainMod, MOUSE_DOWN, workspace, m-1"
-          "$mainMod, MOUSE_UP, workspace, m+1"
+	  # TODO: Fix
+          "$mainMod, MOUSE_UP, workspace, r+1"
+          "$mainMod, MOUSE_DOWN, workspace, r-1"
           # Layout toggles
           "$subMod, F, fullscreen, 0"
           "$subMod, M, fullscreen, 1"
