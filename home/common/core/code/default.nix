@@ -1,14 +1,11 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
-    python3
+    clang_18
     go
-    nodejs_22
-    rustc
     lua
+    nodejs_22
+    python3
+    rustc
+    zig
   ];
-
-  # conda
-  home.file.".condarc".source = ./.condarc;
-  # npm
-  home.file.".npmrc".source = ./.npmrc;
 }

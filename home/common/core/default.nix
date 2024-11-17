@@ -2,6 +2,7 @@
   outputs,
   lib,
   pkgs,
+  config,
   ...
 }: {
   imports = [
@@ -14,7 +15,12 @@
 
   nixpkgs = {
     overlays = builtins.attrValues outputs.overlays;
-    config.allowUnfree = true;
+    config = {
+      allowUnfree = true;
+      permittedInsecurePackages = [
+        #"electron-27.3.11"
+      ];
+    };
   };
 
   nix = {
@@ -27,8 +33,13 @@
 
   programs.home-manager.enable = true;
 
-  #home.file."Downloads/" = lib.file.mkOutOfStoreSymlink /shared/Downloads;
-  #home.file.".config/fsh/catppuccin-mocha.ini".source = ./catppuccin-mocha.ini;
+  home.file."Desktop".source = config.lib.file.mkOutOfStoreSymlink /shared/Desktop;
+  home.file."Downloads".source = config.lib.file.mkOutOfStoreSymlink /shared/Downloads;
+  home.file."Documents".source = config.lib.file.mkOutOfStoreSymlink /shared/Documents;
+  home.file."Pictures".source = config.lib.file.mkOutOfStoreSymlink /shared/Pictures;
+  home.file."Projects".source = config.lib.file.mkOutOfStoreSymlink /shared/Projects;
+  home.file."School".source = config.lib.file.mkOutOfStoreSymlink /shared/School;
+  home.file."Videos".source = config.lib.file.mkOutOfStoreSymlink /shared/Videos;
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";

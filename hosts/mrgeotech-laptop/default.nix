@@ -44,18 +44,33 @@
   };
 
   # Load nvidia driver for Xorg and Wayland
-  services.xserver.videoDrivers = ["nvidia"];
-  services.xserver.xkbOptions = "ctrl:nocaps";
   console.useXkbConfig = true;
   hardware.bluetooth.enable = true;
 
   # Configure keymap in X11
   services.xserver = {
     enable = true;
+    videoDrivers = ["nvidia"];
     xkb.options = "ctrl:nocaps";
     xkb.layout = "us";
     xkb.variant = "";
-    displayManager.gdm.enable = true;
+  };
+  environment.systemPackages = [(
+    pkgs.catppuccin-sddm.override {
+      flavor = "mocha";
+      font  = "Iosevka NF";
+      fontSize = "9";
+      #background = "${./wallpaper.png}";
+      loginBackground = true;
+    }
+  )];
+  services.displayManager.sddm = {
+    enable = true;
+    wayland.enable = true;
+    autoNumlock = true;
+
+    theme = "catppuccin-mocha";
+    package = pkgs.kdePackages.sddm;
   };
 
   hardware.nvidia = {

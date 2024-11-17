@@ -10,8 +10,8 @@
       package = pkgs.bibata-cursors;
     };
     theme = {
-      name = "Catppuccin-Mocha";
-      package = pkgs.catppuccin-gtk;
+      name = "Orchis-Purple-Dark";
+      package = pkgs.orchis-theme;
     };
     gtk3.extraConfig = {
       Settings = ''
@@ -26,7 +26,7 @@
     };
   };
 
-  #home.sessionVariables.GTK_THEME = "Catppuccin-Mocha";
+  home.sessionVariables.GTK_THEME = "Orchis-Purple-Dark";
   home.pointerCursor.gtk.enable = true;
   home.pointerCursor.package = pkgs.bibata-cursors;
   home.pointerCursor.name = "Bibata-Original-Ice";

@@ -6,7 +6,6 @@
   home.packages = with pkgs; [
     age
     pandoc
-    texliveFull
-    zoom-us
+    bottom
   ];
 }

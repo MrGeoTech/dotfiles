@@ -9,6 +9,7 @@
     ./delta
     ./direnv.nix
     ./eza.nix
+    ./fastfetch.nix
     ./fzf.nix
     ./gh.nix
     ./git.nix
@@ -23,8 +24,8 @@
 
   home.packages = with pkgs; [
     bc
-    bottom
     coreutils-full
+    curl
     entr
     fd
     git-extras
@@ -36,11 +37,10 @@
     p7zip
     pciutils
     procs
-    tldr
     thefuck
+    tldr
     unrar
     unzip
-    curl
     zip
   ];
 }

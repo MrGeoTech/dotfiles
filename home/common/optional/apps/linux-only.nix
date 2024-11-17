@@ -4,18 +4,28 @@
     ./firefox.nix
   ];
   home.packages = with pkgs; [
+    # System utilities
     appimage-run
-    eog
     gparted
     libgcc
     libreoffice-fresh
     libsForQt5.okular
     lshw
-    obsidian
-    resources
     psmisc
     seahorse
-    signal-desktop
     udisks
+    # Programming Stuff
+    texliveFull
+    # User Apps
+    eog
+    octaveFull
+    quartus-prime-lite
+    resources
+    signal-desktop
+    zoom-us
   ];
+
+  home.sessionVariables = {
+    OBSIDIAN_USE_WAYLAND = "1";
+  };
 }

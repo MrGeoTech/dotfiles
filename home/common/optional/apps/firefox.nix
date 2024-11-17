@@ -40,6 +40,11 @@
         # "force_installed" and "normal_installed".
         ExtensionSettings = {
           "*".installation_mode = "blocked"; # blocks all addons except the ones specified below
+	  # Catppuccin Theme
+	  "{73eb68a8-ea35-4527-9666-304ce1ce1054}" = {
+	    install_url = "https://addons.mozilla.org/firefox/downloads/file/3975428/catpuccin-1.1.xpi";
+	    installation_mode = "force_installed";
+	  };
         };
   
         /* ---- PREFERENCES ---- */

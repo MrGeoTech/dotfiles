@@ -76,6 +76,7 @@
           home-manager.nixosModules.home-manager
           catppuccin.nixosModules.catppuccin
           ({config, ...}: {
+  	    home-manager.backupFileExtension = "bak";
             home-manager.extraSpecialArgs = {
               inherit inputs outputs;
               inherit (config.networking) hostName;
@@ -92,6 +93,7 @@
           home-manager.nixosModules.home-manager
           catppuccin.nixosModules.catppuccin
           ({config, ...}: {
+  	    home-manager.backupFileExtension = "bak";
             home-manager.extraSpecialArgs = {
               inherit inputs outputs;
               inherit (config.networking) hostName;
@@ -108,6 +110,7 @@
           home-manager.nixosModules.home-manager
           catppuccin.nixosModules.catppuccin
           ({config, ...}: {
+  	    home-manager.backupFileExtension = "bak";
             home-manager.extraSpecialArgs = {
               inherit inputs outputs;
               inherit (config.networking) hostName;

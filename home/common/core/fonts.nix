@@ -13,7 +13,5 @@
     ia-writer-duospace
     libre-baskerville
     monaspace
-    maple-mono
-    maple-mono-otf
   ];
 }

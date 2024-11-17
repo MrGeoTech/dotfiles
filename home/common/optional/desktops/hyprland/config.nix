@@ -46,7 +46,7 @@ in {
         kb_rules = "";
         kb_options = kbOptions;
 	numlock_by_default = true;
-	natural_scroll = true;
+	natural_scroll = false;
         follow_mouse = 1;
 	touchpad = {
 	  natural_scroll = true;
@@ -76,9 +76,10 @@ in {
       decoration = {
         rounding = 0;
         active_opacity = 1.0;
-        inactive_opacity = 0.9;
+        inactive_opacity = 0.85;
         dim_inactive = true;
-        dim_strength = 0.1;
+        dim_strength = 0.25;
+        drop_shadow = false;
         blur = {
           enabled = true;
           size = 8;
@@ -107,13 +108,7 @@ in {
       };
       # Window rules
       windowrulev2 = [
-        # Ulauncher window rules
-        "noborder,title:^(.*ulauncher.*)$"
-        "noborder,title:^(.*Ulauncher.*)$"
-        "noshadow,title:^(.*ulauncher.*)$"
-        "noshadow,title:^(.*Ulauncher.*)$"
-        "dimaround,title:^(.*ulauncher.*)$"
-        "dimaround,title:^(.*Ulauncher.*)$"
+        "dimaround,title:^(.*rofi.*)$"
 	"noblur,focus:1"
       ];
       # Keybindings
@@ -123,58 +118,58 @@ in {
       bind =
         [
           "$mainMod, SUPER_L, exec, rofi -show run"
-          "$mainMod, T, exec, alacritty"
+          "$mainMod, T, exec, kitty"
           "$mainMod, B, exec, firefox"
-          "$mainMod, F, exec, alacritty -e yazi"
-	  "$mainMod, O, exec, obsidian"
+          "$mainMod, F, exec, kitty yazi"
 	  "$mainMod, G, exec, steam"
           "$mainMod, Q, killactive,"
           "$mainMod, E, exit,"
-	  "$subMod, E, exec, shutdown now"
-          "$mainMod, M, exec, pkill waybar && waybar"
+	  "$subMod , E, exec, shutdown now"
+	  "$subMod , R, exec, reboot"
+          "$mainMod, W, exec, pkill waybar && waybar"
           "$mainMod, S, togglesplit,"
-          "$subMod, space, exec, rofi -show window"
-          "$subMod, S, exec, rofi -show ssh"
-          "$mainMod, PRINT, exec, ~/.config/hypr/scripts/screenshot.sh region"
-          "$mainMod, PRINT&M, exec, ~/.config/hypr/scripts/screenshot.sh activemonitor"
-          "$mainMod, PRINT&W, exec, ~/.config/hypr/scripts/screenshot.sh activewindow"
+          "$subMod , SPACE, exec, rofi -show window"
+          "$subMod , S, exec, rofi -show ssh"
+          "        , PRINT, exec, ~/.config/hypr/scripts/screenshot.sh region"
+          "$mainMod, PRINT, exec, ~/.config/hypr/scripts/screenshot.sh activemonitor"
+          "$subMod , PRINT, exec, ~/.config/hypr/scripts/screenshot.sh activewindow"
           # Move focus with mainMod + arrow keys
           "$mainMod, LEFT, movefocus, l"
           "$mainMod, RIGHT, movefocus, r"
           "$mainMod, UP, movefocus, u"
           "$mainMod, DOWN, movefocus, d"
           # Groups
-          "$tetMod, G, togglegroup"
-          "$tetMod, H, moveintogroup, l"
-          "$tetMod, L, moveintogroup, r"
-          "$tetMod, K, moveintogroup, u"
-          "$tetMod, J, moveintogroup, d"
-          "$tetMod, N, changegroupactive, f"
-          "$tetMod, P, changegroupactive, b"
+          "$tetMod , G, togglegroup"
+          "$tetMod , H, moveintogroup, l"
+          "$tetMod , L, moveintogroup, r"
+          "$tetMod , K, moveintogroup, u"
+          "$tetMod , J, moveintogroup, d"
+          "$tetMod , N, changegroupactive, f"
+          "$tetMod , P, changegroupactive, b"
           # Move to next/previous workspace with mainMod + ['<','>']
           "$mainMod, COMMA, workspace, r-1"
           "$mainMod, PERIOD, workspace, r+1"
           # Move window to next/previous workspace with submod + ['<','>']
-          "$subMod, COMMA, movetoworkspace, r-1"
-          "$subMod, PERIOD, movetoworkspace, r+1"
+          "$subMod , COMMA, movetoworkspace, r-1"
+          "$subMod , PERIOD, movetoworkspace, r+1"
           # Resize windows with subMod + h,j,k,l
-          "$subMod, LEFT, resizeactive, -10 0"
-          "$subMod, DOWN, resizeactive, 0 10"
-          "$subMod, UP, resizeactive, 0 -10"
-          "$subMod, RIGHT, resizeactive, 10 0"
+          "$subMod , LEFT, resizeactive, -10 0"
+          "$subMod , DOWN, resizeactive, 0 10"
+          "$subMod , UP, resizeactive, 0 -10"
+          "$subMod , RIGHT, resizeactive, 10 0"
           # Scroll through existing workspaces with mainMod + scroll
 	  # TODO: Fix
           "$mainMod, MOUSE_UP, workspace, r+1"
           "$mainMod, MOUSE_DOWN, workspace, r-1"
           # Layout toggles
-          "$subMod, F, fullscreen, 0"
-          "$subMod, M, fullscreen, 1"
-          "$tetMod, F, togglefloating"
+          "$subMod , F, fullscreen, 0"
+          "$subMod , M, fullscreen, 1"
+          "$tetMod , F, togglefloating"
           # Move current workspace to another monitor
 	  # TODO: Update with correct monitor
-          "$tetMod, 1, movecurrentworkspacetomonitor, HDMI-A-1"
-          "$tetMod, 2, movecurrentworkspacetomonitor, DP-1"
-          "$tetMod, 3, movecurrentworkspacetomonitor, DP-2"
+          "$tetMod , 1, movecurrentworkspacetomonitor, HDMI-A-1"
+          "$tetMod , 2, movecurrentworkspacetomonitor, DP-1"
+          "$tetMod , 3, movecurrentworkspacetomonitor, DP-2"
         ]
         ++ (
           # Switch workspaces with mainMod + [0-9]
