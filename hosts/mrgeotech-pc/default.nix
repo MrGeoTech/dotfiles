@@ -53,7 +53,7 @@
   # Load amd driver for Xorg and Wayland
   services.xserver.videoDrivers = ["amdgpu"];
 
-  hardware.bluetooth.enable = true;
+  #hardware.bluetooth.enable = true;
 
   console.useXkbConfig = true;
 
