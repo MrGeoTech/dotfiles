@@ -5,7 +5,6 @@
     extensions = with pkgs; [gh-markdown-preview];
     settings = {
       git_protocol = "ssh";
-      prompt = "enabled";
     };
   };
   programs.gh-dash = {

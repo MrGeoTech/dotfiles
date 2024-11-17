@@ -18,6 +18,7 @@
       # Optional configs
       ../common/optional/hyprland.nix
       ../common/optional/nfs.nix
+      ../common/optional/steam.nix
       ../common/optional/wacom.nix
 
       # User config
@@ -46,6 +47,7 @@
   # Load nvidia driver for Xorg and Wayland
   console.useXkbConfig = true;
   hardware.bluetooth.enable = true;
+  networking.interfaces.wlp5s0.useDHCP = true;
 
   # Configure keymap in X11
   services.xserver = {
@@ -59,7 +61,7 @@
     pkgs.catppuccin-sddm.override {
       flavor = "mocha";
       font  = "Iosevka NF";
-      fontSize = "9";
+      fontSize = "15";
       #background = "${./wallpaper.png}";
       loginBackground = true;
     }

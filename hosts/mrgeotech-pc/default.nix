@@ -17,6 +17,7 @@
       # Optional configs
       ../common/optional/hyprland.nix
       ../common/optional/nfs.nix
+      ../common/optional/steam.nix
       ../common/optional/wacom.nix
 
       # User config
@@ -63,7 +64,23 @@
     xkb.options = "ctrl:nocaps";
     xkb.layout = "us";
     xkb.variant = "";
-    displayManager.gdm.enable = true;
+  };
+  environment.systemPackages = [(
+    pkgs.catppuccin-sddm.override {
+      flavor = "mocha";
+      font  = "Iosevka NF";
+      fontSize = "15";
+      #background = "${./wallpaper.png}";
+      loginBackground = true;
+    }
+  )];
+  services.displayManager.sddm = {
+    enable = true;
+    wayland.enable = true;
+    autoNumlock = true;
+
+    theme = "catppuccin-mocha";
+    package = pkgs.kdePackages.sddm;
   };
 
   system.stateVersion = "24.05";
