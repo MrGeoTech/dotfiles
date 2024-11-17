@@ -37,7 +37,11 @@
   boot.loader.systemd-boot.configurationLimit = 15;
   boot.supportedFilesystems = ["ntfs"];
 
-  networking.hostName = "mrgeotech-laptop"; # Define your hostname.
+  networking = {
+    hostName = "mrgeotech-laptop";
+    useNetworkd = true;
+    interfaces.wlp5s0.useDHCP = true;
+  };
 
   hardware.graphics = {
     enable = true;
@@ -47,7 +51,6 @@
   # Load nvidia driver for Xorg and Wayland
   console.useXkbConfig = true;
   hardware.bluetooth.enable = true;
-  networking.interfaces.wlp5s0.useDHCP = true;
 
   # Configure keymap in X11
   services.xserver = {

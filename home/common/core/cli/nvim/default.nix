@@ -75,8 +75,8 @@ in {
       }
       {
         plugin = markdown-preview-nvim;
-	type = "lua";
-	config = builtins.readFile(./lua/markdown.lua);
+	type = "viml";
+	config = builtins.readFile(./lua/markdown.vim);
       }
       nvim-jdtls
       {
