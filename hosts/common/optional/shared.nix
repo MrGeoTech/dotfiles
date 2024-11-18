@@ -11,6 +11,7 @@
     "shared-fs-push" = {
       wantedBy = [ "timers.target" ];
       timerConfig = {
+        OnBootSec = "2min";
         OnUnitActiveSec = "2min";
         Unit = "shared-fs-push.service";
       };
