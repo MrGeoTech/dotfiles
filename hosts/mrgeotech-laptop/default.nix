@@ -17,7 +17,8 @@
 
       # Optional configs
       ../common/optional/hyprland.nix
-      ../common/optional/nfs.nix
+      #../common/optional/nfs.nix
+      ../common/optional/shared.nix
       ../common/optional/steam.nix
       ../common/optional/wacom.nix
 
@@ -35,7 +36,6 @@
   boot.loader.grub.useOSProber = true;
   boot.loader.grub.configurationLimit = 15;
   boot.loader.systemd-boot.configurationLimit = 15;
-  boot.supportedFilesystems = ["ntfs"];
 
   networking = {
     networkmanager.wifi.powersave = true;

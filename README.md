@@ -56,10 +56,6 @@
 | :----------------------------: |
 | ![neovim](./assets/neovim.png) |
 
-|             VSCode             |
-| :----------------------------: |
-| ![vscode](./assets/vscode.png) |
-
 ## Organization of the modules
 
 ![directory-structure](./assets/directory_structure.png)
@@ -68,43 +64,23 @@
 
 ### Requirements
 
-- NixOS 24.11 or Home-manager
+- NixOS (I use 24.11)
 - Patience
 - Knowledge
 - Disk space
 
-### NixOS installation
-
-Use `just bs` or:
-
+### Commands
 ```sh
+cd /etc/nixos/
+sudo mkdir /shared
+sudo chown mrgeotech /shared
 sudo nixos-rebuild switch --flake '.#<host>'
 ```
-
-### Home-manager installation
-
-Use `just hs` or:
-
-```sh
-home-manager switch --flake '.#<user>@<host>'
-```
-
-### Manual setup
-
-- [Zotero](https://www.zotero.org/)
-  - Install the [zotero-dracula](https://github.com/dracula/zotero) if you see a white statusbar
-  - Install the [zotero-better-bibtex](https://github.com/retorquere/zotero-better-bibtex) plugin
-- [Ulauncher](https://github.com/Ulauncher/Ulauncher) extensions
-  - Emoji
-  - ChatGPT
-  - Todoist
-  - Clipboard
-  - Calculate Anything
-  - Better file browser
-  - GitHub
-
 ## Acknowledgements
 
 - [EmergentMind's nix config](https://github.com/EmergentMind/nix-config): Structure, reference and some documentation
 - [Misterio77's nix config](https://github.com/Misterio77/nix-config): Structure and reference
 - [VimJoyer](https://github.com/vimjoyer): Whose YouTube videos aided me in beginning with Nix and persevering through challenges
+
+## TODO:
+- [ ] Update README.md
