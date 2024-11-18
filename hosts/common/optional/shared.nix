@@ -20,7 +20,7 @@
   systemd.services = {
     "shared-fs-push" = {
       script = ''
-	rsync -auvpEXgtUz --existing -del --safe-links --progress -e 'ssh -p 2049' /shared mrgeotech@mrgeotech.net:/mnt/Encypted/Shared/
+	rsync -auqpEXgtUz -del --safe-links -e 'ssh -p 2049' /shared mrgeotech@mrgeotech.net:/mnt/Encypted/Shared/
       '';
       serviceConfig = {
         Type = "oneshot";
@@ -30,7 +30,7 @@
     };
     "shared-fs-pull" = {
       script = ''
-	rsync -auvpEXgtUz --existing -del --safe-links --progress -e 'ssh -p 2049' mrgeotech@mrgeotech.net:/mnt/Encypted/Shared/ /shared
+	rsync -auqpEXgtUz -del --safe-links -e 'ssh -p 2049' mrgeotech@mrgeotech.net:/mnt/Encypted/Shared/ /shared
       '';
       serviceConfig = {
         Type = "oneshot";
