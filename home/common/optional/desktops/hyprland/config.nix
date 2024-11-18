@@ -6,13 +6,8 @@
   monitorConfig =
     if hostName == "mrgeotech-pc"
     then [
-      # TODO: Replace with correct values
-      # top monitor
-      "DP-1,highres,1080x0,1"
-      # bottom monitor
-      "DP-2,highres,1080x1440,1"
-      # left monitor
-      "HDMI-A-1,highres,0x0,1,transform,1"
+      # Only one monitor (For now)
+      ",highres,auto,1"
     ]
     else [
       # Only one monitor
