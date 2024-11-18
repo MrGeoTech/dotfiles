@@ -38,6 +38,7 @@
   boot.supportedFilesystems = ["ntfs"];
 
   networking = {
+    networkmanager.wifi.powersave = true;
     hostName = "mrgeotech-laptop";
     useNetworkd = true;
     interfaces.wlp5s0.useDHCP = true;

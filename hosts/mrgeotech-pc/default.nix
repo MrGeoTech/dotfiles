@@ -40,7 +40,7 @@
   boot.initrd.kernelModules = ["amdgpu"];
 
   networking.hostName = "mrgeotech-pc"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  #hardware.bluetooth.enable = true;
 
   hardware.graphics = {
     enable = true;
@@ -53,9 +53,6 @@
 
   # Load amd driver for Xorg and Wayland
   services.xserver.videoDrivers = ["amdgpu"];
-
-  #hardware.bluetooth.enable = true;
-
   console.useXkbConfig = true;
 
   # Configure keymap in X11
