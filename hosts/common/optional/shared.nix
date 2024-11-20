@@ -33,6 +33,13 @@
       serviceConfig = {
         Type = "oneshot";
         User = "mrgeotech";
+      };
+      path = with pkgs; [ rsync openssh ];
+    };
+    "shared-fs-push-shutdown" = {
+      serviceConfig = {
+        Type = "oneshot";
+        User = "mrgeotech";
         RemainAfterExit = true;
         # I hate this
         ExecStop = "rsync -auqpEXgtUz -del --safe-links -e 'ssh -p 2049' /home/mrgeotech/Desktop mrgeotech@mrgeotech.net:/mnt/Encypted/Shared/ && rsync -auqpEXgtUz -del --safe-links -e 'ssh -p 2049' /home/mrgeotech/Documents mrgeotech@mrgeotech.net:/mnt/Encypted/Shared/ && rsync -auqpEXgtUz -del --safe-links -e 'ssh -p 2049' /home/mrgeotech/Downloads mrgeotech@mrgeotech.net:/mnt/Encypted/Shared/ && rsync -auqpEXgtUz -del --safe-links -e 'ssh -p 2049' /home/mrgeotech/Pictures mrgeotech@mrgeotech.net:/mnt/Encypted/Shared/ && rsync -auqpEXgtUz -del --safe-links -e 'ssh -p 2049' /home/mrgeotech/Projects mrgeotech@mrgeotech.net:/mnt/Encypted/Shared/ && rsync -auqpEXgtUz -del --safe-links -e 'ssh -p 2049' /home/mrgeotech/School mrgeotech@mrgeotech.net:/mnt/Encypted/Shared/ && rsync -auqpEXgtUz -del --safe-links -e 'ssh -p 2049' /home/mrgeotech/Videos mrgeotech@mrgeotech.net:/mnt/Encypted/Shared/";
