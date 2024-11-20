@@ -41,6 +41,7 @@
     tldr
     unrar
     unzip
+    usbutils
     zip
   ];
 }

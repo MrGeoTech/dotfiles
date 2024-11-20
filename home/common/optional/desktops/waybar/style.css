@@ -33,21 +33,7 @@
 }
 
 window.HDMI-A-1 * {
-  font-size: 12px;
-}
-
-window.HDMI-A-1 #network,
-window.HDMI-A-1 #idle_inhibitor,
-window.HDMI-A-1 #cpu,
-window.HDMI-A-1 #memory,
-window.HDMI-A-1 #backlight,
-window.HDMI-A-1 #battery,
-window.HDMI-A-1 #pulseaudio {
-  font-size: 0px;
-  padding: 0;
-  border: 0;
-  margin: 0;
-  background-color: transparent;
+  font-size: 14px;
 }
 
 #waybar {

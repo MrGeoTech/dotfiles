@@ -129,8 +129,8 @@ in {
           "$mainMod, PRINT, exec, ~/.config/hypr/scripts/screenshot.sh activemonitor"
           "$subMod , PRINT, exec, ~/.config/hypr/scripts/screenshot.sh activewindow"
           # Move focus with mainMod + arrow keys
-          "$mainMod, LEFT, movefocus, l"
           "$mainMod, RIGHT, movefocus, r"
+          "$mainMod, LEFT, movefocus, l"
           "$mainMod, UP, movefocus, u"
           "$mainMod, DOWN, movefocus, d"
           # Groups
@@ -148,10 +148,10 @@ in {
           "$subMod , COMMA, movetoworkspace, r-1"
           "$subMod , PERIOD, movetoworkspace, r+1"
           # Resize windows with subMod + h,j,k,l
-          "$subMod , LEFT, resizeactive, -10 0"
-          "$subMod , DOWN, resizeactive, 0 10"
-          "$subMod , UP, resizeactive, 0 -10"
-          "$subMod , RIGHT, resizeactive, 10 0"
+          "$subMod , RIGHT, movewindow, r"
+          "$subMod , LEFT, movewindow, l"
+          "$subMod , UP, movewindow, u"
+          "$subMod , DOWN, movewindow, d"
           # Scroll through existing workspaces with mainMod + scroll
 	  # TODO: Fix
           "$mainMod, MOUSE_UP, workspace, r+1"
@@ -160,11 +160,9 @@ in {
           "$subMod , F, fullscreen, 0"
           "$subMod , M, fullscreen, 1"
           "$tetMod , F, togglefloating"
-          # Move current workspace to another monitor
-	  # TODO: Update with correct monitor
-          "$tetMod , 1, movecurrentworkspacetomonitor, HDMI-A-1"
-          "$tetMod , 2, movecurrentworkspacetomonitor, DP-1"
-          "$tetMod , 3, movecurrentworkspacetomonitor, DP-2"
+          #"$tetMod , 1, movecurrentworkspacetomonitor, HDMI-A-1"
+          #"$tetMod , 2, movecurrentworkspacetomonitor, DP-1"
+          #"$tetMod , 3, movecurrentworkspacetomonitor, DP-2"
         ]
         ++ (
           # Switch workspaces with mainMod + [0-9]

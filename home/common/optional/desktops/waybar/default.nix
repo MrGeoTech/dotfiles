@@ -26,7 +26,7 @@
           "pulseaudio"
           "network"
           "battery"
-        ];
+	];
 
         "hyprland/workspaces" = {
           disable-scroll = false;

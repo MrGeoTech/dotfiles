@@ -16,7 +16,6 @@
 
       # Optional configs
       ../common/optional/hyprland.nix
-      #../common/optional/nfs.nix
       ../common/optional/shared.nix
       ../common/optional/steam.nix
       ../common/optional/wacom.nix
@@ -40,7 +39,8 @@
   boot.initrd.kernelModules = ["amdgpu"];
 
   networking.hostName = "mrgeotech-pc"; # Define your hostname.
-  #hardware.bluetooth.enable = true;
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
 
   hardware.graphics = {
     enable = true;

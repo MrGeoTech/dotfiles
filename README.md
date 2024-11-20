@@ -62,25 +62,31 @@
 
 ## Installation
 
-### Requirements
+#### Requirements
 
 - NixOS (I use 24.11)
+- Disk space
 - Patience
 - Knowledge
-- Disk space
+- Stubborness
 
-### Commands
+#### Installation 
 ```sh
+# -- If you are me --
+mkdir ~/Desktop
+mkdir ~/Documents
+mkdir ~/Downloads
+mkdir ~/Pictures
+mkdir ~/Projects
+mkdir ~/School
+mkdir ~/Videos
+# -------------------
 cd /etc/nixos/
-sudo mkdir /shared
-sudo chown mrgeotech /shared
 sudo nixos-rebuild switch --flake '.#<host>'
 ```
 ## Acknowledgements
 
+- [Dileep Kishore's nix config](https://github.com/dileep-kishore/nixos-hyprland) The framework my NixOS distro is based off of
 - [EmergentMind's nix config](https://github.com/EmergentMind/nix-config): Structure, reference and some documentation
 - [Misterio77's nix config](https://github.com/Misterio77/nix-config): Structure and reference
 - [VimJoyer](https://github.com/vimjoyer): Whose YouTube videos aided me in beginning with Nix and persevering through challenges
-
-## TODO:
-- [ ] Update README.md

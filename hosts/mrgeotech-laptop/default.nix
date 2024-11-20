@@ -51,6 +51,7 @@
   # Load nvidia driver for Xorg and Wayland
   console.useXkbConfig = true;
   hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
 
   # Configure keymap in X11
   services.xserver = {
