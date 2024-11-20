@@ -16,14 +16,11 @@
       ../common/core
 
       # Optional configs
-      ../common/optional/hyprland.nix
-      #../common/optional/nfs.nix
-      #../common/optional/shared.nix
-      ../common/optional/steam.nix
-      ../common/optional/wacom.nix
+      ../common/optional
 
       # User config
       ../common/users/mrgeotech
+      ../common/users/mrgeotech/optional.nix
     ];
 
   # Bootloader.

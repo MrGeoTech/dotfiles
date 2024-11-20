@@ -5,14 +5,10 @@
 }: {
   imports = [
     inputs.home-manager.nixosModules.home-manager
-    ./docker.nix
-    ./fonts.nix
     ./gnupg.nix
     ./locale.nix
     ./networking.nix
     ./nix.nix
-    ./pipewire.nix
-    ./services.nix
     ./zsh.nix
   ];
 
@@ -28,6 +24,16 @@
         "zotero-6.0.27"
       ];
     };
+  };
+
+  services = {
+    openssh.enable = true;
+
+    devmon.enable = true;
+    gvfs.enable = true;
+    udisks2.enable = true;
+
+    dbus.enable = true;
   };
 
   hardware.enableRedistributableFirmware = true;

@@ -15,13 +15,11 @@
       ../common/core
 
       # Optional configs
-      ../common/optional/hyprland.nix
-      ../common/optional/shared.nix
-      ../common/optional/steam.nix
-      ../common/optional/wacom.nix
+      ../common/optional
 
       # User config
       ../common/users/mrgeotech
+      ../common/users/mrgeotech/optional.nix
     ];
 
   # Bootloader.
@@ -33,7 +31,6 @@
   boot.loader.grub.useOSProber = true;
   boot.loader.grub.configurationLimit = 15;
   boot.loader.systemd-boot.configurationLimit = 15;
-  boot.supportedFilesystems = ["ntfs"];
 
   # amd gpu support for kernel
   boot.initrd.kernelModules = ["amdgpu"];
