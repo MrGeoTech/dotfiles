@@ -29,5 +29,12 @@
 
   networking.hostName = "wwww";
 
+  services.nginx = {
+    enable = true;
+    virtualHost."www" = {
+      root = "/var/www/";
+    };
+  };
+
   system.stateVersion = "24.05";
 }
