@@ -1,7 +1,7 @@
 <!-- markdownlint-disable -->
 <h1 align="center">
-    <a name="top" title="nixos-hyprland">
-        nixos-hyprland v2
+    <a>
+        MrGeoTech's NixOS Config
     </a>
 </h1>
 <div align="center">
@@ -26,7 +26,6 @@
 <div align="center">
     Dotfiles for my <a href="https://hyprland.org">Hyprland</a> setup on my <a href="https://nixos.org">NixOS</a> system.
     <br/>
-    Includes my <a href="https://github.com/nix-community/home-manager" >Home Manager</a> configuration for linux and macos.
     <p><strong>Be sure to <a href="#" title="star">⭐️</a> or <a href="#" title="fork">🔱</a> this repo if you find it useful! 😃</strong></p>
 </div>
 <!-- markdownlint-restore -->
@@ -37,10 +36,11 @@
 - Window manager: [Hyprland](https://hyprland.org)
 - Status bar: [Waybar](https://github.com/Alexays/Waybar)
 - Terminal: [Kitty](https://sw.kovidgoyal.net/kitty/)
-- Shell: `Zsh` with plugins managed through [antidote](https://github.com/mattmc3/antidote) with [oh-my-posh](https://ohmyposh.dev/) prompt
+- Shell: [Zsh](https://www.zsh.org/)
 - Current theme: [Catppuccin](https://catppuccin.com/)
-- Font: [Maple Mono](https://github.com/subframe7536/maple-font)
-- Editor: [Neovim](https://neovim.io). Configuration can be found [here](https://github.com/dileep-kishore/neovim)
+- Font: [Iosevka/IosevkaTerm](https://typeof.net/Iosevka/)
+- Editor: [Neovim](https://neovim.io)
+- File Sync: [Rsync](https://rsync.samba.org/)
 
 ## Gallery
 
