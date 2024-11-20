@@ -35,7 +35,7 @@
   # amd gpu support for kernel
   boot.initrd.kernelModules = ["amdgpu"];
 
-  networking.hostName = "mrgeotech-pc"; # Define your hostname.
+  networking.hostName = "mrgeotech-pc";
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
 

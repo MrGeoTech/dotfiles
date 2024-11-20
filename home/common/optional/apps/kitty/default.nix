@@ -3,7 +3,7 @@
     enable = true;
     font = {
       name = "IosevkaTerm Nerd Font";
-      size = 11;
+      size = 11.5;
     };
     settings = {
       window_padding_width = 0;

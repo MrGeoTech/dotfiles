@@ -67,7 +67,7 @@
           home-manager.nixosModules.home-manager
           catppuccin.nixosModules.catppuccin
           ({config, ...}: {
-  	    home-manager.backupFileExtension = "bak";
+  	        home-manager.backupFileExtension = "bak";
             home-manager.extraSpecialArgs = {
               inherit inputs outputs;
               inherit (config.networking) hostName;
@@ -84,7 +84,7 @@
           home-manager.nixosModules.home-manager
           catppuccin.nixosModules.catppuccin
           ({config, ...}: {
-  	    home-manager.backupFileExtension = "bak";
+  	        home-manager.backupFileExtension = "bak";
             home-manager.extraSpecialArgs = {
               inherit inputs outputs;
               inherit (config.networking) hostName;
@@ -93,15 +93,15 @@
         ];
       };
 
-      # For testing in a vm
-      mrgeotech-testing = lib.nixosSystem {
+      # Website host
+      www = lib.nixosSystem {
         specialArgs = {inherit inputs outputs;};
         modules = [
-          ./hosts/mrgeotech-testing
+          ./hosts/www
           home-manager.nixosModules.home-manager
           catppuccin.nixosModules.catppuccin
           ({config, ...}: {
-  	    home-manager.backupFileExtension = "bak";
+  	        home-manager.backupFileExtension = "bak";
             home-manager.extraSpecialArgs = {
               inherit inputs outputs;
               inherit (config.networking) hostName;

@@ -4,7 +4,6 @@
   ...
 }: {
   imports = [
-    inputs.home-manager.nixosModules.home-manager
     ./docker.nix
     ./fonts.nix
     ./pipewire.nix

@@ -27,7 +27,7 @@
   boot.loader.grub.configurationLimit = 15;
   boot.loader.systemd-boot.configurationLimit = 15;
 
-  networking.hostName = "wwww";
+  networking.hostName = "www";
 
   services.nginx = {
     enable = true;

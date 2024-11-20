@@ -1,6 +1,6 @@
 <mxfile host="Electron" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.7.17 Chrome/130.0.6723.44 Electron/33.0.0 Safari/537.36" version="24.7.17">
   <diagram name="Page-1" id="HKs4EqCIz_pDYs3766nl">
-    <mxGraphModel dx="1328" dy="291" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1533" dy="416" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -55,7 +55,7 @@
         <mxCell id="6uuu7LUjh2nBVU1ZC38r-21" value="webproxy" style="shape=mxgraph.cisco.servers.microwebserver;sketch=0;html=1;pointerEvents=1;dashed=0;fillColor=#036897;strokeColor=#ffffff;strokeWidth=2;verticalLabelPosition=bottom;verticalAlign=top;align=center;outlineConnect=0;" parent="6uuu7LUjh2nBVU1ZC38r-11" vertex="1">
           <mxGeometry x="10" y="110" width="77" height="51" as="geometry" />
         </mxCell>
-        <mxCell id="6uuu7LUjh2nBVU1ZC38r-19" value="NFS" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;horizontal=0;" parent="1" source="6uuu7LUjh2nBVU1ZC38r-17" target="6uuu7LUjh2nBVU1ZC38r-4" edge="1">
+        <mxCell id="6uuu7LUjh2nBVU1ZC38r-19" value="Rsync" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;horizontal=0;" parent="1" source="6uuu7LUjh2nBVU1ZC38r-17" target="6uuu7LUjh2nBVU1ZC38r-4" edge="1">
           <mxGeometry x="0.0826" y="2" relative="1" as="geometry">
             <mxPoint y="1" as="offset" />
           </mxGeometry>
