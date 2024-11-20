@@ -23,8 +23,7 @@
 
       # User config
       ../common/users/mrgeotech
-    ]
-    ++ (builtins.attrValues outputs.nixosModules);
+    ];
 
   # Bootloader.
   boot.kernelPackages = pkgs.linuxPackages_latest;

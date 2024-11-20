@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{pkgs, ...}:
+{
   imports = [
     ./gpg.nix
     ./firefox.nix
@@ -17,6 +18,7 @@
     # Programming Stuff
     texliveFull
     # User Apps
+    drawio
     eog
     octaveFull
     quartus-prime-lite
@@ -24,8 +26,4 @@
     signal-desktop
     zoom-us
   ];
-
-  home.sessionVariables = {
-    OBSIDIAN_USE_WAYLAND = "1";
-  };
 }

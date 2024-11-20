@@ -53,15 +53,6 @@
   in {
     inherit lib;
 
-    nixosModules = import ./modules/nixos;
-    homeManagerModules = import ./modules/home-manager;
-
-    # Custom modifications/overrides to upstream packages.
-    overlays = import ./overlays {inherit inputs outputs;};
-
-    # Custom packages to be shared or upstreamed.
-    packages = forEachSystem (pkgs: import ./pkgs {inherit pkgs;});
-
     formatter = forEachSystem (pkgs: pkgs.alejandra);
 
     devShells = forEachSystem (pkgs: import ./shell.nix {inherit pkgs;});

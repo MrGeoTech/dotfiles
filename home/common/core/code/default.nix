@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
     clang_18
+    clang-tools
     go
     lua
     nodejs_22
