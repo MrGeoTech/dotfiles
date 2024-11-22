@@ -21,8 +21,8 @@
         drawio
         eog
         octaveFull
-        #quartus-prime-lite
-        altera-quartus-prime-lite-17
+        quartus-prime-lite
+        #altera-quartus-prime-lite-17
         resources
         signal-desktop
         zoom-us
