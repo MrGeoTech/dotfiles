@@ -17,10 +17,12 @@
 in {
   home.packages = with pkgs; [
     # Nix packages
+    erlang-ls
     jdt-language-server
     ltex-ls
     lua-language-server
     marksman
+    vhdl-ls
     zls
   ] ++ [
     # GitHub Packages

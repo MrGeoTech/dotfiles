@@ -40,10 +40,12 @@ end
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
 -- These are example language servers. 
 lspconfig.zls.setup({})
+lspconfig.erlangls.setup({})
 lspconfig.clangd.setup({})
 lspconfig.lua_ls.setup({})
 lspconfig.jdtls.setup({})
 lspconfig.marksman.setup({})
+lspconfig.vhdl_ls.setup({})
 lspconfig.ltex.setup({
    settings = {
       ltex = {
