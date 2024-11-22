@@ -84,6 +84,7 @@ mkdir ~/Videos
 cd /etc/nixos/
 sudo nixos-rebuild switch --flake '.#<host>'
 ```
+> You will also have to copy over ~/.ssh and ~/.secrets
 ## Acknowledgements
 
 - [Dileep Kishore's nix config](https://github.com/dileep-kishore/nixos-hyprland) The framework my NixOS distro is based off of

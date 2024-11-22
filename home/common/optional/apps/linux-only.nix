@@ -1,4 +1,4 @@
-{pkgs, ...}:
+{ pkgs, inputs, ... }:
 {
     imports = [
         ./gpg.nix
@@ -22,9 +22,12 @@
         eog
         octaveFull
         quartus-prime-lite
-        #altera-quartus-prime-lite-17
         resources
         signal-desktop
         zoom-us
     ];
+
+    home.sessionVariables = {
+        LM_LICENSE_FILE = "~/.secrets/LR-204703_License.dat";
+    };
 }

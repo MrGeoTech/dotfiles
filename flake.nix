@@ -53,16 +53,16 @@
                 inherit system;
                 config.allowUnfree = true;
             }
-            import ./pkgs { inherit nixpkgs; }
         );
     in {
         inherit lib;
 
+        #packages = forEachSystem (pkgs: import ./pkgs { inherit pkgs; });
+
         formatter = forEachSystem (pkgs: pkgs.alejandra);
 
-        devShells = forEachSystem (pkgs: import ./shell.nix {inherit pkgs;});
+        devShells = forEachSystem (pkgs: import ./shell.nix { inherit pkgs; });
 
-        # NOTE: home-manager is also imported as a module within nixosConfigurations
         nixosConfigurations = {
             # Desktop
             mrgeotech-pc = lib.nixosSystem {
