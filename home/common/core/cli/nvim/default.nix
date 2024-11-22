@@ -45,8 +45,8 @@ in {
       set number relativenumber
       set cc=100
       set conceallevel=2
-      set tabstop=2
-      set shiftwidth=2
+      set tabstop=4
+      set shiftwidth=4
       set expandtab
     '';
 

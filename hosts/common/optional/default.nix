@@ -1,25 +1,29 @@
 {
-  inputs,
-  outputs,
-  ...
+    inputs,
+        outputs,
+        ...
 }: {
-  imports = [
-    ./docker.nix
-    ./fonts.nix
-    ./pipewire.nix
-    ./hyprland.nix
-    ./steam.nix
-    ./shared.nix
-  ];
+    imports = [
+        ./docker.nix
+        ./fonts.nix
+        ./pipewire.nix
+        ./hyprland.nix
+        ./steam.nix
+        ./shared.nix
+    ];
 
-  services = {
-    printing.enable = true;
+    services = {
+        printing.enable = true;
 
-    blueman.enable = true;
-    gnome.gnome-keyring.enable = true;
+        blueman.enable = true;
+        gnome.gnome-keyring.enable = true;
 
-    flatpak.enable = true;
-  };
+        flatpak.enable = true;
 
-  programs.gnome-disks.enable = true;
+        udev.extraRules = ''
+            SUBSYSTEM=="usb", ATTR{idVendor}=="09fb", ATTR{idProduct}=="6001", MODE="0666"
+        '';
+    };
+
+    programs.gnome-disks.enable = true;
 }
