@@ -1,114 +1,119 @@
 {
-  description = "NixOS hyprland setup";
+    description = "NixOS hyprland setup";
 
-  inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    inputs = {
+        nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    hardware.url = "github:nixos/nixos-hardware";
-    nix-colors.url = "github:misterio77/nix-colors";
+        hardware.url = "github:nixos/nixos-hardware";
+        nix-colors.url = "github:misterio77/nix-colors";
 
-    # home-manager
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
+        # home-manager
+        home-manager = {
+            url = "github:nix-community/home-manager";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
+
+        # secrets
+        sops-nix = {
+            url = "github:Mic92/sops-nix";
+            inputs.nixpkgs.follows = "nixpkgs";
+            inputs.nixpkgs-stable.follows = "nixpkgs";
+        };
+
+        # hyprland
+        hyprland = {
+            url = "github:hyprwm/hyprland";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
+        hyprland-plugins = {
+            url = "github:hyprwm/hyprland-plugins";
+            inputs.hyprland.follows = "hyprland";
+        };
+
+        # catppuccin
+        catppuccin.url = "github:catppuccin/nix";
     };
 
-    # secrets
-    sops-nix = {
-      url = "github:Mic92/sops-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.nixpkgs-stable.follows = "nixpkgs";
-    };
+    outputs = {
+        self,
+        nixpkgs,
+        home-manager,
+        catppuccin,
+        ...
+    } @ inputs: 
+    let
+        inherit (self) outputs;
+        lib = nixpkgs.lib // home-manager.lib;
 
-    # hyprland
-    hyprland = {
-      url = "github:hyprwm/hyprland";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    hyprland-plugins = {
-      url = "github:hyprwm/hyprland-plugins";
-      inputs.hyprland.follows = "hyprland";
-    };
+        systems = ["x86_64-linux"];
+        forEachSystem = f: lib.genAttrs systems (system: f pkgsFor.${system});
 
-    # catppuccin
-    catppuccin.url = "github:catppuccin/nix";
-  };
+        pkgsFor = lib.genAttrs systems (system:
+            import nixpkgs {
+                inherit system;
+                config.allowUnfree = true;
+            }
+            import ./pkgs { inherit nixpkgs; }
+        );
+    in {
+        inherit lib;
 
-  outputs = {
-    self,
-    nixpkgs,
-    home-manager,
-    catppuccin,
-    ...
-  } @ inputs: let
-    inherit (self) outputs;
-    lib = nixpkgs.lib // home-manager.lib;
-    systems = ["x86_64-linux"];
-    forEachSystem = f: lib.genAttrs systems (system: f pkgsFor.${system});
-    pkgsFor = lib.genAttrs systems (system:
-      import nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-      });
-  in {
-    inherit lib;
+        formatter = forEachSystem (pkgs: pkgs.alejandra);
 
-    formatter = forEachSystem (pkgs: pkgs.alejandra);
+        devShells = forEachSystem (pkgs: import ./shell.nix {inherit pkgs;});
 
-    devShells = forEachSystem (pkgs: import ./shell.nix {inherit pkgs;});
-
-    # NOTE: home-manager is also imported as a module within nixosConfigurations
-    nixosConfigurations = {
-      # Desktop
-      mrgeotech-pc = lib.nixosSystem {
-        specialArgs = {inherit inputs outputs;};
-        modules = [
-          ./hosts/mrgeotech-pc
-          home-manager.nixosModules.home-manager
-          catppuccin.nixosModules.catppuccin
-          ({config, ...}: {
-  	        home-manager.backupFileExtension = "bak";
-            home-manager.extraSpecialArgs = {
-              inherit inputs outputs;
-              inherit (config.networking) hostName;
+        # NOTE: home-manager is also imported as a module within nixosConfigurations
+        nixosConfigurations = {
+            # Desktop
+            mrgeotech-pc = lib.nixosSystem {
+                specialArgs = {inherit inputs outputs;};
+                modules = [
+                    ./hosts/mrgeotech-pc
+                    home-manager.nixosModules.home-manager
+                    catppuccin.nixosModules.catppuccin
+                    ({config, ...}: {
+                        home-manager.backupFileExtension = "bak";
+                        home-manager.extraSpecialArgs = {
+                            inherit inputs outputs;
+                            inherit (config.networking) hostName;
+                        };
+                    })
+                ];
             };
-          })
-        ];
-      };
 
-      # Laptop
-      mrgeotech-laptop = lib.nixosSystem {
-        specialArgs = {inherit inputs outputs;};
-        modules = [
-          ./hosts/mrgeotech-laptop
-          home-manager.nixosModules.home-manager
-          catppuccin.nixosModules.catppuccin
-          ({config, ...}: {
-  	        home-manager.backupFileExtension = "bak";
-            home-manager.extraSpecialArgs = {
-              inherit inputs outputs;
-              inherit (config.networking) hostName;
+            # Laptop
+            mrgeotech-laptop = lib.nixosSystem {
+                specialArgs = {inherit inputs outputs;};
+                modules = [
+                    ./hosts/mrgeotech-laptop
+                    home-manager.nixosModules.home-manager
+                    catppuccin.nixosModules.catppuccin
+                    ({config, ...}: {
+                        home-manager.backupFileExtension = "bak";
+                        home-manager.extraSpecialArgs = {
+                            inherit inputs outputs;
+                            inherit (config.networking) hostName;
+                        };
+                    })
+                ];
             };
-          })
-        ];
-      };
 
-      # Website host
-      www = lib.nixosSystem {
-        specialArgs = {inherit inputs outputs;};
-        modules = [
-          ./hosts/www
-          home-manager.nixosModules.home-manager
-          catppuccin.nixosModules.catppuccin
-          ({config, ...}: {
-  	        home-manager.backupFileExtension = "bak";
-            home-manager.extraSpecialArgs = {
-              inherit inputs outputs;
-              inherit (config.networking) hostName;
+            # Website host
+            www = lib.nixosSystem {
+                specialArgs = {inherit inputs outputs;};
+                modules = [
+                    ./hosts/www
+                    home-manager.nixosModules.home-manager
+                    catppuccin.nixosModules.catppuccin # Why not?
+                    ({config, ...}: {
+                        home-manager.backupFileExtension = "bak";
+                        home-manager.extraSpecialArgs = {
+                            inherit inputs outputs;
+                            inherit (config.networking) hostName;
+                        };
+                    })
+                ];
             };
-          })
-        ];
-      };
+        };
     };
-  };
 }
