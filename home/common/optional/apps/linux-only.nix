@@ -28,6 +28,6 @@
     ];
 
     home.sessionVariables = {
-        LM_LICENSE_FILE = "~/.secrets/LR-204703_License.dat";
+        LM_LICENSE_FILE = "/home/mrgeotech/.secrets/License.dat";
     };
 }
