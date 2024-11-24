@@ -1,7 +1,10 @@
 { pkgs, inputs, ... }:
 {
     imports = [
+        ./kitty
+        ./rofi
         ./gpg.nix
+        ./gaming.nix
         ./firefox.nix
     ];
     home.packages = with pkgs; [
@@ -26,6 +29,8 @@
         signal-desktop
         zoom-us
     ];
+
+    services.mpris-proxy.enable = true;
 
     home.sessionVariables = {
         LM_LICENSE_FILE = "/home/mrgeotech/.secrets/License.dat";

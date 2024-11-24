@@ -1,7 +1,7 @@
 {
     inputs,
-        outputs,
-        ...
+    outputs,
+    ...
 }: {
     imports = [
         ./docker.nix
@@ -9,6 +9,7 @@
         ./pipewire.nix
         ./hyprland.nix
         ./steam.nix
+        ./sound.nix
         ./shared.nix
     ];
 
