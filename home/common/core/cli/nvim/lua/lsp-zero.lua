@@ -46,6 +46,7 @@ lspconfig.lua_ls.setup({})
 lspconfig.jdtls.setup({})
 lspconfig.marksman.setup({})
 lspconfig.vhdl_ls.setup({})
+lspconfig.html.setup({});
 lspconfig.ltex.setup({
    settings = {
       ltex = {

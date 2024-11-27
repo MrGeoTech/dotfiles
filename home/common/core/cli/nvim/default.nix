@@ -15,6 +15,7 @@
   };
 
 in {
+  # https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
   home.packages = with pkgs; [
     # Nix packages
     erlang-ls
@@ -23,6 +24,7 @@ in {
     lua-language-server
     marksman
     vhdl-ls
+    vscode-langservers-extracted
     zls
   ] ++ [
     # GitHub Packages
