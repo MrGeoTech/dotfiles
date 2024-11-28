@@ -1,40 +1,37 @@
 {
-  pkgs,
-  outputs,
-  inputs,
-  ...
+    pkgs,
+    outputs,
+    inputs,
+    ...
 }: {
-  imports =
-    [
-      # Hardware config
-      inputs.hardware.nixosModules.common-cpu-amd
-      ./hardware-configuration.nix
+    imports = [
+        # Hardware config
+        inputs.hardware.nixosModules.common-cpu-amd
+        ./hardware-configuration.nix
 
-      # Common config
-      ../common/core
+        # Common config
+        ../common/core
 
-      # User config
-      ../common/users/mrgeotech
+        # User config
+        ../common/users/mrgeotech
     ];
 
-  # Bootloader.
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.loader.grub.efiSupport = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.efi.efiSysMountPoint = "/boot";
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.grub.useOSProber = true;
-  boot.loader.grub.configurationLimit = 15;
-  boot.loader.systemd-boot.configurationLimit = 15;
-
-  networking.hostName = "www";
-
-  services.nginx = {
-    enable = true;
-    virtualHost."www" = {
-      root = "/var/www/";
+    # Bootloader.
+    boot.kernelPackages = pkgs.linuxPackages_latest;
+    boot.loader.grub = {
+        device = "nodev";
+        useOSProber = true;
+        configurationLimit = 15;
     };
-  };
 
-  system.stateVersion = "24.05";
+    networking.hostName = "www";
+
+    services.nginx = {
+        enable = true;
+        virtualHost."www" = {
+            root = "/var/www/";
+        };
+    };
+
+    system.stateVersion = "24.05";
 }
