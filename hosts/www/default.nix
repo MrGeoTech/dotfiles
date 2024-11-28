@@ -28,7 +28,7 @@
 
     services.nginx = {
         enable = true;
-        virtualHost."www" = {
+        virtualHosts."www" = {
             root = "/var/www/";
         };
     };
