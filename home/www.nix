@@ -2,6 +2,7 @@
 {
   imports = [
     ./common/core
+    ./common/optional/apps/kitty
   ];
 
   home = {

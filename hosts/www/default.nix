@@ -2,6 +2,7 @@
     pkgs,
     outputs,
     inputs,
+    config,
     ...
 }: {
     imports = [
@@ -25,12 +26,34 @@
     };
 
     networking.hostName = "www";
-    networking.firewall.allowedTCPPorts = [ 80 ];
+    # Enable http and ssh ports
+    networking.firewall.allowedTCPPorts = [ 80 50293 ];
 
+    # Enable nginx
     services.nginx = {
         enable = true;
         virtualHosts."www" = {
             root = "/var/www/";
+            # Setup PHP
+            locations = {
+                "/" = {
+                    index = "index.php";
+                };
+                "~ \\.php$" = {
+                    index = "index.php";
+                    extraConfig = ''
+                        fastcgi_pass  unix:${config.services.phpfpm.pools.mypool.socket};
+                        fastcgi_index index.php;
+                    '';
+                };
+                # Allow robots (what do I have to loose?)
+                "/robots.txt" = {
+                    extraConfig = ''
+                        rewrite ^/(.*)  $1;
+                        return 200 "User-agent: *\nAllow: /";
+                    '';
+                };
+            };
         };
     };
     services.phpfpm.pools.mypool = {
@@ -45,5 +68,36 @@
             "pm.max_requests" = 500;
         };
     };
+
+    # Enable ssh
+    services.openssh = {
+        enable = true;
+        ports = [ 50293 ];
+        settings = {
+            PasswordAuthentication = true;
+            AllowUsers = [ "mrgeotech" ];
+            PermitRootLogin = "no";
+        };
+    };
+
+    # Fail2Ban
+    services.fail2ban = {
+        enable = true;
+        maxretry = 5;
+        ignoreIP = [
+            # Whitelist local subnets (for when I inevitably accidently "hack" myself)
+            "10.0.0.0/8" "172.16.0.0/12" "192.168.0.0/16"
+        ];
+        bantime = "24h";
+        bantime-increment = {
+            enable = true;
+            formula = "ban.Time * math.exp(float(ban.Count+1)*2)/math.exp(2)";
+            maxtime = "168h";
+            overalljails = true;
+        };
+        #jails = {};
+    };
+
+
     system.stateVersion = "24.05";
 }
