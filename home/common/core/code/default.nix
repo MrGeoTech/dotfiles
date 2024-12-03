@@ -3,6 +3,7 @@
     clang_18
     clang-tools
     erlang_27
+    gleam
     go
     lua
     zulu

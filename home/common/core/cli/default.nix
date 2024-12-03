@@ -17,7 +17,6 @@
     ./nvim
     ./ripgrep.nix
     ./scripts.nix
-    ./tmux
     ./yazi
     ./zoxide.nix
   ];
