@@ -31,29 +31,29 @@ in {
         pull-fs
     ];
 
-    # Handle power cycling
-    systemd.services = {
-        "shared-fs" = {
-            description = "Pulls on start and pushes on stop";
-            wantedBy = [ "multi-user.target" ];
-            serviceConfig = {
-                User = "mrgeotech";
-                ExecStart = pull-fs-exec;
-                ExecStop = push-fs-exec;
-            };
-            path = with pkgs; [ rsync openssh ];
-        };
-    };
-
-    # Handle lid events
-    services.acpid.handlers = {
-        "pull-fs" = {
-            event = "button/lid.open";
-            action = pull-fs-exec;
-        };
-        "push-fs" = {
-            event = "button/lid.close";
-            action = push-fs-exec;
-        };
-    };
+#    # Handle power cycling
+#    systemd.services = {
+#        "shared-fs" = {
+#            description = "Pulls on start and pushes on stop";
+#            wantedBy = [ "multi-user.target" ];
+#            serviceConfig = {
+#                User = "mrgeotech";
+#                ExecStart = pull-fs-exec;
+#                ExecStop = push-fs-exec;
+#            };
+#            path = with pkgs; [ rsync openssh ];
+#        };
+#    };
+#
+#    # Handle lid events
+#    services.acpid.handlers = {
+#        "pull-fs" = {
+#            event = "button/lid.open";
+#            action = pull-fs-exec;
+#        };
+#        "push-fs" = {
+#            event = "button/lid.close";
+#            action = push-fs-exec;
+#        };
+#    };
 }
