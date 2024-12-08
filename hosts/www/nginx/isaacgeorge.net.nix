@@ -27,6 +27,9 @@ in {
         virtualHosts = {
             ${appDomain} = {
                 root = "${dataDir}";
+                forceSSL = true;
+                enableACME = true;
+                listen = [{ addres = "0.0.0.0"; port = 8080; ssl = true; }];
 
                 extraConfig = ''
                     index index.php;
@@ -56,5 +59,10 @@ in {
                 };
             };
         };
+    };
+        
+    security.acme = {
+        acceptTerms = true;
+        defaults.email = "acme@isaacgeorge.net";
     };
 }
