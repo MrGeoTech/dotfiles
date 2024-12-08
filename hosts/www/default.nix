@@ -15,6 +15,9 @@
 
         # User config
         ../common/users/mrgeotech
+
+        # Webservice cofig
+        ./nginx/isaacgeorge.net.nix
     ];
 
     # Bootloader.
@@ -28,46 +31,6 @@
     networking.hostName = "www";
     # Enable http and ssh ports
     networking.firewall.allowedTCPPorts = [ 80 50293 ];
-
-    # Enable nginx
-    services.nginx = {
-        enable = true;
-        virtualHosts."www" = {
-            root = "/var/www/";
-            # Setup PHP
-            locations = {
-                "/" = {
-                    index = "index.php";
-                };
-                "~ \\.php$" = {
-                    index = "index.php";
-                    extraConfig = ''
-                        fastcgi_pass  unix:${config.services.phpfpm.pools.mypool.socket};
-                        fastcgi_index index.php;
-                    '';
-                };
-                # Allow robots (what do I have to loose?)
-                "/robots.txt" = {
-                    extraConfig = ''
-                        rewrite ^/(.*)  $1;
-                        return 200 "User-agent: *\nAllow: /";
-                    '';
-                };
-            };
-        };
-    };
-    services.phpfpm.pools.mypool = {
-        user = "nobody";
-        settings = {
-            "pm" = "dynamic";
-            "listen.owner" = config.services.nginx.user;
-            "pm.max_children" = 5;
-            "pm.start_servers" = 2;
-            "pm.min_spare_servers" = 1;
-            "pm.max_spare_servers" = 3;
-            "pm.max_requests" = 500;
-        };
-    };
 
     # Enable ssh
     services.openssh = {
@@ -97,7 +60,6 @@
         };
         #jails = {};
     };
-
 
     system.stateVersion = "24.05";
 }
