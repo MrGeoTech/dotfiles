@@ -27,6 +27,7 @@
     curl
     entr
     fd
+    glib # MTP for USB Phone mounting
     git-extras
     gnumake
     libnotify
