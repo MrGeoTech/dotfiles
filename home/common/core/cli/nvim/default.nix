@@ -23,6 +23,7 @@ in {
     ltex-ls
     lua-language-server
     marksman
+    matlab-language-server
     vhdl-ls
     vscode-langservers-extracted
     zls

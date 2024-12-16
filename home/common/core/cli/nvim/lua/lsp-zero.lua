@@ -46,6 +46,7 @@ lspconfig.html.setup({});
 lspconfig.jdtls.setup({})
 lspconfig.lua_ls.setup({})
 lspconfig.marksman.setup({})
+lspconfig.matlab_ls.setup({})
 lspconfig.vhdl_ls.setup({})
 lspconfig.zls.setup({})
 lspconfig.ltex.setup({
