@@ -10,7 +10,6 @@
     home.packages = with pkgs; [
         # System utilities
         appimage-run
-        gparted
         libgcc
         libreoffice-fresh
         libsForQt5.okular
@@ -28,11 +27,17 @@
         resources
         signal-desktop
         zoom-us
+        vlc
+        ventoy-full
     ];
 
     services.mpris-proxy.enable = true;
 
     home.sessionVariables = {
         LM_LICENSE_FILE = "/home/mrgeotech/.secrets/License.dat";
+    };
+
+    home.shellAliases = {
+        vlcav = "VDPAU_TRACE=1 vlc";
     };
 }

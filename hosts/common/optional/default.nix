@@ -1,6 +1,7 @@
 {
     inputs,
     outputs,
+    pkgs,
     ...
 }: {
     imports = [
@@ -12,6 +13,13 @@
         ./sound.nix
         ./shared.nix
     ];
+
+    environment.systemPackages = with pkgs; [
+        hyprpolkitagent
+        gparted
+    ];
+
+    security.polkit.enable = true;
 
     services = {
         printing.enable = true;
