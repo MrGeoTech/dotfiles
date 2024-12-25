@@ -98,6 +98,23 @@
                 ];
             };
 
+            # New Laptop (Zenbook)
+            mrgeotech-zenbook = lib.nixosSystem {
+                specialArgs = {inherit inputs outputs;};
+                modules = [
+                    ./hosts/mrgeotech-zenbook
+                    home-manager.nixosModules.home-manager
+                    catppuccin.nixosModules.catppuccin
+                    ({config, ...}: {
+                        home-manager.backupFileExtension = "bak";
+                        home-manager.extraSpecialArgs = {
+                            inherit inputs outputs;
+                            inherit (config.networking) hostName;
+                        };
+                    })
+                ];
+            };
+
             # Website host
             www = lib.nixosSystem {
                 specialArgs = {inherit inputs outputs;};
