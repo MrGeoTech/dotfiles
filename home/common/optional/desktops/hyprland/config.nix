@@ -158,6 +158,9 @@ in {
                 "$subMod , F, fullscreen, 0"
                 "$subMod , M, fullscreen, 1"
                 "$tetMod , F, togglefloating"
+                # Brightness control
+                "        , XF86MonBrightnessUp, exec, brightnessctl set +10%"
+                "        , XF86MonBrightnessDown, exec, brightnessctl set 10%-"
 #                "$tetMod , 1, movecurrentworkspacetomonitor, HDMI-A-1"
 #                "$tetMod , 2, movecurrentworkspacetomonitor, DP-1"
 #                "$tetMod , 3, movecurrentworkspacetomonitor, DP-2"

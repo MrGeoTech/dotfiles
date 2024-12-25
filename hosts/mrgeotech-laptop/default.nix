@@ -38,6 +38,26 @@
     hostName = "mrgeotech-laptop";
     useNetworkd = true;
     interfaces.wlp5s0.useDHCP = true;
+
+    firewall.allowedUDPPorts = [ 29566 ];
+    wireguard.interfaces.wg0 = {
+        ips = [ "10.0.0.2/24" ];
+        listenPort = 29566;
+
+        privateKeyFile = "/home/mrgeotech/.wireguard/private_key";
+
+        peers = [
+            {
+                publicKey = "BHC4Qu12Hbk1eYxwnUoYDDGB28JGsrmhu5FaNlgD0go=";
+                # Only forward vpn subnet through vpn
+                allowedIPs = [ "10.0.0.0/24" ];
+
+                endpoint = "mrgeotech.net:29566";
+
+                persistentKeepalive = 25;
+            }
+        ];
+    };
   };
 
   hardware.graphics = {
@@ -58,15 +78,16 @@
     xkb.layout = "us";
     xkb.variant = "";
   };
-  environment.systemPackages = [(
-    pkgs.catppuccin-sddm.override {
+  environment.systemPackages = [
+    (pkgs.catppuccin-sddm.override {
       flavor = "mocha";
       font  = "Iosevka NF";
       fontSize = "15";
       #background = "${./wallpaper.png}";
       loginBackground = true;
-    }
-  )];
+    })
+    pkgs.brightnessctl
+  ];
   services.displayManager.sddm = {
     enable = true;
     wayland.enable = true;
