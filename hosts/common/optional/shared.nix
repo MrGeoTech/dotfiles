@@ -3,27 +3,27 @@ let
     # TODO: Fix ssh port on server
     push-fs = pkgs.writeShellScriptBin "push-fs" ''
         #!/bin/bash
-        rsync -ruqpEXgtUz --delete --safe-links -e "ssh -p 2049" /home/mrgeotech/Desktop/ mrgeotech@mrgeotech.net:/mnt/Encypted/Shared/Desktop/
-        rsync -ruqpEXgtUz --delete --safe-links -e "ssh -p 2049" /home/mrgeotech/Documents/ mrgeotech@mrgeotech.net:/mnt/Encypted/Shared/Documents/
-        rsync -ruqpEXgtUz --delete --safe-links -e "ssh -p 2049" /home/mrgeotech/Downloads/ mrgeotech@mrgeotech.net:/mnt/Encypted/Shared/Downloads/
-        rsync -ruqpEXgtUz --delete --safe-links -e "ssh -p 2049" /home/mrgeotech/Pictures/ mrgeotech@mrgeotech.net:/mnt/Encypted/Shared/Pictures/
-        rsync -ruqpEXgtUz --delete --safe-links -e "ssh -p 2049" /home/mrgeotech/Projects/ mrgeotech@mrgeotech.net:/mnt/Encypted/Shared/Projects/
-        rsync -ruqpEXgtUz --delete --safe-links -e "ssh -p 2049" /home/mrgeotech/School/ mrgeotech@mrgeotech.net:/mnt/Encypted/Shared/School/
-        rsync -ruqpEXgtUz --delete --safe-links -e "ssh -p 2049" /home/mrgeotech/Videos/ mrgeotech@mrgeotech.net:/mnt/Encypted/Shared/Videos/
+        rsync -ruqpEXgtUz --delete --safe-links -e "ssh -p 14127" /home/mrgeotech/Desktop/ mrgeotech@10.0.1.1:/mnt/Encypted/Shared/Desktop/
+        rsync -ruqpEXgtUz --delete --safe-links -e "ssh -p 14127" /home/mrgeotech/Documents/ mrgeotech@10.0.1.1:/mnt/Encypted/Shared/Documents/
+        rsync -ruqpEXgtUz --delete --safe-links -e "ssh -p 14127" /home/mrgeotech/Downloads/ mrgeotech@10.0.1.1:/mnt/Encypted/Shared/Downloads/
+        rsync -ruqpEXgtUz --delete --safe-links -e "ssh -p 14127" /home/mrgeotech/Pictures/ mrgeotech@10.0.1.1:/mnt/Encypted/Shared/Pictures/
+        rsync -ruqpEXgtUz --delete --safe-links -e "ssh -p 14127" /home/mrgeotech/Projects/ mrgeotech@10.0.1.1:/mnt/Encypted/Shared/Projects/
+        rsync -ruqpEXgtUz --delete --safe-links -e "ssh -p 14127" /home/mrgeotech/School/ mrgeotech@10.0.1.1:/mnt/Encypted/Shared/School/
+        rsync -ruqpEXgtUz --delete --safe-links -e "ssh -p 14127" /home/mrgeotech/Videos/ mrgeotech@10.0.1.1:/mnt/Encypted/Shared/Videos/
     '';
-    push-fs-exec = "${push-fs}/bin/push-fs";
-
+#    push-fs-exec = "${push-fs}/bin/push-fs";
+    
     pull-fs = pkgs.writeShellScriptBin "pull-fs" ''
         #!/bin/bash
-        rsync -ruqpEXgtUz --delete --safe-links -e "ssh -p 2049" mrgeotech@mrgeotech.net:/mnt/Encypted/Shared/Desktop/ /home/mrgeotech/Desktop/
-        rsync -ruqpEXgtUz --delete --safe-links -e "ssh -p 2049" mrgeotech@mrgeotech.net:/mnt/Encypted/Shared/Documents/ /home/mrgeotech/Documents/
-        rsync -ruqpEXgtUz --delete --safe-links -e "ssh -p 2049" mrgeotech@mrgeotech.net:/mnt/Encypted/Shared/Downloads/ /home/mrgeotech/Downloads/
-        rsync -ruqpEXgtUz --delete --safe-links -e "ssh -p 2049" mrgeotech@mrgeotech.net:/mnt/Encypted/Shared/Pictures/ /home/mrgeotech/Pictures/
-        rsync -ruqpEXgtUz --delete --safe-links -e "ssh -p 2049" mrgeotech@mrgeotech.net:/mnt/Encypted/Shared/Projects/ /home/mrgeotech/Projects/
-        rsync -ruqpEXgtUz --delete --safe-links -e "ssh -p 2049" mrgeotech@mrgeotech.net:/mnt/Encypted/Shared/School/ /home/mrgeotech/School/
-        rsync -ruqpEXgtUz --delete --safe-links -e "ssh -p 2049" mrgeotech@mrgeotech.net:/mnt/Encypted/Shared/Videos/ /home/mrgeotech/Videos/
+        rsync -ruqpEXgtUz --delete --safe-links -e "ssh -p 14127" mrgeotech@10.0.1.1:/mnt/Encypted/Shared/Desktop/ /home/mrgeotech/Desktop/
+        rsync -ruqpEXgtUz --delete --safe-links -e "ssh -p 14127" mrgeotech@10.0.1.1:/mnt/Encypted/Shared/Documents/ /home/mrgeotech/Documents/
+        rsync -ruqpEXgtUz --delete --safe-links -e "ssh -p 14127" mrgeotech@10.0.1.1:/mnt/Encypted/Shared/Downloads/ /home/mrgeotech/Downloads/
+        rsync -ruqpEXgtUz --delete --safe-links -e "ssh -p 14127" mrgeotech@10.0.1.1:/mnt/Encypted/Shared/Pictures/ /home/mrgeotech/Pictures/
+        rsync -ruqpEXgtUz --delete --safe-links -e "ssh -p 14127" mrgeotech@10.0.1.1:/mnt/Encypted/Shared/Projects/ /home/mrgeotech/Projects/
+        rsync -ruqpEXgtUz --delete --safe-links -e "ssh -p 14127" mrgeotech@10.0.1.1:/mnt/Encypted/Shared/School/ /home/mrgeotech/School/
+        rsync -ruqpEXgtUz --delete --safe-links -e "ssh -p 14127" mrgeotech@10.0.1.1:/mnt/Encypted/Shared/Videos/ /home/mrgeotech/Videos/
     '';
-    pull-fs-exec = "${pull-fs}/bin/pull-fs";
+#    pull-fs-exec = "${pull-fs}/bin/pull-fs";
 in {
     # Make the actions user-runnable
     environment.systemPackages = with pkgs; [

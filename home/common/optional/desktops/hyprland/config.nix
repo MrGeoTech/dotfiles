@@ -3,12 +3,7 @@
         pkgs,
         ...
 }: let
-    monitorConfig = ",highres,auto,1";
-#        if hostName == "mrgeotech-pc" then [
-#            ",highres,auto,1"
-#        ] else [
-#            ",highres,auto,1"
-#        ];
+    monitorConfig = [ ",highres,auto,1" ];
 
     kbOptions = "caps:escape";
 in {
@@ -58,7 +53,7 @@ in {
                 "col.border_inactive" = "$surface0";
                 groupbar = {
                     font_family = "IosevkaTerm";
-                    font_size = 12;
+                    font_size = if hostName == "mrgeotech-zenbook" then 18 else 12;
                     gradients = true;
                     text_color = "$crust";
                     "col.active" = "$mauve";

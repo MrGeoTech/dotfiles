@@ -28,12 +28,12 @@
 
 * {
   font-family: "Iosevka NF", "IosevkaTerm NF";
-  font-size: 15px;
+  font-size: 12px;
   min-height: 0;
 }
 
-window.HDMI-A-1 * {
-  font-size: 14px;
+window.eDP-1 * {
+  font-size: 18px;
 }
 
 #waybar {

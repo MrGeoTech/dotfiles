@@ -1,9 +1,9 @@
-{pkgs, ...}: {
+{hostName, pkgs, ...}: {
   programs.kitty = {
     enable = true;
     font = {
       name = "IosevkaTerm Nerd Font";
-      size = 11.5;
+      size = if hostName == "mrgeotech-zenbook" then 18 else 12;
     };
     settings = {
       window_padding_width = 0;
