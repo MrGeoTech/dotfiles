@@ -27,7 +27,7 @@
     ps = "ps auxf";
     psgrep = "ps aux | grep -v grep | grep -i -e VSZ -e";
     # update
-    update = "( cd /etc/nixos/ && git add . && sudo nixos-rebuild switch --flake \".#$(hostname)\" )";
+    update = "( cd /etc/nixos/ && sudo nixos-rebuild switch --flake \".#$(hostname)\" )";
   };
   home.sessionPath = [
     "$HOME/.local/bin"
