@@ -26,6 +26,8 @@ in {
     matlab-language-server
     vhdl-ls
     vscode-langservers-extracted
+    verible
+    svls
     zls
   ] ++ [
     # GitHub Packages

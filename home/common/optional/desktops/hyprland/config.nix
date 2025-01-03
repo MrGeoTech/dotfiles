@@ -21,6 +21,7 @@ in {
                 "hyprpaper"
                 "hyprctl setcursor Bibata-Original-Ice 24"
                 "systemctl --user start hyprpolkitagent"
+                "sh /home/mrgeotech/.config/hypr/scripts/wallpaper.sh"
             ];
             env = [
                 "XCURSOR_SIZE,24"

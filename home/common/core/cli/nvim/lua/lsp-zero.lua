@@ -48,6 +48,8 @@ lspconfig.lua_ls.setup({})
 lspconfig.marksman.setup({})
 lspconfig.matlab_ls.setup({})
 lspconfig.vhdl_ls.setup({})
+lspconfig.verible.setup({})
+lspconfig.svls.setup({})
 lspconfig.zls.setup({})
 lspconfig.ltex.setup({
    settings = {

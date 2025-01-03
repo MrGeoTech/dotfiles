@@ -30,6 +30,7 @@
     glib # MTP for USB Phone mounting
     git-extras
     gnumake
+    hydroxide
     libnotify
     libxcrypt
     ncdu
