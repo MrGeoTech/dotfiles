@@ -23,7 +23,7 @@ get_wallpaper() {
 # Initialize current wallpaper variable
 current_wallpaper=""
 
-sleep 5
+sleep 1
 
 # Apply the correct wallpaper at startup
 new_wallpaper=$(get_wallpaper)

@@ -26,7 +26,6 @@
         quartus-prime-lite
         resources
         signal-desktop
-        zoom-us
         vlc
         ventoy-full
     ];

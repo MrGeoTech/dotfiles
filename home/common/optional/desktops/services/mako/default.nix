@@ -5,7 +5,7 @@
     anchor = "top-right";
     borderRadius = 2;
     borderSize = 2;
-    font = "Iosevka NF";
+    font = "Iosevka";
     icons = true;
     extraConfig = builtins.readFile ./config;
   };

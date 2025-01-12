@@ -56,19 +56,19 @@
     # Configure keymap in X11
     services.xserver = {
         enable = true;
-        videoDrivers = ["intel"];
+        videoDrivers = ["modesetting"];
         xkb.options = "ctrl:nocaps";
         xkb.layout = "us";
         xkb.variant = "";
     };
     environment.systemPackages = [
         (pkgs.catppuccin-sddm.override {
-         flavor = "mocha";
-         font  = "Iosevka NF";
-         fontSize = "15";
-#         background = "${./wallpaper.png}";
-         loginBackground = true;
-         })
+            flavor = "mocha";
+            font  = "Iosevka";
+            fontSize = "18";
+            background = "${../../home/common/optional/desktops/hyprland/hypr/tropic_island_night.jpg}";
+            loginBackground = true;
+        })
         pkgs.brightnessctl
     ];
     services.displayManager.sddm = {

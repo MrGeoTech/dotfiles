@@ -10,7 +10,7 @@ configuration {
 @import "colors.rasi"
 
 * {
-    font: "Iosevka NF 13";
+    font: "Iosevka 13";
 }
 
 window {

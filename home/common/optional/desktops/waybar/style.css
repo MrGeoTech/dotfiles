@@ -27,7 +27,7 @@
 @define-color crust #11111b;
 
 * {
-  font-family: "Iosevka NF", "IosevkaTerm NF";
+  font-family: "Iosevka", "IosevkaTerm";
   font-size: 12px;
   min-height: 0;
 }

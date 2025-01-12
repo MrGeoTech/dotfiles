@@ -1,3 +1,5 @@
-{pkgs, ...}: {
-  imports = [];
+{pkgs, inputs, ...}: {
+    home.packages = with pkgs; [
+        prismlauncher
+    ];
 }

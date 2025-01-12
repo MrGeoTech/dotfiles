@@ -1,9 +1,11 @@
 {pkgs, ...}: {
   fonts.fontconfig.enable = true;
   home.packages = with pkgs; [
-    (nerdfonts.override {
-      fonts = ["FiraCode" "CascadiaCode" "FantasqueSansMono" "IosevkaTerm" "Iosevka"];
-    })
+    nerd-fonts.fira-code
+    nerd-fonts.fantasque-sans-mono
+    nerd-fonts.iosevka-term
+    nerd-fonts.iosevka
+    cascadia-code
     font-awesome
     noto-fonts
     noto-fonts-emoji

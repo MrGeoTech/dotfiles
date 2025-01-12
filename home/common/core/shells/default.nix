@@ -28,6 +28,7 @@
     psgrep = "ps aux | grep -v grep | grep -i -e VSZ -e";
     # update
     update = "( cd /etc/nixos/ && sudo nixos-rebuild switch --flake \".#$(hostname)\" )";
+    update-versions = "( cd /etc/nixos/ && nix flake update )";
   };
   home.sessionPath = [
     "$HOME/.local/bin"

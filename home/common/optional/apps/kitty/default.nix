@@ -2,7 +2,7 @@
   programs.kitty = {
     enable = true;
     font = {
-      name = "IosevkaTerm Nerd Font";
+      name = "IosevkaTerm";
       size = if hostName == "mrgeotech-zenbook" then 18 else 12;
     };
     settings = {

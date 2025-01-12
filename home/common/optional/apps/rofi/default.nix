@@ -2,9 +2,9 @@
   programs.rofi = {
     enable = true;
     package = pkgs.rofi-wayland;
-    font = "Iosevka NF";
+    font = "Iosevka";
     location = "center";
-    terminal = "alacritty";
+    terminal = "kitty";
     plugins = [
       pkgs.rofi-calc
     ];
