@@ -15,6 +15,8 @@
     vim = "nvim";
     # ll
     ll = "ls -al";
+    # lg
+    lg = "lazygit";
     # grep
     grep = "grep --color=auto";
     # network
