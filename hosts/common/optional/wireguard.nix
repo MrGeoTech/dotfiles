@@ -1,4 +1,4 @@
-{ip, publicKey, ...}: {
+{ip, ...}: {
     networking.firewall = {
         allowedUDPPorts = [ 29566 ];
     };
@@ -7,7 +7,7 @@
         wg0 = {
             # IP address of this machine in the *tunnel network*
             address = [
-                "10.0.1.3/32"
+                "10.0.1.${ip}/32"
             ];
 
             # To match firewall allowedUDPPorts (without this wg
@@ -19,7 +19,7 @@
             privateKeyFile = "/home/mrgeotech/.secrets/private_key";
 
             peers = [{
-                publicKey = publicKey;
+                publicKey = "tpMbShmlXi3jr+W8BUHfek5EdzuOjXolmaHRXLSlvCA=";
                 presharedKeyFile = "/home/mrgeotech/.secrets/preshared_key";
                 allowedIPs = [ "10.0.0.0/16" ];
                 endpoint = "vpn.mrgeotech.net:29566";

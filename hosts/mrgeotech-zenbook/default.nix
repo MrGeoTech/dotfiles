@@ -18,7 +18,6 @@
         ../common/optional
         (import ../common/optional/wireguard.nix {
             ip = "3";
-            publicKey = "tpMbShmlXi3jr+W8BUHfek5EdzuOjXolmaHRXLSlvCA=";
         })
 
         # User config
