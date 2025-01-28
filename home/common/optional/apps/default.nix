@@ -1,6 +1,7 @@
 { pkgs, inputs, ... }:
 {
     imports = [
+        ./ghostty
         ./kitty
         ./rofi
         ./gpg.nix

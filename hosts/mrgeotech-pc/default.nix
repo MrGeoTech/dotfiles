@@ -71,23 +71,6 @@
         xkb.layout = "us";
         xkb.variant = "";
     };
-    environment.systemPackages = [(
-            pkgs.catppuccin-sddm.override {
-            flavor = "mocha";
-            font  = "Iosevka";
-            fontSize = "15";
-#background = "${./wallpaper.png}";
-            loginBackground = true;
-            }
-            )];
-    services.displayManager.sddm = {
-        enable = true;
-        wayland.enable = true;
-        autoNumlock = true;
-
-        theme = "catppuccin-mocha";
-        package = pkgs.kdePackages.sddm;
-    };
 
     system.stateVersion = "24.05";
 }

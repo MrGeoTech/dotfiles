@@ -61,23 +61,8 @@
         xkb.variant = "";
     };
     environment.systemPackages = [
-        (pkgs.catppuccin-sddm.override {
-            flavor = "mocha";
-            font  = "Iosevka";
-            fontSize = "18";
-            background = "${../../home/common/optional/desktops/hyprland/hypr/tropic_island_night.jpg}";
-            loginBackground = true;
-        })
         pkgs.brightnessctl
     ];
-    services.displayManager.sddm = {
-        enable = true;
-        wayland.enable = true;
-        autoNumlock = true;
-
-        theme = "catppuccin-mocha";
-        package = pkgs.kdePackages.sddm;
-    };
 
     services.logind.extraConfig = ''
         # don’t shutdown when power button is short-pressed

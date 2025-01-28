@@ -31,6 +31,11 @@
 
         # catppuccin
         catppuccin.url = "github:catppuccin/nix";
+
+        # ghostty
+        ghostty = {
+            url = "github:ghostty-org/ghostty";
+        };
     };
 
     outputs = {
@@ -38,6 +43,7 @@
         nixpkgs,
         home-manager,
         catppuccin,
+        ghostty,
         ...
     } @ inputs: 
     let

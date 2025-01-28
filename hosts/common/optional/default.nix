@@ -9,6 +9,7 @@
         ./fonts.nix
         ./pipewire.nix
         ./hyprland.nix
+        ./sddm.nix
         ./steam.nix
         ./sound.nix
         ./shared.nix
