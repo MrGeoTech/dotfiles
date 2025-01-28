@@ -62,8 +62,6 @@
     in {
         inherit lib;
 
-        #packages = forEachSystem (pkgs: import ./pkgs { inherit pkgs; });
-
         formatter = forEachSystem (pkgs: pkgs.alejandra);
 
         devShells = forEachSystem (pkgs: import ./shell.nix { inherit pkgs; });
@@ -110,23 +108,6 @@
                     ./hosts/mrgeotech-zenbook
                     home-manager.nixosModules.home-manager
                     catppuccin.nixosModules.catppuccin
-                    ({config, ...}: {
-                        home-manager.backupFileExtension = "bak";
-                        home-manager.extraSpecialArgs = {
-                            inherit inputs outputs;
-                            inherit (config.networking) hostName;
-                        };
-                    })
-                ];
-            };
-
-            # Website host
-            www = lib.nixosSystem {
-                specialArgs = {inherit inputs outputs;};
-                modules = [
-                    ./hosts/www
-                    home-manager.nixosModules.home-manager
-                    catppuccin.nixosModules.catppuccin # Why not?
                     ({config, ...}: {
                         home-manager.backupFileExtension = "bak";
                         home-manager.extraSpecialArgs = {
