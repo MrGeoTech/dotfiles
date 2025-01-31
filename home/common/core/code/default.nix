@@ -12,5 +12,7 @@
     python3
     rustc
     zig
+    man-pages
+    man-pages-posix
   ];
 }

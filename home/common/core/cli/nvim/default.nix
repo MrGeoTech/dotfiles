@@ -19,15 +19,16 @@ in {
   home.packages = with pkgs; [
     # Nix packages
     erlang-ls
+    htmx-lsp
     jdt-language-server
     ltex-ls
     lua-language-server
     marksman
     matlab-language-server
+    svls
+    verible
     vhdl-ls
     vscode-langservers-extracted
-    verible
-    svls
     zls
   ] ++ [
     # GitHub Packages
