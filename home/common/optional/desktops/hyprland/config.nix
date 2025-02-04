@@ -6,7 +6,7 @@
     monitorConfig =
         if hostName == "mrgeotech-pc" then [
             "DP-2,highres,0x0,1"
-            "HDMI-A-1,highres,5120x0,1,transform,1"
+            "HDMI-A-1,highres,5120x0,1"
         ] else [
             ",highres,auto,1"
         ];
@@ -182,7 +182,5 @@ in {
                 "$mainMod, mouse:273, resizewindow"
             ];
         };
-    # plugins = [];
-    # extraConfig = "";
     };
 }

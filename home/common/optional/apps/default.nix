@@ -23,6 +23,7 @@
         # User Apps
         drawio
         eog
+        inkscape
         octaveFull
         quartus-prime-lite
         resources

@@ -26,6 +26,7 @@ in {
     marksman
     matlab-language-server
     svls
+    typescript-language-server
     verible
     vhdl-ls
     vscode-langservers-extracted
