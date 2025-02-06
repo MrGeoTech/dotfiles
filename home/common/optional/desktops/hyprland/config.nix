@@ -45,7 +45,7 @@ in {
                 touchpad = {
                     natural_scroll = true;
                 };
-                sensitivity = 0; # -1.0 - 1.0, 0 means no modification.
+                sensitivity = if hostName == "mrgeotech-zenbook" then 0.5 else 0;
             };
             general = {
                 gaps_in = 0;
