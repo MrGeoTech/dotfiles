@@ -25,6 +25,7 @@ in {
     lua-language-server
     marksman
     matlab-language-server
+    python312Packages.python-lsp-server
     svls
     typescript-language-server
     verible

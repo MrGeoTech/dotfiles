@@ -21,16 +21,19 @@
         # Programming Stuff
         texliveFull
         # User Apps
+        bottles-unwrapped
         drawio
         eog
+        google-chrome
         inkscape
         kicad
         octaveFull
         quartus-prime-lite
         resources
         signal-desktop
-        vlc
         ventoy-full
+        vlc
+        wineWowPackages.waylandFull
     ];
 
     services.mpris-proxy.enable = true;
