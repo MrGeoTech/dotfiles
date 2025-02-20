@@ -13,6 +13,7 @@
         ./steam.nix
         ./sound.nix
         ./shared.nix
+        ./virt-manager.nix
     ];
 
     environment.systemPackages = with pkgs; [

@@ -21,7 +21,6 @@
         # Programming Stuff
         texliveFull
         # User Apps
-        bottles-unwrapped
         drawio
         eog
         google-chrome
@@ -33,7 +32,6 @@
         signal-desktop
         ventoy-full
         vlc
-        wineWowPackages.waylandFull
     ];
 
     services.mpris-proxy.enable = true;
