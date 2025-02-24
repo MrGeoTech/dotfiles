@@ -24,6 +24,7 @@
         drawio
         eog
         inkscape
+        kicad
         octaveFull
         quartus-prime-lite
         resources
