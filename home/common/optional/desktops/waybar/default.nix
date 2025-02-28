@@ -1,5 +1,10 @@
 # https://github.com/Alexays/Waybar
 {hostName, pkgs, ...}: {
+
+    home.packages = with pkgs; [
+        wttrbar
+    ];
+
     programs.waybar = {
         enable = true;
         systemd.enable = true;
@@ -17,12 +22,13 @@
                 spacing = 0;
                 modules-left = [
                     "hyprland/workspaces"
-                        "hyprland/window"
+                    "hyprland/window"
                 ];
                 modules-center = [
                     "clock"
                 ];
                 modules-right = [
+                    "custom/weather"
                     "pulseaudio"
                     "network"
                     "battery"
@@ -54,14 +60,21 @@
                     icon-size = if hostName == "mrgeotech-zenbook" then 18 else 12;
                 };
 
-# Module configuration: Center
+                # Module configuration: Center
                 clock = {
                     format = "{:%a, %b %d  %I:%M %p}";
                     tooltip = true;
                     tooltip-format = "<tt><small>{calendar}</small></tt>";
                 };
 
-# Module configuration: Right
+                # Module configuration: Right
+                "custom/weather" = {
+                    format = "{} ";
+                    tooltip = true;
+                    interval = 3600;
+                    exec = "wttrbar --fahrenheit --mph --ampm --observation-time --custom-indicator \"{ICON}{temp_F}({FeelsLikeF})° {windspeedMiles} mph\" --location Fargo,ND";
+                    return-type = "json";
+                };
                 pulseaudio = {
                     format = "{icon} {format_source}";
                     format-bluetooth = "{icon} {format_source} ";
@@ -104,4 +117,4 @@
             };
         };
     };
-             }
+}

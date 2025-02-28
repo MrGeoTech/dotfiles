@@ -52,14 +52,6 @@
     };
     hardware.enableAllFirmware = true;
 
-    # Setup to work with monitor
-
-    environment.etc."firmware/edid/g9.bin".source = pkgs.fetchurl {
-        url = "https://gitlab.freedesktop.org/drm/amd/uploads/f6de8a51fd064fc6929325aeb0467ca4/MYEDID";
-        sha256 = "1bkacdxf1n5w3g33b4mdgrvz6j9xwka5jn0jzy590hpk9x4iaapc";
-    };
-    boot.kernelParams = [ "drm.edid_firmware=DP-2:edid/g9.bin" ];
-
     # Load amd driver for Xorg and Wayland
     services.xserver.videoDrivers = ["amdgpu"];
     console.useXkbConfig = true;
