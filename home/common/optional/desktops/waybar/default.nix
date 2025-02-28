@@ -72,7 +72,7 @@
                     format = "{} ";
                     tooltip = true;
                     interval = 3600;
-                    exec = "wttrbar --fahrenheit --mph --ampm --observation-time --custom-indicator \"{ICON}{temp_F}({FeelsLikeF})° {windspeedMiles} mph\" --location Fargo,ND";
+                    exec = "wttrbar --fahrenheit --mph --ampm --observation-time --custom-indicator \"{ICON} {temp_F}° ({FeelsLikeF}°) {windspeedMiles} mph\" --location Fargo,ND";
                     return-type = "json";
                 };
                 pulseaudio = {
