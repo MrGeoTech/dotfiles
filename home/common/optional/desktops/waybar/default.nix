@@ -20,6 +20,17 @@
                 margin-bottom = 0;
                 reload_style_on_change = true;
                 spacing = 0;
+                # Only enable ouput on display port monitors
+                # For laptops, their screens are all eDP with
+                # HDMI out and for my desktop, my HDMI port is
+                # used for my secondary monitor so HDMI is
+                # exclusivly for secondary monitors and doesn't 
+                # need a waybar
+                output = [
+                    "eDP-1"
+                    "DP-1"
+                    "DP-2"
+                ];
                 modules-left = [
                     "hyprland/workspaces"
                     "hyprland/window"

@@ -45,7 +45,7 @@ in {
                 touchpad = {
                     natural_scroll = true;
                 };
-                sensitivity = if hostName == "mrgeotech-zenbook" then 0.5 else 0;
+                sensitivity = if hostName == "mrgeotech-zenbook" then 0.5 else 1;
             };
             general = {
                 gaps_in = 0;
@@ -113,7 +113,7 @@ in {
             bind = [
                 "$mainMod, SUPER_L, exec, rofi -show run"
                 "$mainMod, T, exec, kitty"
-                "$mainMod, B, exec, firefox"
+                "$mainMod, B, exec, $BROWSER"
                 "$mainMod, F, exec, kitty yazi"
                 "$mainMod, G, exec, steam"
                 "$mainMod, Q, killactive,"

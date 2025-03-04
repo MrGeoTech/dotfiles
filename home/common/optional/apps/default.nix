@@ -7,6 +7,7 @@
         ./gpg.nix
         ./gaming.nix
         ./firefox.nix
+        ./vivaldi.nix
     ];
     home.packages = with pkgs; [
         # System utilities

@@ -2,14 +2,6 @@
     xdg.enable = true;
 
     xdg.desktopEntries = {
-        okular = {
-            name = "Okular";
-            genericName = "PDF Viewer";
-            exec = "okular %U";
-            terminal = false;
-            categories = ["Application"];
-            mimeType = ["application/pdf"];
-        };
         yazi = {
             name = "Yazi";
             genericName = "File Manager";
@@ -23,11 +15,11 @@
     xdg.mimeApps = {
         enable = true;
         defaultApplications = {
-            "application/pdf" = ["okular.desktop"];
-            "text/html" = ["firefox-browser.desktop"];
-            "application/xhtml+xml" = ["firefox-browser.desktop"];
-            "x-scheme-handler/http" = ["firefox-browser.desktop"];
-            "x-scheme-handler/https" = ["firefox-browser.desktop"];
+            "application/pdf" = ["vivaldi-stable.desktop"];
+            "text/html" = ["vivaldi-stable.desktop"];
+            "application/xhtml+xml" = ["vivaldi-stable.desktop"];
+            "x-scheme-handler/http" = ["vivaldi-stable.desktop"];
+            "x-scheme-handler/https" = ["vivaldi-stable.desktop"];
             "inode/directory" = ["yazi.desktop"];
         };
     };

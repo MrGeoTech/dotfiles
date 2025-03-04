@@ -9,7 +9,7 @@ NIGHT_WALLPAPER="/home/mrgeotech/.config/hypr/tropic_island_night.jpg"
 # Function to get the current wallpaper based on the hour
 get_wallpaper() {
     local hr=$(date +%H)
-    if (( hr > 7 && hr < 11 )); then
+    if (( hr >= 7 && hr < 11 )); then
         echo "$MORNING_WALLPAPER"
     elif (( hr >= 11 && hr < 17 )); then
         echo "$DAY_WALLPAPER"

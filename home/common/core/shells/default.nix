@@ -41,6 +41,6 @@
     TERM = "xterm-256color";
     USE_EDITOR = "$EDITOR";
     VISUAL = "$EDITOR";
-    BROWSER = "firefox";
+    BROWSER = "vivaldi";
   };
 }
