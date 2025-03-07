@@ -36,6 +36,18 @@ for word in io.open(vim.fn.stdpath("config") .. "/en.utf-8.add", "r"):lines() do
     table.insert(spell_words, word)
 end
 
+local lsp_configurations = require('lspconfig.configs')
+
+if not lsp_configurations.arduino_language_server then
+  lsp_configurations.arduino_language_server = {
+    default_config = {
+      cmd = {"arduino-language-server", "--cli", "arduino-cli", "--cli-config", "$HOME/.arduino15/arduino-cli.yaml"},
+      filetypes = {'arduino'},
+      root_dir = require('lspconfig.util').root_pattern('sketch.yaml')
+    }
+  }
+end
+
 -- You'll find a list of language servers here:
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
 -- These are example language servers. 
