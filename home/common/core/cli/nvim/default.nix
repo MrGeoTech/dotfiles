@@ -18,6 +18,7 @@ in {
   # https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
   home.packages = with pkgs; [
     # Nix packages
+    arduino-language-server
     erlang-ls
     htmx-lsp
     jdt-language-server

@@ -39,6 +39,7 @@ end
 -- You'll find a list of language servers here:
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
 -- These are example language servers. 
+lspconfig.arduino_language_server.setup({})
 lspconfig.clangd.setup({})
 lspconfig.cssls.setup({})
 lspconfig.erlangls.setup({})

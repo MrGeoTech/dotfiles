@@ -1,5 +1,6 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
+    arduino-cli
     clang_18
     clang-tools
     erlang_27
