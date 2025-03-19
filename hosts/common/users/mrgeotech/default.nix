@@ -14,7 +14,7 @@ in {
     isNormalUser = true;
     description = "Isaac George";
     shell = pkgs.zsh;
-    extraGroups = ["networkmanager" "wheel"] ++ ifTheyExist ["docker" "libvirtd" "mysql" "network" "git"];
+    extraGroups = ["networkmanager" "wheel"] ++ ifTheyExist ["wireshark" "docker" "libvirtd" "mysql" "network" "git"];
     packages = [pkgs.home-manager];
   };
 
