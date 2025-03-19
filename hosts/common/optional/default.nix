@@ -14,6 +14,7 @@
         ./sound.nix
         ./shared.nix
         ./virt-manager.nix
+        ./wireshark.nix
     ];
 
     environment.systemPackages = with pkgs; [
