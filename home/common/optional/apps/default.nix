@@ -33,6 +33,7 @@
         signal-desktop
         ventoy-full
         vlc
+        wireshark
     ];
 
     services.mpris-proxy.enable = true;
