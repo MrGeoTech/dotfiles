@@ -19,6 +19,7 @@ in {
   home.packages = with pkgs; [
     # Nix packages
     arduino-language-server
+    beam27Packages.elixir-ls
     erlang-ls
     htmx-lsp
     jdt-language-server
