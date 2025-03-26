@@ -117,6 +117,7 @@ in {
                 "$mainMod, F, exec, kitty yazi"
                 "$mainMod, G, exec, steam"
                 "$mainMod, Q, killactive,"
+                "$subMod , Q, forcekillactive,"
                 "$mainMod, E, exit,"
                 "$subMod , E, exec, shutdown now"
                 "$subMod , R, exec, reboot"
