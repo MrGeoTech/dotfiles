@@ -1,4 +1,5 @@
-{ config, pkgs, lib, ...}: let
+{ config, pkgs, lib, ...}:
+let
   fromGitHub = { owner, repo, rev, sha ? lib.fakeSha256, subdir ? "." }: pkgs.stdenv.mkDerivation {
     pname = repo;
     version = rev;
@@ -37,20 +38,20 @@ in {
   ] ++ [
     # GitHub Packages
   ];
-
+  
   home.file.".config/nvim/en.utf-8.add".source = ./en.utf-8.add;
   home.file.".config/nvim/snippets" = {
     source = ./snippets;
     recursive = true;
   };
-
+  
   programs.neovim = {
     enable = true;
     defaultEditor = true;
-
+    
     viAlias = true;
     vimAlias = true;
-
+    
     extraConfig = ''
       set number relativenumber
       set cc=100
@@ -58,62 +59,65 @@ in {
       set tabstop=4
       set shiftwidth=4
       set expandtab
+      autocmd FileType javascript,typescript,html,css,lua,gleam,nix setlocal tabstop=2 shiftwidth=2
     '';
-
+    
     plugins = with pkgs.vimPlugins; [
       ## Dependencies ##
       cmp-nvim-lsp # lsp-zero-nvim
       {
         plugin = luasnip; # lsp-zero-nvim
-	type = "lua";
-	config = builtins.readFile(./lua/luasnip.lua);
+        type = "lua";
+        config = builtins.readFile(./lua/luasnip.lua);
       }
       nvim-cmp # lsp-zero-nvim
       nvim-lspconfig # lsp-zero-nvim
       plenary-nvim # telescope-nvim, harpoon2
+
       ## Independent Plugins ##
       {
         plugin = catppuccin-nvim;
-	type = "lua";
-	config = builtins.readFile(./lua/catppuccin.lua);
+        type = "lua";
+        config = builtins.readFile(./lua/catppuccin.lua);
       }
       cmp_luasnip
       {
         plugin = harpoon2;
-	type = "lua";
-	config = builtins.readFile(./lua/harpoon2.lua);
+        type = "lua";
+        config = builtins.readFile(./lua/harpoon2.lua);
       }
       {
         plugin = lsp-zero-nvim;
-	type = "lua";
-	config = builtins.readFile(./lua/lsp-zero.lua);
+        type = "lua";
+        config = builtins.readFile(./lua/lsp-zero.lua);
       }
       {
         plugin = markdown-preview-nvim;
-	type = "viml";
-	config = builtins.readFile(./lua/markdown.vim);
+        type = "viml";
+        config = builtins.readFile(./lua/markdown.vim);
       }
       nvim-jdtls
       {
         plugin = nvim-treesitter.withAllGrammars;
-	type = "lua";
-	config = builtins.readFile(./lua/treesitter.lua);
+        type = "lua";
+        config = builtins.readFile(./lua/treesitter.lua);
       }
       {
         plugin = telescope-nvim;
-	type = "lua";
-	config = builtins.readFile(./lua/telescope.lua);
+        type = "lua";
+        config = builtins.readFile(./lua/telescope.lua);
       }
       {
         plugin = undotree;
-	type = "lua";
-	config = builtins.readFile(./lua/undotree.lua);
+        type = "lua";
+        config = builtins.readFile(./lua/undotree.lua);
       }
       {
         plugin = vim-fugitive;
-	type = "lua";
-	config = builtins.readFile(./lua/fugitive.lua);
+        type = "lua";
+        config = builtins.readFile(./lua/fugitive.lua);
       }
+      formatter-nvim
       vim-wakatime
       vimtex
     ];

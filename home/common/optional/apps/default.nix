@@ -27,6 +27,7 @@
         google-chrome
         inkscape
         kicad
+        obs-studio
         octaveFull
         quartus-prime-lite
         resources

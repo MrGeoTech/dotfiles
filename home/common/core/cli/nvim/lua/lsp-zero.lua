@@ -101,3 +101,12 @@ cmp.setup({
     ['<S-Tab>'] = nil,
   }),
 })
+
+vim.diagnostic.config({
+  virtual_text = {
+  format = function(diagnostic)
+    return string.format(" (%s) %s", diagnostic.severity == 1 and "E" or "W", diagnostic.message)
+  end
+  },
+})
+
