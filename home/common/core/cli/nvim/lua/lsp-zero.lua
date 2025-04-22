@@ -54,6 +54,7 @@ end
 lspconfig.arduino_language_server.setup({})
 lspconfig.clangd.setup({})
 lspconfig.cssls.setup({})
+lspconfig.dartls.setup({})
 lspconfig.elixirls.setup({})
 lspconfig.erlangls.setup({})
 lspconfig.gleam.setup({})
