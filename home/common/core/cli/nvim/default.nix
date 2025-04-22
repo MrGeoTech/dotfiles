@@ -59,7 +59,7 @@ in {
       set tabstop=4
       set shiftwidth=4
       set expandtab
-      autocmd FileType javascript,typescript,html,css,lua,gleam,nix setlocal tabstop=2 shiftwidth=2
+      autocmd FileType javascript,typescript,html,css,lua,gleam,nix,dart setlocal tabstop=2 shiftwidth=2
     '';
     
     plugins = with pkgs.vimPlugins; [
