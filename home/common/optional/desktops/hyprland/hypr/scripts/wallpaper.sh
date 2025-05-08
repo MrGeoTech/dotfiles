@@ -11,9 +11,9 @@ get_wallpaper() {
     local hr=$(date +%H)
     if (( hr >= 7 && hr < 11 )); then
         echo "$MORNING_WALLPAPER"
-    elif (( hr >= 11 && hr < 17 )); then
+    elif (( hr >= 11 && hr < 19 )); then
         echo "$DAY_WALLPAPER"
-    elif (( hr >= 17 && hr < 19 )); then
+    elif (( hr >= 19 && hr < 22 )); then
         echo "$EVENING_WALLPAPER"
     else
         echo "$NIGHT_WALLPAPER"
