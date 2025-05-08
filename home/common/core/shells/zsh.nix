@@ -23,7 +23,7 @@ in
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
 
-    initExtra = ''
+    initContent = ''
       bindkey '^ ' autosuggest-accept
     '';
 

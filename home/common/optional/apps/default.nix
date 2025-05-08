@@ -22,6 +22,7 @@
         # Programming Stuff
         texliveFull
         # User Apps
+        android-studio
         drawio
         eog
         google-chrome

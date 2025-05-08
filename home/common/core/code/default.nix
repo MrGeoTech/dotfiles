@@ -3,6 +3,7 @@
     arduino-cli
     clang_18
     clang-tools
+    devenv
     erlang_27
     gleam
     go
