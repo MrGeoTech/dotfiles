@@ -24,6 +24,7 @@ in {
     erlang-ls
     htmx-lsp
     jdt-language-server
+    kotlin-language-server
     ltex-ls
     lua-language-server
     marksman

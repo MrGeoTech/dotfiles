@@ -61,6 +61,7 @@ lspconfig.gleam.setup({})
 lspconfig.html.setup({});
 lspconfig.htmx.setup({});
 lspconfig.jdtls.setup({})
+lspconfig.kotlin_language_server.setup({})
 lspconfig.lua_ls.setup({})
 lspconfig.marksman.setup({})
 lspconfig.matlab_ls.setup({})
