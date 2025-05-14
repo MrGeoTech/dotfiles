@@ -58,6 +58,7 @@ lspconfig.dartls.setup({})
 lspconfig.elixirls.setup({})
 lspconfig.erlangls.setup({})
 lspconfig.gleam.setup({})
+lspconfig.glsl_analyzer.setup({})
 lspconfig.html.setup({});
 lspconfig.htmx.setup({});
 lspconfig.jdtls.setup({})
