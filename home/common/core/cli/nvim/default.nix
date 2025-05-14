@@ -22,6 +22,7 @@ in {
     arduino-language-server
     beam27Packages.elixir-ls
     erlang-ls
+    glsl_analyzer
     htmx-lsp
     jdt-language-server
     kotlin-language-server
