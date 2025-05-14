@@ -2,7 +2,6 @@
 {
     imports = [
         ./ghostty
-        ./kitty
         ./rofi
         ./gpg.nix
         ./gaming.nix

@@ -114,7 +114,7 @@ in {
                 "$mainMod, SUPER_L, exec, rofi -show run"
                 "$mainMod, T, exec, ghostty"
                 "$mainMod, B, exec, $BROWSER"
-                "$mainMod, F, exec, ghostty yazi"
+                "$mainMod, F, exec, ghostty -e yazi"
                 "$mainMod, G, exec, steam"
                 "$mainMod, Q, killactive,"
                 "$subMod , Q, forcekillactive,"
