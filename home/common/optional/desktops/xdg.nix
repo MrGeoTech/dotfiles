@@ -5,7 +5,7 @@
         yazi = {
             name = "Yazi";
             genericName = "File Manager";
-            exec = "kitty -e yazi %U";
+            exec = "ghostty -e yazi %U";
             terminal = false;
             categories = ["Application"];
             mimeType = ["inode/directory"];
