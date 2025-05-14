@@ -1,17 +1,15 @@
 { inputs, hostName, ... }:
 {
-  home.packages = [
-    inputs.ghostty.packages.x86_64-linux.default
-  ];
-
-  home.file.".config/ghostty/config" = {
-    text = ''
-      font-size = ${
-        if hostName == "mrgeotech-zenbook" then "18" else "12"
-      }
-      font-family = "IosevkaTerm"
-      background-opacity = 0.85
-      theme = catppuccin-mocha
-    '';
+  programs.ghostty = {
+    enable = true;
+    enableBashIntegration = true;
+    enableZshIntegration = true;
+    settings = {
+      font-family = "IosevkaTerm";
+      font-size = if hostName == "mrgeotech-zenbook" then "18" else "12";
+      background-opacity = 0.85;
+      background = "1e1e2e";
+      theme = "catppuccin-mocha";
+    };
   };
 }
