@@ -6,6 +6,7 @@
 }: {
   imports = [
     ./bat
+    ./delta
     ./direnv.nix
     ./eza.nix
     ./fastfetch.nix

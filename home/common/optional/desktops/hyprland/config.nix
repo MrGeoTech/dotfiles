@@ -70,9 +70,9 @@ in {
             decoration = {
                 rounding = 0;
                 active_opacity = 1.0;
-                inactive_opacity = 0.85;
+                #inactive_opacity = 0.85;
                 dim_inactive = true;
-                dim_strength = 0.25;
+                dim_strength = 0.1;
                 blur = {
                     enabled = true;
                     size = 8;
@@ -106,6 +106,8 @@ in {
                 "dimaround,title:^(.*rofi.*)$"
                 "noblur,focus:1"
             ];
+            # Animations
+            animation = "global, 1, 5, default";
             # Keybindings
             "$mainMod" = "SUPER";
             "$subMod" = "SUPER_SHIFT";
