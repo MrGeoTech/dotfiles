@@ -25,7 +25,7 @@ in {
             monitor = monitorConfig;
             exec-once = [
                 "hyprpaper"
-                "hyprctl setcursor Nordzy-hyprcursors-white 24"
+                #"hyprctl setcursor  24"
                 "systemctl --user start hyprpolkitagent"
                 "sh /home/mrgeotech/.config/hypr/scripts/wallpaper.sh"
             ];
@@ -107,7 +107,7 @@ in {
                 "noblur,focus:1"
             ];
             # Animations
-            animation = "global, 1, 5, default";
+            animation = "global, 1, 3, default";
             # Keybindings
             "$mainMod" = "SUPER";
             "$subMod" = "SUPER_SHIFT";

@@ -6,8 +6,8 @@
       package = pkgs.papirus-icon-theme;
     };
     cursorTheme = {
-      name = "Nordzy-Cursors";
-      package = pkgs.nordzy-cursor-theme;
+      name = "Bibata-Original-Ice";
+      package = pkgs.bibata-cursors;
     };
     theme = {
       name = "Nordic";
@@ -27,7 +27,12 @@
   };
 
   home.sessionVariables.GTK_THEME = "Nordic";
-  home.pointerCursor.gtk.enable = true;
-  home.pointerCursor.package = pkgs.nordzy-cursor-theme;
-  home.pointerCursor.name = "Nordzy-hyprcursors-white";
+  home.pointerCursor = {
+    gtk.enable = true;
+    hyprcursor.enable = true;
+    x11.enable = true;
+    package = pkgs.bibata-cursors;
+    name = "Bibata-Original-Ice";
+    size = 24;
+  };
 }
