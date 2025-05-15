@@ -1,3 +1,4 @@
+# Required for LazyGit
 {
   programs.git.delta = {
     enable = true;

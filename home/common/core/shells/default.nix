@@ -17,14 +17,10 @@
     ll = "ls -al";
     # lg
     lg = "lazygit";
-    # grep
-    grep = "grep --color=auto";
     # network
     myip = "curl http://ipecho.net/plain; echo";
     # df
     df = "df -ahiT --total";
-    # memory
-    free = "free -mt";
     # ps
     ps = "ps auxf";
     psgrep = "ps aux | grep -v grep | grep -i -e VSZ -e";

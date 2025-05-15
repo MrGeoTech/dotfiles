@@ -1,6 +1,7 @@
+{ hostName, ... }:
 {
   services.hypridle = {
-    enable = true;
+    enable = hostName != "mrgeotech-pc";
     settings = {
       general = {
         lock_cmd = "pidof hyprlock || hyprlock";
@@ -9,12 +10,12 @@
       };
       listener = [
         {
-          timeout = 900;
+          timeout = 1800;
           on-timeout = "hyprctl dispatch dpms off";
           on-resume = "hyprctl dispatch dpms on";
         }
         {
-          timeout = 1800;
+          timeout = 3600;
           on-timeout = "loginctl lock-session";
         }
       ];

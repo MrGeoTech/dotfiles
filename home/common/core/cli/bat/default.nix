@@ -14,7 +14,6 @@
         batgrep # search through and highlight files using ripgrep
         batdiff # Diff a file against the current git index, or display the diff between to files
         batman # man pages with syntax highlighting
-        batwatch # Watch a file and run bat on it whenever it changes
         ;
     };
   };
@@ -28,5 +27,8 @@
   # aliases
   home.shellAliases = {
     man = "batman";
+    cat = "bat";
+    grep = "batgrep";
+    diff = "batdiff";
   };
 }

@@ -1,11 +1,7 @@
 { pkgs, ... }: {
-    environment.systemPackages = [
-        (pkgs.catppuccin-sddm.override {
-            flavor = "mocha";
-            font  = "Iosevka";
-            fontSize = "18";
-            background = "${../../../home/common/optional/desktops/hyprland/hypr/tropic_island_night.jpg}";
-            loginBackground = true;
+    environment.systemPackages = with pkgs; [
+        (sddm-astronaut.override {
+          embeddedTheme = "purple_leaves";
         })
     ];
     services.displayManager.sddm = {
@@ -13,7 +9,11 @@
         wayland.enable = true;
         autoNumlock = true;
 
-        theme = "catppuccin-mocha";
+        theme = "sddm-astronaut-theme";
         package = pkgs.kdePackages.sddm;
+        extraPackages = with pkgs; [
+          kdePackages.qtsvg
+          kdePackages.qtmultimedia
+        ];
     };
 }

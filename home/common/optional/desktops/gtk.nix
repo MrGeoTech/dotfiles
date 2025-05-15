@@ -6,12 +6,12 @@
       package = pkgs.papirus-icon-theme;
     };
     cursorTheme = {
-      name = "Bibata-Original-Ice";
-      package = pkgs.bibata-cursors;
+      name = "Nordzy-Cursors";
+      package = pkgs.nordzy-cursor-theme;
     };
     theme = {
-      name = "Orchis-Purple-Dark";
-      package = pkgs.orchis-theme;
+      name = "Nordic";
+      package = pkgs.nordic;
     };
     gtk3.extraConfig = {
       Settings = ''
@@ -26,8 +26,8 @@
     };
   };
 
-  home.sessionVariables.GTK_THEME = "Orchis-Purple-Dark";
+  home.sessionVariables.GTK_THEME = "Nordic";
   home.pointerCursor.gtk.enable = true;
-  home.pointerCursor.package = pkgs.bibata-cursors;
-  home.pointerCursor.name = "Bibata-Original-Ice";
+  home.pointerCursor.package = pkgs.nordzy-cursor-theme;
+  home.pointerCursor.name = "Nordzy-hyprcursors-white";
 }

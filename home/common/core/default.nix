@@ -9,8 +9,8 @@
     ./apps
     ./cli
     ./code
-    ./fonts.nix
     ./shells
+    ./fonts.nix
   ];
 
   nixpkgs = {

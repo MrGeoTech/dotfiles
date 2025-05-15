@@ -29,7 +29,7 @@ in
 
     oh-my-zsh = {
       enable = true;
-      plugins = [ "git" "thefuck" ];
+      plugins = [ "git" ];
       custom = "$HOME/.config/oh-my-zsh/custom";
       theme = "catppuccin";
     };

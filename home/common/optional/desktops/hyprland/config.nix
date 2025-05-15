@@ -25,7 +25,7 @@ in {
             monitor = monitorConfig;
             exec-once = [
                 "hyprpaper"
-                "hyprctl setcursor Bibata-Original-Ice 24"
+                "hyprctl setcursor Nordzy-hyprcursors-white 24"
                 "systemctl --user start hyprpolkitagent"
                 "sh /home/mrgeotech/.config/hypr/scripts/wallpaper.sh"
             ];

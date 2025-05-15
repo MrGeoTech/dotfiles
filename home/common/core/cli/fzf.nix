@@ -29,8 +29,5 @@
       marker = "#b4befe";
       prompt = "#cba6f7";
     };
-    tmux = {
-      enableShellIntegration = true;
-    };
   };
 }

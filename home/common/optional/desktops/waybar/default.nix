@@ -33,7 +33,7 @@
         ];
         modules-left = [
           "hyprland/workspaces"
-            "hyprland/window"
+          "hyprland/window"
         ];
         modules-center = [
           "clock"
@@ -82,7 +82,7 @@
         "custom/weather" = {
           format = "{} ";
           tooltip = true;
-          interval = 3600;
+          interval = 900; # 15 mins
           exec = "wttrbar --fahrenheit --mph --ampm --observation-time --custom-indicator \"{ICON} {temp_F}° ({FeelsLikeF}°) {windspeedMiles} mph\" --location Fargo,ND";
           return-type = "json";
         };

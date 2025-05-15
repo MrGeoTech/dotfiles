@@ -1,14 +1,15 @@
 {pkgs, ...}: {
-  qt.enable = true;
-  qt.platformTheme.name = "qtct";
-  qt.style.name = "kvantum";
-
-  home.packages = with pkgs; [
-    (catppuccin-kvantum.override {
-      accent = "mauve";
-      variant = "mocha";
-    })
-  ];
+  qt = {
+    enable = true;
+    platformTheme.name = "qtct";
+    style = {
+      package = with pkgs; (catppuccin-kvantum.override {
+          accent = "mauve";
+          variant = "mocha";
+        });
+      name = "kvantum";
+    };
+  };
 
   xdg.configFile."Kvantum/kvantum.kvconfig".source = (pkgs.formats.ini {}).generate "kvantum.kvconfig" {
     General.theme = "Catppuccin-Mocha";

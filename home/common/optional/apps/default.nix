@@ -5,7 +5,7 @@
         ./rofi
         ./gpg.nix
         ./gaming.nix
-        ./firefox.nix
+        #./firefox.nix
         ./vivaldi.nix
     ];
     home.packages = with pkgs; [
