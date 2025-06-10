@@ -29,6 +29,7 @@
         kicad
         obs-studio
         octaveFull
+        octavePackages.statistics
         quartus-prime-lite
         resources
         signal-desktop
