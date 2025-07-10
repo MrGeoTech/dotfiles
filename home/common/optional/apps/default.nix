@@ -28,8 +28,11 @@
         inkscape
         kicad
         obs-studio
-        octaveFull
-        octavePackages.statistics
+        octaveFull.withPackages(
+          ps: with ps; [
+            statitics
+          ]
+        )
         quartus-prime-lite
         resources
         signal-desktop
