@@ -62,6 +62,7 @@ in {
       set shiftwidth=4
       set expandtab
       autocmd FileType javascript,typescript,html,css,lua,gleam,nix,dart setlocal tabstop=2 shiftwidth=2
+      nnoremap <leader>e :Ex<CR>
     '';
     
     plugins = with pkgs.vimPlugins; [
