@@ -6,7 +6,7 @@
         enableBashIntegration = true;
         enableZshIntegration = true;
         settings = {
-            manager = {
+            mgr = {
                 show_hidden = true;
                 sort_by = "alphabetical";
                 sort_sensitive = false;
