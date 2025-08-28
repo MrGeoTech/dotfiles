@@ -54,15 +54,28 @@ in {
     viAlias = true;
     vimAlias = true;
     
-    extraConfig = ''
-      set number relativenumber
-      set cc=100
-      set conceallevel=2
-      set tabstop=4
-      set shiftwidth=4
-      set expandtab
-      autocmd FileType javascript,typescript,html,css,lua,gleam,nix,dart setlocal tabstop=2 shiftwidth=2
-      nnoremap <leader>e :Ex<CR>
+    extraLuaConfig = ''
+      vim.o.exrc = true
+      vim.o.secure = true
+    
+      vim.opt.number = true
+      vim.opt.relativenumber = true
+      vim.opt.colorcolumn = "100"
+      vim.opt.conceallevel = 2
+    
+      vim.opt.tabstop = 4
+      vim.opt.shiftwidth = 4
+      vim.opt.expandtab = true
+    
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = { "javascript", "typescript", "html", "css", "lua", "gleam", "nix", "dart" },
+        callback = function()
+          vim.opt_local.tabstop = 2
+          vim.opt_local.shiftwidth = 2
+        end,
+      })
+    
+      vim.keymap.set("n", "<leader>e", ":Ex<CR>")
     '';
     
     plugins = with pkgs.vimPlugins; [
