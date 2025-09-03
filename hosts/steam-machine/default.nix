@@ -27,7 +27,6 @@
     boot.kernelPackages = pkgs.linuxPackages_latest;
     boot.loader.grub.efiSupport = true;
     boot.loader.efi.canTouchEfiVariables = true;
-    boot.loader.efi.efiSysMountPoint = "/boot";
     boot.loader.systemd-boot.enable = true;
     boot.loader.grub.useOSProber = true;
     boot.loader.grub.configurationLimit = 15;
