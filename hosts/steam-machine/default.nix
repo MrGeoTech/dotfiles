@@ -17,9 +17,6 @@
 
         # Optional configs
         ../common/optional
-        (import ../common/optional/wireguard.nix {
-            ip = "2";
-        })
 
         # User config
         ../common/users/mrgeotech
