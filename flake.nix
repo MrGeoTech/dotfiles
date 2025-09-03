@@ -117,6 +117,23 @@
                     })
                 ];
             };
+
+            # steam-machine
+            steam-machine = lib.nixosSystem {
+                specialArgs = {inherit inputs outputs;};
+                modules = [
+                    ./hosts/steam-machine.nix
+                    home-manager.nixosModules.home-manager
+                    catppuccin.nixosModules.catppuccin
+                    ({config, ...}: {
+                        home-manager.backupFileExtension = "bak";
+                        home-manager.extraSpecialArgs = {
+                            inherit inputs outputs;
+                            inherit (config.networking) hostName;
+                        };
+                    })
+                ];
+            };
         };
     };
 }
