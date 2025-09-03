@@ -122,7 +122,7 @@
             steam-machine = lib.nixosSystem {
                 specialArgs = {inherit inputs outputs;};
                 modules = [
-                    ./hosts/steam-machine.nix
+                    ./hosts/steam-machine
                     home-manager.nixosModules.home-manager
                     catppuccin.nixosModules.catppuccin
                     ({config, ...}: {
