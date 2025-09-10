@@ -25,12 +25,20 @@
 
     # Bootloader
     boot.kernelPackages = pkgs.linuxPackages_latest;
-    boot.loader.grub.efiSupport = true;
-    boot.loader.efi.canTouchEfiVariables = true;
-    boot.loader.systemd-boot.enable = true;
-    boot.loader.grub.useOSProber = true;
-    boot.loader.grub.configurationLimit = 15;
-    boot.loader.systemd-boot.configurationLimit = 15;
+    boot.loader = {
+      grub = {
+        enable = true;
+        device = "/dev/sda";
+        efiSupport = true;
+        useOSProber = true;
+        configurationLimit = 5;
+      };
+      efi.canTouchEfiVariables = true;
+      systemd-boot = {
+        enable = true;
+        configurationLimit = 5;
+      };
+    };
 
     networking = {
         networkmanager.wifi.powersave = true;
