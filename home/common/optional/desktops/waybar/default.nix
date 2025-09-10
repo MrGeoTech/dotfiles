@@ -26,7 +26,9 @@
         # used for my secondary monitor so HDMI is
         # exclusivly for secondary monitors and doesn't 
         # need a waybar
-        output = [
+        output = if hostname == "steam-machine" then [ 
+          "!eDP-1" # All displays
+        ] else [
           "eDP-1"
           "DP-1"
           "DP-2"
