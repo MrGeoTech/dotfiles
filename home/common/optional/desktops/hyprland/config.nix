@@ -45,7 +45,7 @@ in {
                 touchpad = {
                     natural_scroll = true;
                 };
-                sensitivity = if hostName == "mrgeotech-zenbook" || hostHame == "steam-machine" then 0.5 else 1;
+                sensitivity = if hostName == "mrgeotech-zenbook" || hostName == "steam-machine" then 0.5 else 1;
             };
             general = {
                 gaps_in = 0;
@@ -60,7 +60,7 @@ in {
                 "col.border_inactive" = "$surface0";
                 groupbar = {
                     font_family = "IosevkaTerm";
-                    font_size = if hostName == "mrgeotech-zenbook" || hostHame == "steam-machine" then 18 else 12;
+                    font_size = if hostName == "mrgeotech-zenbook" || hostName == "steam-machine" then 18 else 12;
                     gradients = true;
                     text_color = "$crust";
                     "col.active" = "$mauve";

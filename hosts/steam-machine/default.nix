@@ -16,7 +16,10 @@
         ../common/core
 
         # Optional configs
-        ../common/optional
+        ../common/optional/fonts.nix
+        ../common/optional/hyprland.nix
+        ../common/optional/pipewire.nix
+        ../common/optional/steam.nix
 
         # User config
         ../common/users/mrgeotech
@@ -37,6 +40,28 @@
         hostName = "steam-machine";
         useNetworkd = true;
         interfaces.wlp5s0.useDHCP = true;
+    };
+
+    environment.systemPackages = with pkgs; [
+        hyprpolkitagent
+    ];
+
+    security.polkit.enable = true;
+
+    services = {
+        printing.enable = true;
+
+        blueman.enable = true;
+        gnome.gnome-keyring.enable = true;
+
+        udev.extraRules = ''
+            SUBSYSTEM=="usb", ATTR{idVendor}=="09fb", ATTR{idProduct}=="6001", MODE="0666"
+        '';
+
+        displayManager.autoLogin = {
+          enable = true;
+          user = "mrgeotech";
+        };
     };
 
     hardware.graphics = {
