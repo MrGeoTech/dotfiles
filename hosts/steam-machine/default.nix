@@ -23,7 +23,7 @@
         ../common/users/mrgeotech/optional.nix
     ];
 
-    # Bootloader
+    # Bootloader (uses grub instead of systemd-boot)
     boot.kernelPackages = pkgs.linuxPackages_latest;
     boot.loader = {
       grub = {
@@ -34,10 +34,6 @@
         configurationLimit = 5;
       };
       efi.canTouchEfiVariables = true;
-      systemd-boot = {
-        enable = true;
-        configurationLimit = 5;
-      };
     };
 
     networking = {
