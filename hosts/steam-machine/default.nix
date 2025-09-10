@@ -82,11 +82,7 @@
     xkb.variant = "";
   };
 
-  hardware.nvidia = {
-    open = true;
-    nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
-  };
+  hardware.nvidia.open = true;
 
   system.stateVersion = "24.05";
 }
