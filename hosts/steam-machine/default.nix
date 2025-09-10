@@ -57,9 +57,6 @@
         xkb.layout = "us";
         xkb.variant = "";
     };
-    environment.systemPackages = [
-        pkgs.brightnessctl
-    ];
 
     hardware.nvidia = {
         modesetting.enable = true;
