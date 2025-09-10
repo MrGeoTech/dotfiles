@@ -5,7 +5,7 @@
         ./rofi
         ./gpg.nix
         ./gaming.nix
-        ./firefox.nix # Needed for streaming platforms (looking at you peacock)
+        #./firefox.nix # Needed for streaming platforms (looking at you peacock)
         ./vivaldi.nix
     ];
     home.packages = with pkgs; [
