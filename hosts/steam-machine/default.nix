@@ -89,7 +89,6 @@
     open = true;
     nvidiaSettings = true;
     package = config.boot.kernelPackages.nvidiaPackages.stable;
-    nvidiaBusId = "PCI:1:00:0";
   };
 
   system.stateVersion = "24.05";
