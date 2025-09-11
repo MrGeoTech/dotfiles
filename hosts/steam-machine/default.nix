@@ -15,7 +15,6 @@
     ../common/core
       # Optional configs
     ../common/optional/fonts.nix
-    ../common/optional/hyprland.nix
     ../common/optional/pipewire.nix
     ../common/optional/steam.nix
 
@@ -56,11 +55,16 @@
       SUBSYSTEM=="usb", ATTR{idVendor}=="09fb", ATTR{idProduct}=="6001", MODE="0666"
       '';
 
-    getty.autologinUser = "mrgeotech";
     displayManager.autoLogin = {
       enable = true;
       user = "mrgeotech";
+      sddm = {
+        enable = true;
+        wayland.enable = true;
+        settings.General.DisplayServer = "wayland";
+      };
     };
+    desktopManager.plasma6.enable = true;
   };
 
   hardware.graphics = {
