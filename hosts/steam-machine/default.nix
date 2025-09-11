@@ -7,8 +7,6 @@
 }: {
   imports = [
     # Hardware config
-    inputs.hardware.nixosModules.common-cpu-amd
-    inputs.hardware.nixosModules.common-gpu-nvidia
     ./hardware-configuration.nix
 
     # Common config
