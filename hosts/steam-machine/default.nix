@@ -55,9 +55,11 @@
       SUBSYSTEM=="usb", ATTR{idVendor}=="09fb", ATTR{idProduct}=="6001", MODE="0666"
       '';
 
-    displayManager.autoLogin = {
-      enable = true;
-      user = "mrgeotech";
+    displayManager = {
+      autoLogin = {
+        enable = true;
+        user = "mrgeotech";
+      };
       sddm = {
         enable = true;
         wayland.enable = true;
