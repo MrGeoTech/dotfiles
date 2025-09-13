@@ -59,6 +59,7 @@
       SUBSYSTEM=="usb", ATTR{idVendor}=="09fb", ATTR{idProduct}=="6001", MODE="0666"
       '';
 
+    getty.autologinUser = "mrgeotech";
     displayManager = {
       autoLogin = {
         enable = true;
