@@ -18,5 +18,12 @@
     username = "mrgeotech";
     homeDirectory = "/home/${config.home.username}";
     stateVersion = "24.11";
+    packages = with pkgs; [
+      protonup
+    ];
+ 
+    sessionVariables = {
+      STEAM_EXTRA_COMPAT_TOOLS_PATHS = "\\\${HOME}/.steam/root/compatibilitytools.d";
+    };
   };
 }
