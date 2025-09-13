@@ -64,9 +64,8 @@
         enable = true;
         user = "mrgeotech";
       };
-      ly = {
+      lightdm = {
         enable = true;
-        x11Support = false;
       };
     };
   };
