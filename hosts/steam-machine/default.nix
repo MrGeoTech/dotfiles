@@ -70,7 +70,7 @@
       desktopManager.xfce = {
         enable = true;
         enableWaylandSession = true;
-        enableScreenSaver = false;
+        enableScreensaver = false;
         noDesktop = false;
       };
     };
