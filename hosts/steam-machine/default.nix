@@ -14,7 +14,6 @@
       # Optional configs
     ../common/optional/fonts.nix
     ../common/optional/pipewire.nix
-    ../common/optional/hyprland.nix
 
     # User config
     ../common/users/mrgeotech
@@ -57,7 +56,7 @@
 
     udev.extraRules = ''
       SUBSYSTEM=="usb", ATTR{idVendor}=="09fb", ATTR{idProduct}=="6001", MODE="0666"
-      '';
+    '';
 
     getty.autologinUser = "mrgeotech";
     displayManager = {
@@ -66,8 +65,14 @@
         user = "mrgeotech";
       };
     };
-    xserver.displayManager.lightdm = {
-      enable = true;
+    xserver = {
+      displayManager.lightdm.enable = true;
+      desktopManager.xfce = {
+        enable = true;
+        enableWaylandSession = true;
+        enableScreenSaver = false;
+        noDesktop = false;
+      };
     };
   };
 
