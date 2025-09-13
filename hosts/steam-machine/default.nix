@@ -87,6 +87,7 @@
   };
 
   hardware.nvidia.open = true;
+  hardware.nvidia.modesetting.enable = true;
 
   system.stateVersion = "24.05";
 }
