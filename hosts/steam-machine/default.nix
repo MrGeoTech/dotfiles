@@ -64,9 +64,9 @@
         enable = true;
         user = "mrgeotech";
       };
-      lightdm = {
-        enable = true;
-      };
+    };
+    xserver.displayManager.lightdm = {
+      enable = true;
     };
   };
 
