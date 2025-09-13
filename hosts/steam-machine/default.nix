@@ -14,6 +14,7 @@
       # Optional configs
     ../common/optional/fonts.nix
     ../common/optional/pipewire.nix
+    ../common/optional/hyprland.nix
 
     # User config
     ../common/users/mrgeotech
@@ -35,10 +36,6 @@
     useNetworkd = true;
     interfaces.wlp5s0.useDHCP = true;
   };
-
-  environment.systemPackages = with pkgs; [
-    hyprpolkitagent
-  ];
 
   programs.steam = {
     enable = true;
@@ -67,13 +64,11 @@
         enable = true;
         user = "mrgeotech";
       };
-      sddm = {
+      ly = {
         enable = true;
-        wayland.enable = true;
-        settings.General.DisplayServer = "wayland";
+        x11Support = false;
       };
     };
-    desktopManager.plasma6.enable = true;
   };
 
   hardware.graphics = {
