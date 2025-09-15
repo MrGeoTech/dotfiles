@@ -66,7 +66,7 @@
       };
     };
     xserver = {
-      displayManager.sddm.enable = true;
+      displayManager.lightdm.enable = true;
       desktopManager.xfce = {
         enable = true;
         enableWaylandSession = true;
