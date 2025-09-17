@@ -36,15 +36,29 @@
     interfaces.wlp5s0.useDHCP = true;
   };
 
-  programs.steam = {
-    enable = true;
-    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
-    localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
-    gamescopeSession.enable = true;
+  programs = {
+    steam = {
+      enable = true;
+      remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+      dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+      localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
+      gamescopeSession.enable = true;
+    };
+    gamescope = {
+      enable = true;
+      capSysNice = true;
+    };
+    gamemode.enable = true;
   };
+  hardware.xone.enable = true; # support for the xbox controller USB dongle
 
-  programs.gamemode.enable = true;
+  # Load from display manager directly into steam gamemode
+  environment = {
+    systemPackages = with pkgs; [ mangohud ];
+    loginShellInit = ''
+      [[ "$(tty)" = "/dev/tty1" ]] && ./gamescope.sh
+    '';
+  };
 
   security.polkit.enable = true;
 
@@ -66,37 +80,39 @@
       };
     };
     xserver = {
+      # Configure keymap in X11
+      enable = true;
+      videoDrivers = ["nvidia"];
+      xkb.options = "ctrl:nocaps";
+      xkb.layout = "us";
+      xkb.variant = "";
       displayManager.lightdm.enable = true;
-      desktopManager.xfce = {
-        enable = true;
-        enableWaylandSession = true;
-        enableScreensaver = false;
-        noDesktop = false;
-      };
+      #desktopManager.xfce = {
+      #  enable = true;
+      #  enableWaylandSession = true;
+      #  enableScreensaver = false;
+      #  noDesktop = false;
+      #};
     };
-  };
-
-  hardware.graphics = {
-    enable = true;
-    enable32Bit = true;
   };
 
   # Load nvidia driver for Xorg and Wayland
   console.useXkbConfig = true;
-  hardware.bluetooth.enable = true;
-  hardware.bluetooth.powerOnBoot = true;
 
-  # Configure keymap in X11
-  services.xserver = {
-    enable = true;
-    videoDrivers = ["nvidia"];
-    xkb.options = "ctrl:nocaps";
-    xkb.layout = "us";
-    xkb.variant = "";
+  hardware = {
+    nvidia = {
+      open = true;
+      modesetting.enable = true;
+    };
+    graphics = {
+      enable = true;
+      enable32Bit = true;
+    };
+    bluetooth = {
+      enable = true;
+      powerOnBoot = true;
+    };
   };
-
-  hardware.nvidia.open = true;
-  hardware.nvidia.modesetting.enable = true;
 
   system.stateVersion = "24.05";
 }
