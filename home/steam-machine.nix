@@ -6,10 +6,7 @@
 }: {
   imports = [
     ./common/core
-    ./common/optional/apps/ghostty
-    ./common/optional/apps/rofi
     ./common/optional/apps/gaming.nix
-    ./common/optional/apps/vivaldi.nix
     ./common/optional/apps/gpg.nix
     ./common/optional/desktops/gtk.nix
     ./common/optional/desktops/qt5.nix
