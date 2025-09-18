@@ -27,5 +27,40 @@
     sessionVariables = {
       STEAM_EXTRA_COMPAT_TOOLS_PATHS = "\\\${HOME}/.steam/root/compatibilitytools.d";
     };
+    file."gamescope.sh" = {
+      text = ''
+        #!/usr/bin/env bash
+        set -xeuo pipefail
+
+        gamescopeArgs=(
+          --adaptive-sync  # VRR support
+          --hdr-enabled
+          --mangoapp       # performance overlay
+          --rt             # realtime scheduling
+          --steam
+        )
+
+        steamArgs=(
+          -pipewire-dmabuf
+          -tenfoot          # Big Picture mode
+        )
+
+        mangoConfig=(
+          cpu_temp
+          gpu_temp
+          ram
+          vram
+        )
+
+        mangoVars=(
+          MANGOHUD=1
+          MANGOHUD_CONFIG="$(IFS=,; echo "''${mangoConfig[*]}")"
+        )
+
+        export "''${mangoVars[@]}"
+        exec gamescope "''${gamescopeArgs[@]}" -- steam "''${steamArgs[@]}"
+      '';
+      executable = true; # make it chmod +x
+    };
   };
 }
