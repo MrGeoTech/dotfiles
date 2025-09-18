@@ -93,9 +93,9 @@ in {
             master = {
                 new_status = "slave";
             };
-            gestures = {
-                workspace_swipe = true;
-            };
+            gesture = [
+              "3, horizontal, workspace"
+            ];
             misc = {
                 disable_hyprland_logo = true;
                 mouse_move_enables_dpms = true;

@@ -13,7 +13,6 @@
         appimage-run
         libgcc
         libreoffice-fresh
-        libsForQt5.okular
         lshw
         psmisc
         seahorse
