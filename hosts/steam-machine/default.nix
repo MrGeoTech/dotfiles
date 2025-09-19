@@ -25,17 +25,22 @@
   # Bootloader (uses grub instead of systemd-boot)
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
-    loader.grub = {
-      enable = true;
-      device = "/dev/sda";
-      useOSProber = true;
-      configurationLimit = 5;
-    };
     kernelParams = [
       "quiet"
       "loglevel=3"
       "udev.log_level=3"
     ];
+    loader = {
+      systemd-boot = {
+        enable = true;
+        configurationLimit = 15;
+      };
+      efi = {
+        canTouchEfiVariables = true;
+        efiSysMountPoint = "/boot";
+      };
+      timeout = 1;
+    };
   };
 
   networking = {
