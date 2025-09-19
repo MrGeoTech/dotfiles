@@ -36,6 +36,8 @@
           --rt             # realtime scheduling
           --steam
           --force-grab-cursor
+          -w 3840
+          -h 2160
         )
 
         steamArgs=(
