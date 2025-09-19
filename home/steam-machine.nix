@@ -38,6 +38,8 @@
           --force-grab-cursor
           -w 3840
           -h 2160
+          -r 60
+          --integer-scale
         )
 
         steamArgs=(
