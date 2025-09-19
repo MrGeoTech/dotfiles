@@ -35,6 +35,7 @@
           --mangoapp       # performance overlay
           --rt             # realtime scheduling
           --steam
+          --force-grab-cursor
         )
 
         steamArgs=(

@@ -9,6 +9,8 @@
     # Hardware config
     ./hardware-configuration.nix
 
+    ./plymouth.nix
+
     # Common config
     ../common/core
       # Optional configs
@@ -21,12 +23,19 @@
   ];
 
   # Bootloader (uses grub instead of systemd-boot)
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.loader.grub = {
-    enable = true;
-    device = "/dev/sda";
-    useOSProber = true;
-    configurationLimit = 5;
+  boot = {
+    kernelPackages = pkgs.linuxPackages_latest;
+    loader.grub = {
+      enable = true;
+      device = "/dev/sda";
+      useOSProber = true;
+      configurationLimit = 5;
+    };
+    kernelParams = [
+      "quiet"
+      "loglevel=3"
+      "udev.log_level=3"
+    ];
   };
 
   networking = {
