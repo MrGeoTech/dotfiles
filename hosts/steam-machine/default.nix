@@ -58,6 +58,7 @@
       capSysNice = true;
     };
     gamemode.enable = true;
+    dconf.enable = true;
   };
   hardware.xone.enable = true; # support for the xbox controller USB dongle
 
