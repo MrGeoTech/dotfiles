@@ -25,15 +25,22 @@
         ../common/users/mrgeotech/optional.nix
     ];
 
-    # Bootloader.
-    boot.kernelPackages = pkgs.linuxPackages_latest;
-    boot.loader.grub.efiSupport = true;
-    boot.loader.efi.canTouchEfiVariables = true;
-    boot.loader.efi.efiSysMountPoint = "/boot";
-    boot.loader.systemd-boot.enable = true;
-    boot.loader.grub.useOSProber = true;
-    boot.loader.grub.configurationLimit = 15;
-    boot.loader.systemd-boot.configurationLimit = 15;
+    # Bootloader
+    boot = {
+      kernelPackages = pkgs.linuxPackages_latest;
+    
+      loader = {
+        systemd-boot = {
+          enable = true;
+          configurationLimit = 15;
+        };
+        efi = {
+          canTouchEfiVariables = true;
+          efiSysMountPoint = "/boot";
+        };
+        timeout = 5;
+      };
+    };
 
     networking = {
         networkmanager.wifi.powersave = true;

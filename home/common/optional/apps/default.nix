@@ -17,6 +17,7 @@
         psmisc
         seahorse
         udisks
+        pandoc
         # Programming Stuff
         texliveFull
         # User Apps

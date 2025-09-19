@@ -5,6 +5,7 @@
 }: {
   imports = [
     ./common/core
+    ./common/optional/code.nix
     ./common/optional/apps
     ./common/optional/desktops/hyprland
     ./common/optional/desktops/waybar

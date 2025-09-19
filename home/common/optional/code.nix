@@ -3,7 +3,6 @@
     arduino-cli
     clang_18
     clang-tools
-    devenv
     erlang_27
     gleam
     go
@@ -14,7 +13,5 @@
     python3
     rustc
     zig
-    man-pages
-    man-pages-posix
   ];
 }

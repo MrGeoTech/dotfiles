@@ -6,10 +6,10 @@
   ...
 }: {
   imports = [
-    ./apps
     ./cli
-    ./code
     ./shells
+    ./apps.nix
+    ./code.nix
     ./fonts.nix
   ];
 
