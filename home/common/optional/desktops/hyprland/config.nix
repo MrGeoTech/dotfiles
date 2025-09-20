@@ -19,6 +19,9 @@ in {
         xwayland.enable = true;
         sourceFirst = true;
         settings = {
+            debug = {
+              full_cm_proto = true;
+            };
             source = [
                 "~/.config/hypr/mocha.conf" # Theme
             ];
