@@ -6,10 +6,10 @@
 }: {
     imports = [
         ./docker.nix
+        ./display-manager.nix
         ./fonts.nix
         ./hyprland.nix
         ./pipewire.nix
-        ./sddm.nix
         ./shared.nix
         ./steam.nix
         ./virt-manager.nix
