@@ -62,6 +62,8 @@
     in {
         inherit lib;
 
+        myPkgs = forEachSystem (pkgs: import ./pkgs {inherit pkgs;});
+
         formatter = forEachSystem (pkgs: pkgs.alejandra);
 
         devShells = forEachSystem (pkgs: import ./shell.nix { inherit pkgs; });
