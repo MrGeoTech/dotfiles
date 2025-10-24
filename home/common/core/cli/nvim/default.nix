@@ -21,7 +21,7 @@ in {
     # Nix packages
     arduino-language-server
     beam27Packages.elixir-ls
-    erlang-ls
+    erlang-language-platform
     glsl_analyzer
     htmx-lsp
     jdt-language-server

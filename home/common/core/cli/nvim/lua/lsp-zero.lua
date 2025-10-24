@@ -1,88 +1,109 @@
 -- Reserve a space in the gutter
 vim.opt.signcolumn = 'yes'
 
--- Add cmp_nvim_lsp capabilities settings to lspconfig
--- This should be executed before you configure any language server
-local lspconfig_defaults = require('lspconfig').util.default_config
-lspconfig_defaults.capabilities = vim.tbl_deep_extend(
-  'force',
-  lspconfig_defaults.capabilities,
-  require('cmp_nvim_lsp').default_capabilities()
-)
-
--- This is where you enable features that only work
--- if there is a language server active in the file
-vim.api.nvim_create_autocmd('LspAttach', {
-  desc = 'LSP actions',
-  callback = function(event)
-    local opts = {buffer = event.buf}
-
-    vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
-    vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
-    vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
-    vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
-    vim.keymap.set('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
-    vim.keymap.set('n', 'gR', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
-    vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
-    vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
-    vim.keymap.set({'n', 'x'}, 'gf', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
-    vim.keymap.set('n', 'gc', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
-  end,
-})
-
-local lspconfig = require('lspconfig')
 local spell_words = {}
-for word in io.open(vim.fn.stdpath("config") .. "/en.utf-8.add", "r"):lines() do
+for word in io.open(vim.fn.stdpath('config') .. '/en.utf-8.add', 'r'):lines() do
     table.insert(spell_words, word)
 end
 
-local lsp_configurations = require('lspconfig.configs')
-
-if not lsp_configurations.arduino_language_server then
-  lsp_configurations.arduino_language_server = {
-    default_config = {
-      cmd = {"arduino-language-server", "--cli", "arduino-cli", "--cli-config", "$HOME/.arduino15/arduino-cli.yaml"},
-      filetypes = {'arduino'},
-      root_dir = require('lspconfig.util').root_pattern('sketch.yaml')
-    }
+vim.lsp.config('arduino_language_server', {
+    cmd = {'arduino-language-server', '--cli', 'arduino-cli', '--cli-config', '$HOME/.arduino15/arduino-cli.yaml'},
+    filetypes = {'arduino'},
+    root_dir = require('lspconfig.util').root_pattern('sketch.yaml')
   }
+)
+
+-- From https://github.com/neovim/nvim-lspconfig/blob/master/lsp/ltex.lua
+local language_id_mapping = {
+  bib = 'bibtex',
+  plaintex = 'tex',
+  rnoweb = 'rsweave',
+  rst = 'restructuredtext',
+  tex = 'latex',
+  pandoc = 'markdown',
+  text = 'plaintext',
+}
+
+local filetypes = {
+  'bib',
+  'gitcommit',
+  'markdown',
+  'org',
+  'plaintex',
+  'rst',
+  'rnoweb',
+  'tex',
+  'pandoc',
+  'quarto',
+  'rmd',
+  'context',
+  'html',
+  'xhtml',
+  'mail',
+  'text',
+}
+
+local function get_language_id(_, filetype)
+  local language_id = language_id_mapping[filetype]
+  if language_id then
+    return language_id
+  else
+    return filetype
+  end
 end
+local enabled_ids = {}
+do
+  local enabled_keys = {}
+  for _, ft in ipairs(filetypes) do
+    local id = get_language_id({}, ft)
+    if not enabled_keys[id] then
+      enabled_keys[id] = true
+      table.insert(enabled_ids, id)
+    end
+  end
+end
+
+vim.lsp.config('ltex-ls', {
+  cmd = { 'ltex-ls' },
+  filetypes = filetypes,
+  root_markers = { '.git' },
+  get_language_id = get_language_id,
+  settings = {
+    ltex = {
+      language = 'en-US',
+      enabled = true,
+      dictionary = {
+        ['en-US'] = spell_words,
+      },
+    },
+  },
+})
 
 -- You'll find a list of language servers here:
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
 -- These are example language servers. 
-lspconfig.arduino_language_server.setup({})
-lspconfig.clangd.setup({})
-lspconfig.cssls.setup({})
-lspconfig.dartls.setup({})
-lspconfig.elixirls.setup({})
-lspconfig.erlangls.setup({})
-lspconfig.gleam.setup({})
-lspconfig.glsl_analyzer.setup({})
-lspconfig.html.setup({});
-lspconfig.htmx.setup({});
-lspconfig.jdtls.setup({})
-lspconfig.kotlin_language_server.setup({})
-lspconfig.lua_ls.setup({})
-lspconfig.marksman.setup({})
-lspconfig.matlab_ls.setup({})
-lspconfig.pylsp.setup({})
-lspconfig.svls.setup({})
-lspconfig.ts_ls.setup({})
-lspconfig.verible.setup({})
-lspconfig.vhdl_ls.setup({})
-lspconfig.zls.setup({})
-lspconfig.ltex.setup({
-   settings = {
-      ltex = {
-         language = "en-US",
-         enabled = true,
-         dictionary = {
-            ["en-US"] = spell_words,
-        },
-      },
-   },
-})
+vim.lsp.enable('arduino_language_server')
+vim.lsp.enable('clangd')
+vim.lsp.enable('cssls')
+vim.lsp.enable('dartls')
+vim.lsp.enable('elixirls')
+vim.lsp.enable('erlangls')
+vim.lsp.enable('gleam')
+vim.lsp.enable('glsl_analyzer')
+vim.lsp.enable('html')
+vim.lsp.enable('htmx')
+vim.lsp.enable('jdtls')
+vim.lsp.enable('kotlin_language_server')
+vim.lsp.enable('lua_ls')
+vim.lsp.enable('marksman')
+vim.lsp.enable('matlab_ls')
+vim.lsp.enable('pylsp')
+vim.lsp.enable('svls')
+vim.lsp.enable('ts_ls')
+vim.lsp.enable('verible')
+vim.lsp.enable('vhdl_ls')
+vim.lsp.enable('zls')
+vim.lsp.enable('ltex')
 
 local cmp = require('cmp')
 
@@ -105,6 +126,7 @@ cmp.setup({
   }),
 })
 
+-- Display errors and warnings at the end of the line
 vim.diagnostic.config({
   virtual_text = {
   format = function(diagnostic)
@@ -112,4 +134,3 @@ vim.diagnostic.config({
   end
   },
 })
-

@@ -22,7 +22,6 @@
 
         # User config
         ../common/users/mrgeotech
-        ../common/users/mrgeotech/optional.nix
     ];
 
     # Bootloader
@@ -38,14 +37,13 @@
           canTouchEfiVariables = true;
           efiSysMountPoint = "/boot";
         };
-        timeout = 5;
+        timeout = 1;
       };
     };
 
     networking = {
         networkmanager.wifi.powersave = true;
         hostName = "mrgeotech-zenbook";
-        useNetworkd = true;
         interfaces.wlo1.useDHCP = true;
     };
 
@@ -60,13 +58,6 @@
     hardware.bluetooth.powerOnBoot = true;
 
     # Configure keymap in X11
-    services.xserver = {
-        enable = true;
-        videoDrivers = ["modesetting"];
-        xkb.options = "ctrl:nocaps";
-        xkb.layout = "us";
-        xkb.variant = "";
-    };
     environment.systemPackages = [
         pkgs.brightnessctl
     ];

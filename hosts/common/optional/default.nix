@@ -5,19 +5,15 @@
     ...
 }: {
     imports = [
-        ./docker.nix
-        ./display-manager.nix
         ./fonts.nix
         ./hyprland.nix
         ./pipewire.nix
-        ./shared.nix
+        #./shared.nix
         ./steam.nix
-        ./virt-manager.nix
-        ./wireshark.nix
+        #./wireshark.nix
     ];
 
     environment.systemPackages = with pkgs; [
-        hyprpolkitagent
         gparted
     ];
 

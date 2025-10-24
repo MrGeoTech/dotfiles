@@ -1,7 +1,8 @@
 # Required for LazyGit
 {
-  programs.git.delta = {
+  programs.delta = {
     enable = true;
+    enableGitIntegration = true;
     options = {
       features = "line-numbers decorations catppuccin-mocha";
     };

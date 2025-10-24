@@ -11,6 +11,13 @@
     source = ./hypr;
   };
 
+  programs.zsh.profileExtra = ''
+    # Auto-start Hyprland when logging in on TTY1
+    if [ -z "$DISPLAY" ] && [ "''${XDG_VTNR:-0}" -eq 1 ]; then
+      exec uwsm start default
+    fi
+  '';
+
   home.packages = with pkgs; [
     grim
     hyprland
