@@ -21,7 +21,6 @@
 
     # User config
     ../common/users/mrgeotech
-    ../common/users/mrgeotech/optional.nix
   ];
 
   # Bootloader.
@@ -59,7 +58,7 @@
 
   # Configure keymap in X11
   services.xserver = {
-    enable = true;
+    enable = false;
     xkb.options = "ctrl:nocaps";
     xkb.layout = "us";
     xkb.variant = "";
