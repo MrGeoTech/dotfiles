@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ pkgs, inputs, outputs, ... }:
 {
     imports = [
         ./ghostty
@@ -29,6 +29,7 @@
         kicad
         obs-studio
         octaveFull
+        outputs.myPkgs.${pkgs.system}.fusion360
         quartus-prime-lite
         resources
         signal-desktop

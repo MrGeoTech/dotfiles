@@ -1,62 +1,90 @@
-{ pkgs ? import <nixpkgs> {} }:
+{ pkgs, lib, stdenv, makeWrapper, wineWowPackages, winetricks }:
 
 let
   pname = "fusion360";
-  version = "2.0.0";
-  wine = pkgs.wineWowPackages.stable;
-in
-pkgs.stdenv.mkDerivation {
+  version = "1.0";
+  
+  # Wine prefix directory
+  winePrefix = "\${HOME}/.wine-fusion360";
+  
+in stdenv.mkDerivation {
   inherit pname version;
-
-  # Replace this with the actual path to your installer
-  # It can also be a fetchurl if you're hosting it privately.
-  src = pkgs.fetchurl {
-    url = "file:///path/to/Fusion360installer.exe";
-    sha256 = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
-  };
-
-  nativeBuildInputs = [ wine pkgs.cabextract pkgs.unzip ];
-  buildInputs = [ wine ];
-
-  # We don’t actually build anything, just prepare a wine prefix
-  # and install Fusion 360 into it
-  buildPhase = ''
-    echo "Creating Wine prefix..."
-    export WINEPREFIX=$PWD/wineprefix
-    mkdir -p $WINEPREFIX
-
-    echo "Running Fusion 360 installer..."
-    ${wine}/bin/wine "$src" /S || true
-  '';
-
+  
+  # No source needed, we'll reference the installer directly
+  dontUnpack = true;
+  
+  nativeBuildInputs = [ makeWrapper ];
+  
+  buildInputs = [
+    wineWowPackages.stable
+    winetricks
+  ];
+  
+  dontBuild = true;
+  
   installPhase = ''
     mkdir -p $out/bin
-    mkdir -p $out/opt/fusion360
-
-    # Copy wineprefix
-    cp -r wineprefix $out/opt/fusion360/wineprefix
-
-    # Create launcher script
-    cat > $out/bin/fusion360 <<EOF
-    #!${pkgs.bash}/bin/bash
-    export WINEPREFIX=$out/opt/fusion360/wineprefix
-    exec ${wine}/bin/wine "\$WINEPREFIX/drive_c/Program Files/Autodesk/Webdeploy/production/*/Fusion360.exe" "\$@"
+    mkdir -p $out/share/applications
+    
+    # Create the launcher script
+    cat > $out/bin/fusion360 << 'EOF'
+    #!/bin/sh
+    export WINEPREFIX="${winePrefix}"
+    export WINEARCH=win64
+    
+    INSTALLER_PATH="/etc/nixos/pkgs/fusion360/Fusion Client Downloader.exe"
+    
+    # Initialize wine prefix if it doesn't exist
+    if [ ! -d "$WINEPREFIX" ]; then
+      echo "Initializing Wine prefix for Fusion 360..."
+      ${wineWowPackages.stable}/bin/wineboot -u
+      echo "Wine prefix initialized."
+    fi
+    
+    # Check if Fusion 360 is installed
+    FUSION_EXE="$WINEPREFIX/drive_c/users/$USER/AppData/Local/Autodesk/webdeploy/production/Fusion360.exe"
+    
+    if [ ! -f "$FUSION_EXE" ]; then
+      echo "Fusion 360 not installed. Running installer..."
+      
+      if [ ! -f "$INSTALLER_PATH" ]; then
+        echo "Error: Installer not found at $INSTALLER_PATH"
+        echo "Please place 'Fusion Client Downloader.exe' at that location."
+        exit 1
+      fi
+      
+      ${wineWowPackages.stable}/bin/wine "$INSTALLER_PATH"
+      
+      # Wait a moment for installation to complete
+      echo "Waiting for installation to complete..."
+      echo "Once installation is done, run 'fusion360' again to launch."
+      exit 0
+    fi
+    
+    # Launch Fusion 360
+    ${wineWowPackages.stable}/bin/wine "$FUSION_EXE" "$@"
     EOF
-
+    
     chmod +x $out/bin/fusion360
+    
+    # Create desktop entry for Rofi/application launchers
+    cat > $out/share/applications/fusion360.desktop << EOF
+    [Desktop Entry]
+    Name=Fusion 360
+    Comment=Autodesk Fusion 360 CAD Software
+    Exec=$out/bin/fusion360
+    Terminal=false
+    Type=Application
+    Icon=fusion360
+    Categories=Graphics;Engineering;3DGraphics;
+    StartupNotify=true
+    EOF
   '';
-
-  # Don’t try to strip wine binaries
-  dontStrip = true;
-
-  # Avoid sandboxing issues
-  dontPatchELF = true;
-
-  meta = with pkgs.lib; {
-    description = "Autodesk Fusion 360 (via Wine)";
+  
+  meta = with lib; {
+    description = "Autodesk Fusion 360 running under Wine";
     homepage = "https://www.autodesk.com/products/fusion-360";
-    license = licenses.unfree;
-    maintainers = [ maintainers.yourself ];
     platforms = platforms.linux;
+    mainProgram = "fusion360";
   };
 }
