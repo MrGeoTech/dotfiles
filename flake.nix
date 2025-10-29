@@ -36,6 +36,12 @@
         ghostty = {
             url = "github:ghostty-org/ghostty";
         };
+
+        # winapps
+        winapps = {
+            url = "github:winapps-org/winapps";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
     };
 
     outputs = {

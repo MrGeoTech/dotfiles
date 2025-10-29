@@ -29,11 +29,11 @@
         kicad
         obs-studio
         octaveFull
-        outputs.myPkgs.${pkgs.system}.fusion360
         quartus-prime-lite
         resources
         signal-desktop
         vlc
+        outputs.myPkgs.${pkgs.system}.winapps-helper
     ];
 
     services.mpris-proxy.enable = true;

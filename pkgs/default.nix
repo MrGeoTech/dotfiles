@@ -3,5 +3,5 @@
   #################### Packages with external source ####################
 
   # example = pkgs.callPackage ./example { };
-  fusion360 = pkgs.callPackage ./fusion360 {};
+  winapps-helper = pkgs.callPackage ./winapps-helper {};
 }
