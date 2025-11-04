@@ -33,7 +33,6 @@
         resources
         signal-desktop
         vlc
-        outputs.myPkgs.${pkgs.system}.winapps-helper
     ];
 
     services.mpris-proxy.enable = true;

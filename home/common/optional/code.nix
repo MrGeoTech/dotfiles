@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{pkgs, outputs, ...}: {
   home.packages = with pkgs; [
     arduino-cli
     clang_18
@@ -13,5 +13,5 @@
     python3
     rustc
     zig
-  ];
+  ];# ++ [ outputs.myPkgs.${pkgs.system}.xilinx-tools ];
 }

@@ -1,15 +1,13 @@
 {inputs, pkgs, ...} : {
-  # Docker
-  virtualisation.docker = {
-    enable = true;
-    enableOnBoot = true;
-    rootless = {
-      enable = true;
-      setSocketVariable = true;
-    };
-  };
-  # Virt-Manager
   virtualisation = {
+    docker = {
+      enable = true;
+      enableOnBoot = true;
+      rootless = {
+        enable = true;
+        setSocketVariable = true;
+      };
+    };
     libvirtd = {
       enable = true;
       package = with pkgs; libvirt;
@@ -27,8 +25,9 @@
   programs.virt-manager.enable = true;
   
   environment.systemPackages = [
-    inputs.winapps.packages.${pkgs.system}.winapps
-    inputs.winapps.packages.${pkgs.system}.winapps-launcher
-    pkgs.freerdp
+  #  inputs.winapps.packages.${pkgs.system}.winapps
+  #  inputs.winapps.packages.${pkgs.system}.winapps-launcher
+  #  pkgs.freerdp
+    pkgs.bottles
   ];
 }

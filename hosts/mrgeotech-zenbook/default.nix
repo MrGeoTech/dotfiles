@@ -22,6 +22,7 @@
 
         # User config
         ../common/users/mrgeotech
+        ../common/users/mrgeotech/optional.nix
     ];
 
     # Bootloader
