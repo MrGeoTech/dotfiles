@@ -10,6 +10,25 @@
       background-opacity = 0.85;
       background = "1e1e2e";
       theme = "catppuccin-mocha";
+      keybind = [
+        "ctrl+h=goto_split:left"
+        "ctrl+j=goto_split:down"
+        "ctrl+k=goto_split:up"
+        "ctrl+l=goto_split:right"
+        "ctrl+shift+h=new_split:left"
+        "ctrl+shift+j=new_split:down"
+        "ctrl+shift+k=new_split:up"
+        "ctrl+shift+l=new_split:right"
+        "alt+h=resize_split:left,10"
+        "alt+j=resize_split:down,10"
+        "alt+k=resize_split:up,10"
+        "alt+l=resize_split:right,10"
+        "alt+r=equalize_splits"
+        "ctrl+.=next_tab"
+        "ctrl+,=previous_tab"
+        "ctrl+shift+.=move_tab:1"
+        "ctrl+shift+,=move_tab:-1"
+      ];
     };
     themes = {
       catppuccin-mocha = {

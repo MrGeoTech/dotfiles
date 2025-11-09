@@ -5,7 +5,6 @@
         ./rofi
         ./gpg.nix
         ./gaming.nix
-        #./firefox.nix # Needed for streaming platforms (looking at you peacock)
         ./vivaldi.nix
     ];
     home.packages = with pkgs; [
@@ -13,24 +12,15 @@
         appimage-run
         libgcc
         libreoffice-fresh
-        lshw
-        psmisc
-        seahorse
         udisks
-        pandoc
-        # Programming Stuff
-        texliveFull
         # User Apps
-        android-studio
         drawio
-        eog
-        google-chrome
+        google-chrome # Needed to take certain tests
         inkscape
         kicad
         obs-studio
         octaveFull
-        quartus-prime-lite
-        resources
+        #quartus-prime-lite
         signal-desktop
         vlc
     ];

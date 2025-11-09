@@ -32,7 +32,7 @@ in {
         "systemctl --user start hyprpolkitagent"
         "sh /home/mrgeotech/.config/hypr/scripts/wallpaper.sh"
         "$BROWSER"
-        "hyprlock"
+        "bash -c \"sleep 0.5 && hyprlock\""
       ];
       env = [
         "XCURSOR_SIZE,24"

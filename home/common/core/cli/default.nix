@@ -25,17 +25,17 @@
     curl
     fd # Required for fzf
     glib # MTP for USB Phone mounting
-    git-extras
     gnumake
     libnotify
     libxcrypt
     ncdu
-    p7zip
     pciutils
-    tldr
-    unrar
-    unzip
     usbutils
-    zip
+
+    age
+    bottom
+
+    man-pages
+    man-pages-posix
   ];
 }

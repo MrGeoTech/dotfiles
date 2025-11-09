@@ -8,8 +8,6 @@
   imports = [
     ./cli
     ./shells
-    ./apps.nix
-    ./code.nix
     ./fonts.nix
   ];
 
@@ -21,6 +19,9 @@
       ];
     };
   };
+
+  home.packages = with pkgs; [
+  ];
 
   nix = {
     package = lib.mkDefault pkgs.nix;

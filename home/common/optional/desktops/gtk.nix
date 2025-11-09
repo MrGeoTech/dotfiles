@@ -30,7 +30,7 @@
   home.pointerCursor = {
     gtk.enable = true;
     hyprcursor.enable = true;
-    x11.enable = true;
+    #x11.enable = true;
     package = pkgs.bibata-cursors;
     name = "Bibata-Original-Ice";
     size = 24;

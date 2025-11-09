@@ -1,4 +1,4 @@
-{
+{pkgs, ...} : {
   programs.git = {
     enable = true;
     settings = {
@@ -28,4 +28,7 @@
         ".env"
     ];
   };
+  home.packages = with pkgs; [
+    git-extras
+  ];
 }
