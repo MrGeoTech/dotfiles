@@ -7,7 +7,6 @@
     ./common/core
     #./common/optional/code.nix
     ./common/optional/apps
-    ./common/optional/misc/gammastep.nix
     ./common/optional/desktops/hyprland
     ./common/optional/desktops/waybar
     ./common/optional/desktops/gtk.nix
