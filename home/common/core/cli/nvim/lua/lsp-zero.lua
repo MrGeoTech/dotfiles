@@ -93,6 +93,7 @@ vim.lsp.enable('glsl_analyzer')
 vim.lsp.enable('html')
 vim.lsp.enable('htmx')
 vim.lsp.enable('kotlin_language_server')
+vim.lsp.enable('jdtls')
 vim.lsp.enable('lua_ls')
 vim.lsp.enable('marksman')
 vim.lsp.enable('matlab_ls')
@@ -116,8 +117,8 @@ cmp.setup({
     end,
   },
   mapping = cmp.mapping.preset.insert({
-    ['<C-u>'] = cmp.mapping.select_prev_item(cmp_select),
-    ['<C-m>'] = cmp.mapping.select_next_item(cmp_select),
+    ['<C-k>'] = cmp.mapping.select_prev_item(cmp_select),
+    ['<C-j>'] = cmp.mapping.select_next_item(cmp_select),
     ['<Enter>'] = cmp.mapping.confirm({ select = true }),
     ["<C-Space>"] = cmp.mapping.complete(),
     ['<Tab>'] = nil,

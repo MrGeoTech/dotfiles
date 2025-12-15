@@ -37,7 +37,6 @@
     EDITOR = "nvim";
     TERM = "xterm-256color";
     USE_EDITOR = "$EDITOR";
-    VISUAL = "$EDITOR";
     BROWSER = "vivaldi";
   };
 }
