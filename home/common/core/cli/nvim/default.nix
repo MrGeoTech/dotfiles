@@ -25,7 +25,7 @@ in {
     erlang-language-platform
     glsl_analyzer
     htmx-lsp
-    #jdt-language-server
+    jdt-language-server
     kotlin-language-server
     ltex-ls
     lua-language-server
@@ -113,11 +113,6 @@ in {
         type = "viml";
         config = builtins.readFile(./lua/markdown.vim);
       }
-      #{
-      #  plugin = nvim-jdtls;
-      #  type = "lua";
-      #  config = builtins.readFile(./lua/jdtls.lua);
-      #}
       {
         plugin = nvim-treesitter.withAllGrammars;
         type = "lua";
@@ -138,6 +133,7 @@ in {
         type = "lua";
         config = builtins.readFile(./lua/fugitive.lua);
       }
+      nvim-jdtls
       neoconf-nvim
       formatter-nvim
       vim-wakatime
