@@ -56,6 +56,8 @@ in {
     vimAlias = true;
     
     extraLuaConfig = ''
+      vim.g.mapLeader = "<Space>"
+
       vim.o.exrc = true
       vim.o.secure = true
     
@@ -138,6 +140,7 @@ in {
       formatter-nvim
       vim-wakatime
       vimtex
+      zoxide-vim
     ];
   };
 }

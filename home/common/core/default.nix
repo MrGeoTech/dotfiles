@@ -15,7 +15,7 @@
     config = {
       allowUnfree = true;
       permittedInsecurePackages = [
-        #"electron-27.3.11"
+        #"gradle-7.6.6"
       ];
     };
   };
