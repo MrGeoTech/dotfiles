@@ -141,6 +141,7 @@ in {
       vim-wakatime
       vimtex
       zoxide-vim
+      editorconfig-nvim
     ];
   };
 }
