@@ -79,6 +79,26 @@ vim.lsp.config('ltex-ls', {
   },
 })
 
+-- Setup strict google style for c/c++
+vim.lsp.config('clangd', {
+  cmd = {
+    "clangd",
+    "--fallback-style=Google",
+  },
+})
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+  callback = function()
+    vim.lsp.buf.format({
+      async = false,
+      filter = function(client)
+        return client.name == "clangd"
+      end,
+    })
+  end,
+})
+
+
 -- You'll find a list of language servers here:
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
 -- These are example language servers. 
@@ -105,22 +125,43 @@ vim.lsp.enable('vhdl_ls')
 vim.lsp.enable('zls')
 vim.lsp.enable('ltex')
 
+vim.api.nvim_create_autocmd('LspAttach', {
+  callback = function(event)
+    local map = function(mode, lhs, rhs)
+      vim.keymap.set(mode, lhs, rhs, { buffer = event.buf })
+    end
+
+    -- Custom (non-default) LSP mappings
+    map('n', 'gd', vim.lsp.buf.definition)
+    map('n', 'grd', vim.lsp.buf.declaration)
+    map('n', 'grt', vim.lsp.buf.type_definition)
+    map('n', 'gE', vim.diagnostic.open_float)
+    map({ 'n', 'x' }, 'gq', function()
+      vim.lsp.buf.format({ async = true })
+    end)
+  end,
+})
+
 local cmp = require('cmp')
 
 cmp.setup({
   sources = {
-    {name = 'nvim_lsp'},
+    { name = 'nvim_lsp' },
   },
+
   snippet = {
     expand = function(args)
       vim.snippet.expand(args.body)
     end,
   },
+
   mapping = cmp.mapping.preset.insert({
-    ['<C-k>'] = cmp.mapping.select_prev_item(cmp_select),
-    ['<C-j>'] = cmp.mapping.select_next_item(cmp_select),
-    ['<Enter>'] = cmp.mapping.confirm({ select = true }),
-    ["<C-Space>"] = cmp.mapping.complete(),
+    ['<C-k>'] = cmp.mapping.select_prev_item(),
+    ['<C-j>'] = cmp.mapping.select_next_item(),
+    ['<CR>']  = cmp.mapping.confirm({ select = true }),
+    ['<C-Space>'] = cmp.mapping.complete(),
+
+    -- explicitly disable tab completion
     ['<Tab>'] = nil,
     ['<S-Tab>'] = nil,
   }),
