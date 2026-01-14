@@ -1,4 +1,4 @@
-{ pkgs, inputs, outputs, ... }:
+{ pkgs, inputs, outputs, stdenv, ... }:
 {
     imports = [
         ./ghostty
@@ -6,6 +6,7 @@
         ./gpg.nix
         ./gaming.nix
         ./vivaldi.nix
+        ./labrador.nix
     ];
     home.packages = with pkgs; [
         # System utilities
@@ -13,6 +14,7 @@
         libgcc
         libreoffice-fresh
         udisks
+        flatpak
         # User Apps
         drawio
         google-chrome # Needed to take certain tests
@@ -20,6 +22,9 @@
         kicad
         obs-studio
         octaveFull
+        jetbrains.idea # Good for java 25 development
+        gradle_9
+        openjdk25
         #quartus-prime-lite
         signal-desktop
         vlc
@@ -29,6 +34,7 @@
 
     home.sessionVariables = {
         LM_LICENSE_FILE = "/home/mrgeotech/.secrets/License.dat";
+        JAVA_HOME = "${pkgs.openjdk25}/lib/openjdk";
     };
 
     home.shellAliases = {

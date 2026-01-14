@@ -11,6 +11,7 @@
         #./shared.nix
         ./steam.nix
         ./virtualisation.nix
+        ./labrador.nix
         #./wireshark.nix
     ];
 

@@ -7,19 +7,16 @@
         hardware.url = "github:nixos/nixos-hardware";
         nix-colors.url = "github:misterio77/nix-colors";
 
-        # home-manager
         home-manager = {
             url = "github:nix-community/home-manager";
             inputs.nixpkgs.follows = "nixpkgs";
         };
 
-        # secrets
         sops-nix = {
             url = "github:Mic92/sops-nix";
             inputs.nixpkgs.follows = "nixpkgs";
         };
 
-        # hyprland
         hyprland = {
             url = "github:hyprwm/hyprland";
             inputs.nixpkgs.follows = "nixpkgs";
@@ -29,17 +26,19 @@
             inputs.hyprland.follows = "hyprland";
         };
 
-        # catppuccin
         catppuccin.url = "github:catppuccin/nix";
 
-        # ghostty
         ghostty = {
             url = "github:ghostty-org/ghostty";
         };
 
-        # winapps
         winapps = {
             url = "github:winapps-org/winapps";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
+        
+        labrador = {
+            url = "github:espotek-org/Labrador";
             inputs.nixpkgs.follows = "nixpkgs";
         };
     };

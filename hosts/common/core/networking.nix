@@ -1,7 +1,5 @@
 {
   networking = {
-    # Make sure wireless is disabled
-    wireless.enable = false;
     # Configure NetworkManager
     networkmanager = {
       enable = true;
