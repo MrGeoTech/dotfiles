@@ -18,6 +18,7 @@ in
     enable = true;
     enableCompletion = true;
 
+    dotDir = "${config.xdg.configHome}/zsh";
     autocd = true;
     history.extended = true;
     autosuggestion.enable = true;

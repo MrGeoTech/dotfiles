@@ -79,6 +79,17 @@ in {
       })
     
       vim.keymap.set("n", "<leader>e", ":Ex<CR>")
+
+      -- Treesitter
+      vim.api.nvim_create_autocmd('FileType', {
+        pattern = { '*' },
+        callback = function() vim.treesitter.start() end,
+      })
+      vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+      require'nvim-treesitter'.setup {
+        ensure_installed = "all",  -- or a list: {"lua", "python", "c"}
+        auto_install = true,       -- automatically install missing parsers
+      }
     '';
     
     plugins = with pkgs.vimPlugins; [
@@ -116,11 +127,6 @@ in {
         config = builtins.readFile(./lua/markdown.vim);
       }
       {
-        plugin = nvim-treesitter.withAllGrammars;
-        type = "lua";
-        config = builtins.readFile(./lua/treesitter.lua);
-      }
-      {
         plugin = telescope-nvim;
         type = "lua";
         config = builtins.readFile(./lua/telescope.lua);
@@ -135,6 +141,7 @@ in {
         type = "lua";
         config = builtins.readFile(./lua/fugitive.lua);
       }
+      nvim-treesitter.withAllGrammars
       nvim-jdtls
       neoconf-nvim
       formatter-nvim

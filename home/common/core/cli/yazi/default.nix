@@ -6,6 +6,7 @@
         enableBashIntegration = true;
         enableZshIntegration = true;
         settings = {
+            theme = ./themes/theme.toml;
             mgr = {
                 show_hidden = true;
                 sort_by = "alphabetical";
@@ -16,10 +17,9 @@
         };
     };
 
-    # copy themes
-    home.file.".config/yazi" = {
-        recursive = true;
-        source = ./themes;
+    # Copy tmTheme
+    home.file.".config/yazi/Catppuccin-mocha.tmTheme" = {
+        source = ./themes/Catppuccin-mocha.tmTheme;
     };
 
     # aliases
