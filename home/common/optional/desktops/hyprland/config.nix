@@ -123,6 +123,7 @@ in {
         "$mainMod, B, exec, $BROWSER"
         "$mainMod, F, exec, ghostty -e yazi"
         "$mainMod, G, exec, steam"
+        "$mainMod, Y, exec, flatpak run com.hypixel.HytaleLauncher"
         "$mainMod, Q, killactive,"
         "$subMod , Q, forcekillactive,"
         "$mainMod, E, exit,"
