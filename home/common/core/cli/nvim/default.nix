@@ -15,6 +15,7 @@ let
     '';
   };
 
+  mdplotModule = import ./mdplot.nix;
 in {
   # https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
   home.packages = with pkgs; [
@@ -151,4 +152,8 @@ in {
       editorconfig-nvim
     ];
   };
+
+  imports = [
+    mdplotModule
+  ];
 }
