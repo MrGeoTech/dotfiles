@@ -35,5 +35,21 @@
     wlogout
     xdg-desktop-portal-gtk
     xdg-desktop-portal-hyprland
+    gcr # Provides org.gnome.keyring.SystemPrompter
   ];
+
+  # Auto-login keyring
+  services.gnome-keyring.enable = true;
+
+  # Notification Handling
+  services.mako = {
+    enable = true;
+    settings = {
+      anchor = "top-right";
+      default-timeout = 5000;
+      layer = "overlay";
+      margin = 10;
+      border-radius = 6;
+    };
+  };
 }

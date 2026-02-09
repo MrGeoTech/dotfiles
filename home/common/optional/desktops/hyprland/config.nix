@@ -28,9 +28,9 @@ in {
       monitor = monitorConfig;
       exec-once = [
         "hyprpaper"
-        #"hyprctl setcursor  24"
         "systemctl --user start hyprpolkitagent"
         "sh /home/mrgeotech/.config/hypr/scripts/wallpaper.sh"
+        "gnome-keyring-daemon --start --components=secrets"
         "$BROWSER"
         "bash -c \"sleep 0.5 && hyprlock\""
       ];

@@ -10,6 +10,7 @@
   };
 
   security.pam.services.hyprlock = {};
+  security.pam.services.login.enableGnomeKeyring = true;
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   xdg.portal = {
