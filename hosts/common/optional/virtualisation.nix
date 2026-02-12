@@ -23,11 +23,13 @@
   };
   services.spice-vdagentd.enable = true;
   programs.virt-manager.enable = true;
+  networking.firewall.trustedInterfaces = [ "virbr0" ];
   
-  environment.systemPackages = [
+  environment.systemPackages = with pkgs; [
   #  inputs.winapps.packages.${pkgs.system}.winapps
   #  inputs.winapps.packages.${pkgs.system}.winapps-launcher
   #  pkgs.freerdp
-    pkgs.bottles
+    bottles
+    dnsmasq
   ];
 }
