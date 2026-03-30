@@ -11,6 +11,7 @@
 
   security.pam.services.hyprlock = {};
   security.pam.services.login.enableGnomeKeyring = true;
+  security.pam.services.hyprland.enableGnomeKeyring = true;
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   xdg.portal = {

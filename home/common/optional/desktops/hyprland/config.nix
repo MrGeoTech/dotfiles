@@ -107,9 +107,9 @@ in {
         key_press_enables_dpms = true;
       };
       # Window rules
-      windowrulev2 = [
-        "dimaround,title:^(.*rofi.*)$"
-        "noblur,focus:1"
+      windowrule = [
+        "match:title ^(.*rofi.*)$, dim_around on"
+        "match:focus 1, no_blur on"
       ];
       # Animations
       animation = "global, 1, 3, default";

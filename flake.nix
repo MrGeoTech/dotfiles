@@ -37,10 +37,10 @@
             inputs.nixpkgs.follows = "nixpkgs";
         };
         
-        labrador = {
-            url = "github:espotek-org/Labrador";
-            inputs.nixpkgs.follows = "nixpkgs";
-        };
+#        labrador = {
+#            url = "github:espotek-org/Labrador?rev=c2dd3c6b8827dbaee2ccce4bc81ad69fb12987e6";
+#            inputs.nixpkgs.follows = "nixpkgs";
+#        };
     };
 
     outputs = {
