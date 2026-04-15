@@ -7,6 +7,7 @@
     imports = [
         ./fonts.nix
         ./hyprland.nix
+        ./keychron.nix
         ./pipewire.nix
         #./shared.nix
         ./steam.nix
