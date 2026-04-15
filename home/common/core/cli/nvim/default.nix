@@ -56,7 +56,7 @@ in {
     viAlias = true;
     vimAlias = true;
     
-    extraLuaConfig = ''
+    initLua = ''
       vim.g.mapLeader = "<Space>"
 
       vim.o.exrc = true

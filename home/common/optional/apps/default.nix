@@ -21,7 +21,10 @@
         inkscape
         kicad
         obs-studio
-        octaveFull
+        (octaveFull.withPackages(opkgs: with opkgs; [
+          statistics
+          signal
+        ]))
         jetbrains.idea # Good for java 25 development
         gradle_9
         openjdk25

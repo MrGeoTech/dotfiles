@@ -84,6 +84,7 @@ vim.lsp.config('clangd', {
   cmd = {
     "clangd",
     "--fallback-style=Google",
+    "--query-driver=**/bin/clang,**/bin/gcc",
   },
 })
 

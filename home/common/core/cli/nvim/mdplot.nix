@@ -147,7 +147,7 @@ in
   programs.neovim = {
     enable = true;
 
-    extraLuaConfig = ''
+    initLua = ''
       local function plot_md()
         local buf = vim.api.nvim_get_current_buf()
         local lines = vim.api.nvim_buf_get_lines(buf, 0, -1, false)

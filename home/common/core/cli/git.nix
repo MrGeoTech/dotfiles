@@ -20,6 +20,7 @@
       #    smtpPassword = "/HxMou3HXfi+RaEAxry8w6Ws0tybPdVPHJxpSNvAC0I="; # This is a localhost only password so should be fine
       #};
     };
+    signing.format = "openpgp";
     lfs.enable = true;
     ignores = [
       ".direnv/"
