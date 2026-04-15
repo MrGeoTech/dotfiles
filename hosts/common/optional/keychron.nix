@@ -1,5 +1,5 @@
 {
-  harware.keyboard.qmk = {
+  hardware.keyboard.qmk = {
     enable = true;
     keychronSupport = true;
   };
