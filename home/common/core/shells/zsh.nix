@@ -31,7 +31,7 @@ in
     oh-my-zsh = {
       enable = true;
       plugins = [ "git" ];
-      custom = "$HOME/.config/oh-my-zsh/custom";
+      custom = "${config.xdg.configHome}/oh-my-zsh/custom";
       theme = "catppuccin";
     };
   };

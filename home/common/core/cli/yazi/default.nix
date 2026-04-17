@@ -22,9 +22,4 @@
   home.file.".config/yazi/Catppuccin-mocha.tmTheme" = {
     source = ./themes/Catppuccin-mocha.tmTheme;
   };
-
-  # aliases
-  #home.shellAliases = {
-  #  y = "yazi";
-  #};
 }
