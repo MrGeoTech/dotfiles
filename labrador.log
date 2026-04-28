@@ -1,0 +1,579 @@
+Using udevCheckHook
+Running phase: qtPreHook
+@nix { "action": "setPhase", "phase": "qtPreHook" }
+Running phase: qmakePrePhase
+@nix { "action": "setPhase", "phase": "qmakePrePhase" }
+Running phase: unpackPhase
+@nix { "action": "setPhase", "phase": "unpackPhase" }
+unpacking source archive /nix/store/ww22qbsivk5hxklkkn2s7kkqw9r980v0-source
+source root is source
+Running phase: patchPhase
+@nix { "action": "setPhase", "phase": "patchPhase" }
+Running phase: updateAutotoolsGnuConfigScriptsPhase
+@nix { "action": "setPhase", "phase": "updateAutotoolsGnuConfigScriptsPhase" }
+Running phase: configurePhase
+@nix { "action": "setPhase", "phase": "configurePhase" }
+Info: creating stash file /build/source/Desktop_Interface/.qmake.stash
+sh: git: not found
+Project MESSAGE: Building for Linux (x86_64)
+Running phase: buildPhase
+@nix { "action": "setPhase", "phase": "buildPhase" }
+/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/bin/uic ui_files_desktop/mainwindow.ui -o ui/ui_mainwindow.h
+/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/bin/uic ui_files_desktop/scoperangeenterdialog.ui -o ui/ui_scoperangeenterdialog.h
+/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/bin/uic ui_files_desktop/daqform.ui -o ui/ui_daqform.h
+/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/bin/uic ui_files_desktop/daqloadprompt.ui -o ui/ui_daqloadprompt.h
+g++ -c -pipe -std=gnu++1y -Wall -Wextra -D_REENTRANT -fPIC -DQCP_VER=1 -DHAVE_CONFIG_H -DPLATFORM_LINUX -DQT_NO_DEBUG -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB -I. -Iui_elements -Iui_elements/qcp1 -I../libdfuprog -I../libdfuprog/dfu-programmer/src -I/nix/store/xgvlkhckizm184d1n8qndi9phqlk8bfi-libusb-1.0.29-dev/include/libusb-1.0 -I/nix/store/cji8ic73b581rzmnr8j5483acn41j6j3-fftw-double-3.3.10-dev/include -I/nix/store/p37sp8dd7cjbxsqvqak25yk8yzqihmdc-eigen-3.4.1/include/eigen3 -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtPrintSupport -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtWidgets -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtGui -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtCore -Imoc -I/nix/store/wznk7qyvi5v6qwd4a673v3f6zx6ngn9i-libglvnd-1.7.0-dev/include -Iui -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/mkspecs/linux-g++ -o buffercontrol.o ui_elements/buffercontrol.cpp
+g++ -c -pipe -std=gnu++1y -Wall -Wextra -D_REENTRANT -fPIC -DQCP_VER=1 -DHAVE_CONFIG_H -DPLATFORM_LINUX -DQT_NO_DEBUG -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB -I. -Iui_elements -Iui_elements/qcp1 -I../libdfuprog -I../libdfuprog/dfu-programmer/src -I/nix/store/xgvlkhckizm184d1n8qndi9phqlk8bfi-libusb-1.0.29-dev/include/libusb-1.0 -I/nix/store/cji8ic73b581rzmnr8j5483acn41j6j3-fftw-double-3.3.10-dev/include -I/nix/store/p37sp8dd7cjbxsqvqak25yk8yzqihmdc-eigen-3.4.1/include/eigen3 -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtPrintSupport -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtWidgets -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtGui -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtCore -Imoc -I/nix/store/wznk7qyvi5v6qwd4a673v3f6zx6ngn9i-libglvnd-1.7.0-dev/include -Iui -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/mkspecs/linux-g++ -o cursorenabler.o ui_elements/cursorenabler.cpp
+g++ -c -pipe -std=gnu++1y -Wall -Wextra -D_REENTRANT -fPIC -DQCP_VER=1 -DHAVE_CONFIG_H -DPLATFORM_LINUX -DQT_NO_DEBUG -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB -I. -Iui_elements -Iui_elements/qcp1 -I../libdfuprog -I../libdfuprog/dfu-programmer/src -I/nix/store/xgvlkhckizm184d1n8qndi9phqlk8bfi-libusb-1.0.29-dev/include/libusb-1.0 -I/nix/store/cji8ic73b581rzmnr8j5483acn41j6j3-fftw-double-3.3.10-dev/include -I/nix/store/p37sp8dd7cjbxsqvqak25yk8yzqihmdc-eigen-3.4.1/include/eigen3 -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtPrintSupport -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtWidgets -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtGui -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtCore -Imoc -I/nix/store/wznk7qyvi5v6qwd4a673v3f6zx6ngn9i-libglvnd-1.7.0-dev/include -Iui -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/mkspecs/linux-g++ -o deviceconnecteddisplay.o ui_elements/deviceconnecteddisplay.cpp
+g++ -c -pipe -std=gnu++1y -Wall -Wextra -D_REENTRANT -fPIC -DQCP_VER=1 -DHAVE_CONFIG_H -DPLATFORM_LINUX -DQT_NO_DEBUG -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB -I. -Iui_elements -Iui_elements/qcp1 -I../libdfuprog -I../libdfuprog/dfu-programmer/src -I/nix/store/xgvlkhckizm184d1n8qndi9phqlk8bfi-libusb-1.0.29-dev/include/libusb-1.0 -I/nix/store/cji8ic73b581rzmnr8j5483acn41j6j3-fftw-double-3.3.10-dev/include -I/nix/store/p37sp8dd7cjbxsqvqak25yk8yzqihmdc-eigen-3.4.1/include/eigen3 -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtPrintSupport -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtWidgets -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtGui -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtCore -Imoc -I/nix/store/wznk7qyvi5v6qwd4a673v3f6zx6ngn9i-libglvnd-1.7.0-dev/include -Iui -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/mkspecs/linux-g++ -o espocombobox.o ui_elements/espocombobox.cpp
+g++ -c -pipe -std=gnu++1y -Wall -Wextra -D_REENTRANT -fPIC -DQCP_VER=1 -DHAVE_CONFIG_H -DPLATFORM_LINUX -DQT_NO_DEBUG -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB -I. -Iui_elements -Iui_elements/qcp1 -I../libdfuprog -I../libdfuprog/dfu-programmer/src -I/nix/store/xgvlkhckizm184d1n8qndi9phqlk8bfi-libusb-1.0.29-dev/include/libusb-1.0 -I/nix/store/cji8ic73b581rzmnr8j5483acn41j6j3-fftw-double-3.3.10-dev/include -I/nix/store/p37sp8dd7cjbxsqvqak25yk8yzqihmdc-eigen-3.4.1/include/eigen3 -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtPrintSupport -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtWidgets -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtGui -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtCore -Imoc -I/nix/store/wznk7qyvi5v6qwd4a673v3f6zx6ngn9i-libglvnd-1.7.0-dev/include -Iui -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/mkspecs/linux-g++ -o esposlider.o ui_elements/esposlider.cpp
+g++ -c -pipe -std=gnu++1y -Wall -Wextra -D_REENTRANT -fPIC -DQCP_VER=1 -DHAVE_CONFIG_H -DPLATFORM_LINUX -DQT_NO_DEBUG -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB -I. -Iui_elements -Iui_elements/qcp1 -I../libdfuprog -I../libdfuprog/dfu-programmer/src -I/nix/store/xgvlkhckizm184d1n8qndi9phqlk8bfi-libusb-1.0.29-dev/include/libusb-1.0 -I/nix/store/cji8ic73b581rzmnr8j5483acn41j6j3-fftw-double-3.3.10-dev/include -I/nix/store/p37sp8dd7cjbxsqvqak25yk8yzqihmdc-eigen-3.4.1/include/eigen3 -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtPrintSupport -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtWidgets -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtGui -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtCore -Imoc -I/nix/store/wznk7qyvi5v6qwd4a673v3f6zx6ngn9i-libglvnd-1.7.0-dev/include -Iui -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/mkspecs/linux-g++ -o espospinbox.o ui_elements/espospinbox.cpp
+g++ -c -pipe -std=gnu++1y -Wall -Wextra -D_REENTRANT -fPIC -DQCP_VER=1 -DHAVE_CONFIG_H -DPLATFORM_LINUX -DQT_NO_DEBUG -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB -I. -Iui_elements -Iui_elements/qcp1 -I../libdfuprog -I../libdfuprog/dfu-programmer/src -I/nix/store/xgvlkhckizm184d1n8qndi9phqlk8bfi-libusb-1.0.29-dev/include/libusb-1.0 -I/nix/store/cji8ic73b581rzmnr8j5483acn41j6j3-fftw-double-3.3.10-dev/include -I/nix/store/p37sp8dd7cjbxsqvqak25yk8yzqihmdc-eigen-3.4.1/include/eigen3 -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtPrintSupport -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtWidgets -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtGui -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtCore -Imoc -I/nix/store/wznk7qyvi5v6qwd4a673v3f6zx6ngn9i-libglvnd-1.7.0-dev/include -Iui -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/mkspecs/linux-g++ -o noclosemenu.o ui_elements/noclosemenu.cpp
+g++ -c -pipe -std=gnu++1y -Wall -Wextra -D_REENTRANT -fPIC -DQCP_VER=1 -DHAVE_CONFIG_H -DPLATFORM_LINUX -DQT_NO_DEBUG -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB -I. -Iui_elements -Iui_elements/qcp1 -I../libdfuprog -I../libdfuprog/dfu-programmer/src -I/nix/store/xgvlkhckizm184d1n8qndi9phqlk8bfi-libusb-1.0.29-dev/include/libusb-1.0 -I/nix/store/cji8ic73b581rzmnr8j5483acn41j6j3-fftw-double-3.3.10-dev/include -I/nix/store/p37sp8dd7cjbxsqvqak25yk8yzqihmdc-eigen-3.4.1/include/eigen3 -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtPrintSupport -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtWidgets -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtGui -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtCore -Imoc -I/nix/store/wznk7qyvi5v6qwd4a673v3f6zx6ngn9i-libglvnd-1.7.0-dev/include -Iui -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/mkspecs/linux-g++ -o qcustomplot.o ui_elements/qcp1/qcustomplot.cpp
+g++ -c -pipe -std=gnu++1y -Wall -Wextra -D_REENTRANT -fPIC -DQCP_VER=1 -DHAVE_CONFIG_H -DPLATFORM_LINUX -DQT_NO_DEBUG -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB -I. -Iui_elements -Iui_elements/qcp1 -I../libdfuprog -I../libdfuprog/dfu-programmer/src -I/nix/store/xgvlkhckizm184d1n8qndi9phqlk8bfi-libusb-1.0.29-dev/include/libusb-1.0 -I/nix/store/cji8ic73b581rzmnr8j5483acn41j6j3-fftw-double-3.3.10-dev/include -I/nix/store/p37sp8dd7cjbxsqvqak25yk8yzqihmdc-eigen-3.4.1/include/eigen3 -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtPrintSupport -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtWidgets -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtGui -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtCore -Imoc -I/nix/store/wznk7qyvi5v6qwd4a673v3f6zx6ngn9i-libglvnd-1.7.0-dev/include -Iui -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/mkspecs/linux-g++ -o siprint.o ui_elements/siprint.cpp
+g++ -c -pipe -std=gnu++1y -Wall -Wextra -D_REENTRANT -fPIC -DQCP_VER=1 -DHAVE_CONFIG_H -DPLATFORM_LINUX -DQT_NO_DEBUG -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB -I. -Iui_elements -Iui_elements/qcp1 -I../libdfuprog -I../libdfuprog/dfu-programmer/src -I/nix/store/xgvlkhckizm184d1n8qndi9phqlk8bfi-libusb-1.0.29-dev/include/libusb-1.0 -I/nix/store/cji8ic73b581rzmnr8j5483acn41j6j3-fftw-double-3.3.10-dev/include -I/nix/store/p37sp8dd7cjbxsqvqak25yk8yzqihmdc-eigen-3.4.1/include/eigen3 -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtPrintSupport -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtWidgets -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtGui -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtCore -Imoc -I/nix/store/wznk7qyvi5v6qwd4a673v3f6zx6ngn9i-libglvnd-1.7.0-dev/include -Iui -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/mkspecs/linux-g++ -o timedtickbox.o ui_elements/timedtickbox.cpp
+g++ -c -pipe -std=gnu++1y -Wall -Wextra -D_REENTRANT -fPIC -DQCP_VER=1 -DHAVE_CONFIG_H -DPLATFORM_LINUX -DQT_NO_DEBUG -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB -I. -Iui_elements -Iui_elements/qcp1 -I../libdfuprog -I../libdfuprog/dfu-programmer/src -I/nix/store/xgvlkhckizm184d1n8qndi9phqlk8bfi-libusb-1.0.29-dev/include/libusb-1.0 -I/nix/store/cji8ic73b581rzmnr8j5483acn41j6j3-fftw-double-3.3.10-dev/include -I/nix/store/p37sp8dd7cjbxsqvqak25yk8yzqihmdc-eigen-3.4.1/include/eigen3 -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtPrintSupport -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtWidgets -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtGui -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtCore -Imoc -I/nix/store/wznk7qyvi5v6qwd4a673v3f6zx6ngn9i-libglvnd-1.7.0-dev/include -Iui -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/mkspecs/linux-g++ -o voltagespinbox.o ui_elements/voltagespinbox.cpp
+g++ -c -pipe -std=gnu++1y -Wall -Wextra -D_REENTRANT -fPIC -DQCP_VER=1 -DHAVE_CONFIG_H -DPLATFORM_LINUX -DQT_NO_DEBUG -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB -I. -Iui_elements -Iui_elements/qcp1 -I../libdfuprog -I../libdfuprog/dfu-programmer/src -I/nix/store/xgvlkhckizm184d1n8qndi9phqlk8bfi-libusb-1.0.29-dev/include/libusb-1.0 -I/nix/store/cji8ic73b581rzmnr8j5483acn41j6j3-fftw-double-3.3.10-dev/include -I/nix/store/p37sp8dd7cjbxsqvqak25yk8yzqihmdc-eigen-3.4.1/include/eigen3 -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtPrintSupport -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtWidgets -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtGui -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtCore -Imoc -I/nix/store/wznk7qyvi5v6qwd4a673v3f6zx6ngn9i-libglvnd-1.7.0-dev/include -Iui -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/mkspecs/linux-g++ -o swipeystack.o ui_elements/swipeystack.cpp
+gcc -c -pipe -O2 -Wall -Wextra -D_REENTRANT -fPIC -DQCP_VER=1 -DHAVE_CONFIG_H -DPLATFORM_LINUX -DQT_NO_DEBUG -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB -I. -Iui_elements -Iui_elements/qcp1 -I../libdfuprog -I../libdfuprog/dfu-programmer/src -I/nix/store/xgvlkhckizm184d1n8qndi9phqlk8bfi-libusb-1.0.29-dev/include/libusb-1.0 -I/nix/store/cji8ic73b581rzmnr8j5483acn41j6j3-fftw-double-3.3.10-dev/include -I/nix/store/p37sp8dd7cjbxsqvqak25yk8yzqihmdc-eigen-3.4.1/include/eigen3 -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtPrintSupport -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtWidgets -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtGui -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtCore -Imoc -I/nix/store/wznk7qyvi5v6qwd4a673v3f6zx6ngn9i-libglvnd-1.7.0-dev/include -Iui -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/mkspecs/linux-g++ -o libdfuprog.o ../libdfuprog/libdfuprog.c
+gcc -c -pipe -O2 -Wall -Wextra -D_REENTRANT -fPIC -DQCP_VER=1 -DHAVE_CONFIG_H -DPLATFORM_LINUX -DQT_NO_DEBUG -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB -I. -Iui_elements -Iui_elements/qcp1 -I../libdfuprog -I../libdfuprog/dfu-programmer/src -I/nix/store/xgvlkhckizm184d1n8qndi9phqlk8bfi-libusb-1.0.29-dev/include/libusb-1.0 -I/nix/store/cji8ic73b581rzmnr8j5483acn41j6j3-fftw-double-3.3.10-dev/include -I/nix/store/p37sp8dd7cjbxsqvqak25yk8yzqihmdc-eigen-3.4.1/include/eigen3 -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtPrintSupport -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtWidgets -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtGui -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtCore -Imoc -I/nix/store/wznk7qyvi5v6qwd4a673v3f6zx6ngn9i-libglvnd-1.7.0-dev/include -Iui -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/mkspecs/linux-g++ -o arguments.o ../libdfuprog/dfu-programmer/src/arguments.c
+[01m[Kui_elements/espospinbox.cpp:[m[K In member function '[01m[Kvirtual QValidator::State espoSpinBox::[01;32m[Kvalidate[m[K(QString&, int&) const[m[K':
+[01m[Kui_elements/espospinbox.cpp:65:50:[m[K [01;35m[Kwarning: [m[Kunused parameter '[01m[Ktext[m[K' [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wno-unused-parameter-Wunused-parameter]8;;[m[K]
+   65 | QValidator::State espoSpinBox::validate([01;35m[KQString& text[m[K, int& pos) const
+      |                                         [01;35m[K~~~~~~~~~^~~~[m[K
+[01m[Kui_elements/espospinbox.cpp:65:61:[m[K [01;35m[Kwarning: [m[Kunused parameter '[01m[Kpos[m[K' [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wno-unused-parameter-Wunused-parameter]8;;[m[K]
+   65 | QValidator::State espoSpinBox::validate(QString& text, [01;35m[Kint& pos[m[K) const
+      |                                                        [01;35m[K~~~~~^~~[m[K
+[01m[Kui_elements/esposlider.cpp:[m[K In member function '[01m[Kvirtual void espoSlider::[01;32m[KresizeEvent[m[K(QResizeEvent*)[m[K':
+[01m[Kui_elements/esposlider.cpp:31:44:[m[K [01;35m[Kwarning: [m[Kunused parameter '[01m[Kevent[m[K' [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wno-unused-parameter-Wunused-parameter]8;;[m[K]
+   31 | void espoSlider::resizeEvent([01;35m[KQResizeEvent *event[m[K){
+      |                              [01;35m[K~~~~~~~~~~~~~~^~~~~[m[K
+[01m[Kui_elements/esposlider.cpp:[m[K In member function '[01m[Kvirtual void espoSlider::[01;32m[KmoveEvent[m[K(QMoveEvent*)[m[K':
+[01m[Kui_elements/esposlider.cpp:37:40:[m[K [01;35m[Kwarning: [m[Kunused parameter '[01m[Kevent[m[K' [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wno-unused-parameter-Wunused-parameter]8;;[m[K]
+   37 | void espoSlider::moveEvent([01;35m[KQMoveEvent *event[m[K){
+      |                            [01;35m[K~~~~~~~~~~~~^~~~~[m[K
+gcc -c -pipe -O2 -Wall -Wextra -D_REENTRANT -fPIC -DQCP_VER=1 -DHAVE_CONFIG_H -DPLATFORM_LINUX -DQT_NO_DEBUG -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB -I. -Iui_elements -Iui_elements/qcp1 -I../libdfuprog -I../libdfuprog/dfu-programmer/src -I/nix/store/xgvlkhckizm184d1n8qndi9phqlk8bfi-libusb-1.0.29-dev/include/libusb-1.0 -I/nix/store/cji8ic73b581rzmnr8j5483acn41j6j3-fftw-double-3.3.10-dev/include -I/nix/store/p37sp8dd7cjbxsqvqak25yk8yzqihmdc-eigen-3.4.1/include/eigen3 -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtPrintSupport -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtWidgets -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtGui -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtCore -Imoc -I/nix/store/wznk7qyvi5v6qwd4a673v3f6zx6ngn9i-libglvnd-1.7.0-dev/include -Iui -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/mkspecs/linux-g++ -o atmel.o ../libdfuprog/dfu-programmer/src/atmel.c
+gcc -c -pipe -O2 -Wall -Wextra -D_REENTRANT -fPIC -DQCP_VER=1 -DHAVE_CONFIG_H -DPLATFORM_LINUX -DQT_NO_DEBUG -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB -I. -Iui_elements -Iui_elements/qcp1 -I../libdfuprog -I../libdfuprog/dfu-programmer/src -I/nix/store/xgvlkhckizm184d1n8qndi9phqlk8bfi-libusb-1.0.29-dev/include/libusb-1.0 -I/nix/store/cji8ic73b581rzmnr8j5483acn41j6j3-fftw-double-3.3.10-dev/include -I/nix/store/p37sp8dd7cjbxsqvqak25yk8yzqihmdc-eigen-3.4.1/include/eigen3 -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtPrintSupport -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtWidgets -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtGui -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtCore -Imoc -I/nix/store/wznk7qyvi5v6qwd4a673v3f6zx6ngn9i-libglvnd-1.7.0-dev/include -Iui -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/mkspecs/linux-g++ -o commands.o ../libdfuprog/dfu-programmer/src/commands.c
+gcc -c -pipe -O2 -Wall -Wextra -D_REENTRANT -fPIC -DQCP_VER=1 -DHAVE_CONFIG_H -DPLATFORM_LINUX -DQT_NO_DEBUG -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB -I. -Iui_elements -Iui_elements/qcp1 -I../libdfuprog -I../libdfuprog/dfu-programmer/src -I/nix/store/xgvlkhckizm184d1n8qndi9phqlk8bfi-libusb-1.0.29-dev/include/libusb-1.0 -I/nix/store/cji8ic73b581rzmnr8j5483acn41j6j3-fftw-double-3.3.10-dev/include -I/nix/store/p37sp8dd7cjbxsqvqak25yk8yzqihmdc-eigen-3.4.1/include/eigen3 -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtPrintSupport -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtWidgets -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtGui -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtCore -Imoc -I/nix/store/wznk7qyvi5v6qwd4a673v3f6zx6ngn9i-libglvnd-1.7.0-dev/include -Iui -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/mkspecs/linux-g++ -o dfu.o ../libdfuprog/dfu-programmer/src/dfu.c
+gcc -c -pipe -O2 -Wall -Wextra -D_REENTRANT -fPIC -DQCP_VER=1 -DHAVE_CONFIG_H -DPLATFORM_LINUX -DQT_NO_DEBUG -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB -I. -Iui_elements -Iui_elements/qcp1 -I../libdfuprog -I../libdfuprog/dfu-programmer/src -I/nix/store/xgvlkhckizm184d1n8qndi9phqlk8bfi-libusb-1.0.29-dev/include/libusb-1.0 -I/nix/store/cji8ic73b581rzmnr8j5483acn41j6j3-fftw-double-3.3.10-dev/include -I/nix/store/p37sp8dd7cjbxsqvqak25yk8yzqihmdc-eigen-3.4.1/include/eigen3 -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtPrintSupport -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtWidgets -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtGui -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtCore -Imoc -I/nix/store/wznk7qyvi5v6qwd4a673v3f6zx6ngn9i-libglvnd-1.7.0-dev/include -Iui -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/mkspecs/linux-g++ -o intel_hex.o ../libdfuprog/dfu-programmer/src/intel_hex.c
+gcc -c -pipe -O2 -Wall -Wextra -D_REENTRANT -fPIC -DQCP_VER=1 -DHAVE_CONFIG_H -DPLATFORM_LINUX -DQT_NO_DEBUG -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB -I. -Iui_elements -Iui_elements/qcp1 -I../libdfuprog -I../libdfuprog/dfu-programmer/src -I/nix/store/xgvlkhckizm184d1n8qndi9phqlk8bfi-libusb-1.0.29-dev/include/libusb-1.0 -I/nix/store/cji8ic73b581rzmnr8j5483acn41j6j3-fftw-double-3.3.10-dev/include -I/nix/store/p37sp8dd7cjbxsqvqak25yk8yzqihmdc-eigen-3.4.1/include/eigen3 -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtPrintSupport -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtWidgets -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtGui -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtCore -Imoc -I/nix/store/wznk7qyvi5v6qwd4a673v3f6zx6ngn9i-libglvnd-1.7.0-dev/include -Iui -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/mkspecs/linux-g++ -o stm32.o ../libdfuprog/dfu-programmer/src/stm32.c
+In file included from [01m[K../libdfuprog/dfu-programmer/src/atmel.c:30[m[K:
+[01m[K../libdfuprog/dfu-programmer/src/dfu-bool.h:5:5:[m[K [01;31m[Kerror: [m[Kcannot use keyword '[01m[Kfalse[m[K' as enumeration constant
+    5 |     [01;31m[Kfalse[m[K = 0,
+      |     [01;31m[K^~~~~[m[K
+[01m[K../libdfuprog/dfu-programmer/src/dfu-bool.h:5:5:[m[K [01;36m[Knote: [m[K'[01m[Kfalse[m[K' is a keyword with '[01m[K-std=c23[m[K' onwards
+In file included from [01m[K../libdfuprog/dfu-programmer/src/stm32.c:26[m[K:
+[01m[K../libdfuprog/dfu-programmer/src/dfu-bool.h:5:5:[m[K [01;31m[Kerror: [m[Kcannot use keyword '[01m[Kfalse[m[K' as enumeration constant
+    5 |     [01;31m[Kfalse[m[K = 0,
+      |     [01;31m[K^~~~~[m[K
+[01m[K../libdfuprog/dfu-programmer/src/dfu-bool.h:5:5:[m[K [01;36m[Knote: [m[K'[01m[Kfalse[m[K' is a keyword with '[01m[K-std=c23[m[K' onwards
+In file included from [01m[K../libdfuprog/dfu-programmer/src/commands.c:26[m[K:
+[01m[K../libdfuprog/dfu-programmer/src/dfu-bool.h:5:5:[m[K [01;31m[Kerror: [m[Kcannot use keyword '[01m[Kfalse[m[K' as enumeration constant
+    5 |     [01;31m[Kfalse[m[K = 0,
+      |     [01;31m[K^~~~~[m[K
+In file included from [01m[K../libdfuprog/dfu-programmer/src/arguments.c:27[m[K:
+[01m[K../libdfuprog/dfu-programmer/src/dfu-bool.h:5:5:[m[K [01;31m[Kerror: [m[Kcannot use keyword '[01m[Kfalse[m[K' as enumeration constant
+    5 |     [01;31m[Kfalse[m[K = 0,
+      |     [01;31m[K^~~~~[m[K
+[01m[K../libdfuprog/dfu-programmer/src/dfu-bool.h:5:5:[m[K [01;36m[Knote: [m[K'[01m[Kfalse[m[K' is a keyword with '[01m[K-std=c23[m[K' onwards
+[01m[K../libdfuprog/dfu-programmer/src/dfu-bool.h:5:5:[m[K [01;36m[Knote: [m[K'[01m[Kfalse[m[K' is a keyword with '[01m[K-std=c23[m[K' onwards
+In file included from [01m[K../libdfuprog/dfu-programmer/src/dfu.h:35[m[K,
+                 from [01m[K../libdfuprog/libdfuprog.c:35[m[K:
+[01m[K../libdfuprog/dfu-programmer/src/dfu-bool.h:5:5:[m[K [01;31m[Kerror: [m[Kcannot use keyword '[01m[Kfalse[m[K' as enumeration constant
+    5 |     [01;31m[Kfalse[m[K = 0,
+      |     [01;31m[K^~~~~[m[K
+[01m[K../libdfuprog/dfu-programmer/src/dfu-bool.h:5:5:[m[K [01;36m[Knote: [m[K'[01m[Kfalse[m[K' is a keyword with '[01m[K-std=c23[m[K' onwards
+In file included from [01m[K../libdfuprog/dfu-programmer/src/dfu.h:35[m[K,
+                 from [01m[K../libdfuprog/dfu-programmer/src/dfu.c:35[m[K:
+[01m[K../libdfuprog/dfu-programmer/src/dfu-bool.h:5:5:[m[K [01;31m[Kerror: [m[Kcannot use keyword '[01m[Kfalse[m[K' as enumeration constant
+    5 |     [01;31m[Kfalse[m[K = 0,
+      |     [01;31m[K^~~~~[m[K
+[01m[K../libdfuprog/dfu-programmer/src/dfu-bool.h:5:5:[m[K [01;36m[Knote: [m[K'[01m[Kfalse[m[K' is a keyword with '[01m[K-std=c23[m[K' onwards
+In file included from [01m[K../libdfuprog/dfu-programmer/src/intel_hex.h:25[m[K,
+                 from [01m[K../libdfuprog/dfu-programmer/src/intel_hex.c:39[m[K:
+[01m[K../libdfuprog/dfu-programmer/src/dfu-bool.h:5:5:[m[K [01;31m[Kerror: [m[Kcannot use keyword '[01m[Kfalse[m[K' as enumeration constant
+    5 |     [01;31m[Kfalse[m[K = 0,
+      |     [01;31m[K^~~~~[m[K
+gcc -c -pipe -O2 -Wall -Wextra -D_REENTRANT -fPIC -DQCP_VER=1 -DHAVE_CONFIG_H -DPLATFORM_LINUX -DQT_NO_DEBUG -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB -I. -Iui_elements -Iui_elements/qcp1 -I../libdfuprog -I../libdfuprog/dfu-programmer/src -I/nix/store/xgvlkhckizm184d1n8qndi9phqlk8bfi-libusb-1.0.29-dev/include/libusb-1.0 -I/nix/store/cji8ic73b581rzmnr8j5483acn41j6j3-fftw-double-3.3.10-dev/include -I/nix/store/p37sp8dd7cjbxsqvqak25yk8yzqihmdc-eigen-3.4.1/include/eigen3 -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtPrintSupport -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtWidgets -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtGui -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtCore -Imoc -I/nix/store/wznk7qyvi5v6qwd4a673v3f6zx6ngn9i-libglvnd-1.7.0-dev/include -Iui -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/mkspecs/linux-g++ -o util.o ../libdfuprog/dfu-programmer/src/util.c
+[01m[K../libdfuprog/dfu-programmer/src/dfu-bool.h:5:5:[m[K [01;36m[Knote: [m[K'[01m[Kfalse[m[K' is a keyword with '[01m[K-std=c23[m[K' onwards
+[01m[Kui_elements/qcp1/qcustomplot.cpp:[m[K In member function '[01m[KQt::Alignment QCPLayoutInset::[01;32m[KinsetAlignment[m[K(int) const[m[K':
+[01m[Kui_elements/qcp1/qcustomplot.cpp:3115:12:[m[K [01;35m[Kwarning: [m[K'[01m[Kconstexpr QFlags<T>::[01;32m[KQFlags[m[K(Zero) [35m[K[with Enum = Qt::AlignmentFlag; Zero = int QFlags<Qt::AlignmentFlag>::Private::*][m[K[m[K' is deprecated: Use default constructor instead [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wdeprecated-declarations-Wdeprecated-declarations]8;;[m[K]
+ 3115 |     return [01;35m[K0[m[K;
+      |            [01;35m[K^[m[K
+In file included from [01m[K/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtCore/qglobal.h:1307[m[K,
+                 from [01m[K/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtCore/qnamespace.h:43[m[K,
+                 from [01m[K/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtCore/qobjectdefs.h:48[m[K,
+                 from [01m[K/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtCore/qobject.h:46[m[K,
+                 from [01m[K/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtCore/QObject:1[m[K,
+                 from [01m[Kui_elements/qcp1/qcustomplot.h:29[m[K,
+                 from [01m[Kui_elements/qcp1/qcustomplot.cpp:26[m[K:
+[01m[K/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtCore/qflags.h:123:80:[m[K [01;36m[Knote: [m[Kdeclared here
+  123 |     QT_DEPRECATED_X("Use default constructor instead") Q_DECL_CONSTEXPR inline [01;36m[KQFlags[m[K(Zero) noexcept : i(0) {}
+      |                                                                                [01;36m[K^~~~~~[m[K
+g++ -c -pipe -std=gnu++1y -Wall -Wextra -D_REENTRANT -fPIC -DQCP_VER=1 -DHAVE_CONFIG_H -DPLATFORM_LINUX -DQT_NO_DEBUG -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB -I. -Iui_elements -Iui_elements/qcp1 -I../libdfuprog -I../libdfuprog/dfu-programmer/src -I/nix/store/xgvlkhckizm184d1n8qndi9phqlk8bfi-libusb-1.0.29-dev/include/libusb-1.0 -I/nix/store/cji8ic73b581rzmnr8j5483acn41j6j3-fftw-double-3.3.10-dev/include -I/nix/store/p37sp8dd7cjbxsqvqak25yk8yzqihmdc-eigen-3.4.1/include/eigen3 -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtPrintSupport -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtWidgets -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtGui -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtCore -Imoc -I/nix/store/wznk7qyvi5v6qwd4a673v3f6zx6ngn9i-libglvnd-1.7.0-dev/include -Iui -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/mkspecs/linux-g++ -o main.o main.cpp
+g++ -c -pipe -std=gnu++1y -Wall -Wextra -D_REENTRANT -fPIC -DQCP_VER=1 -DHAVE_CONFIG_H -DPLATFORM_LINUX -DQT_NO_DEBUG -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB -I. -Iui_elements -Iui_elements/qcp1 -I../libdfuprog -I../libdfuprog/dfu-programmer/src -I/nix/store/xgvlkhckizm184d1n8qndi9phqlk8bfi-libusb-1.0.29-dev/include/libusb-1.0 -I/nix/store/cji8ic73b581rzmnr8j5483acn41j6j3-fftw-double-3.3.10-dev/include -I/nix/store/p37sp8dd7cjbxsqvqak25yk8yzqihmdc-eigen-3.4.1/include/eigen3 -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtPrintSupport -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtWidgets -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtGui -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtCore -Imoc -I/nix/store/wznk7qyvi5v6qwd4a673v3f6zx6ngn9i-libglvnd-1.7.0-dev/include -Iui -I/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/mkspecs/linux-g++ -o mainwindow.o mainwindow.cpp
+make: *** [Makefile:903: libdfuprog.o] Error 1
+make: *** Waiting for unfinished jobs....
+[01m[K../libdfuprog/dfu-programmer/src/intel_hex.c:[m[K In function '[01m[Kintel_validate_buffer[m[K':
+[01m[K../libdfuprog/dfu-programmer/src/intel_hex.c:628:40:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: '[01m[Kint32_t[m[K' {aka [m[K'[01m[Kint[m[K'} and '[01m[Kuint32_t[m[K' {aka [m[K'[01m[Kunsigned int[m[K'} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wno-sign-compare-Wsign-compare]8;;[m[K]
+  628 |     for( i = bout->info.valid_start; i [01;35m[K<=[m[K bout->info.valid_end; i++ ) {
+      |                                        [01;35m[K^~[m[K
+[01m[K../libdfuprog/dfu-programmer/src/intel_hex.c:[m[K In function '[01m[Kintel_flash_prep_buffer[m[K':
+[01m[K../libdfuprog/dfu-programmer/src/intel_hex.c:680:23:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: '[01m[Kint32_t[m[K' {aka [m[K'[01m[Kint[m[K'} and '[01m[Ksize_t[m[K' {aka [m[K'[01m[Klong unsigned int[m[K'} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wno-sign-compare-Wsign-compare]8;;[m[K]
+  680 |         for( i = 0; i [01;35m[K<[m[K bout->info.page_size; i++ ) {
+      |                       [01;35m[K^[m[K
+[01m[K../libdfuprog/dfu-programmer/src/intel_hex.c:685:34:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: '[01m[Ksize_t[m[K' {aka [m[K'[01m[Klong unsigned int[m[K'} and '[01m[Kint32_t[m[K' {aka [m[K'[01m[Kint[m[K'} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wno-sign-compare-Wsign-compare]8;;[m[K]
+  685 |         if( bout->info.page_size [01;35m[K!=[m[K i ) {
+      |                                  [01;35m[K^~[m[K
+[01m[K../libdfuprog/dfu-programmer/src/intel_hex.c:688:27:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: '[01m[Kint32_t[m[K' {aka [m[K'[01m[Kint[m[K'} and '[01m[Ksize_t[m[K' {aka [m[K'[01m[Klong unsigned int[m[K'} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wno-sign-compare-Wsign-compare]8;;[m[K]
+  688 |             for( i = 0; i [01;35m[K<[m[K bout->info.page_size; i++ ) {
+      |                           [01;35m[K^[m[K
+make: *** [Makefile:939: dfu.o] Error 1
+[01m[K../libdfuprog/dfu-programmer/src/commands.c:[m[K In function '[01m[Kexecute_hex2bin[m[K':
+[01m[K../libdfuprog/dfu-programmer/src/commands.c:221:47:[m[K [01;35m[Kwarning: [m[Kunused parameter '[01m[Kdevice[m[K' [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wno-unused-parameter-Wunused-parameter]8;;[m[K]
+  221 | static int32_t execute_hex2bin( [01;35m[Kdfu_device_t *device[m[K,
+      |                                 [01;35m[K~~~~~~~~~~~~~~^~~~~~[m[K
+[01m[K../libdfuprog/dfu-programmer/src/commands.c:[m[K In function '[01m[Kexecute_bin2hex[m[K':
+[01m[K../libdfuprog/dfu-programmer/src/commands.c:265:47:[m[K [01;35m[Kwarning: [m[Kunused parameter '[01m[Kdevice[m[K' [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wno-unused-parameter-Wunused-parameter]8;;[m[K]
+  265 | static int32_t execute_bin2hex( [01;35m[Kdfu_device_t *device[m[K,
+      |                                 [01;35m[K~~~~~~~~~~~~~~^~~~~~[m[K
+[01m[K../libdfuprog/dfu-programmer/src/arguments.c:[m[K In function '[01m[Kassign_com_flash_option[m[K':
+[01m[K../libdfuprog/dfu-programmer/src/arguments.c:836:55:[m[K [01;35m[Kwarning: [m[Kunused parameter '[01m[Kparameter[m[K' [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wno-unused-parameter-Wunused-parameter]8;;[m[K]
+  836 |                                         [01;35m[Kconst int32_t parameter[m[K,
+      |                                         [01;35m[K~~~~~~~~~~~~~~^~~~~~~~~[m[K
+[01m[K../libdfuprog/dfu-programmer/src/arguments.c:[m[K In function '[01m[Kassign_com_convert_option[m[K':
+[01m[K../libdfuprog/dfu-programmer/src/arguments.c:847:57:[m[K [01;35m[Kwarning: [m[Kunused parameter '[01m[Kparameter[m[K' [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wno-unused-parameter-Wunused-parameter]8;;[m[K]
+  847 |                                           [01;35m[Kconst int32_t parameter[m[K,
+      |                                           [01;35m[K~~~~~~~~~~~~~~^~~~~~~~~[m[K
+[01m[K../libdfuprog/dfu-programmer/src/arguments.c:[m[K In function '[01m[Kassign_com_getfuse_option[m[K':
+[01m[K../libdfuprog/dfu-programmer/src/arguments.c:859:53:[m[K [01;35m[Kwarning: [m[Kunused parameter '[01m[Kparameter[m[K' [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wno-unused-parameter-Wunused-parameter]8;;[m[K]
+  859 |                                       [01;35m[Kconst int32_t parameter[m[K,
+      |                                       [01;35m[K~~~~~~~~~~~~~~^~~~~~~~~[m[K
+[01m[K../libdfuprog/dfu-programmer/src/arguments.c:[m[K In function '[01m[Kassign_com_get_option[m[K':
+[01m[K../libdfuprog/dfu-programmer/src/arguments.c:873:53:[m[K [01;35m[Kwarning: [m[Kunused parameter '[01m[Kparameter[m[K' [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wno-unused-parameter-Wunused-parameter]8;;[m[K]
+  873 |                                       [01;35m[Kconst int32_t parameter[m[K,
+      |                                       [01;35m[K~~~~~~~~~~~~~~^~~~~~~~~[m[K
+[01m[K../libdfuprog/dfu-programmer/src/arguments.c:[m[K In function '[01m[Kprint_args[m[K':
+[01m[K../libdfuprog/dfu-programmer/src/arguments.c:967:27:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: '[01m[Kenum commands_enum[m[K' and '[01m[Kint32_t[m[K' {aka [m[K'[01m[Kint[m[K'} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wno-sign-compare-Wsign-compare]8;;[m[K]
+  967 |         if( args->command [01;35m[K==[m[K command_map[i].value ) {
+      |                           [01;35m[K^~[m[K
+[01m[K../libdfuprog/dfu-programmer/src/stm32.c:[m[K In function '[01m[Kstm32_write_block[m[K':
+[01m[K../libdfuprog/dfu-programmer/src/stm32.c:197:16:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: '[01m[Ksize_t[m[K' {aka [m[K'[01m[Klong unsigned int[m[K'} and '[01m[Kint32_t[m[K' {aka [m[K'[01m[Kint[m[K'} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wno-sign-compare-Wsign-compare]8;;[m[K]
+  197 |   if( xfer_len [01;35m[K!=[m[K dfu_download(device, xfer_len, buffer) ) {
+      |                [01;35m[K^~[m[K
+[01m[K../libdfuprog/dfu-programmer/src/commands.c:[m[K In function '[01m[Kexecute_flash[m[K':
+[01m[K../libdfuprog/dfu-programmer/src/commands.c:486:25:[m[K [01;35m[Kwarning: [m[Kcomparison is always true due to limited range of data type [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wno-type-limits-Wtype-limits]8;;[m[K]
+  486 |                 if ( -1 [01;35m[K!=[m[K bout.data[i] ) {
+      |                         [01;35m[K^~[m[K
+[01m[K../libdfuprog/dfu-programmer/src/atmel.c:[m[K In function '[01m[Katmel_read_config[m[K':
+[01m[K../libdfuprog/dfu-programmer/src/atmel.c:303:19:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: '[01m[Kint32_t[m[K' {aka [m[K'[01m[Kint[m[K'} and '[01m[Klong unsigned int[m[K' [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wno-sign-compare-Wsign-compare]8;;[m[K]
+  303 |     for( i = 0; i [01;35m[K<[m[K sizeof(data)/sizeof(atmel_read_config_t); i++ ) {
+      |                   [01;35m[K^[m[K
+[01m[K../libdfuprog/dfu-programmer/src/util.c:[m[K In function '[01m[Kdfu_debug[m[K':
+[01m[K../libdfuprog/dfu-programmer/src/util.c:28:47:[m[K [01;35m[Kwarning: [m[Kunused parameter '[01m[Kfunction[m[K' [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wno-unused-parameter-Wunused-parameter]8;;[m[K]
+   28 | void dfu_debug( const char *file, [01;35m[Kconst char *function[m[K, const int line,
+      |                                   [01;35m[K~~~~~~~~~~~~^~~~~~~~[m[K
+[01m[Kui_elements/qcp1/qcustomplot.cpp:[m[K In destructor '[01m[Kvirtual QCPItemAnchor::[01;32m[K~QCPItemAnchor[m[K()[m[K':
+[01m[Kui_elements/qcp1/qcustomplot.cpp:7463:53:[m[K [01;35m[Kwarning: [m[K'[01m[KQList<T> QSet<T>::[01;32m[KtoList[m[K() const [35m[K[with T = QCPItemPosition*][m[K[m[K' is deprecated: Use values() instead. [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wdeprecated-declarations-Wdeprecated-declarations]8;;[m[K]
+ 7463 |   foreach (QCPItemPosition *child, [01;35m[KmChildrenX.toList()[m[K)
+      |                                    [01;35m[K~~~~~~~~~~~~~~~~~^~[m[K
+In file included from [01m[K/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtGui/qevent.h:53[m[K,
+                 from [01m[K/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtGui/QPaintEvent:1[m[K,
+                 from [01m[Kui_elements/qcp1/qcustomplot.h:33[m[K:
+[01m[K/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtCore/qset.h:265:14:[m[K [01;36m[Knote: [m[Kdeclared here
+  265 |     QList<T> [01;36m[KtoList[m[K() const { return values(); }
+      |              [01;36m[K^~~~~~[m[K
+[01m[K../libdfuprog/dfu-programmer/src/commands.c:[m[K In function '[01m[Kexecute_dump[m[K':
+[01m[K../libdfuprog/dfu-programmer/src/arguments.c:[m[K In function '[01m[Kparse_arguments[m[K':
+[01m[K../libdfuprog/dfu-programmer/src/stm32.c:[m[K In function '[01m[Kstm32_write_flash[m[K':
+[01m[K../libdfuprog/dfu-programmer/src/commands.c:804:42:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: '[01m[Kint32_t[m[K' {aka [m[K'[01m[Kint[m[K'} and '[01m[Kuint32_t[m[K' {aka [m[K'[01m[Kunsigned int[m[K'} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wno-sign-compare-Wsign-compare]8;;[m[K]
+  804 |         for( i = buin.info.data_start; i [01;35m[K<[m[K buin.info.data_end; i++ ) {
+      |                                          [01;35m[K^[m[K
+make: *** [Makefile:944: intel_hex.o] Error 1
+[01m[K../libdfuprog/dfu-programmer/src/arguments.c:1111:19:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: '[01m[Kint32_t[m[K' {aka [m[K'[01m[Kint[m[K'} and '[01m[Ksize_t[m[K' {aka [m[K'[01m[Klong unsigned int[m[K'} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wno-sign-compare-Wsign-compare]8;;[m[K]
+ 1111 |     for( i = 0; i [01;35m[K<[m[K argc; i++ ) {
+      |                   [01;35m[K^[m[K
+[01m[K../libdfuprog/dfu-programmer/src/atmel.c:[m[K In function '[01m[K__atmel_flash_block[m[K':
+[01m[K../libdfuprog/dfu-programmer/src/atmel.c:1466:19:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: '[01m[Kint32_t[m[K' {aka [m[K'[01m[Kint[m[K'} and '[01m[Ksize_t[m[K' {aka [m[K'[01m[Klong unsigned int[m[K'} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wno-sign-compare-Wsign-compare]8;;[m[K]
+ 1466 |     for( i = 0; i [01;35m[K<[m[K length; i++ ) {
+      |                   [01;35m[K^[m[K
+[01m[K../libdfuprog/dfu-programmer/src/commands.c:812:15:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: '[01m[Kint32_t[m[K' {aka [m[K'[01m[Kint[m[K'} and '[01m[Kuint32_t[m[K' {aka [m[K'[01m[Kunsigned int[m[K'} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wno-sign-compare-Wsign-compare]8;;[m[K]
+  812 |         if( i [01;35m[K==[m[K buin.info.data_end ) {
+      |               [01;35m[K^~[m[K
+[01m[K../libdfuprog/dfu-programmer/src/commands.c:820:44:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: '[01m[Kint32_t[m[K' {aka [m[K'[01m[Kint[m[K'} and '[01m[Kuint32_t[m[K' {aka [m[K'[01m[Kunsigned int[m[K'} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wno-sign-compare-Wsign-compare]8;;[m[K]
+  820 |             for( i = buin.info.data_end; i [01;35m[K>[m[K buin.info.data_start; i-- ) {
+      |                                            [01;35m[K^[m[K
+[01m[K../libdfuprog/dfu-programmer/src/atmel.c:1476:24:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: '[01m[Ksize_t[m[K' {aka [m[K'[01m[Klong unsigned int[m[K'} and '[01m[Kint32_t[m[K' {aka [m[K'[01m[Kint[m[K'} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wno-sign-compare-Wsign-compare]8;;[m[K]
+ 1476 |     if( message_length [01;35m[K!=[m[K result ) {
+      |                        [01;35m[K^~[m[K
+[01m[K../libdfuprog/dfu-programmer/src/commands.c:834:23:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: '[01m[Kint32_t[m[K' {aka [m[K'[01m[Kint[m[K'} and '[01m[Kuint32_t[m[K' {aka [m[K'[01m[Kunsigned int[m[K'} [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wno-sign-compare-Wsign-compare]8;;[m[K]
+  834 |         for( i = 0; i [01;35m[K<=[m[K buin.info.data_end; i++ ) {
+      |                       [01;35m[K^~[m[K
+[01m[Kmainwindow.cpp:[m[K In member function '[01m[Kvirtual void MainWindow::[01;32m[KresizeEvent[m[K(QResizeEvent*)[m[K':
+[01m[Kmainwindow.cpp:575:44:[m[K [01;35m[Kwarning: [m[Kunused parameter '[01m[Kevent[m[K' [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wno-unused-parameter-Wunused-parameter]8;;[m[K]
+  575 | void MainWindow::resizeEvent([01;35m[KQResizeEvent *event[m[K){
+      |                              [01;35m[K~~~~~~~~~~~~~~^~~~~[m[K
+[01m[K../libdfuprog/dfu-programmer/src/commands.c:[m[K In function '[01m[Kexecute_command[m[K':
+[01m[K../libdfuprog/dfu-programmer/src/commands.c:945:45:[m[K [01;35m[Kwarning: [m[Kthis statement may fall through [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wimplicit-fallthrough-Wimplicit-fallthrough=]8;;[m[K]
+  945 |             [01;35m[Kargs->com_launch_config.noreset = true[m[K;
+      |             [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~[m[K
+[01m[K../libdfuprog/dfu-programmer/src/commands.c:946:9:[m[K [01;36m[Knote: [m[Khere
+  946 |         [01;36m[Kcase[m[K com_reset:
+      |         [01;36m[K^~~~[m[K
+[01m[K../libdfuprog/dfu-programmer/src/commands.c:947:27:[m[K [01;35m[Kwarning: [m[Kthis statement may fall through [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wimplicit-fallthrough-Wimplicit-fallthrough=]8;;[m[K]
+  947 |             [01;35m[Kargs->command = com_launch[m[K;
+      |             [01;35m[K~~~~~~~~~~~~~~^~~~~~~~~~~~[m[K
+[01m[K../libdfuprog/dfu-programmer/src/commands.c:948:9:[m[K [01;36m[Knote: [m[Khere
+  948 |         [01;36m[Kcase[m[K com_launch:
+      |         [01;36m[K^~~~[m[K
+[01m[K../libdfuprog/dfu-programmer/src/stm32.c:478:43:[m[K [01;35m[Kwarning: [m[Kunused parameter '[01m[Kforce[m[K' [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wno-unused-parameter-Wunused-parameter]8;;[m[K]
+  478 |     const dfu_bool eeprom, [01;35m[Kconst dfu_bool force[m[K, const dfu_bool quiet ) {
+      |                            [01;35m[K~~~~~~~~~~~~~~~^~~~~[m[K
+[01m[Kui_elements/qcp1/qcustomplot.cpp:7468:53:[m[K [01;35m[Kwarning: [m[K'[01m[KQList<T> QSet<T>::[01;32m[KtoList[m[K() const [35m[K[with T = QCPItemPosition*][m[K[m[K' is deprecated: Use values() instead. [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wdeprecated-declarations-Wdeprecated-declarations]8;;[m[K]
+ 7468 |   foreach (QCPItemPosition *child, [01;35m[KmChildrenY.toList()[m[K)
+      |                                    [01;35m[K~~~~~~~~~~~~~~~~~^~[m[K
+[01m[K/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtCore/qset.h:265:14:[m[K [01;36m[Knote: [m[Kdeclared here
+  265 |     QList<T> [01;36m[KtoList[m[K() const { return values(); }
+      |              [01;36m[K^~~~~~[m[K
+make: *** [Makefile:911: arguments.o] Error 1
+make: *** [Makefile:932: commands.o] Error 1
+make: *** [Makefile:955: stm32.o] Error 1
+make: *** [Makefile:921: atmel.o] Error 1
+[01m[Kui_elements/qcp1/qcustomplot.cpp:[m[K In destructor '[01m[Kvirtual QCPItemPosition::[01;32m[K~QCPItemPosition[m[K()[m[K':
+[01m[Kui_elements/qcp1/qcustomplot.cpp:7641:53:[m[K [01;35m[Kwarning: [m[K'[01m[KQList<T> QSet<T>::[01;32m[KtoList[m[K() const [35m[K[with T = QCPItemPosition*][m[K[m[K' is deprecated: Use values() instead. [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wdeprecated-declarations-Wdeprecated-declarations]8;;[m[K]
+ 7641 |   foreach (QCPItemPosition *child, [01;35m[KmChildrenX.toList()[m[K)
+      |                                    [01;35m[K~~~~~~~~~~~~~~~~~^~[m[K
+[01m[K/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtCore/qset.h:265:14:[m[K [01;36m[Knote: [m[Kdeclared here
+  265 |     QList<T> [01;36m[KtoList[m[K() const { return values(); }
+      |              [01;36m[K^~~~~~[m[K
+[01m[Kui_elements/qcp1/qcustomplot.cpp:7646:53:[m[K [01;35m[Kwarning: [m[K'[01m[KQList<T> QSet<T>::[01;32m[KtoList[m[K() const [35m[K[with T = QCPItemPosition*][m[K[m[K' is deprecated: Use values() instead. [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wdeprecated-declarations-Wdeprecated-declarations]8;;[m[K]
+ 7646 |   foreach (QCPItemPosition *child, [01;35m[KmChildrenY.toList()[m[K)
+      |                                    [01;35m[K~~~~~~~~~~~~~~~~~^~[m[K
+[01m[K/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtCore/qset.h:265:14:[m[K [01;36m[Knote: [m[Kdeclared here
+  265 |     QList<T> [01;36m[KtoList[m[K() const { return values(); }
+      |              [01;36m[K^~~~~~[m[K
+[01m[Kmainwindow.cpp:[m[K In member function '[01m[Kvoid MainWindow::[01;32m[KarrowUpTriggered[m[K()[m[K':
+[01m[Kmainwindow.cpp:1303:44:[m[K [01;35m[Kwarning: [m[K'[01m[Kconstexpr QFlags<T>::[01;32m[KQFlags[m[K(Zero) [35m[K[with Enum = Qt::MouseButton; Zero = int QFlags<Qt::MouseButton>::Private::*][m[K[m[K' is deprecated: Use default constructor instead [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wdeprecated-declarations-Wdeprecated-declarations]8;;[m[K]
+ 1303 |     wheelEmu = new QWheelEvent(point, 120, [01;35m[K0[m[K, 0, Qt::Vertical);
+      |                                            [01;35m[K^[m[K
+In file included from [01m[K/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtCore/qglobal.h:1307[m[K,
+                 from [01m[K/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtGui/qtguiglobal.h:43[m[K,
+                 from [01m[K/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtWidgets/qtwidgetsglobal.h:43[m[K,
+                 from [01m[K/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtWidgets/qmainwindow.h:43[m[K,
+                 from [01m[K/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtWidgets/QMainWindow:1[m[K,
+                 from [01m[Kmainwindow.h:4[m[K,
+                 from [01m[Kmainwindow.cpp:1[m[K:
+[01m[K/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtCore/qflags.h:123:80:[m[K [01;36m[Knote: [m[Kdeclared here
+  123 |     QT_DEPRECATED_X("Use default constructor instead") Q_DECL_CONSTEXPR inline [01;36m[KQFlags[m[K(Zero) noexcept : i(0) {}
+      |                                                                                [01;36m[K^~~~~~[m[K
+[01m[Kmainwindow.cpp:1303:47:[m[K [01;35m[Kwarning: [m[K'[01m[Kconstexpr QFlags<T>::[01;32m[KQFlags[m[K(Zero) [35m[K[with Enum = Qt::KeyboardModifier; Zero = int QFlags<Qt::KeyboardModifier>::Private::*][m[K[m[K' is deprecated: Use default constructor instead [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wdeprecated-declarations-Wdeprecated-declarations]8;;[m[K]
+ 1303 |     wheelEmu = new QWheelEvent(point, 120, 0, [01;35m[K0[m[K, Qt::Vertical);
+      |                                               [01;35m[K^[m[K
+[01m[K/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtCore/qflags.h:123:80:[m[K [01;36m[Knote: [m[Kdeclared here
+  123 |     QT_DEPRECATED_X("Use default constructor instead") Q_DECL_CONSTEXPR inline [01;36m[KQFlags[m[K(Zero) noexcept : i(0) {}
+      |                                                                                [01;36m[K^~~~~~[m[K
+[01m[Kmainwindow.cpp:1303:62:[m[K [01;35m[Kwarning: [m[K'[01m[KQWheelEvent::[01;32m[KQWheelEvent[m[K(const QPointF&, int, Qt::MouseButtons, Qt::KeyboardModifiers, Qt::Orientation)[m[K' is deprecated: Use the last QWheelEvent constructor taking pixelDelta, angleDelta, phase, and inverted [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wdeprecated-declarations-Wdeprecated-declarations]8;;[m[K]
+ 1303 |     wheelEmu = new QWheelEvent(point, 120, 0, 0, Qt::Vertical[01;35m[K)[m[K;
+      |                                                              [01;35m[K^[m[K
+In file included from [01m[K/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtGui/QCloseEvent:1[m[K,
+                 from [01m[Kmainwindow.h:7[m[K:
+[01m[K/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtGui/qevent.h:181:5:[m[K [01;36m[Knote: [m[Kdeclared here
+  181 |     [01;36m[KQWheelEvent[m[K(const QPointF &pos, int delta,
+      |     [01;36m[K^~~~~~~~~~~[m[K
+[01m[Kmainwindow.cpp:[m[K In member function '[01m[Kvoid MainWindow::[01;32m[KarrowDownTriggered[m[K()[m[K':
+[01m[Kmainwindow.cpp:1312:45:[m[K [01;35m[Kwarning: [m[K'[01m[Kconstexpr QFlags<T>::[01;32m[KQFlags[m[K(Zero) [35m[K[with Enum = Qt::MouseButton; Zero = int QFlags<Qt::MouseButton>::Private::*][m[K[m[K' is deprecated: Use default constructor instead [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wdeprecated-declarations-Wdeprecated-declarations]8;;[m[K]
+ 1312 |     wheelEmu = new QWheelEvent(point, -120, [01;35m[K0[m[K, 0, Qt::Vertical);
+      |                                             [01;35m[K^[m[K
+[01m[K/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtCore/qflags.h:123:80:[m[K [01;36m[Knote: [m[Kdeclared here
+  123 |     QT_DEPRECATED_X("Use default constructor instead") Q_DECL_CONSTEXPR inline [01;36m[KQFlags[m[K(Zero) noexcept : i(0) {}
+      |                                                                                [01;36m[K^~~~~~[m[K
+[01m[Kmainwindow.cpp:1312:48:[m[K [01;35m[Kwarning: [m[K'[01m[Kconstexpr QFlags<T>::[01;32m[KQFlags[m[K(Zero) [35m[K[with Enum = Qt::KeyboardModifier; Zero = int QFlags<Qt::KeyboardModifier>::Private::*][m[K[m[K' is deprecated: Use default constructor instead [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wdeprecated-declarations-Wdeprecated-declarations]8;;[m[K]
+ 1312 |     wheelEmu = new QWheelEvent(point, -120, 0, [01;35m[K0[m[K, Qt::Vertical);
+      |                                                [01;35m[K^[m[K
+[01m[K/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtCore/qflags.h:123:80:[m[K [01;36m[Knote: [m[Kdeclared here
+  123 |     QT_DEPRECATED_X("Use default constructor instead") Q_DECL_CONSTEXPR inline [01;36m[KQFlags[m[K(Zero) noexcept : i(0) {}
+      |                                                                                [01;36m[K^~~~~~[m[K
+[01m[Kmainwindow.cpp:1312:63:[m[K [01;35m[Kwarning: [m[K'[01m[KQWheelEvent::[01;32m[KQWheelEvent[m[K(const QPointF&, int, Qt::MouseButtons, Qt::KeyboardModifiers, Qt::Orientation)[m[K' is deprecated: Use the last QWheelEvent constructor taking pixelDelta, angleDelta, phase, and inverted [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wdeprecated-declarations-Wdeprecated-declarations]8;;[m[K]
+ 1312 |     wheelEmu = new QWheelEvent(point, -120, 0, 0, Qt::Vertical[01;35m[K)[m[K;
+      |                                                               [01;35m[K^[m[K
+[01m[K/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtGui/qevent.h:181:5:[m[K [01;36m[Knote: [m[Kdeclared here
+  181 |     [01;36m[KQWheelEvent[m[K(const QPointF &pos, int delta,
+      |     [01;36m[K^~~~~~~~~~~[m[K
+[01m[Kmainwindow.cpp:[m[K In member function '[01m[Kvoid MainWindow::[01;32m[KctrlArrowUpTriggered[m[K()[m[K':
+[01m[Kmainwindow.cpp:1321:44:[m[K [01;35m[Kwarning: [m[K'[01m[Kconstexpr QFlags<T>::[01;32m[KQFlags[m[K(Zero) [35m[K[with Enum = Qt::MouseButton; Zero = int QFlags<Qt::MouseButton>::Private::*][m[K[m[K' is deprecated: Use default constructor instead [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wdeprecated-declarations-Wdeprecated-declarations]8;;[m[K]
+ 1321 |     wheelEmu = new QWheelEvent(point, 120, [01;35m[K0[m[K, Qt::ControlModifier, Qt::Vertical);
+      |                                            [01;35m[K^[m[K
+[01m[Kui_elements/qcp1/qcustomplot.cpp:[m[K In constructor '[01m[KQCustomPlot::[01;32m[KQCustomPlot[m[K(QWidget*)[m[K':
+[01m[Kui_elements/qcp1/qcustomplot.cpp:9028:3:[m[K [01;35m[Kwarning: [m[K'[01m[Kconstexpr QFlags<T>::[01;32m[KQFlags[m[K(Zero) [35m[K[with Enum = QCP::Interaction; Zero = int QFlags<QCP::Interaction>::Private::*][m[K[m[K' is deprecated: Use default constructor instead [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wdeprecated-declarations-Wdeprecated-declarations]8;;[m[K]
+ 9028 |   [01;35m[KmInteractions(0)[m[K,
+      |   [01;35m[K^~~~~~~~~~~~~~~~[m[K
+[01m[K/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtCore/qflags.h:123:80:[m[K [01;36m[Knote: [m[Kdeclared here
+  123 |     QT_DEPRECATED_X("Use default constructor instead") Q_DECL_CONSTEXPR inline [01;36m[KQFlags[m[K(Zero) noexcept : i(0) {}
+      |                                                                                [01;36m[K^~~~~~[m[K
+[01m[K/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtCore/qflags.h:123:80:[m[K [01;36m[Knote: [m[Kdeclared here
+  123 |     QT_DEPRECATED_X("Use default constructor instead") Q_DECL_CONSTEXPR inline [01;36m[KQFlags[m[K(Zero) noexcept : i(0) {}
+      |                                                                                [01;36m[K^~~~~~[m[K
+[01m[Kmainwindow.cpp:1321:80:[m[K [01;35m[Kwarning: [m[K'[01m[KQWheelEvent::[01;32m[KQWheelEvent[m[K(const QPointF&, int, Qt::MouseButtons, Qt::KeyboardModifiers, Qt::Orientation)[m[K' is deprecated: Use the last QWheelEvent constructor taking pixelDelta, angleDelta, phase, and inverted [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wdeprecated-declarations-Wdeprecated-declarations]8;;[m[K]
+ 1321 |     wheelEmu = new QWheelEvent(point, 120, 0, Qt::ControlModifier, Qt::Vertical[01;35m[K)[m[K;
+      |                                                                                [01;35m[K^[m[K
+[01m[K/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtGui/qevent.h:181:5:[m[K [01;36m[Knote: [m[Kdeclared here
+  181 |     [01;36m[KQWheelEvent[m[K(const QPointF &pos, int delta,
+      |     [01;36m[K^~~~~~~~~~~[m[K
+[01m[Kmainwindow.cpp:[m[K In member function '[01m[Kvoid MainWindow::[01;32m[KctrlArrowDownTriggered[m[K()[m[K':
+[01m[Kmainwindow.cpp:1330:45:[m[K [01;35m[Kwarning: [m[K'[01m[Kconstexpr QFlags<T>::[01;32m[KQFlags[m[K(Zero) [35m[K[with Enum = Qt::MouseButton; Zero = int QFlags<Qt::MouseButton>::Private::*][m[K[m[K' is deprecated: Use default constructor instead [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wdeprecated-declarations-Wdeprecated-declarations]8;;[m[K]
+ 1330 |     wheelEmu = new QWheelEvent(point, -120, [01;35m[K0[m[K, Qt::ControlModifier, Qt::Vertical);
+      |                                             [01;35m[K^[m[K
+[01m[K/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtCore/qflags.h:123:80:[m[K [01;36m[Knote: [m[Kdeclared here
+  123 |     QT_DEPRECATED_X("Use default constructor instead") Q_DECL_CONSTEXPR inline [01;36m[KQFlags[m[K(Zero) noexcept : i(0) {}
+      |                                                                                [01;36m[K^~~~~~[m[K
+[01m[Kmainwindow.cpp:1330:81:[m[K [01;35m[Kwarning: [m[K'[01m[KQWheelEvent::[01;32m[KQWheelEvent[m[K(const QPointF&, int, Qt::MouseButtons, Qt::KeyboardModifiers, Qt::Orientation)[m[K' is deprecated: Use the last QWheelEvent constructor taking pixelDelta, angleDelta, phase, and inverted [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wdeprecated-declarations-Wdeprecated-declarations]8;;[m[K]
+ 1330 |     wheelEmu = new QWheelEvent(point, -120, 0, Qt::ControlModifier, Qt::Vertical[01;35m[K)[m[K;
+      |                                                                                 [01;35m[K^[m[K
+[01m[K/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtGui/qevent.h:181:5:[m[K [01;36m[Knote: [m[Kdeclared here
+  181 |     [01;36m[KQWheelEvent[m[K(const QPointF &pos, int delta,
+      |     [01;36m[K^~~~~~~~~~~[m[K
+[01m[Kmainwindow.cpp:[m[K In member function '[01m[Kvoid MainWindow::[01;32m[Kon_actionSerial_triggered[m[K(bool)[m[K':
+[01m[Kmainwindow.cpp:2638:49:[m[K [01;35m[Kwarning: [m[Kunused parameter '[01m[Kchecked[m[K' [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wno-unused-parameter-Wunused-parameter]8;;[m[K]
+ 2638 | void MainWindow::on_actionSerial_triggered([01;35m[Kbool checked[m[K)
+      |                                            [01;35m[K~~~~~^~~~~~~[m[K
+[01m[Kmainwindow.cpp:[m[K In member function '[01m[Kvoid MainWindow::[01;32m[Kon_actionI2C_triggered[m[K(bool)[m[K':
+[01m[Kmainwindow.cpp:2643:46:[m[K [01;35m[Kwarning: [m[Kunused parameter '[01m[Kchecked[m[K' [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wno-unused-parameter-Wunused-parameter]8;;[m[K]
+ 2643 | void MainWindow::on_actionI2C_triggered([01;35m[Kbool checked[m[K)
+      |                                         [01;35m[K~~~~~^~~~~~~[m[K
+[01m[Kui_elements/qcp1/qcustomplot.cpp:[m[K In member function '[01m[Kvirtual void QCustomPlot::[01;32m[KwheelEvent[m[K(QWheelEvent*)[m[K':
+[01m[Kui_elements/qcp1/qcustomplot.cpp:10861:56:[m[K [01;35m[Kwarning: [m[K'[01m[KQPoint QWheelEvent::[01;32m[Kpos[m[K() const[m[K' is deprecated: Use position() [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wdeprecated-declarations-Wdeprecated-declarations]8;;[m[K]
+10861 |   if (QCPLayoutElement *el = layoutElementAt([01;35m[Kevent->pos()[m[K))
+      |                                              [01;35m[K~~~~~~~~~~^~[m[K
+[01m[K/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtGui/qevent.h:225:19:[m[K [01;36m[Knote: [m[Kdeclared here
+  225 |     inline QPoint [01;36m[Kpos[m[K() const { return p.toPoint(); }
+      |                   [01;36m[K^~~[m[K
+[01m[Kui_elements/qcp1/qcustomplot.cpp:[m[K In member function '[01m[Kvirtual void QCPAxisRect::[01;32m[KwheelEvent[m[K(QWheelEvent*)[m[K':
+[01m[Kui_elements/qcp1/qcustomplot.cpp:12586:39:[m[K [01;35m[Kwarning: [m[K'[01m[Kint QWheelEvent::[01;32m[Kdelta[m[K() const[m[K' is deprecated: Use angleDelta() [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wdeprecated-declarations-Wdeprecated-declarations]8;;[m[K]
+12586 |       double wheelSteps = [01;35m[Kevent->delta()[m[K/120.0; // a single step delta is +/-120 usually
+      |                           [01;35m[K~~~~~~~~~~~~^~[m[K
+[01m[K/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtGui/qevent.h:219:16:[m[K [01;36m[Knote: [m[Kdeclared here
+  219 |     inline int [01;36m[Kdelta[m[K() const  { return qt4D; }
+      |                [01;36m[K^~~~~[m[K
+[01m[Kui_elements/qcp1/qcustomplot.cpp:12591:107:[m[K [01;35m[Kwarning: [m[K'[01m[KQPoint QWheelEvent::[01;32m[Kpos[m[K() const[m[K' is deprecated: Use position() [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wdeprecated-declarations-Wdeprecated-declarations]8;;[m[K]
+12591 |           mRangeZoomHorzAxis.data()->scaleRange(factor, mRangeZoomHorzAxis.data()->pixelToCoord([01;35m[Kevent->pos()[m[K.x()));
+      |                                                                                                 [01;35m[K~~~~~~~~~~^~[m[K
+[01m[K/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtGui/qevent.h:225:19:[m[K [01;36m[Knote: [m[Kdeclared here
+  225 |     inline QPoint [01;36m[Kpos[m[K() const { return p.toPoint(); }
+      |                   [01;36m[K^~~[m[K
+[01m[Kui_elements/qcp1/qcustomplot.cpp:12597:107:[m[K [01;35m[Kwarning: [m[K'[01m[KQPoint QWheelEvent::[01;32m[Kpos[m[K() const[m[K' is deprecated: Use position() [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wdeprecated-declarations-Wdeprecated-declarations]8;;[m[K]
+12597 |           mRangeZoomVertAxis.data()->scaleRange(factor, mRangeZoomVertAxis.data()->pixelToCoord([01;35m[Kevent->pos()[m[K.y()));
+      |                                                                                                 [01;35m[K~~~~~~~~~~^~[m[K
+[01m[K/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtGui/qevent.h:225:19:[m[K [01;36m[Knote: [m[Kdeclared here
+  225 |     inline QPoint [01;36m[Kpos[m[K() const { return p.toPoint(); }
+      |                   [01;36m[K^~~[m[K
+[01m[Kui_elements/qcp1/qcustomplot.cpp:[m[K In member function '[01m[Kvoid QCPColorScale::[01;32m[KsetRangeDrag[m[K(bool)[m[K':
+[01m[Kui_elements/qcp1/qcustomplot.cpp:14018:36:[m[K [01;35m[Kwarning: [m[K'[01m[Kconstexpr QFlags<T>::[01;32m[KQFlags[m[K(Zero) [35m[K[with Enum = Qt::Orientation; Zero = int QFlags<Qt::Orientation>::Private::*][m[K[m[K' is deprecated: Use default constructor instead [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wdeprecated-declarations-Wdeprecated-declarations]8;;[m[K]
+14018 |     mAxisRect.data()->setRangeDrag([01;35m[K0[m[K);
+      |                                    [01;35m[K^[m[K
+[01m[K/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtCore/qflags.h:123:80:[m[K [01;36m[Knote: [m[Kdeclared here
+  123 |     QT_DEPRECATED_X("Use default constructor instead") Q_DECL_CONSTEXPR inline [01;36m[KQFlags[m[K(Zero) noexcept : i(0) {}
+      |                                                                                [01;36m[K^~~~~~[m[K
+[01m[Kui_elements/qcp1/qcustomplot.cpp:[m[K In member function '[01m[Kvoid QCPColorScale::[01;32m[KsetRangeZoom[m[K(bool)[m[K':
+[01m[Kui_elements/qcp1/qcustomplot.cpp:14038:36:[m[K [01;35m[Kwarning: [m[K'[01m[Kconstexpr QFlags<T>::[01;32m[KQFlags[m[K(Zero) [35m[K[with Enum = Qt::Orientation; Zero = int QFlags<Qt::Orientation>::Private::*][m[K[m[K' is deprecated: Use default constructor instead [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wdeprecated-declarations-Wdeprecated-declarations]8;;[m[K]
+14038 |     mAxisRect.data()->setRangeZoom([01;35m[K0[m[K);
+      |                                    [01;35m[K^[m[K
+[01m[K/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtCore/qflags.h:123:80:[m[K [01;36m[Knote: [m[Kdeclared here
+  123 |     QT_DEPRECATED_X("Use default constructor instead") Q_DECL_CONSTEXPR inline [01;36m[KQFlags[m[K(Zero) noexcept : i(0) {}
+      |                                                                                [01;36m[K^~~~~~[m[K
+[01m[Kui_elements/qcp1/qcustomplot.cpp:[m[K In member function '[01m[Kvoid QCPGraph::[01;32m[KsetData[m[K(const QVector<double>&, const QVector<double>&)[m[K':
+[01m[Kui_elements/qcp1/qcustomplot.cpp:14550:23:[m[K [01;35m[Kwarning: [m[K'[01m[KQMap<K, V>::iterator QMap<K, V>::[01;32m[KinsertMulti[m[K(const Key&, const T&) [35m[K[with Key = double; T = QCPData][m[K[m[K' is deprecated: Use QMultiMap for maps storing multiple values with the same key. [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wdeprecated-declarations-Wdeprecated-declarations]8;;[m[K]
+14550 |     [01;35m[KmData->insertMulti(newData.key, newData)[m[K;
+      |     [01;35m[K~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~[m[K
+In file included from [01m[K/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtCore/qvariant.h:47[m[K,
+                 from [01m[K/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtGui/qevent.h:50[m[K:
+[01m[K/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtCore/qmap.h:1366:33:[m[K [01;36m[Knote: [m[Kdeclared here
+ 1366 | typename QMap<Key, T>::iterator [01;36m[KQMap<Key, T>[m[K::insertMulti(const Key &key, const T &value)
+      |                                 [01;36m[K^~~~~~~~~~~~[m[K
+[01m[Kui_elements/qcp1/qcustomplot.cpp:[m[K In member function '[01m[Kvoid QCPGraph::[01;32m[KsetDataValueError[m[K(const QVector<double>&, const QVector<double>&, const QVector<double>&)[m[K':
+[01m[Kui_elements/qcp1/qcustomplot.cpp:14576:23:[m[K [01;35m[Kwarning: [m[K'[01m[KQMap<K, V>::iterator QMap<K, V>::[01;32m[KinsertMulti[m[K(const Key&, const T&) [35m[K[with Key = double; T = QCPData][m[K[m[K' is deprecated: Use QMultiMap for maps storing multiple values with the same key. [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wdeprecated-declarations-Wdeprecated-declarations]8;;[m[K]
+14576 |     [01;35m[KmData->insertMulti(key[i], newData)[m[K;
+      |     [01;35m[K~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~[m[K
+[01m[K/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtCore/qmap.h:1366:33:[m[K [01;36m[Knote: [m[Kdeclared here
+ 1366 | typename QMap<Key, T>::iterator [01;36m[KQMap<Key, T>[m[K::insertMulti(const Key &key, const T &value)
+      |                                 [01;36m[K^~~~~~~~~~~~[m[K
+[01m[Kui_elements/qcp1/qcustomplot.cpp:[m[K In member function '[01m[Kvoid QCPGraph::[01;32m[KsetDataValueError[m[K(const QVector<double>&, const QVector<double>&, const QVector<double>&, const QVector<double>&)[m[K':
+[01m[Kui_elements/qcp1/qcustomplot.cpp:14603:23:[m[K [01;35m[Kwarning: [m[K'[01m[KQMap<K, V>::iterator QMap<K, V>::[01;32m[KinsertMulti[m[K(const Key&, const T&) [35m[K[with Key = double; T = QCPData][m[K[m[K' is deprecated: Use QMultiMap for maps storing multiple values with the same key. [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wdeprecated-declarations-Wdeprecated-declarations]8;;[m[K]
+14603 |     [01;35m[KmData->insertMulti(key[i], newData)[m[K;
+      |     [01;35m[K~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~[m[K
+[01m[K/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtCore/qmap.h:1366:33:[m[K [01;36m[Knote: [m[Kdeclared here
+ 1366 | typename QMap<Key, T>::iterator [01;36m[KQMap<Key, T>[m[K::insertMulti(const Key &key, const T &value)
+      |                                 [01;36m[K^~~~~~~~~~~~[m[K
+[01m[Kui_elements/qcp1/qcustomplot.cpp:[m[K In member function '[01m[Kvoid QCPGraph::[01;32m[KsetDataKeyError[m[K(const QVector<double>&, const QVector<double>&, const QVector<double>&)[m[K':
+[01m[Kui_elements/qcp1/qcustomplot.cpp:14629:23:[m[K [01;35m[Kwarning: [m[K'[01m[KQMap<K, V>::iterator QMap<K, V>::[01;32m[KinsertMulti[m[K(const Key&, const T&) [35m[K[with Key = double; T = QCPData][m[K[m[K' is deprecated: Use QMultiMap for maps storing multiple values with the same key. [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wdeprecated-declarations-Wdeprecated-declarations]8;;[m[K]
+14629 |     [01;35m[KmData->insertMulti(key[i], newData)[m[K;
+      |     [01;35m[K~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~[m[K
+[01m[K/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtCore/qmap.h:1366:33:[m[K [01;36m[Knote: [m[Kdeclared here
+ 1366 | typename QMap<Key, T>::iterator [01;36m[KQMap<Key, T>[m[K::insertMulti(const Key &key, const T &value)
+      |                                 [01;36m[K^~~~~~~~~~~~[m[K
+[01m[Kui_elements/qcp1/qcustomplot.cpp:[m[K In member function '[01m[Kvoid QCPGraph::[01;32m[KsetDataKeyError[m[K(const QVector<double>&, const QVector<double>&, const QVector<double>&, const QVector<double>&)[m[K':
+[01m[Kui_elements/qcp1/qcustomplot.cpp:14656:23:[m[K [01;35m[Kwarning: [m[K'[01m[KQMap<K, V>::iterator QMap<K, V>::[01;32m[KinsertMulti[m[K(const Key&, const T&) [35m[K[with Key = double; T = QCPData][m[K[m[K' is deprecated: Use QMultiMap for maps storing multiple values with the same key. [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wdeprecated-declarations-Wdeprecated-declarations]8;;[m[K]
+14656 |     [01;35m[KmData->insertMulti(key[i], newData)[m[K;
+      |     [01;35m[K~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~[m[K
+[01m[K/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtCore/qmap.h:1366:33:[m[K [01;36m[Knote: [m[Kdeclared here
+ 1366 | typename QMap<Key, T>::iterator [01;36m[KQMap<Key, T>[m[K::insertMulti(const Key &key, const T &value)
+      |                                 [01;36m[K^~~~~~~~~~~~[m[K
+[01m[Kui_elements/qcp1/qcustomplot.cpp:[m[K In member function '[01m[Kvoid QCPGraph::[01;32m[KsetDataBothError[m[K(const QVector<double>&, const QVector<double>&, const QVector<double>&, const QVector<double>&)[m[K':
+[01m[Kui_elements/qcp1/qcustomplot.cpp:14685:23:[m[K [01;35m[Kwarning: [m[K'[01m[KQMap<K, V>::iterator QMap<K, V>::[01;32m[KinsertMulti[m[K(const Key&, const T&) [35m[K[with Key = double; T = QCPData][m[K[m[K' is deprecated: Use QMultiMap for maps storing multiple values with the same key. [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wdeprecated-declarations-Wdeprecated-declarations]8;;[m[K]
+14685 |     [01;35m[KmData->insertMulti(key[i], newData)[m[K;
+      |     [01;35m[K~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~[m[K
+[01m[K/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtCore/qmap.h:1366:33:[m[K [01;36m[Knote: [m[Kdeclared here
+ 1366 | typename QMap<Key, T>::iterator [01;36m[KQMap<Key, T>[m[K::insertMulti(const Key &key, const T &value)
+      |                                 [01;36m[K^~~~~~~~~~~~[m[K
+[01m[Kui_elements/qcp1/qcustomplot.cpp:[m[K In member function '[01m[Kvoid QCPGraph::[01;32m[KsetDataBothError[m[K(const QVector<double>&, const QVector<double>&, const QVector<double>&, const QVector<double>&, const QVector<double>&, const QVector<double>&)[m[K':
+[01m[Kui_elements/qcp1/qcustomplot.cpp:14716:23:[m[K [01;35m[Kwarning: [m[K'[01m[KQMap<K, V>::iterator QMap<K, V>::[01;32m[KinsertMulti[m[K(const Key&, const T&) [35m[K[with Key = double; T = QCPData][m[K[m[K' is deprecated: Use QMultiMap for maps storing multiple values with the same key. [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wdeprecated-declarations-Wdeprecated-declarations]8;;[m[K]
+14716 |     [01;35m[KmData->insertMulti(key[i], newData)[m[K;
+      |     [01;35m[K~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~[m[K
+[01m[K/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtCore/qmap.h:1366:33:[m[K [01;36m[Knote: [m[Kdeclared here
+ 1366 | typename QMap<Key, T>::iterator [01;36m[KQMap<Key, T>[m[K::insertMulti(const Key &key, const T &value)
+      |                                 [01;36m[K^~~~~~~~~~~~[m[K
+[01m[Kui_elements/qcp1/qcustomplot.cpp:[m[K In member function '[01m[Kvoid QCPGraph::[01;32m[KaddData[m[K(const QCPDataMap&)[m[K':
+[01m[Kui_elements/qcp1/qcustomplot.cpp:14864:15:[m[K [01;35m[Kwarning: [m[K'[01m[KQMap<K, V>& QMap<K, V>::[01;32m[Kunite[m[K(const QMap<K, V>&) [35m[K[with Key = double; T = QCPData][m[K[m[K' is deprecated: Use QMultiMap for maps storing multiple values with the same key. [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wdeprecated-declarations-Wdeprecated-declarations]8;;[m[K]
+14864 |   [01;35m[KmData->unite(dataMap)[m[K;
+      |   [01;35m[K~~~~~~~~~~~~^~~~~~~~~[m[K
+[01m[K/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtCore/qmap.h:1378:15:[m[K [01;36m[Knote: [m[Kdeclared here
+ 1378 | QMap<Key, T> &[01;36m[KQMap<Key, T>[m[K::unite(const QMap<Key, T> &other)
+      |               [01;36m[K^~~~~~~~~~~~[m[K
+[01m[Kui_elements/qcp1/qcustomplot.cpp:[m[K In member function '[01m[Kvoid QCPGraph::[01;32m[KaddData[m[K(const QCPData&)[m[K':
+[01m[Kui_elements/qcp1/qcustomplot.cpp:14877:21:[m[K [01;35m[Kwarning: [m[K'[01m[KQMap<K, V>::iterator QMap<K, V>::[01;32m[KinsertMulti[m[K(const Key&, const T&) [35m[K[with Key = double; T = QCPData][m[K[m[K' is deprecated: Use QMultiMap for maps storing multiple values with the same key. [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wdeprecated-declarations-Wdeprecated-declarations]8;;[m[K]
+14877 |   [01;35m[KmData->insertMulti(data.key, data)[m[K;
+      |   [01;35m[K~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~[m[K
+[01m[K/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtCore/qmap.h:1366:33:[m[K [01;36m[Knote: [m[Kdeclared here
+ 1366 | typename QMap<Key, T>::iterator [01;36m[KQMap<Key, T>[m[K::insertMulti(const Key &key, const T &value)
+      |                                 [01;36m[K^~~~~~~~~~~~[m[K
+[01m[Kui_elements/qcp1/qcustomplot.cpp:[m[K In member function '[01m[Kvoid QCPGraph::[01;32m[KaddData[m[K(double, double)[m[K':
+[01m[Kui_elements/qcp1/qcustomplot.cpp:14893:21:[m[K [01;35m[Kwarning: [m[K'[01m[KQMap<K, V>::iterator QMap<K, V>::[01;32m[KinsertMulti[m[K(const Key&, const T&) [35m[K[with Key = double; T = QCPData][m[K[m[K' is deprecated: Use QMultiMap for maps storing multiple values with the same key. [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wdeprecated-declarations-Wdeprecated-declarations]8;;[m[K]
+14893 |   [01;35m[KmData->insertMulti(newData.key, newData)[m[K;
+      |   [01;35m[K~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtCore/qmap.h:1366:33:[m[K [01;36m[Knote: [m[Kdeclared here
+ 1366 | typename QMap<Key, T>::iterator [01;36m[KQMap<Key, T>[m[K::insertMulti(const Key &key, const T &value)
+      |                                 [01;36m[K^~~~~~~~~~~~[m[K
+[01m[Kui_elements/qcp1/qcustomplot.cpp:[m[K In member function '[01m[Kvoid QCPGraph::[01;32m[KaddData[m[K(const QVector<double>&, const QVector<double>&)[m[K':
+[01m[Kui_elements/qcp1/qcustomplot.cpp:14912:23:[m[K [01;35m[Kwarning: [m[K'[01m[KQMap<K, V>::iterator QMap<K, V>::[01;32m[KinsertMulti[m[K(const Key&, const T&) [35m[K[with Key = double; T = QCPData][m[K[m[K' is deprecated: Use QMultiMap for maps storing multiple values with the same key. [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wdeprecated-declarations-Wdeprecated-declarations]8;;[m[K]
+14912 |     [01;35m[KmData->insertMulti(newData.key, newData)[m[K;
+      |     [01;35m[K~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtCore/qmap.h:1366:33:[m[K [01;36m[Knote: [m[Kdeclared here
+ 1366 | typename QMap<Key, T>::iterator [01;36m[KQMap<Key, T>[m[K::insertMulti(const Key &key, const T &value)
+      |                                 [01;36m[K^~~~~~~~~~~~[m[K
+[01m[Kui_elements/qcp1/qcustomplot.cpp:[m[K In member function '[01m[Kvoid QCPCurve::[01;32m[KsetData[m[K(const QVector<double>&, const QVector<double>&, const QVector<double>&)[m[K':
+[01m[Kui_elements/qcp1/qcustomplot.cpp:16876:23:[m[K [01;35m[Kwarning: [m[K'[01m[KQMap<K, V>::iterator QMap<K, V>::[01;32m[KinsertMulti[m[K(const Key&, const T&) [35m[K[with Key = double; T = QCPCurveData][m[K[m[K' is deprecated: Use QMultiMap for maps storing multiple values with the same key. [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wdeprecated-declarations-Wdeprecated-declarations]8;;[m[K]
+16876 |     [01;35m[KmData->insertMulti(newData.t, newData)[m[K;
+      |     [01;35m[K~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtCore/qmap.h:1366:33:[m[K [01;36m[Knote: [m[Kdeclared here
+ 1366 | typename QMap<Key, T>::iterator [01;36m[KQMap<Key, T>[m[K::insertMulti(const Key &key, const T &value)
+      |                                 [01;36m[K^~~~~~~~~~~~[m[K
+[01m[Kui_elements/qcp1/qcustomplot.cpp:[m[K In member function '[01m[Kvoid QCPCurve::[01;32m[KsetData[m[K(const QVector<double>&, const QVector<double>&)[m[K':
+[01m[Kui_elements/qcp1/qcustomplot.cpp:16896:23:[m[K [01;35m[Kwarning: [m[K'[01m[KQMap<K, V>::iterator QMap<K, V>::[01;32m[KinsertMulti[m[K(const Key&, const T&) [35m[K[with Key = double; T = QCPCurveData][m[K[m[K' is deprecated: Use QMultiMap for maps storing multiple values with the same key. [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wdeprecated-declarations-Wdeprecated-declarations]8;;[m[K]
+16896 |     [01;35m[KmData->insertMulti(newData.t, newData)[m[K;
+      |     [01;35m[K~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtCore/qmap.h:1366:33:[m[K [01;36m[Knote: [m[Kdeclared here
+ 1366 | typename QMap<Key, T>::iterator [01;36m[KQMap<Key, T>[m[K::insertMulti(const Key &key, const T &value)
+      |                                 [01;36m[K^~~~~~~~~~~~[m[K
+[01m[Kui_elements/qcp1/qcustomplot.cpp:[m[K In member function '[01m[Kvoid QCPCurve::[01;32m[KaddData[m[K(const QCPCurveDataMap&)[m[K':
+[01m[Kui_elements/qcp1/qcustomplot.cpp:16930:15:[m[K [01;35m[Kwarning: [m[K'[01m[KQMap<K, V>& QMap<K, V>::[01;32m[Kunite[m[K(const QMap<K, V>&) [35m[K[with Key = double; T = QCPCurveData][m[K[m[K' is deprecated: Use QMultiMap for maps storing multiple values with the same key. [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wdeprecated-declarations-Wdeprecated-declarations]8;;[m[K]
+16930 |   [01;35m[KmData->unite(dataMap)[m[K;
+      |   [01;35m[K~~~~~~~~~~~~^~~~~~~~~[m[K
+[01m[K/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtCore/qmap.h:1378:15:[m[K [01;36m[Knote: [m[Kdeclared here
+ 1378 | QMap<Key, T> &[01;36m[KQMap<Key, T>[m[K::unite(const QMap<Key, T> &other)
+      |               [01;36m[K^~~~~~~~~~~~[m[K
+[01m[Kui_elements/qcp1/qcustomplot.cpp:[m[K In member function '[01m[Kvoid QCPCurve::[01;32m[KaddData[m[K(const QCPCurveData&)[m[K':
+[01m[Kui_elements/qcp1/qcustomplot.cpp:16939:21:[m[K [01;35m[Kwarning: [m[K'[01m[KQMap<K, V>::iterator QMap<K, V>::[01;32m[KinsertMulti[m[K(const Key&, const T&) [35m[K[with Key = double; T = QCPCurveData][m[K[m[K' is deprecated: Use QMultiMap for maps storing multiple values with the same key. [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wdeprecated-declarations-Wdeprecated-declarations]8;;[m[K]
+16939 |   [01;35m[KmData->insertMulti(data.t, data)[m[K;
+      |   [01;35m[K~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~[m[K
+[01m[K/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtCore/qmap.h:1366:33:[m[K [01;36m[Knote: [m[Kdeclared here
+ 1366 | typename QMap<Key, T>::iterator [01;36m[KQMap<Key, T>[m[K::insertMulti(const Key &key, const T &value)
+      |                                 [01;36m[K^~~~~~~~~~~~[m[K
+[01m[Kui_elements/qcp1/qcustomplot.cpp:[m[K In member function '[01m[Kvoid QCPCurve::[01;32m[KaddData[m[K(double, double, double)[m[K':
+[01m[Kui_elements/qcp1/qcustomplot.cpp:16952:21:[m[K [01;35m[Kwarning: [m[K'[01m[KQMap<K, V>::iterator QMap<K, V>::[01;32m[KinsertMulti[m[K(const Key&, const T&) [35m[K[with Key = double; T = QCPCurveData][m[K[m[K' is deprecated: Use QMultiMap for maps storing multiple values with the same key. [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wdeprecated-declarations-Wdeprecated-declarations]8;;[m[K]
+16952 |   [01;35m[KmData->insertMulti(newData.t, newData)[m[K;
+      |   [01;35m[K~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtCore/qmap.h:1366:33:[m[K [01;36m[Knote: [m[Kdeclared here
+ 1366 | typename QMap<Key, T>::iterator [01;36m[KQMap<Key, T>[m[K::insertMulti(const Key &key, const T &value)
+      |                                 [01;36m[K^~~~~~~~~~~~[m[K
+[01m[Kui_elements/qcp1/qcustomplot.cpp:[m[K In member function '[01m[Kvoid QCPCurve::[01;32m[KaddData[m[K(double, double)[m[K':
+[01m[Kui_elements/qcp1/qcustomplot.cpp:16972:21:[m[K [01;35m[Kwarning: [m[K'[01m[KQMap<K, V>::iterator QMap<K, V>::[01;32m[KinsertMulti[m[K(const Key&, const T&) [35m[K[with Key = double; T = QCPCurveData][m[K[m[K' is deprecated: Use QMultiMap for maps storing multiple values with the same key. [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wdeprecated-declarations-Wdeprecated-declarations]8;;[m[K]
+16972 |   [01;35m[KmData->insertMulti(newData.t, newData)[m[K;
+      |   [01;35m[K~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtCore/qmap.h:1366:33:[m[K [01;36m[Knote: [m[Kdeclared here
+ 1366 | typename QMap<Key, T>::iterator [01;36m[KQMap<Key, T>[m[K::insertMulti(const Key &key, const T &value)
+      |                                 [01;36m[K^~~~~~~~~~~~[m[K
+[01m[Kui_elements/qcp1/qcustomplot.cpp:[m[K In member function '[01m[Kvoid QCPCurve::[01;32m[KaddData[m[K(const QVector<double>&, const QVector<double>&, const QVector<double>&)[m[K':
+[01m[Kui_elements/qcp1/qcustomplot.cpp:16990:23:[m[K [01;35m[Kwarning: [m[K'[01m[KQMap<K, V>::iterator QMap<K, V>::[01;32m[KinsertMulti[m[K(const Key&, const T&) [35m[K[with Key = double; T = QCPCurveData][m[K[m[K' is deprecated: Use QMultiMap for maps storing multiple values with the same key. [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wdeprecated-declarations-Wdeprecated-declarations]8;;[m[K]
+16990 |     [01;35m[KmData->insertMulti(newData.t, newData)[m[K;
+      |     [01;35m[K~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtCore/qmap.h:1366:33:[m[K [01;36m[Knote: [m[Kdeclared here
+ 1366 | typename QMap<Key, T>::iterator [01;36m[KQMap<Key, T>[m[K::insertMulti(const Key &key, const T &value)
+      |                                 [01;36m[K^~~~~~~~~~~~[m[K
+[01m[Kui_elements/qcp1/qcustomplot.cpp:[m[K In member function '[01m[Kvoid QCPBars::[01;32m[KsetData[m[K(const QVector<double>&, const QVector<double>&)[m[K':
+[01m[Kui_elements/qcp1/qcustomplot.cpp:18581:23:[m[K [01;35m[Kwarning: [m[K'[01m[KQMap<K, V>::iterator QMap<K, V>::[01;32m[KinsertMulti[m[K(const Key&, const T&) [35m[K[with Key = double; T = QCPBarData][m[K[m[K' is deprecated: Use QMultiMap for maps storing multiple values with the same key. [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wdeprecated-declarations-Wdeprecated-declarations]8;;[m[K]
+18581 |     [01;35m[KmData->insertMulti(newData.key, newData)[m[K;
+      |     [01;35m[K~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtCore/qmap.h:1366:33:[m[K [01;36m[Knote: [m[Kdeclared here
+ 1366 | typename QMap<Key, T>::iterator [01;36m[KQMap<Key, T>[m[K::insertMulti(const Key &key, const T &value)
+      |                                 [01;36m[K^~~~~~~~~~~~[m[K
+[01m[Kui_elements/qcp1/qcustomplot.cpp:[m[K In member function '[01m[Kvoid QCPBars::[01;32m[KaddData[m[K(const QCPBarDataMap&)[m[K':
+[01m[Kui_elements/qcp1/qcustomplot.cpp:18657:15:[m[K [01;35m[Kwarning: [m[K'[01m[KQMap<K, V>& QMap<K, V>::[01;32m[Kunite[m[K(const QMap<K, V>&) [35m[K[with Key = double; T = QCPBarData][m[K[m[K' is deprecated: Use QMultiMap for maps storing multiple values with the same key. [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wdeprecated-declarations-Wdeprecated-declarations]8;;[m[K]
+18657 |   [01;35m[KmData->unite(dataMap)[m[K;
+      |   [01;35m[K~~~~~~~~~~~~^~~~~~~~~[m[K
+[01m[K/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtCore/qmap.h:1378:15:[m[K [01;36m[Knote: [m[Kdeclared here
+ 1378 | QMap<Key, T> &[01;36m[KQMap<Key, T>[m[K::unite(const QMap<Key, T> &other)
+      |               [01;36m[K^~~~~~~~~~~~[m[K
+[01m[Kui_elements/qcp1/qcustomplot.cpp:[m[K In member function '[01m[Kvoid QCPBars::[01;32m[KaddData[m[K(const QCPBarData&)[m[K':
+[01m[Kui_elements/qcp1/qcustomplot.cpp:18666:21:[m[K [01;35m[Kwarning: [m[K'[01m[KQMap<K, V>::iterator QMap<K, V>::[01;32m[KinsertMulti[m[K(const Key&, const T&) [35m[K[with Key = double; T = QCPBarData][m[K[m[K' is deprecated: Use QMultiMap for maps storing multiple values with the same key. [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wdeprecated-declarations-Wdeprecated-declarations]8;;[m[K]
+18666 |   [01;35m[KmData->insertMulti(data.key, data)[m[K;
+      |   [01;35m[K~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~[m[K
+[01m[K/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtCore/qmap.h:1366:33:[m[K [01;36m[Knote: [m[Kdeclared here
+ 1366 | typename QMap<Key, T>::iterator [01;36m[KQMap<Key, T>[m[K::insertMulti(const Key &key, const T &value)
+      |                                 [01;36m[K^~~~~~~~~~~~[m[K
+[01m[Kui_elements/qcp1/qcustomplot.cpp:[m[K In member function '[01m[Kvoid QCPBars::[01;32m[KaddData[m[K(double, double)[m[K':
+[01m[Kui_elements/qcp1/qcustomplot.cpp:18678:21:[m[K [01;35m[Kwarning: [m[K'[01m[KQMap<K, V>::iterator QMap<K, V>::[01;32m[KinsertMulti[m[K(const Key&, const T&) [35m[K[with Key = double; T = QCPBarData][m[K[m[K' is deprecated: Use QMultiMap for maps storing multiple values with the same key. [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wdeprecated-declarations-Wdeprecated-declarations]8;;[m[K]
+18678 |   [01;35m[KmData->insertMulti(newData.key, newData)[m[K;
+      |   [01;35m[K~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtCore/qmap.h:1366:33:[m[K [01;36m[Knote: [m[Kdeclared here
+ 1366 | typename QMap<Key, T>::iterator [01;36m[KQMap<Key, T>[m[K::insertMulti(const Key &key, const T &value)
+      |                                 [01;36m[K^~~~~~~~~~~~[m[K
+[01m[Kui_elements/qcp1/qcustomplot.cpp:[m[K In member function '[01m[Kvoid QCPBars::[01;32m[KaddData[m[K(const QVector<double>&, const QVector<double>&)[m[K':
+[01m[Kui_elements/qcp1/qcustomplot.cpp:18694:23:[m[K [01;35m[Kwarning: [m[K'[01m[KQMap<K, V>::iterator QMap<K, V>::[01;32m[KinsertMulti[m[K(const Key&, const T&) [35m[K[with Key = double; T = QCPBarData][m[K[m[K' is deprecated: Use QMultiMap for maps storing multiple values with the same key. [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wdeprecated-declarations-Wdeprecated-declarations]8;;[m[K]
+18694 |     [01;35m[KmData->insertMulti(newData.key, newData)[m[K;
+      |     [01;35m[K~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtCore/qmap.h:1366:33:[m[K [01;36m[Knote: [m[Kdeclared here
+ 1366 | typename QMap<Key, T>::iterator [01;36m[KQMap<Key, T>[m[K::insertMulti(const Key &key, const T &value)
+      |                                 [01;36m[K^~~~~~~~~~~~[m[K
+[01m[Kui_elements/qcp1/qcustomplot.cpp:[m[K In member function '[01m[Kvoid QCPFinancial::[01;32m[KsetData[m[K(const QVector<double>&, const QVector<double>&, const QVector<double>&, const QVector<double>&, const QVector<double>&)[m[K':
+[01m[Kui_elements/qcp1/qcustomplot.cpp:20705:23:[m[K [01;35m[Kwarning: [m[K'[01m[KQMap<K, V>::iterator QMap<K, V>::[01;32m[KinsertMulti[m[K(const Key&, const T&) [35m[K[with Key = double; T = QCPFinancialData][m[K[m[K' is deprecated: Use QMultiMap for maps storing multiple values with the same key. [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wdeprecated-declarations-Wdeprecated-declarations]8;;[m[K]
+20705 |     [01;35m[KmData->insertMulti(key[i], QCPFinancialData(key[i], open[i], high[i], low[i], close[i]))[m[K;
+      |     [01;35m[K~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtCore/qmap.h:1366:33:[m[K [01;36m[Knote: [m[Kdeclared here
+ 1366 | typename QMap<Key, T>::iterator [01;36m[KQMap<Key, T>[m[K::insertMulti(const Key &key, const T &value)
+      |                                 [01;36m[K^~~~~~~~~~~~[m[K
+[01m[Kui_elements/qcp1/qcustomplot.cpp:[m[K In member function '[01m[Kvoid QCPFinancial::[01;32m[KaddData[m[K(const QCPFinancialDataMap&)[m[K':
+[01m[Kui_elements/qcp1/qcustomplot.cpp:20807:15:[m[K [01;35m[Kwarning: [m[K'[01m[KQMap<K, V>& QMap<K, V>::[01;32m[Kunite[m[K(const QMap<K, V>&) [35m[K[with Key = double; T = QCPFinancialData][m[K[m[K' is deprecated: Use QMultiMap for maps storing multiple values with the same key. [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wdeprecated-declarations-Wdeprecated-declarations]8;;[m[K]
+20807 |   [01;35m[KmData->unite(dataMap)[m[K;
+      |   [01;35m[K~~~~~~~~~~~~^~~~~~~~~[m[K
+[01m[K/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtCore/qmap.h:1378:15:[m[K [01;36m[Knote: [m[Kdeclared here
+ 1378 | QMap<Key, T> &[01;36m[KQMap<Key, T>[m[K::unite(const QMap<Key, T> &other)
+      |               [01;36m[K^~~~~~~~~~~~[m[K
+[01m[Kui_elements/qcp1/qcustomplot.cpp:[m[K In member function '[01m[Kvoid QCPFinancial::[01;32m[KaddData[m[K(const QCPFinancialData&)[m[K':
+[01m[Kui_elements/qcp1/qcustomplot.cpp:20821:21:[m[K [01;35m[Kwarning: [m[K'[01m[KQMap<K, V>::iterator QMap<K, V>::[01;32m[KinsertMulti[m[K(const Key&, const T&) [35m[K[with Key = double; T = QCPFinancialData][m[K[m[K' is deprecated: Use QMultiMap for maps storing multiple values with the same key. [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wdeprecated-declarations-Wdeprecated-declarations]8;;[m[K]
+20821 |   [01;35m[KmData->insertMulti(data.key, data)[m[K;
+      |   [01;35m[K~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~[m[K
+[01m[K/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtCore/qmap.h:1366:33:[m[K [01;36m[Knote: [m[Kdeclared here
+ 1366 | typename QMap<Key, T>::iterator [01;36m[KQMap<Key, T>[m[K::insertMulti(const Key &key, const T &value)
+      |                                 [01;36m[K^~~~~~~~~~~~[m[K
+[01m[Kui_elements/qcp1/qcustomplot.cpp:[m[K In member function '[01m[Kvoid QCPFinancial::[01;32m[KaddData[m[K(double, double, double, double, double)[m[K':
+[01m[Kui_elements/qcp1/qcustomplot.cpp:20836:21:[m[K [01;35m[Kwarning: [m[K'[01m[KQMap<K, V>::iterator QMap<K, V>::[01;32m[KinsertMulti[m[K(const Key&, const T&) [35m[K[with Key = double; T = QCPFinancialData][m[K[m[K' is deprecated: Use QMultiMap for maps storing multiple values with the same key. [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wdeprecated-declarations-Wdeprecated-declarations]8;;[m[K]
+20836 |   [01;35m[KmData->insertMulti(key, QCPFinancialData(key, open, high, low, close))[m[K;
+      |   [01;35m[K~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtCore/qmap.h:1366:33:[m[K [01;36m[Knote: [m[Kdeclared here
+ 1366 | typename QMap<Key, T>::iterator [01;36m[KQMap<Key, T>[m[K::insertMulti(const Key &key, const T &value)
+      |                                 [01;36m[K^~~~~~~~~~~~[m[K
+[01m[Kui_elements/qcp1/qcustomplot.cpp:[m[K In member function '[01m[Kvoid QCPFinancial::[01;32m[KaddData[m[K(const QVector<double>&, const QVector<double>&, const QVector<double>&, const QVector<double>&, const QVector<double>&)[m[K':
+[01m[Kui_elements/qcp1/qcustomplot.cpp:20857:23:[m[K [01;35m[Kwarning: [m[K'[01m[KQMap<K, V>::iterator QMap<K, V>::[01;32m[KinsertMulti[m[K(const Key&, const T&) [35m[K[with Key = double; T = QCPFinancialData][m[K[m[K' is deprecated: Use QMultiMap for maps storing multiple values with the same key. [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc-15.2.0/gcc/Warning-Options.html#index-Wdeprecated-declarations-Wdeprecated-declarations]8;;[m[K]
+20857 |     [01;35m[KmData->insertMulti(key[i], QCPFinancialData(key[i], open[i], high[i], low[i], close[i]))[m[K;
+      |     [01;35m[K~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/nix/store/p4528rg1paav0h16n82g238abqm1ss7w-qtbase-5.15.18-dev/include/QtCore/qmap.h:1366:33:[m[K [01;36m[Knote: [m[Kdeclared here
+ 1366 | typename QMap<Key, T>::iterator [01;36m[KQMap<Key, T>[m[K::insertMulti(const Key &key, const T &value)
+      |                                 [01;36m[K^~~~~~~~~~~~[m[K
