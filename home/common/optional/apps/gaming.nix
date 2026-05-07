@@ -1,10 +1,11 @@
 {pkgs, inputs, ...}: {
-    home.packages = with pkgs; [
-        prismlauncher
-        protonup-ng
-    ];
+  home.packages = with pkgs; [
+    prismlauncher
+    protonup-ng
+  ];
 
-    home.shellAliases = {
-      hytale = "flatpak run com.hypixel.HytaleLauncher";
-    };
+  programs.mangohud.enable = true;
+  home.shellAliases = {
+    hytale = "flatpak run com.hypixel.HytaleLauncher";
+  };
 }

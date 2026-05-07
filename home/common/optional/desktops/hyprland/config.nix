@@ -168,6 +168,14 @@ in {
         # Brightness control
         "        , XF86MonBrightnessUp, exec, brightnessctl set +10%"
         "        , XF86MonBrightnessDown, exec, brightnessctl set 10%-"
+        # Player control
+        "        , XF86AudioPlay, exec, playerctl play-pause"
+        "        , XF86AudioNext, exec, playerctl next"
+        "        , XF86AudioPrev, exec, playerctl previous"
+        # Volume control
+        "        , XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_SINK@ 5%+"
+        "        , XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_SINK@ 5%-"
+        "        , XF86AudioMute, exec, wpctl set-mute @DEFAULT_SINK@ toggle"
         #"$tetMod , 1, movecurrentworkspacetomonitor, HDMI-A-1"
         #"$tetMod , 2, movecurrentworkspacetomonitor, DP-1"
         #"$tetMod , 3, movecurrentworkspacetomonitor, DP-2"

@@ -22,6 +22,8 @@
     # User config
     ../common/users/mrgeotech
   ];
+  powerManagement.cpuFreqGovernor = "performance";
+  powerManagement.enable = true;
 
   # Bootloader.
   boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -37,20 +39,24 @@
   boot.initrd.kernelModules = ["amdgpu"];
 
   networking.hostName = "mrgeotech-pc";
-  hardware.bluetooth.enable = true;
-  hardware.bluetooth.powerOnBoot = true;
+  hardware = {
+    bluetooth = {
+      enable = true;
+      powerOnBoot = true;
+    };
 
-  hardware.graphics = {
-    enable = true;
-    enable32Bit = true;
-    extraPackages = with pkgs; [
-      #amdvlk 
-      #driversi686Linux.amdvlk
-      rocmPackages.clr
-      rocmPackages.clr.icd
-    ];
+    graphics = {
+      enable = true;
+      enable32Bit = true;
+      extraPackages = with pkgs; [
+        #amdvlk 
+        #driversi686Linux.amdvlk
+        rocmPackages.clr
+        rocmPackages.clr.icd
+      ];
+    };
+    enableAllFirmware = true;
   };
-  hardware.enableAllFirmware = true;
 
   # Load amd driver for Xorg and Wayland
   services.xserver.videoDrivers = ["amdgpu"];

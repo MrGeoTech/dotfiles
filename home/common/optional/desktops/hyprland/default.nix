@@ -52,4 +52,7 @@
       border-radius = 6;
     };
   };
+
+  # Pause/Play behavior
+  services.playerctld.enable = true;
 }
