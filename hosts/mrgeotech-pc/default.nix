@@ -38,7 +38,15 @@
   # amd gpu support for kernel
   boot.initrd.kernelModules = ["amdgpu"];
 
-  networking.hostName = "mrgeotech-pc";
+
+  networking = {
+    networkmanager = {
+      wifi.powersave = false;
+    };
+    hostName = "mrgeotech-pc";
+    interfaces.wlo1.useDHCP = true;
+  };
+
   hardware = {
     bluetooth = {
       enable = true;
