@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # Define paths for wallpapers
-MORNING_WALLPAPER="/home/mrgeotech/.config/hypr/tropic_island_morning.jpg"
-DAY_WALLPAPER="/home/mrgeotech/.config/hypr/tropic_island_day.jpg"
-EVENING_WALLPAPER="/home/mrgeotech/.config/hypr/tropic_island_evening.jpg"
-NIGHT_WALLPAPER="/home/mrgeotech/.config/hypr/tropic_island_night.jpg"
+MORNING_WALLPAPER="/home/mrgeotech/.config/hypr/images/tropic_island_morning.jpg"
+DAY_WALLPAPER="/home/mrgeotech/.config/hypr/images/tropic_island_day.jpg"
+EVENING_WALLPAPER="/home/mrgeotech/.config/hypr/images/tropic_island_evening.jpg"
+NIGHT_WALLPAPER="/home/mrgeotech/.config/hypr/images/tropic_island_night.jpg"
 
 # Function to get the current wallpaper based on the hour
 get_wallpaper() {
