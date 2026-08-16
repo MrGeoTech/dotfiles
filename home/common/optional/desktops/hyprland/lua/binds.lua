@@ -48,6 +48,7 @@ keys.map(mods.sub, {
   { "R", hl.dsp.exec_cmd("reboot") },
   { "SPACE", hl.dsp.exec_cmd("rofi -show window") },
   { "S", hl.dsp.exec_cmd("rofi -show ssh") },
+  { "B", hl.dsp.exec_cmd(terminal .. " -e bluetuith") },
 })
 
 ------------------------------------------------------------

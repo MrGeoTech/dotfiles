@@ -16,6 +16,7 @@
       # Optional configs
     ../common/optional/fonts.nix
     ../common/optional/pipewire.nix
+    ../common/optional/bluetooth.nix
 
     # User config
     ../common/users/mrgeotech

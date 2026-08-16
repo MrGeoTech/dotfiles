@@ -35,7 +35,6 @@
     slurp
     hdrop
     libinput
-    networkmanagerapplet
     pavucontrol
     pipewire
     wl-clipboard

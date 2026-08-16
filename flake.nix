@@ -95,8 +95,10 @@
           specialArgs = {inherit inputs outputs;};
           modules = [
             ./hosts/mrgeotech-pc
-            home-manager.nixosModules.home-manager
+
             catppuccin.nixosModules.catppuccin
+            home-manager.nixosModules.home-manager
+
             ({config, ...}: {
               home-manager.backupFileExtension = "bak";
               home-manager.extraSpecialArgs = {
@@ -112,8 +114,10 @@
           specialArgs = {inherit inputs outputs;};
           modules = [
             ./hosts/mrgeotech-laptop
+
             home-manager.nixosModules.home-manager
             catppuccin.nixosModules.catppuccin
+
             ({config, ...}: {
               home-manager.backupFileExtension = "bak";
               home-manager.extraSpecialArgs = {
@@ -129,8 +133,10 @@
           specialArgs = {inherit inputs outputs;};
           modules = [
             ./hosts/mrgeotech-zenbook
+
             home-manager.nixosModules.home-manager
             catppuccin.nixosModules.catppuccin
+
             ({config, ...}: {
               home-manager.backupFileExtension = "bak";
               home-manager.extraSpecialArgs = {
@@ -146,8 +152,10 @@
           specialArgs = {inherit inputs outputs;};
           modules = [
             ./hosts/steam-machine
+
             home-manager.nixosModules.home-manager
             catppuccin.nixosModules.catppuccin
+
             ({config, ...}: {
               home-manager.backupFileExtension = "bak";
               home-manager.extraSpecialArgs = {

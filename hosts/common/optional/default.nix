@@ -1,38 +1,38 @@
 {
-    inputs,
-    outputs,
-    pkgs,
-    ...
+  inputs,
+  outputs,
+  pkgs,
+  ...
 }: {
-    imports = [
-        ./fonts.nix
-        ./hyprland.nix
-        ./keychron.nix
-        ./pipewire.nix
-        #./shared.nix
-        ./steam.nix
-        #./virtualisation.nix
-        ./labrador.nix
-        #./wireshark.nix
-    ];
+  imports = [
+    ./bluetooth.nix
+    ./fonts.nix
+    ./hyprland.nix
+    ./keychron.nix
+    ./pipewire.nix
+    #./shared.nix
+    ./steam.nix
+    #./virtualisation.nix
+    ./labrador.nix
+    #./wireshark.nix
+  ];
 
-    environment.systemPackages = with pkgs; [
-        gparted
-        rpi-imager
-    ];
+  environment.systemPackages = with pkgs; [
+    gparted
+    rpi-imager
+  ];
 
-    security.polkit.enable = true;
+  security.polkit.enable = true;
 
-    services = {
-        printing.enable = true;
+  services = {
+    printing.enable = true;
 
-        blueman.enable = true;
-        gnome.gnome-keyring.enable = true;
+    gnome.gnome-keyring.enable = true;
 
-        udev.extraRules = ''
+    udev.extraRules = ''
             SUBSYSTEM=="usb", ATTR{idVendor}=="09fb", ATTR{idProduct}=="6001", MODE="0666"
-        '';
-    };
+    '';
+  };
 
-    programs.gnome-disks.enable = true;
+  programs.gnome-disks.enable = true;
 }

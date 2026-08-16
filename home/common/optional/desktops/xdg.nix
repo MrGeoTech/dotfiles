@@ -17,8 +17,14 @@
 
   editorDesktop = "nvim.desktop";
   browserDesktop = "vivaldi-stable.desktop";
+  documentDesktop = "org.pwmt.zathura.desktop";
+  imageDesktop = "imv.desktop";
   fileManagerDesktop = "yazi.desktop";
 in {
+  home.packages = with pkgs; [
+    zathura
+  ];
+
   xdg.enable = true;
 
   xdg.desktopEntries = {
@@ -38,10 +44,10 @@ in {
     enable = true;
     defaultApplications = {
       # Browser-related
-      "text/html" = [ browserDesktop ];
-      "application/xhtml+xml" = [ browserDesktop ];
-      "application/xml" = [ browserDesktop ];
-      "application/pdf" = [ browserDesktop ];
+      "text/html" = [ editorDesktop ];
+      "application/xhtml+xml" = [ editorDesktop ];
+      "application/xml" = [ editorDesktop ];
+      "application/pdf" = [ documentDesktop ];
       "x-scheme-handler/http" = [ browserDesktop ];
       "x-scheme-handler/https" = [ browserDesktop ];
       "x-scheme-handler/ftp" = [ browserDesktop ];
@@ -74,9 +80,9 @@ in {
 
       # Images
       "image/svg+xml" = [ browserDesktop ];
-      "image/png" = [ browserDesktop ];
-      "image/jpeg" = [ browserDesktop  ];
-      "image/webp" = [ browserDesktop  ];
+      "image/png" = [ imageDesktop ];
+      "image/jpeg" = [ imageDesktop ];
+      "image/webp" = [ imageDesktop ];
     };
   };
 }

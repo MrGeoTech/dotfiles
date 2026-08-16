@@ -9,7 +9,7 @@
       "--height 40%"
       "--reverse"
     ];
-    fileWidgetOptions = [
+    fileWidget.options = [
       "--preview 'bat --style=numbers --color=always --line-range :100 {}'"
     ];
     colors = {

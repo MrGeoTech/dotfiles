@@ -1,71 +1,74 @@
 {
-    pkgs,
-    config,
-    inputs,
-    outputs,
-    ...
+pkgs,
+config,
+inputs,
+outputs,
+...
 }: {
-    imports = [
-        # Hardware config
-        inputs.hardware.nixosModules.common-cpu-intel
-        inputs.hardware.nixosModules.common-gpu-intel
-        ./hardware-configuration.nix
+  imports = [
+    # Hardware config
+    inputs.hardware.nixosModules.common-cpu-intel
+    inputs.hardware.nixosModules.common-gpu-intel
+    ./hardware-configuration.nix
 
-        # Common config
-        ../common/core
+    # Common config
+    ../common/core
 
-        # Optional configs
-        ../common/optional
-        (import ../common/optional/wireguard.nix {
-            ip = "3";
-        })
+    # Optional configs
+    ../common/optional
+    (import ../common/optional/wireguard.nix {
+      ip = "3";
+    })
 
-        # User config
-        ../common/users/mrgeotech
-        ../common/users/mrgeotech/optional.nix
-    ];
+    # User config
+    ../common/users/mrgeotech
+    ../common/users/mrgeotech/optional.nix
+  ];
 
-    # Bootloader
-    boot = {
-      kernelPackages = pkgs.linuxPackages_latest;
-    
-      loader = {
-        systemd-boot = {
-          enable = true;
-          configurationLimit = 15;
-        };
-        efi = {
-          canTouchEfiVariables = true;
-          efiSysMountPoint = "/boot";
-        };
-        timeout = 1;
-      };
-    };
+  # Bootloader
+  boot = {
+    kernelPackages = pkgs.linuxPackages_latest;
 
-    networking = {
-        networkmanager.wifi.powersave = true;
-        hostName = "mrgeotech-zenbook";
-        interfaces.wlo1.useDHCP = true;
-    };
-
-    hardware.graphics = {
+    loader = {
+      systemd-boot = {
         enable = true;
-        enable32Bit = true;
+        configurationLimit = 15;
+      };
+      efi = {
+        canTouchEfiVariables = true;
+        efiSysMountPoint = "/boot";
+      };
+      timeout = 1;
     };
+  };
 
-    # Load nvidia driver for Xorg and Wayland
-    console.useXkbConfig = true;
-    hardware.bluetooth.enable = true;
-    hardware.bluetooth.powerOnBoot = true;
+  networking = {
+    networkmanager.wifi.powersave = true;
+    hostName = "mrgeotech-zenbook";
+    interfaces.wlo1.useDHCP = true;
+  };
 
-    # Configure keymap in X11
-    environment.systemPackages = [
-        pkgs.brightnessctl
-    ];
-
-    services.logind.settings.Login = {
-      HandlePowerKey = false;
+  hardware = {
+    graphics = {
+      enable = true;
+      enable32Bit = true;
+      extraPackages = with pkgs; [
+        intel-media-driver
+      ];
     };
+  };
 
-    system.stateVersion = "26.05";
+  # Load nvidia driver for Xorg and Wayland
+  console.useXkbConfig = true;
+
+  # Configure keymap in X11
+  environment.systemPackages = [
+    pkgs.brightnessctl
+  ];
+
+  services.logind.settings.Login = {
+    HandlePowerKey = false;
+  };
+
+  system.stateVersion = "26.05";
 }
