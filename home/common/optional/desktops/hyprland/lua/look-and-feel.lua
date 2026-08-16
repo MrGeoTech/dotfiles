@@ -39,7 +39,7 @@ hl.config({
     numlock_by_default = true,
     natural_scroll = false,
     follow_mouse = 1,
-    touchpad = { natural_scroll = true },
+    touchpad = { natural_scroll = false },
     sensitivity = vars.sensitivity,
   },
 })
@@ -104,7 +104,6 @@ hl.config({
   },
 
   dwindle = {
-    pseudotile = false,
     force_split = 0,
     default_split_ratio = 1.0,
   },
