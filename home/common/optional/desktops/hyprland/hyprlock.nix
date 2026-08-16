@@ -1,4 +1,9 @@
-{
+# hyprlock still uses hyprlang -- the Lua switch is Hyprland-only for now, so
+# this file (and hypridle/hyprpaper) stays exactly as it was, apart from
+# pulling colors from the shared palette.
+let
+  c = import ./colors.nix;
+in {
   programs.hyprlock = {
     enable = true;
     settings = {
@@ -6,6 +11,7 @@
         hide_cursor = true;
         ignore_empty_input = true;
       };
+
       background = [
         {
           path = "screenshot";
@@ -17,6 +23,7 @@
           vibrancy_darkness = 0.0;
         }
       ];
+
       input-field = [
         {
           size = "400, 50";
@@ -28,14 +35,14 @@
           fade_on_empty = false;
           hide_input = false;
           font_family = "Iosevka";
-          font_color = "rgb(205, 214, 244)";
-          inner_color = "rgb(30, 30, 46)";
-          outer_color = "rgb(203, 166, 247)";
+          font_color = c.text;
+          inner_color = c.base;
+          outer_color = c.mauve;
           outline_thickness = 1;
           placeholder_text = "<i>Password...</i>";
           shadow_passes = 2;
-          check_color = "rgb(166, 227, 161)";
-          fail_color = "rgb(243, 139, 168)";
+          check_color = c.green;
+          fail_color = c.red;
           fail_text = "<i>$FAIL <b>($ATTEMPTS)</b></i>";
           fail_timeout = 2000;
           fail_transition = 300;

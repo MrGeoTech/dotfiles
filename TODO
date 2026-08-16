@@ -1,0 +1,12 @@
+warning: Git tree '/home/mrgeotech/dotfiles' is dirty
+building the system configuration...
+warning: Git tree '/home/mrgeotech/dotfiles' is dirty
+evaluation warning: catppuccin/nix will soon auto enroll ports using
+                    `catppuccin.autoEnable` and `catppuccin.enable` will act as a global
+                    toggle to disable all ports and catppuccin modifications.
+
+                    you can supress this warning by explicitly setting
+                    `catppuccin.autoEnable` to match your current value of
+                    `catppuccin.enable` and change `catppuccin.enable` to true
+evaluation warning: mrgeotech profile: The option `programs.fzf.fileWidgetOptions' defined in `/nix/store/qhcds34a1pxg247fs84pxhrmva6xmbbq-source/home/common/core/cli/fzf.nix' has been renamed to `programs.fzf.fileWidget.options'.
+Checking switch inhibitors... done

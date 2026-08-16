@@ -6,6 +6,13 @@
     ./hypridle.nix
     ./hyprlock.nix
   ];
+
+  # config.nix generates ~/.config/hypr/hyprland.lua plus the module files
+  # (00-vars.lua, 10-look-and-feel.lua, ...) via extraLuaFiles. This tree is
+  # for everything else that belongs in the hypr directory: scripts/ and the
+  # wallpapers. Because recursive = true links files individually, the two
+  # coexist fine -- just make sure ./hypr contains no hyprland.lua,
+  # hyprland.conf, or a file colliding with a module name above.
   home.file.".config/hypr" = {
     recursive = true;
     source = ./hypr;
@@ -19,23 +26,28 @@
   '';
 
   home.packages = with pkgs; [
+    # NOTE: hyprland, hyprpaper, and hypridle used to be listed here. They're
+    # now provided by wayland.windowManager.hyprland.finalPackage and the
+    # services.hyprpaper / services.hypridle modules. Listing them again put a
+    # second, differently-versioned copy on PATH -- a classic source of
+    # "why is my config not applying" after a flake update.
     grim
-    hyprland
-    hyprpaper
-    hypridle
+    slurp
     hdrop
     libinput
     networkmanagerapplet
     pavucontrol
     pipewire
-    slurp
-    swayidle
-    swaylock-effects
     wl-clipboard
     wlogout
     xdg-desktop-portal-gtk
     xdg-desktop-portal-hyprland
     gcr # Provides org.gnome.keyring.SystemPrompter
+
+    # Left over from the sway days; hyprlock/hypridle cover both now.
+    # Drop these once you're sure nothing references them.
+    # swayidle
+    # swaylock-effects
   ];
 
   # Auto-login keyring
