@@ -39,7 +39,7 @@ hl.config({
     numlock_by_default = true,
     natural_scroll = false,
     follow_mouse = 1,
-    touchpad = { natural_scroll = false },
+    touchpad = { natural_scroll = true },
     sensitivity = vars.sensitivity,
   },
 })

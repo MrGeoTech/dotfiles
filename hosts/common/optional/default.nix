@@ -11,7 +11,7 @@
         ./pipewire.nix
         #./shared.nix
         ./steam.nix
-        ./virtualisation.nix
+        #./virtualisation.nix
         ./labrador.nix
         #./wireshark.nix
     ];
