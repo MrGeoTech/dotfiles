@@ -36,11 +36,6 @@
     services.mpris-proxy.enable = true;
 
     home.sessionVariables = {
-        LM_LICENSE_FILE = "/home/mrgeotech/.secrets/License.dat";
         JAVA_HOME = "${pkgs.openjdk25}/lib/openjdk";
-    };
-
-    home.shellAliases = {
-        vlcav = "VDPAU_TRACE=1 vlc";
     };
 }

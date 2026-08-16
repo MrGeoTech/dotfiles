@@ -11,10 +11,9 @@
     extraPackages = builtins.attrValues {
       inherit
         (pkgs.bat-extras)
-        # TODO: Wait till fixed batgrep # search through and highlight files using ripgrep
+        batgrep # search through and highlight files using ripgrep
         batdiff # Diff a file against the current git index, or display the diff between to files
         batman # man pages with syntax highlighting
-        batgrep
       ;
     };
   };
@@ -27,6 +26,7 @@
 
   # aliases
   home.shellAliases = {
+    MANPAGER = "bat";
     man = "batman";
     cat = "bat";
     grep = "batgrep";

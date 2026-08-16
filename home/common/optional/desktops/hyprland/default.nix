@@ -33,20 +33,11 @@
     # "why is my config not applying" after a flake update.
     grim
     slurp
-    hdrop
-    libinput
-    pavucontrol
-    pipewire
     wl-clipboard
     wlogout
     xdg-desktop-portal-gtk
     xdg-desktop-portal-hyprland
-    gcr # Provides org.gnome.keyring.SystemPrompter
-
-    # Left over from the sway days; hyprlock/hypridle cover both now.
-    # Drop these once you're sure nothing references them.
-    # swayidle
-    # swaylock-effects
+    gcr_4 # Provides org.gnome.keyring.SystemPrompter
   ];
 
   # Auto-login keyring

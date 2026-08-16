@@ -104,7 +104,7 @@
             car = " ";
             default = [" " " " " "];
           };
-          on-click = "pavucontrol";
+          on-click = "wiremix";
         };
         network = {
           format-wifi = "{ipaddr} ({signalStrength}%)  ";

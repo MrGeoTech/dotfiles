@@ -12,9 +12,7 @@
     ./pipewire.nix
     #./shared.nix
     ./steam.nix
-    #./virtualisation.nix
     ./labrador.nix
-    #./wireshark.nix
   ];
 
   environment.systemPackages = with pkgs; [

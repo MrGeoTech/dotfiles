@@ -36,7 +36,7 @@ keys.map(mods.main, {
   { "F", hl.dsp.exec_cmd(files) },
   { "G", hl.dsp.exec_cmd("steam") },
   { "Y", hl.dsp.exec_cmd("flatpak run com.hypixel.HytaleLauncher") },
-  { "W", hl.dsp.exec_cmd("pkill waybar && waybar") },
+  { "W", hl.dsp.exec_cmd("systemctl --user restart waybar") },
   { "Q", hl.dsp.window.close() },
   { "E", hl.dsp.exit() },
   { "S", hl.dsp.layout("togglesplit") }, -- dwindle only
