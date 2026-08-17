@@ -17,6 +17,7 @@
     ./lazygit.nix
     ./nvim
     ./ripgrep.nix
+    ./ssh.nix
     ./yazi
     ./zoxide.nix
   ];
