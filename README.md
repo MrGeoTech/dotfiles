@@ -111,8 +111,8 @@ sudo nixos-rebuild switch --flake '.#<host>'
 ```
 > You will also have to copy over ~/.secrets. The SSH identity is no longer
 > a manual copy -- it's decrypted from `hosts/common/users/mrgeotech/secrets/ssh.yaml`
-> via sops-nix on rebuild; see that directory's README.md to populate it the
-> first time.
+> via sops-nix on rebuild; see that directory's README.md (`sops edit ...`)
+> to populate it the first time.
 ## Acknowledgements
 
 - [Dileep Kishore's nix config](https://github.com/dileep-kishore/nixos-hyprland) The framework my NixOS distro is based off of

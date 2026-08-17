@@ -13,7 +13,7 @@ a real key exists. To activate it:
 2. Edit this secret in place (sops re-encrypts automatically on save):
 
    ```sh
-   sops hosts/common/users/mrgeotech/secrets/ssh.yaml
+   sops edit hosts/common/users/mrgeotech/secrets/ssh.yaml
    ```
 
    Replace the placeholder value with the contents of `/tmp/id_ed25519`
