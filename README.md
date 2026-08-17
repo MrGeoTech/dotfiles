@@ -60,6 +60,31 @@
 
 ![directory-structure](./assets/directory_structure.png)
 
+## Sandboxed, on-demand apps
+
+The base system -- browser (Vivaldi), file manager (Yazi), desktop
+(Hyprland), terminal (Ghostty), editor (Neovim) -- is configured and
+installed the normal home-manager way, same as always.
+
+Everything else that's more of an occasional tool than a daily driver
+(compilers, IDEs, CAD/office/media apps, ...) is wrapped instead: see
+`home/common/lib/sandbox-apps.nix` and its use in
+`home/common/optional/apps/default.nix`. Each wrapped command is a small
+script that runs `nix shell nixpkgs#<pkg> --command <bin> "$@"`, so the
+actual package is only fetched/built the first time you run it, and isn't
+part of every home-manager generation.
+
+Any command that isn't installed at all gets searched automatically: the
+shell's `command_not_found_handle`/`command_not_found_handler` (see
+`home/common/core/shells/{bash,zsh}.nix`) forwards it to
+[`comma`](https://github.com/nix-community/comma), backed by a prebuilt
+[nix-index-database](https://github.com/nix-community/nix-index-database)
+so no local index needs to be built. It only runs interactively (a real
+terminal, `COMMA_ASK_TO_CONFIRM=true` set in `home/common/core/default.nix`
+makes it confirm before running anything), and the mistyped/unknown
+command is only ever passed through as an argument, never interpolated
+into a shell string.
+
 ## Installation
 
 #### Requirements

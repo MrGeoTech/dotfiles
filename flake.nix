@@ -28,6 +28,15 @@
 
     catppuccin.url = "github:catppuccin/nix";
 
+    # Prebuilt nixpkgs file->package index, kept up to date automatically
+    # via `nix flake update`. Backs `comma`/command-not-found so unknown
+    # commands can be searched and run sandboxed without ever having to
+    # build a local index.
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     ghostty = {
       url = "github:ghostty-org/ghostty";
     };
