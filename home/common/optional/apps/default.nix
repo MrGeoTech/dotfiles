@@ -1,4 +1,27 @@
-{ pkgs, inputs, outputs, stdenv, ... }:
+{ pkgs, lib, inputs, outputs, stdenv, ... }:
+let
+  sandbox = import ../../lib/sandbox-apps.nix { inherit pkgs lib; };
+
+  # Occasional-use tools: CAD/office/media apps, compilers, IDEs, and
+  # other "not part of the base system" software. Wrapped so `nix shell`
+  # fetches/builds them on first use instead of every home-manager
+  # generation carrying (and rebuilding) the whole set.
+  sandboxedApps = sandbox.mkSandboxedApps [
+    { attr = "octaveFull"; bin = "octave"; } # note: the statistics/signal forge packages the plain package used to bundle aren't included here; `pkg install -forge ...` them at runtime if needed
+    { attr = "kicad"; }
+    { attr = "jetbrains.idea"; bin = "idea"; } # good for java 25 development
+    { attr = "gradle_9"; bin = "gradle"; } # ships with its own default JDK (jdk25), no JAVA_HOME needed
+    { attr = "openjdk25"; bin = "java"; }
+    { attr = "openjdk25"; bin = "javac"; }
+    { attr = "drawio"; }
+    { attr = "inkscape"; }
+    { attr = "obs-studio"; bin = "obs"; }
+    { attr = "vlc"; }
+    { attr = "appimage-run"; }
+    { attr = "libreoffice-fresh"; bin = "libreoffice"; }
+    #{ attr = "quartus-prime-lite"; }
+  ];
+in
 {
     imports = [
         ./ghostty
@@ -10,32 +33,13 @@
     ];
     home.packages = with pkgs; [
         # System utilities
-        appimage-run
         libgcc
-        libreoffice-fresh
         udisks
         flatpak
-        # User Apps
-        drawio
+        # User apps kept installed: daily drivers, not occasional tools
         google-chrome # Needed to take certain tests
-        inkscape
-        kicad
-        obs-studio
-        (octaveFull.withPackages(opkgs: with opkgs; [
-          statistics
-          signal
-        ]))
-        jetbrains.idea # Good for java 25 development
-        gradle_9
-        openjdk25
-        #quartus-prime-lite
         signal-desktop
-        vlc
-    ];
+    ] ++ sandboxedApps;
 
     services.mpris-proxy.enable = true;
-
-    home.sessionVariables = {
-        JAVA_HOME = "${pkgs.openjdk25}/lib/openjdk";
-    };
 }

@@ -18,12 +18,18 @@
         chmod            # bulk chmod on selected files
         diff             # diff selection against the hovered file
         full-border      # rounded border matching the rest of the theme
-        git              # git status column in the file list
         mount            # mount/unmount removable media without leaving yazi
         relative-motions # THE one: type 5j to jump 5 down, like vim
         smart-enter      # `l` opens files and enters directories
         toggle-pane      # maximize preview / hide parent
         ;
+      # git status column disabled for now: nixpkgs' yaziPlugins.git
+      # (currently pinned to yazi-rs/plugins@b9598e6, 2026-08-03) predates
+      # upstream's `fetch_compact` shim for yazi core's coroutine-based
+      # fetcher protocol, so it errors with "error converting Lua boolean
+      # to function" on every fetch. Re-add `git` here (plus its fetcher
+      # rules and `require("git"):setup()` in initLua below) once nixpkgs
+      # updates the pin past that fix.
     };
 
     settings = {
@@ -48,13 +54,17 @@
 
       # Route Enter/`o` to the same lean tools you use elsewhere, instead of
       # whatever xdg-open decides. Matches the mimeApps cleanup.
+      # `%s`/`%s1` etc. are yazi's own opener placeholders -- it splices
+      # shell-escaped real paths directly into the run string before
+      # handing the whole thing to the shell, it does NOT pass files as
+      # extra argv, so shell-style "$@"/"$1" here always expand empty.
       opener = {
-        edit = [{ run = ''nvim "$@"''; block = true; desc = "nvim"; }];
-        play = [{ run = ''mpv --force-window "$@"''; orphan = true; desc = "mpv"; }];
-        pdf = [{ run = ''zathura "$@"''; orphan = true; desc = "zathura"; }];
-        image = [{ run = ''imv "$@"''; orphan = true; desc = "imv"; }];
-        extract = [{ run = ''ouch decompress "$@"''; desc = "extract here"; }];
-        reveal = [{ run = ''exiftool "$1"; echo "Press enter to exit"; read _''; block = true; desc = "exiftool"; }];
+        edit = [{ run = "nvim %s"; block = true; desc = "nvim"; }];
+        play = [{ run = "mpv --force-window %s"; orphan = true; desc = "mpv"; }];
+        pdf = [{ run = "zathura %s"; orphan = true; desc = "zathura"; }];
+        image = [{ run = "imv %s"; orphan = true; desc = "imv"; }];
+        extract = [{ run = "ouch decompress %s"; desc = "extract here"; }];
+        reveal = [{ run = ''exiftool %s1; echo "Press enter to exit"; read _''; block = true; desc = "exiftool"; }];
       };
 
       open.prepend_rules = [
@@ -62,13 +72,7 @@
         { mime = "image/*"; use = [ "image" "reveal" ]; }
         { mime = "{audio,video}/*"; use = [ "play" "reveal" ]; }
         { mime = "application/{zip,gzip,x-tar,x-bzip*,x-7z-compressed,x-rar,xz}"; use = [ "extract" "reveal" ]; }
-        { name = "*/"; use = [ "edit" "open" "reveal" ]; }
-      ];
-
-      # The git plugin needs a fetcher registered to populate the status column.
-      plugin.prepend_fetchers = [
-        { id = "git"; name = "*"; run = "git"; }
-        { id = "git"; name = "*/"; run = "git"; }
+        { url = "*/"; use = [ "edit" "open" "reveal" ]; }
       ];
     };
 
@@ -100,7 +104,6 @@
 
     initLua = ''
       require("full-border"):setup({ type = ui.Border.ROUNDED })
-      require("git"):setup()
       require("relative-motions"):setup({
         show_numbers = "relative_absolute",
         show_motion = true,
