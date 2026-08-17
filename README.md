@@ -111,8 +111,88 @@ sudo nixos-rebuild switch --flake '.#<host>'
 ```
 > You will also have to copy over ~/.secrets. The SSH identity is no longer
 > a manual copy -- it's decrypted from `hosts/common/users/mrgeotech/secrets/ssh.yaml`
-> via sops-nix on rebuild; see that directory's README.md (`sops edit ...`)
-> to populate it the first time.
+> via sops-nix on rebuild; see "SSH key setup & migration" below.
+
+## SSH key setup & migration
+
+SSH auth (servers and GitHub alike) uses one Ed25519 identity, sops-encrypted
+in `hosts/common/users/mrgeotech/secrets/ssh.yaml` and decrypted to
+`~/.ssh/id_ed25519` on rebuild -- see `home/common/core/cli/ssh.nix` for the
+client config (it also enables post-quantum-hybrid key exchange) and
+`hosts/common/users/mrgeotech/default.nix` for the sops wiring. A systemd
+service derives `~/.ssh/id_ed25519.pub` from that private key automatically
+on every rebuild, so it can never go stale.
+
+Decrypting *any* secret in this repo (the SSH key included) requires the
+age private key at `~/.config/sops/age/keys.txt` matching the recipient in
+`.sops.yaml`. That file is deliberately **not** in the repo -- it's the one
+thing every machine needs copied to it out of band.
+
+### Brand new setup (no existing age key anywhere)
+
+Only needed once, ever -- e.g. bootstrapping this whole scheme for the
+first time, or after the age key is confirmed lost with no backup (see
+"Recovering from a lost age key" below).
+
+```sh
+mkdir -p ~/.config/sops/age
+age-keygen -o ~/.config/sops/age/keys.txt
+```
+
+Take the public key it prints (`age1...`) and put it in `.sops.yaml`'s
+`keys:` list, then generate and install the SSH key per
+`hosts/common/users/mrgeotech/secrets/README.md`.
+
+### Adding another machine (reuse the existing identity)
+
+This is the normal case -- same SSH key and same secrets everywhere, just
+like the four hosts in this flake already share one identity.
+
+1. Securely copy the **existing** `~/.config/sops/age/keys.txt` from a
+   machine that already works to the new one, at the same path, mode
+   `600`. "Securely" means scp/an encrypted USB drive/a password manager --
+   never paste it through anything that logs or a chat tool.
+2. Clone this repo and `sudo nixos-rebuild switch --flake '.#<host>'`.
+
+That's it -- no new keys to generate. The same `~/.ssh/id_ed25519` shows up
+on the new machine because it's the same encrypted secret, decrypted with
+the same age key.
+
+### Rotating the SSH key
+
+To replace the key everywhere (e.g. you suspect it leaked) without
+touching the age identity:
+
+```sh
+ssh-keygen -t ed25519 -a 100 -C "<your GitHub email>" -f /tmp/id_ed25519 -N ""
+{
+  echo "id_ed25519: |"
+  sed 's/^/  /' /tmp/id_ed25519
+} > /tmp/ssh-secret.yaml
+mv /tmp/ssh-secret.yaml hosts/common/users/mrgeotech/secrets/ssh.yaml
+sops encrypt --in-place hosts/common/users/mrgeotech/secrets/ssh.yaml
+rm /tmp/id_ed25519*
+```
+
+Commit and push, then on every machine: `git pull && sudo nixos-rebuild
+switch --flake '.#<host>'`. Register the new public key with GitHub and any
+servers' `authorized_keys` *before* removing the old one from them, so you
+don't lock yourself out mid-rotation.
+
+### Recovering from a lost age key
+
+If `~/.config/sops/age/keys.txt` doesn't exist anywhere and there's no
+backup, every secret encrypted to the old recipient (not just the SSH key)
+is permanently unrecoverable -- there is no way around generating a new
+age identity and re-creating each secret's plaintext from scratch:
+
+1. Generate a new age key (see "Brand new setup" above) and update the
+   `keys:` entry in `.sops.yaml`.
+2. For each file under `secrets/`, replace its content and re-encrypt with
+   `sops encrypt --in-place <file>` (you're providing fresh plaintext,
+   not decrypting the old one -- that's the part that's unrecoverable).
+3. Copy the new `keys.txt` to every machine and rebuild each one.
+
 ## Acknowledgements
 
 - [Dileep Kishore's nix config](https://github.com/dileep-kishore/nixos-hyprland) The framework my NixOS distro is based off of
