@@ -3,12 +3,7 @@
   programs.lazygit = {
     enable = true;
     settings = {
-      git.pagers = [
-        {
-          pager = "delta --dark --paging=never";
-          colorArg = "always";
-        }
-      ];
+      git.diffRenderers = [ { command = "delta --dark --paging=never"; colorArg = "always"; } ];
       gui.theme = {
         activeBorderColor = ["#cba6f7" "bold"];
         inactiveBorderColor = ["#a6adc8"];

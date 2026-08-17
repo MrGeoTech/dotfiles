@@ -13,8 +13,6 @@
     v = "nvim";
     vi = "nvim";
     vim = "nvim";
-    # ll
-    ll = "ls -al";
     # lg
     lg = "lazygit";
     # network
