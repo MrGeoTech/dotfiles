@@ -48,13 +48,17 @@
 
       # Route Enter/`o` to the same lean tools you use elsewhere, instead of
       # whatever xdg-open decides. Matches the mimeApps cleanup.
+      # `%s`/`%s1` etc. are yazi's own opener placeholders -- it splices
+      # shell-escaped real paths directly into the run string before
+      # handing the whole thing to the shell, it does NOT pass files as
+      # extra argv, so shell-style "$@"/"$1" here always expand empty.
       opener = {
-        edit = [{ run = ''nvim "$@"''; block = true; desc = "nvim"; }];
-        play = [{ run = ''mpv --force-window "$@"''; orphan = true; desc = "mpv"; }];
-        pdf = [{ run = ''zathura "$@"''; orphan = true; desc = "zathura"; }];
-        image = [{ run = ''imv "$@"''; orphan = true; desc = "imv"; }];
-        extract = [{ run = ''ouch decompress "$@"''; desc = "extract here"; }];
-        reveal = [{ run = ''exiftool "$1"; echo "Press enter to exit"; read _''; block = true; desc = "exiftool"; }];
+        edit = [{ run = "nvim %s"; block = true; desc = "nvim"; }];
+        play = [{ run = "mpv --force-window %s"; orphan = true; desc = "mpv"; }];
+        pdf = [{ run = "zathura %s"; orphan = true; desc = "zathura"; }];
+        image = [{ run = "imv %s"; orphan = true; desc = "imv"; }];
+        extract = [{ run = "ouch decompress %s"; desc = "extract here"; }];
+        reveal = [{ run = ''exiftool %s1; echo "Press enter to exit"; read _''; block = true; desc = "exiftool"; }];
       };
 
       open.prepend_rules = [
