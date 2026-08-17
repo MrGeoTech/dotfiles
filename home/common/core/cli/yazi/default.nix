@@ -18,12 +18,18 @@
         chmod            # bulk chmod on selected files
         diff             # diff selection against the hovered file
         full-border      # rounded border matching the rest of the theme
-        git              # git status column in the file list
         mount            # mount/unmount removable media without leaving yazi
         relative-motions # THE one: type 5j to jump 5 down, like vim
         smart-enter      # `l` opens files and enters directories
         toggle-pane      # maximize preview / hide parent
         ;
+      # git status column disabled for now: nixpkgs' yaziPlugins.git
+      # (currently pinned to yazi-rs/plugins@b9598e6, 2026-08-03) predates
+      # upstream's `fetch_compact` shim for yazi core's coroutine-based
+      # fetcher protocol, so it errors with "error converting Lua boolean
+      # to function" on every fetch. Re-add `git` here (plus its fetcher
+      # rules and `require("git"):setup()` in initLua below) once nixpkgs
+      # updates the pin past that fix.
     };
 
     settings = {
@@ -68,12 +74,6 @@
         { mime = "application/{zip,gzip,x-tar,x-bzip*,x-7z-compressed,x-rar,xz}"; use = [ "extract" "reveal" ]; }
         { url = "*/"; use = [ "edit" "open" "reveal" ]; }
       ];
-
-      # The git plugin needs a fetcher registered to populate the status column.
-      plugin.prepend_fetchers = [
-        { url = "*"; run = "git"; group = "git"; }
-        { url = "*/"; run = "git"; group = "git"; }
-      ];
     };
 
     keymap = {
@@ -104,7 +104,6 @@
 
     initLua = ''
       require("full-border"):setup({ type = ui.Border.ROUNDED })
-      require("git"):setup()
       require("relative-motions"):setup({
         show_numbers = "relative_absolute",
         show_motion = true,
