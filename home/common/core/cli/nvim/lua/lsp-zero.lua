@@ -63,8 +63,12 @@ do
   end
 end
 
-vim.lsp.config('ltex-ls', {
+vim.lsp.config('ltex', {                    -- was 'ltex-ls'
   cmd = { 'ltex-ls' },
+  cmd_env = {
+    JAVA_OPTS = '-Xms64m -Xmx512m -XX:+UseSerialGC -XX:TieredStopAtLevel=1',
+    LTEX_LS_OPTS = '-Xms64m -Xmx512m -XX:+UseSerialGC -XX:TieredStopAtLevel=1',
+  },
   filetypes = filetypes,
   root_markers = { '.git' },
   get_language_id = get_language_id,
@@ -88,6 +92,10 @@ vim.lsp.config('clangd', {
   },
 })
 
+vim.lsp.config('jdtls', {
+  cmd = { 'jdtls', '--jvm-arg=-Xmx1g', '--jvm-arg=-XX:+UseSerialGC' },
+})
+
 vim.api.nvim_create_autocmd("BufWritePre", {
   callback = function()
     vim.lsp.buf.format({
@@ -103,6 +111,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 -- You'll find a list of language servers here:
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
 -- These are example language servers. 
+-- vim.lsp.enable('htmx')
 vim.lsp.enable('arduino_language_server')
 vim.lsp.enable('clangd')
 vim.lsp.enable('cssls')
@@ -112,9 +121,9 @@ vim.lsp.enable('erlangls')
 vim.lsp.enable('gleam')
 vim.lsp.enable('glsl_analyzer')
 vim.lsp.enable('html')
--- vim.lsp.enable('htmx')
-vim.lsp.enable('kotlin_language_server')
 vim.lsp.enable('jdtls')
+vim.lsp.enable('kotlin_language_server')
+vim.lsp.enable('ltex')
 vim.lsp.enable('lua_ls')
 vim.lsp.enable('marksman')
 vim.lsp.enable('matlab_ls')
@@ -124,7 +133,6 @@ vim.lsp.enable('ts_ls')
 vim.lsp.enable('verible')
 vim.lsp.enable('vhdl_ls')
 vim.lsp.enable('zls')
-vim.lsp.enable('ltex')
 
 vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(event)

@@ -5,6 +5,7 @@
   ...
 }: {
   imports = [
+    ./atuin.nix
     ./bat
     ./delta
     ./direnv.nix

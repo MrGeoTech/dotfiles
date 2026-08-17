@@ -9,6 +9,7 @@
     ./locale.nix
     ./networking.nix
     ./nix.nix
+    ./nh.nix
     ./zsh.nix
   ];
 

@@ -25,7 +25,7 @@
     ps = "ps auxf";
     psgrep = "ps aux | grep -v grep | grep -i -e VSZ -e";
     # nix operations 
-    update = "( cd /etc/nixos/ && sudo nixos-rebuild switch --flake \".#$(hostname)\" )";
+    update = "( cd /etc/nixos/ && nh os switch )";
     update-versions = "( cd /etc/nixos/ && nix flake update )";
     clean-system = "sudo nix-collect-garbage --delete-older-than 2d --cores 16 && nix-collect-garbage --delete-older-than 2d --cores 16";
   };
