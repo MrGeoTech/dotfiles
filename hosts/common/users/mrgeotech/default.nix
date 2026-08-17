@@ -19,9 +19,7 @@ in {
   };
 
   sops = {
-    defaultSopsFile = ./secrets/wireless.yaml;
-    defaultSopsFormat = "yaml";
-    age.keyFile = "home/mrgeotech/.config/sops/age/keys.txt";
+    age.keyFile = "/home/mrgeotech/.config/sops/age/keys.txt";
 
     # SSH identity used for server logins and GitHub auth (see
     # home/common/core/cli/ssh.nix for the client-side wiring). The
