@@ -62,13 +62,13 @@
         { mime = "image/*"; use = [ "image" "reveal" ]; }
         { mime = "{audio,video}/*"; use = [ "play" "reveal" ]; }
         { mime = "application/{zip,gzip,x-tar,x-bzip*,x-7z-compressed,x-rar,xz}"; use = [ "extract" "reveal" ]; }
-        { name = "*/"; use = [ "edit" "open" "reveal" ]; }
+        { url = "*/"; use = [ "edit" "open" "reveal" ]; }
       ];
 
       # The git plugin needs a fetcher registered to populate the status column.
       plugin.prepend_fetchers = [
-        { id = "git"; name = "*"; run = "git"; }
-        { id = "git"; name = "*/"; run = "git"; }
+        { url = "*"; run = "git"; group = "git"; }
+        { url = "*/"; run = "git"; group = "git"; }
       ];
     };
 
