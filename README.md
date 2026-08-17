@@ -123,6 +123,17 @@ client config (it also enables post-quantum-hybrid key exchange) and
 service derives `~/.ssh/id_ed25519.pub` from that private key automatically
 on every rebuild, so it can never go stale.
 
+The same key signs commits (`home/common/core/cli/git.nix`, `gpg.format =
+ssh`), so GitHub shows commits as "Verified" -- but that requires
+registering the public key with GitHub **twice**, under two separate
+sections of Settings > SSH and GPG keys:
+
+- **Authentication Key** -- lets you push/pull over SSH.
+- **Signing Key** -- lets GitHub verify commit signatures.
+
+The same `~/.ssh/id_ed25519.pub` content goes in both; adding it as one
+does not automatically add it as the other.
+
 Decrypting *any* secret in this repo (the SSH key included) requires the
 age private key at `~/.config/sops/age/keys.txt` matching the recipient in
 `.sops.yaml`. That file is deliberately **not** in the repo -- it's the one
@@ -175,7 +186,8 @@ rm /tmp/id_ed25519*
 ```
 
 Commit and push, then on every machine: `git pull && sudo nixos-rebuild
-switch --flake '.#<host>'`. Register the new public key with GitHub and any
+switch --flake '.#<host>'`. Register the new public key with GitHub (as
+**both** an Authentication Key and a Signing Key -- see above) and any
 servers' `authorized_keys` *before* removing the old one from them, so you
 don't lock yourself out mid-rotation.
 
