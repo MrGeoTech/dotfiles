@@ -1,11 +1,12 @@
 {
   config,
   pkgs,
+  lib,
   inputs,
   ...
 }: 
 let
-  sandbox = import ../../../lib/sandbox-apps.nix { inherit pkgs lib; };
+  sandbox = import ../../lib/sandbox-apps.nix { inherit pkgs lib; };
 
   sandboxedApps = sandbox.mkSandboxedApps [
     { attr = "grim"; }

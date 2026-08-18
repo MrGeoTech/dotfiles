@@ -1,4 +1,4 @@
-{pkgs, ...} : let
+{pkgs, lib, ...} : let
   sandbox = import ../../lib/sandbox-apps.nix { inherit pkgs lib; };
 
   editorDesktopFile = pkgs.writeTextFile {

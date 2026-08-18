@@ -1,5 +1,5 @@
 # https://github.com/hyprwm/Hyprland
-{pkgs, ...}:
+{pkgs, lib, ...}:
 let
   sandbox = import ../../../lib/sandbox-apps.nix { inherit pkgs lib; };
 
