@@ -1,9 +1,8 @@
 # https://github.com/junegunn/fzf
 #
-# Note the Ctrl-R gotcha: both fzf and atuin bind it, and whichever sources last
-# wins. atuin's init should come after fzf's. If `Ctrl-R` gives you fzf's plain
-# history instead of atuin's UI, add this to zsh initContent (mkAfter):
-#   bindkey '^r' atuin-search
+# Ctrl-R is atuin's: both fzf and atuin bind it by default, and atuin's init
+# (see cli/atuin.nix) sources after fzf's, so fzf's binding is disabled below
+# to avoid the conflict rather than relying on source order.
 { pkgs, ... }: {
   programs.fzf = {
     enable = true;
@@ -26,22 +25,30 @@
       "--bind=ctrl-/:toggle-preview"
       "--bind=ctrl-d:preview-half-page-down"
       "--bind=ctrl-u:preview-half-page-up"
-      "--bind=ctrl-y:execute-silent(echo {} | wl-copy)"
+      "--bind='ctrl-y:execute-silent(echo {} | wl-copy)'"
       "--bind=alt-j:down,alt-k:up"
     ];
 
     # Ctrl-T: paste a file path onto the command line, with a bat preview.
-    fileWidgetCommand = "fd --type f --hidden --follow --exclude .git";
-    fileWidgetOptions = [
-      "--preview 'bat --style=numbers --color=always --line-range :300 {}'"
-      "--preview-window=right:60%:wrap"
-    ];
+    fileWidget = {
+      command = "fd --type f --hidden --follow --exclude .git";
+      options = [
+        "--preview 'bat --style=numbers --color=always --line-range :300 {}'"
+        "--preview-window=right:60%:wrap"
+      ];
+    };
 
     # Alt-C: cd into a directory, previewing its tree.
-    changeDirWidgetCommand = "fd --type d --hidden --follow --exclude .git";
-    changeDirWidgetOptions = [
-      "--preview 'eza --tree --level=2 --icons --color=always {}'"
-    ];
+    changeDirWidget = {
+      command = "fd --type d --hidden --follow --exclude .git";
+      options = [
+        "--preview 'eza --tree --level=2 --icons --color=always {}'"
+      ];
+    };
+
+    # Ctrl-R: leave it to atuin (see cli/atuin.nix), which owns it after
+    # fzf's shell init sources.
+    historyWidget.command = "";
 
     # Catppuccin Mocha, matching bat/yazi/hyprland.
     colors = {

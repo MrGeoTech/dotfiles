@@ -27,7 +27,11 @@
 @define-color crust #11111b;
 
 * {
-  font-family: "Iosevka", "IosevkaTerm";
+  /* Font Awesome 6 Free as a fallback: nerd-fonts v3 dropped the legacy FA4
+     battery glyphs (U+F240-F244, used below) from Iosevka Nerd Font's own
+     glyph table, so those specific codepoints now need to come from the
+     separately installed `font-awesome` package instead. */
+  font-family: "Iosevka", "IosevkaTerm", "Font Awesome 6 Free";
   font-size: 12px;
   min-height: 0;
 }
@@ -112,6 +116,13 @@ window#waybar.swallowing {
   margin: 5px 5px;
   background: transparent;
   color: @text;
+}
+
+#battery {
+  /* Font Awesome 6 Free only ships the full icon set (incl. battery) in its
+     Solid (900) weight for free -- Regular is Pro-only and mostly empty, so
+     without this the Font Awesome fallback above still renders as tofu. */
+  font-weight: 900;
 }
 
 #battery.charging {

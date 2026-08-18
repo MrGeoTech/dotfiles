@@ -24,7 +24,13 @@ end
 -- ENV
 ------------------------------------------------------------
 hl.env("XCURSOR_SIZE", "24")
-hl.env("WLR_DRM_DEVICES", "/dev/dri/card0:/dev/dri/card1")
+
+-- Only set on hybrid-GPU hosts (see 00-vars.lua / config.nix). Forcing an
+-- explicit device list on a single-GPU host makes wlroots wait on a
+-- /dev/dri/card1 that will never show up, hanging the first launch attempt.
+if vars.drm_devices then
+  hl.env("WLR_DRM_DEVICES", vars.drm_devices)
+end
 
 ------------------------------------------------------------
 -- INPUT
@@ -116,6 +122,16 @@ hl.config({
     disable_hyprland_logo = true,
     mouse_move_enables_dpms = true,
     key_press_enables_dpms = true,
+  },
+
+  -- The update/donation nag screens (hyprland-update-screen,
+  -- hyprland-donate-screen from hyprland-guiutils) get spawned before the
+  -- Wayland socket is up, so they immediately fail to connect and abort --
+  -- taking the whole compositor service down with them on every login.
+  -- Disabling both avoids the crash entirely.
+  ecosystem = {
+    no_update_news = true,
+    no_donation_nag = true,
   },
 })
 

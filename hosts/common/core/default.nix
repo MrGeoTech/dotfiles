@@ -5,6 +5,7 @@
 }: {
   imports = [
     inputs.home-manager.nixosModules.home-manager
+    ./catppuccin.nix
     ./gnupg.nix
     ./locale.nix
     ./networking.nix

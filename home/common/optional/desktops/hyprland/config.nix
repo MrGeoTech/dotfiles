@@ -6,6 +6,7 @@
 }: let
   isZenbook = hostName == "mrgeotech-zenbook";
   isPC = hostName == "mrgeotech-pc";
+  isLaptop = hostName == "mrgeotech-laptop";
 
   # --- Monitors --------------------------------------------------------
   # The only thing Nix knows that Lua can't: which machine this is.
@@ -63,7 +64,12 @@ in {
     # than to have a stateVersion bump silently rewrite your config format.
     configType = "lua";
 
-    systemd.enable = true;
+    # UWSM (programs.hyprland.withUWSM in hosts/common/optional/hyprland.nix)
+    # already manages the systemd session and exports HYPRLAND_INSTANCE_SIGNATURE.
+    # Leaving this on too meant both were racing to export it -- uwsm's
+    # wait-for-env-vars step would time out and tear the whole session down
+    # before losing that race, which is what caused the login crash loop.
+    systemd.enable = false;
     xwayland.enable = true;
 
     # `settings` stays empty on purpose. Everything lives in real .lua files
@@ -89,6 +95,16 @@ in {
             sensitivity        = ${sensitivity},
             groupbar_font_size = ${groupbarFontSize},
             gestures           = ${lib.boolToString isZenbook},
+
+            -- Only mrgeotech-laptop is hybrid graphics (Intel card0 + Nvidia
+            -- card1, see hardware.nvidia.prime bus IDs in its host config).
+            -- Forcing this on single-GPU hosts makes wlroots wait on a
+            -- /dev/dri/card1 that never appears.
+            drm_devices = ${
+              if isLaptop
+              then ''"/dev/dri/card0:/dev/dri/card1"''
+              else "nil"
+            },
 
             colors = {
           ${colorsLua}

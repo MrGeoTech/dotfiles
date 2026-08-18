@@ -12,13 +12,9 @@
       auto-optimise-store = true;
       trusted-users = [ "root" "mrgeotech" ];
     };
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      randomizedDelaySec = "14m";
-      # Keep the last 5 generations
-      options = "--delete-older-than +5";
-    };
+
+    # Garbage collection is handled by `programs.nh.clean`, see
+    # hosts/common/core/nh.nix. `nix.gc.automatic` would conflict with it.
   };
 
   # Enable nix-ld
