@@ -21,6 +21,7 @@
 
   home.sessionVariables.GTK_THEME = "Nordic";
   home.pointerCursor = {
+    enable = true;
     gtk.enable = true;
     hyprcursor.enable = true;
     #x11.enable = true;
