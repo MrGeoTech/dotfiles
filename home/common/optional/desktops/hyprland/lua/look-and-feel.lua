@@ -117,6 +117,16 @@ hl.config({
     mouse_move_enables_dpms = true,
     key_press_enables_dpms = true,
   },
+
+  -- The update/donation nag screens (hyprland-update-screen,
+  -- hyprland-donate-screen from hyprland-guiutils) get spawned before the
+  -- Wayland socket is up, so they immediately fail to connect and abort --
+  -- taking the whole compositor service down with them on every login.
+  -- Disabling both avoids the crash entirely.
+  ecosystem = {
+    no_update_news = true,
+    no_donation_nag = true,
+  },
 })
 
 ------------------------------------------------------------
