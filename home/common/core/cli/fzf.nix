@@ -25,7 +25,7 @@
       "--bind=ctrl-/:toggle-preview"
       "--bind=ctrl-d:preview-half-page-down"
       "--bind=ctrl-u:preview-half-page-up"
-      "--bind=ctrl-y:execute-silent(echo {} | wl-copy)"
+      "--bind='ctrl-y:execute-silent(echo {} | wl-copy)'"
       "--bind=alt-j:down,alt-k:up"
     ];
 
