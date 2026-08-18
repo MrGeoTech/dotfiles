@@ -6,11 +6,10 @@
 }: {
   imports = [
     ./bluetooth.nix
-    ./fonts.nix
+    ./flatpack.nix
     ./hyprland.nix
     ./keychron.nix
     ./pipewire.nix
-    #./shared.nix
     ./steam.nix
     ./labrador.nix
   ];
@@ -22,6 +21,8 @@
 
   security.polkit.enable = true;
 
+  fonts.fontDir.enable = true;
+  
   services = {
     printing.enable = true;
 
