@@ -51,7 +51,6 @@
 
       dialect = "us";
       update_check = false;  # Nix handles updates
-      sync_address = "";     # explicitly local-only
     };
   };
 }
