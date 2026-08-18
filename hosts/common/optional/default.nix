@@ -6,7 +6,7 @@
 }: {
   imports = [
     ./bluetooth.nix
-    ./flatpack.nix
+    ./flatpak.nix
     ./hyprland.nix
     ./keychron.nix
     ./pipewire.nix
