@@ -64,7 +64,12 @@ in {
     # than to have a stateVersion bump silently rewrite your config format.
     configType = "lua";
 
-    systemd.enable = true;
+    # UWSM (programs.hyprland.withUWSM in hosts/common/optional/hyprland.nix)
+    # already manages the systemd session and exports HYPRLAND_INSTANCE_SIGNATURE.
+    # Leaving this on too meant both were racing to export it -- uwsm's
+    # wait-for-env-vars step would time out and tear the whole session down
+    # before losing that race, which is what caused the login crash loop.
+    systemd.enable = false;
     xwayland.enable = true;
 
     # `settings` stays empty on purpose. Everything lives in real .lua files
