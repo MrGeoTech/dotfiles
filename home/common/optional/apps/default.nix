@@ -35,10 +35,6 @@ in
         # System utilities
         libgcc
         udisks
-        flatpak
-        # User apps kept installed: daily drivers, not occasional tools
-        google-chrome # Needed to take certain tests
-        signal-desktop
     ] ++ sandboxedApps;
 
     services.mpris-proxy.enable = true;
