@@ -1,9 +1,25 @@
 {
   config,
   pkgs,
+  lib,
   inputs,
   ...
-}: {
+}: 
+let
+  sandbox = import ../../lib/sandbox-apps.nix { inherit pkgs lib; };
+
+  sandboxedApps = sandbox.mkSandboxedApps [
+    { attr = "grim"; }
+    { attr = "slurp"; }
+    { attr = "ncdu"; }
+    { attr = "pciutils"; }
+    { attr = "usbutils"; }
+    { attr = "age"; }
+    { attr = "bottom"; }
+    { attr = "man-pages"; }
+    { attr = "man-pages-posix"; }
+  ];
+in {
   imports = [
     ./atuin.nix
     ./bat
@@ -30,14 +46,5 @@
     gnumake
     libnotify
     libxcrypt
-    ncdu
-    pciutils
-    usbutils
-
-    age
-    bottom
-
-    man-pages
-    man-pages-posix
-  ];
+  ] ++ sandboxedApps;
 }

@@ -1,4 +1,6 @@
-{pkgs, ...} : let
+{pkgs, lib, ...} : let
+  sandbox = import ../../lib/sandbox-apps.nix { inherit pkgs lib; };
+
   editorDesktopFile = pkgs.writeTextFile {
     name = "nvim.desktop";
     destination = "/share/applications/nvim.desktop";
@@ -20,10 +22,12 @@
   documentDesktop = "org.pwmt.zathura.desktop";
   imageDesktop = "imv.desktop";
   fileManagerDesktop = "yazi.desktop";
-in {
-  home.packages = with pkgs; [
-    zathura
+
+  sandboxedApps = sandbox.mkSandboxedApps [
+    { attr = "zathura"; }
   ];
+in {
+  home.packages = sandboxedApps;
 
   xdg.enable = true;
 

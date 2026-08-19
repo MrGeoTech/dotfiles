@@ -1,5 +1,13 @@
 # https://github.com/hyprwm/Hyprland
-{pkgs, ...}: {
+{pkgs, lib, ...}:
+let
+  sandbox = import ../../../lib/sandbox-apps.nix { inherit pkgs lib; };
+
+  sandboxedApps = sandbox.mkSandboxedApps [
+    { attr = "grim"; }
+    { attr = "slurp"; }
+  ];
+in {
   imports = [
     ./config.nix
     ./hyprpaper.nix
@@ -31,14 +39,12 @@
     # services.hyprpaper / services.hypridle modules. Listing them again put a
     # second, differently-versioned copy on PATH -- a classic source of
     # "why is my config not applying" after a flake update.
-    grim
-    slurp
     wl-clipboard
     wlogout
     xdg-desktop-portal-gtk
     xdg-desktop-portal-hyprland
     gcr_4 # Provides org.gnome.keyring.SystemPrompter
-  ];
+  ] ++ sandboxedApps;
 
   # Auto-login keyring
   services.gnome-keyring.enable = true;
