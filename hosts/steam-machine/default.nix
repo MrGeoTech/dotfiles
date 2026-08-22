@@ -14,13 +14,19 @@
     # Common config
     ../common/core
       # Optional configs
-    ../common/optional/fonts.nix
     ../common/optional/pipewire.nix
     ../common/optional/bluetooth.nix
 
     # User config
     ../common/users/mrgeotech
   ];
+
+  # Was previously its own hosts/common/optional/fonts.nix, imported
+  # individually here since this host doesn't pull in the rest of
+  # ../common/optional (flatpak, hyprland, steam.nix, etc.). That file got
+  # folded into ../common/optional/default.nix, which this host never
+  # imports as a whole -- so pull the setting in directly instead.
+  fonts.fontDir.enable = true;
 
   # Bootloader (uses grub instead of systemd-boot)
   boot = {
