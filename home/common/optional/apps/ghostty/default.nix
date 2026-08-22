@@ -5,7 +5,12 @@
     enableBashIntegration = true;
     enableZshIntegration = true;
     settings = {
-      font-family = "IosevkaTerm";
+      # Font Awesome 6 Free as a fallback: nerd-fonts v3 dropped the legacy
+      # FA4 battery glyphs (U+F240-F244) from Iosevka Nerd Font's own glyph
+      # table (see the matching fallback in waybar/style.css), so viewing a
+      # file containing them in the terminal -- e.g. this dotfiles repo's own
+      # waybar config, opened in neovim -- needs the same fallback here too.
+      font-family = ["IosevkaTerm" "Font Awesome 6 Free"];
       font-size = if hostName == "mrgeotech-zenbook" then "18" else "12";
       background-opacity = 0.85;
       background = "1e1e2e";
