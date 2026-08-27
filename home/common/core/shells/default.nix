@@ -6,8 +6,8 @@
   home.shellAliases = {
     # rm alias
     rm = "rm -i";
-    # clear
-    clear = "clear -x";
+    # clear is redefined as a function (see bash.nix/zsh.nix) that just
+    # scrolls the screen instead of erasing it, so scrollback is never lost.
     cls = "clear";
     # vim alias
     v = "nvim";

@@ -4,6 +4,14 @@
     enableCompletion = true;
 
     initExtra = ''
+      # Override `clear` so it just scrolls the screen instead of erasing
+      # it, leaving scrollback history intact.
+      clear() {
+        local lines
+        lines=$(tput lines 2>/dev/null || echo 40)
+        printf '\n%.0s' $(seq 1 "$lines")
+      }
+
       # Auto-search nixpkgs for an unknown command and, after an explicit
       # confirmation (comma reads COMMA_ASK_TO_CONFIRM, set in
       # ../default.nix), run it sandboxed via `nix shell` instead of

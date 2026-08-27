@@ -106,6 +106,14 @@ in
         setopt GLOB_DOTS              # let * match dotfiles
         setopt NO_BEEP
 
+        # Override `clear` so it just scrolls the screen instead of erasing
+        # it, leaving scrollback history intact.
+        clear() {
+          local lines
+          lines=$(tput lines 2>/dev/null || echo 40)
+          printf '\n%.0s' $(seq 1 "$lines")
+        }
+
         # `..` `...` `....` to walk up. autocd makes these work as commands.
         alias ..='cd ..'
         alias ...='cd ../..'
