@@ -104,7 +104,9 @@
             car = " ";
             default = [" " " " " "];
           };
-          on-click = "wiremix";
+          # wiremix is a TUI, so it needs a terminal to run in -- waybar's
+          # on-click just execs the command with no tty attached otherwise.
+          on-click = "$TERMINAL -e wiremix";
         };
         network = {
           format-wifi = "{ipaddr} ({signalStrength}%)  ";

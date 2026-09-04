@@ -22,20 +22,22 @@ let
     #{ attr = "quartus-prime-lite"; }
   ];
 in
-{
-    imports = [
-        ./ghostty
-        ./rofi
-        ./gpg.nix
-        ./gaming.nix
-        ./vivaldi.nix
-        ./labrador.nix
-    ];
-    home.packages = with pkgs; [
-        # System utilities
-        libgcc
-        udisks
-    ] ++ sandboxedApps;
+  {
+  imports = [
+    ./ghostty
+    ./rofi
+    ./gpg.nix
+    ./gaming.nix
+    ./vivaldi.nix
+    ./labrador.nix
+  ];
+  home.packages = with pkgs; [
+    # System utilities
+    libgcc
+    udisks
+    # Tools
+    claude-code
+  ] ++ sandboxedApps;
 
-    services.mpris-proxy.enable = true;
+  services.mpris-proxy.enable = true;
 }

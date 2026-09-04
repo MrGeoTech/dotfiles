@@ -19,7 +19,7 @@ local mods = {
 -- $BROWSER was a shell variable in the old config; in Lua we read the env
 -- directly so a missing value fails loudly at one place instead of everywhere.
 local browser = os.getenv("BROWSER") or "firefox"
-local terminal = "ghostty"
+local terminal = os.getenv("TERMINAL") or "ghostty"
 local files = terminal .. " -e yazi"
 local screenshot = "~/.config/hypr/scripts/screenshot.sh"
 

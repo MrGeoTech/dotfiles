@@ -36,5 +36,6 @@
     TERM = "xterm-256color";
     USE_EDITOR = "$EDITOR";
     BROWSER = "vivaldi";
+    TERMINAL = "ghostty";
   };
 }
