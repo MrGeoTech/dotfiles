@@ -205,6 +205,24 @@ age identity and re-creating each secret's plaintext from scratch:
    not decrypting the old one -- that's the part that's unrecoverable).
 3. Copy the new `keys.txt` to every machine and rebuild each one.
 
+## Encrypted personal files
+
+Anything under `secrets/` (top level, not the per-host `hosts/*/secrets/`
+used by the Nix config) is committed encrypted and edited transparently,
+using the same sops + age setup described above:
+
+```sh
+secret edit notes.txt   # create or open notes.txt in $EDITOR; ciphertext on disk/in git
+secret cat notes.txt    # decrypt to stdout without editing
+```
+
+`secret` is a small wrapper around `sops` (see `secrets/README.md` and
+`home/common/core/cli/secret.nix`) -- it decrypts to a temp file, opens
+`$EDITOR`, and re-encrypts on save, so the copy in the working tree and in
+git history is always ciphertext even though editing feels like a normal
+file. Requires the age key at `~/.config/sops/age/keys.txt` (see "SSH key
+setup & migration" above).
+
 ## Acknowledgements
 
 - [Dileep Kishore's nix config](https://github.com/dileep-kishore/nixos-hyprland) The framework my NixOS distro is based off of

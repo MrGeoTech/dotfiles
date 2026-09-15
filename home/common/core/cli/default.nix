@@ -33,6 +33,7 @@ in {
     ./lazygit.nix
     ./nvim
     ./ripgrep.nix
+    ./secret.nix
     ./ssh.nix
     ./yazi
     ./zoxide.nix
@@ -46,5 +47,6 @@ in {
     gnumake
     libnotify
     libxcrypt
+    sops
   ] ++ sandboxedApps;
 }
