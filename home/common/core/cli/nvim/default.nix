@@ -91,7 +91,7 @@ in {
         ensure_installed = "all",  -- or a list: {"lua", "python", "c"}
         auto_install = true,       -- automatically install missing parsers
       }
-    '';
+    '' + "\n" + builtins.readFile ./lua/crypt.lua;
     
     plugins = with pkgs.vimPlugins; [
       ## Dependencies ##

@@ -205,6 +205,28 @@ age identity and re-creating each secret's plaintext from scratch:
    not decrypting the old one -- that's the part that's unrecoverable).
 3. Copy the new `keys.txt` to every machine and rebuild each one.
 
+## Encrypted `.priv` / `.me` files
+
+Any file named `*.priv` or `*.me` -- anywhere, in this repo or not, under
+git or not -- is always ciphertext on disk. Opening one in `nvim` decrypts
+it into the buffer; saving re-encrypts it back to disk. Nothing else ever
+sees the plaintext, so there's no git filter or `.sops.yaml` rule to set
+up -- it works the same in any directory on any of these machines.
+
+```sh
+nvim notes.priv   # new or existing -- edit like a normal file, ciphertext at rest
+```
+
+Implemented in `home/common/core/cli/nvim/lua/crypt.lua` (wired into
+`programs.neovim.initLua`), using `age` directly against the same SSH
+identity as the rest of this repo -- encrypts to `~/.ssh/id_ed25519.pub`,
+decrypts with `~/.ssh/id_ed25519` (see "SSH key setup & migration" above).
+Swapfile, backup, and undofile are disabled for these buffers so the
+plaintext never lands in another file on disk. This assumes that key has
+no passphrase, which is how it's provisioned today -- a
+passphrase-protected identity would need a TTY prompt `age` won't get when
+run from inside Neovim.
+
 ## Acknowledgements
 
 - [Dileep Kishore's nix config](https://github.com/dileep-kishore/nixos-hyprland) The framework my NixOS distro is based off of
