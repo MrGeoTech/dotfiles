@@ -14,7 +14,6 @@ let
     { attr = "ncdu"; }
     { attr = "pciutils"; }
     { attr = "usbutils"; }
-    { attr = "age"; }
     { attr = "bottom"; }
     { attr = "man-pages"; }
     { attr = "man-pages-posix"; }
@@ -33,13 +32,13 @@ in {
     ./lazygit.nix
     ./nvim
     ./ripgrep.nix
-    ./secret.nix
     ./ssh.nix
     ./yazi
     ./zoxide.nix
   ];
 
   home.packages = with pkgs; [
+    age # used directly (not via nix shell) by ~/.config/nvim's .priv/.me encryption, see nvim/lua/crypt.lua
     coreutils-full
     curl
     fd # Required for fzf
@@ -47,6 +46,5 @@ in {
     gnumake
     libnotify
     libxcrypt
-    sops
   ] ++ sandboxedApps;
 }

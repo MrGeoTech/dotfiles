@@ -1,6 +1,1 @@
 misc/* linguist-language=ignore
-
-# sops-encrypted ciphertext -- diffing it is just noise
-**/secrets/*.yaml -diff
-secrets/* -diff
-secrets/README.md diff

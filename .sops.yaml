@@ -5,15 +5,3 @@ creation_rules:
     key_groups:
       - age:
         - *mrgeotech
-
-  # Catch-all for arbitrary files under any secrets/ dir (notes, keys,
-  # configs -- anything without a structured yaml/json/env/ini extension
-  # above). Encrypted as an opaque blob rather than parsed key-by-key, so
-  # any content and filename works. See home/common/core/cli/secret.nix,
-  # which installs the `secret edit`/`secret cat` wrapper.
-  - path_regex: secrets/[^/]+$
-    input_type: binary
-    output_type: binary
-    key_groups:
-      - age:
-        - *mrgeotech

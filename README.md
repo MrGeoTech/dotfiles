@@ -205,23 +205,27 @@ age identity and re-creating each secret's plaintext from scratch:
    not decrypting the old one -- that's the part that's unrecoverable).
 3. Copy the new `keys.txt` to every machine and rebuild each one.
 
-## Encrypted personal files
+## Encrypted `.priv` / `.me` files
 
-Anything under `secrets/` (top level, not the per-host `hosts/*/secrets/`
-used by the Nix config) is committed encrypted and edited transparently,
-using the same sops + age setup described above:
+Any file named `*.priv` or `*.me` -- anywhere, in this repo or not, under
+git or not -- is always ciphertext on disk. Opening one in `nvim` decrypts
+it into the buffer; saving re-encrypts it back to disk. Nothing else ever
+sees the plaintext, so there's no git filter or `.sops.yaml` rule to set
+up -- it works the same in any directory on any of these machines.
 
 ```sh
-secret edit notes.txt   # create or open notes.txt in $EDITOR; ciphertext on disk/in git
-secret cat notes.txt    # decrypt to stdout without editing
+nvim notes.priv   # new or existing -- edit like a normal file, ciphertext at rest
 ```
 
-`secret` is a small wrapper around `sops` (see `secrets/README.md` and
-`home/common/core/cli/secret.nix`) -- it decrypts to a temp file, opens
-`$EDITOR`, and re-encrypts on save, so the copy in the working tree and in
-git history is always ciphertext even though editing feels like a normal
-file. Requires the age key at `~/.config/sops/age/keys.txt` (see "SSH key
-setup & migration" above).
+Implemented in `home/common/core/cli/nvim/lua/crypt.lua` (wired into
+`programs.neovim.initLua`), using `age` directly against the same SSH
+identity as the rest of this repo -- encrypts to `~/.ssh/id_ed25519.pub`,
+decrypts with `~/.ssh/id_ed25519` (see "SSH key setup & migration" above).
+Swapfile, backup, and undofile are disabled for these buffers so the
+plaintext never lands in another file on disk. This assumes that key has
+no passphrase, which is how it's provisioned today -- a
+passphrase-protected identity would need a TTY prompt `age` won't get when
+run from inside Neovim.
 
 ## Acknowledgements
 
