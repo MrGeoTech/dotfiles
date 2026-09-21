@@ -41,8 +41,8 @@
       url = "github:ghostty-org/ghostty";
     };
 
-    winapps = {
-      url = "github:winapps-org/winapps";
+    winix = {
+      url = "path:/home/mrgeotech/Projects/DFSuite/wiNix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
