@@ -28,6 +28,16 @@
       diskSize = "80G";
     };
 
+    # Fully stop (not just pause) the Windows container after 5 minutes with
+    # no WinApps RDP session open, to give the RAM/CPU back to the host.
+    # Trade-off: next launch takes a full Windows boot instead of an
+    # instant unpause.
+    autopause = {
+      enable = true;
+      action = "stop";
+      time = 300;
+    };
+
     apps = [
       {
         name = "cst-studio";
@@ -40,6 +50,17 @@
         # `winapps windows` once for a full desktop, install CST from the
         # shared folder (your $HOME is mounted at /shared in the VM), then
         # `cst-studio` launches it as a RemoteApp from then on.
+      }
+      {
+        name = "fusion";
+        fullName = "Autodesk Fusion";
+        # PLACEHOLDER -- Fusion installs FusionLauncher.exe under a
+        # per-install hashed folder (AppData\Local\Autodesk\webdeploy\
+        # production\<hash>\FusionLauncher.exe), so this path can't be
+        # guessed. Find the real one over `winapps windows`: right-click the
+        # Fusion shortcut (Desktop or Start Menu) -> Properties -> Target,
+        # then paste that path here.
+        winExecutable = "C:\\Users\\mrgeotech\\AppData\\Local\\Autodesk\\webdeploy\\production\\6a0c9611291d45bb9226980209917c3d\\FusionLauncher.exe";
       }
     ];
   };
