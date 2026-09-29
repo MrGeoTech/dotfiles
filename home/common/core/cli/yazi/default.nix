@@ -81,7 +81,7 @@
         # --- vim-style navigation additions -----------------------------
         { on = "l"; run = "plugin smart-enter"; desc = "Enter dir or open file"; }
         { on = [ "g" "r" ]; run = ''shell -- ya emit cd "$(git rev-parse --show-toplevel)"''; desc = "Go to repo root"; }
-        { on = [ "g" "n" ]; run = "cd ~/nixos-config"; desc = "Go to nix config"; }
+        { on = [ "g" "n" ]; run = "cd ~/dotfiles"; desc = "Go to nix config"; }
         { on = "T"; run = "plugin toggle-pane max-preview"; desc = "Maximize preview"; }
         { on = "<C-u>"; run = "arrow -50%"; desc = "Half page up"; }
         { on = "<C-d>"; run = "arrow 50%"; desc = "Half page down"; }

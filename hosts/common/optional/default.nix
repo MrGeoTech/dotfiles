@@ -23,8 +23,15 @@
 
   fonts.fontDir.enable = true;
   
+  # Compressed swap in RAM. Cheap insurance on the 16G zenbook and the
+  # swapless pc; disk swap (if any) stays as lower-priority fallback.
+  zramSwap.enable = true;
+
   services = {
     printing.enable = true;
+
+    # Firmware updates from LVFS: `fwupdmgr refresh && fwupdmgr update`.
+    fwupd.enable = true;
 
     gnome.gnome-keyring.enable = true;
 

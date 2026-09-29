@@ -12,7 +12,7 @@
 
     # Point at your flake so `nh os switch` works from any directory.
     # Adjust if your checkout lives elsewhere.
-    flake = "/home/mrgeotech/nixos-config";
+    flake = "/home/mrgeotech/dotfiles";
 
     clean = {
       enable = true;

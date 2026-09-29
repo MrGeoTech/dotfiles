@@ -42,10 +42,14 @@ outputs,
     };
   };
 
+  # Transparent zstd on root. Safe to add to an existing fs: only new
+  # writes get compressed. Recompress old data with
+  #   sudo btrfs filesystem defragment -r -czstd /
+  fileSystems."/".options = [ "compress=zstd" "noatime" ];
+
   networking = {
     networkmanager.wifi.powersave = true;
     hostName = "mrgeotech-zenbook";
-    interfaces.wlo1.useDHCP = true;
   };
 
   hardware = {
@@ -58,13 +62,17 @@ outputs,
     };
   };
 
-  # Load nvidia driver for Xorg and Wayland
   console.useXkbConfig = true;
 
   # Configure keymap in X11
   environment.systemPackages = [
     pkgs.brightnessctl
   ];
+
+  # Battery/thermals. ppd drives intel_pstate EPP and the ASUS
+  # platform_profile; thermald keeps Meteor Lake from cooking itself.
+  services.power-profiles-daemon.enable = true;
+  services.thermald.enable = true;
 
   services.logind.settings.Login = {
     HandlePowerKey = false;

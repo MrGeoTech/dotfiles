@@ -5,7 +5,6 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     hardware.url = "github:nixos/nixos-hardware";
-    nix-colors.url = "github:misterio77/nix-colors";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -15,15 +14,6 @@
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    hyprland = {
-      url = "github:hyprwm/hyprland";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    hyprland-plugins = {
-      url = "github:hyprwm/hyprland-plugins";
-      inputs.hyprland.follows = "hyprland";
     };
 
     catppuccin.url = "github:catppuccin/nix";
@@ -37,12 +27,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    ghostty = {
-      url = "github:ghostty-org/ghostty";
-    };
-
     winix = {
-      url = "path:/home/mrgeotech/Projects/DFSuite/wiNix";
+      url = "github:Dotfile-Suite/wiNix/winix-module";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -57,7 +43,6 @@
     nixpkgs,
     home-manager,
     catppuccin,
-    ghostty,
     labrador,
     ...
     } @ inputs: 
@@ -118,26 +103,7 @@
           ];
         };
 
-        # Laptop
-        mrgeotech-laptop = lib.nixosSystem {
-          specialArgs = {inherit inputs outputs;};
-          modules = [
-            ./hosts/mrgeotech-laptop
-
-            home-manager.nixosModules.home-manager
-            catppuccin.nixosModules.catppuccin
-
-            ({config, ...}: {
-              home-manager.backupFileExtension = "bak";
-              home-manager.extraSpecialArgs = {
-                inherit inputs outputs;
-                inherit (config.networking) hostName;
-              };
-            })
-          ];
-        };
-
-        # New Laptop (Zenbook)
+        # Laptop (Zenbook)
         mrgeotech-zenbook = lib.nixosSystem {
           specialArgs = {inherit inputs outputs;};
           modules = [

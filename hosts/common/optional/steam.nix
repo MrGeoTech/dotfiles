@@ -3,6 +3,13 @@
   #  enable = true;
   #  openFirewall = true;
   #};
+  # Steam Frame wireless dongle (rtw89) refuses to work while the wifi
+  # regulatory domain is unset ("country 00: DFS-UNSET"), so pin it.
+  hardware.wirelessRegulatoryDatabase = true;
+  boot.extraModprobeConfig = ''
+    options cfg80211 ieee80211_regdom="US"
+  '';
+
   programs.gamemode.enable = true;
   programs.steam = {
     enable = true;

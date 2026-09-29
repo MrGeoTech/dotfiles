@@ -27,24 +27,25 @@
 
   # Bootloader.
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.loader.grub.efiSupport = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot";
   boot.loader.systemd-boot.enable = true;
-  boot.loader.grub.useOSProber = true;
-  boot.loader.grub.configurationLimit = 15;
   boot.loader.systemd-boot.configurationLimit = 15;
 
   # amd gpu support for kernel
   boot.initrd.kernelModules = ["amdgpu"];
 
 
+  # Transparent zstd on root. Safe to add to an existing fs: only new
+  # writes get compressed. Recompress old data with
+  #   sudo btrfs filesystem defragment -r -czstd /
+  fileSystems."/".options = [ "compress=zstd" "noatime" ];
+
   networking = {
     networkmanager = {
       wifi.powersave = false;
     };
     hostName = "mrgeotech-pc";
-    interfaces.wlo1.useDHCP = true;
   };
 
   hardware = {

@@ -25,13 +25,6 @@ end
 ------------------------------------------------------------
 hl.env("XCURSOR_SIZE", "24")
 
--- Only set on hybrid-GPU hosts (see 00-vars.lua / config.nix). Forcing an
--- explicit device list on a single-GPU host makes wlroots wait on a
--- /dev/dri/card1 that will never show up, hanging the first launch attempt.
-if vars.drm_devices then
-  hl.env("WLR_DRM_DEVICES", vars.drm_devices)
-end
-
 ------------------------------------------------------------
 -- INPUT
 ------------------------------------------------------------
