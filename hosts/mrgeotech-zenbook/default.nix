@@ -29,6 +29,11 @@ outputs,
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
 
+    # Lets nix build aarch64-linux derivations here via qemu emulation
+    # instead of erroring with "platform mismatch" -- needed to build the
+    # pi5 sd-image for the bison_pullers/panel flake from this x86_64 box.
+    binfmt.emulatedSystems = [ "aarch64-linux" ];
+
     loader = {
       systemd-boot = {
         enable = true;
