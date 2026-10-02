@@ -27,11 +27,26 @@
   powerManagement.enable = true;
 
   # Bootloader.
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.efi.efiSysMountPoint = "/boot";
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.systemd-boot.configurationLimit = 15;
+  boot = {
+    kernelPackages = pkgs.linuxPackages_latest;
+
+    # Lets nix build aarch64-linux derivations here via qemu emulation
+    # instead of erroring with "platform mismatch" -- needed to build the
+    # pi5 sd-image for the bison_pullers/panel flake from this x86_64 box.
+    binfmt.emulatedSystems = [ "aarch64-linux" ];
+
+    loader = {
+      systemd-boot = {
+        enable = true;
+        configurationLimit = 5;
+      };
+      efi = {
+        canTouchEfiVariables = true;
+        efiSysMountPoint = "/boot";
+      };
+      timeout = 1;
+    };
+  };
 
   # amd gpu support for kernel
   boot.initrd.kernelModules = ["amdgpu"];
