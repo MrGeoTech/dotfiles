@@ -51,6 +51,25 @@
   # amd gpu support for kernel
   boot.initrd.kernelModules = ["amdgpu"];
 
+  # Samsung Odyssey G9 (LC49G95T) on DP-1: override its EDID to get 240Hz.
+  # The monitor rewrites its own EDID based on the OSD "Refresh Rate"
+  # setting, and the 240Hz version it sends makes amdgpu flicker/drop the
+  # signal (drm/amd#1442). This is the hand-fixed EDID from
+  # github.com/vpraion/odysseyg9-linux-240hz-vrr-hdr-noflicker: a
+  # 5120x1440@239.58 DSC timing, 60-240Hz VRR range, and HDR10 metadata.
+  # The OSD Refresh Rate must be set to 240Hz for this to display anything.
+  hardware.display = {
+    edid.packages = [
+      (pkgs.runCommand "edid-lc49g95" {} ''
+        install -Dm444 ${./LC49G95.bin} $out/lib/firmware/edid/LC49G95.bin
+      '')
+    ];
+    outputs."DP-1".edid = "LC49G95.bin";
+  };
+  # amdgpu probes the monitor from the initrd, before the real
+  # /lib/firmware exists, so the EDID has to be in there too.
+  boot.initrd.extraFirmwarePaths = ["edid/LC49G95.bin"];
+
 
   # Transparent zstd on root. Safe to add to an existing fs: only new
   # writes get compressed. Recompress old data with

@@ -12,16 +12,22 @@
   monitors =
     if isPC
     then [
+      # Odyssey G9. 240Hz depends on the EDID override in
+      # hosts/mrgeotech-pc/default.nix and the OSD Refresh Rate being 240Hz.
+      # vrr = 2 limits VRR to fullscreen: this VA panel flickers with VRR on
+      # the desktop, where the framerate is constantly bouncing around.
       {
-        output = "DP-2";
-        mode = "highres";
-        position = "0x0";
+        output = "DP-1";
+        mode = "5120x1440@240";
+        position = "1920x0";
         scale = 1;
+        bitdepth = 10;
+        vrr = 2;
       }
       {
         output = "HDMI-A-1";
         mode = "highres";
-        position = "5120x0";
+        position = "0x360";
         scale = 1;
       }
     ]
@@ -34,7 +40,14 @@
       }
     ];
 
-  luaMonitor = m: ''      { output = "${m.output}", mode = "${m.mode}", position = "${m.position}", scale = ${toString m.scale} },'';
+  # Any attr becomes a field of the hl.monitor() table; strings get quoted.
+  luaValue = v:
+    if builtins.isString v
+    then ''"${v}"''
+    else if builtins.isBool v
+    then lib.boolToString v
+    else toString v;
+  luaMonitor = m: "      { ${lib.concatStringsSep ", " (lib.mapAttrsToList (k: v: "${k} = ${luaValue v}") m)} },";
   monitorsLua = lib.concatMapStringsSep "\n" luaMonitor monitors;
 
   # --- Theme (Catppuccin Mocha) ----------------------------------------
