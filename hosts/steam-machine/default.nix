@@ -1,125 +1,84 @@
+# Living-room console: boots straight into Steam Big Picture and nothing else.
+# Hardware: AMD Athlon II (AM3, DDR3), RTX 2070 SUPER, Xbox wireless dongle.
 {
   pkgs,
   config,
-  inputs,
-  outputs,
   ...
-}: {
+}: let
+  # cage runs this straight from systemd, not from a login shell, so pull in
+  # the normal system environment (PATH and friends) before starting Steam.
+  steamSession = pkgs.writeShellScript "steam-session" ''
+    . /etc/profile
+    exec steam -gamepadui
+  '';
+in {
   imports = [
-    # Hardware config
     ./hardware-configuration.nix
 
-    ./plymouth.nix
-
-    # Common config
     ../common/core
-      # Optional configs
     ../common/optional/pipewire.nix
     ../common/optional/bluetooth.nix
 
-    # User config
     ../common/users/mrgeotech
   ];
 
-  # Was previously its own hosts/common/optional/fonts.nix, imported
-  # individually here since this host doesn't pull in the rest of
-  # ../common/optional (flatpak, hyprland, steam.nix, etc.). That file got
-  # folded into ../common/optional/default.nix, which this host never
-  # imports as a whole -- so pull the setting in directly instead.
-  fonts.fontDir.enable = true;
-
-  # Bootloader (uses grub instead of systemd-boot)
   boot = {
-    kernelPackages = pkgs.linuxPackages_latest;
-    kernelParams = [
-      "quiet"
-      "loglevel=3"
-      "udev.log_level=3"
-    ];
+    # LTS kernel (the NixOS default): the out-of-tree NVIDIA module tracks it
+    # best, and a console has no use for the newest kernel features.
+    kernelParams = ["quiet" "loglevel=3" "udev.log_level=3"];
     loader = {
       systemd-boot = {
         enable = true;
         configurationLimit = 15;
       };
-      efi = {
-        canTouchEfiVariables = true;
-        efiSysMountPoint = "/boot";
-      };
+      efi.canTouchEfiVariables = true;
       timeout = 1;
     };
   };
 
+  # NetworkManager alone (from common/core). This used to also enable
+  # systemd-networkd on the same wifi card; the two fighting over wlp5s0 is a
+  # classic multi-minute "waiting for network" stall at boot.
   networking = {
-    networkmanager.wifi.powersave = true;
     hostName = "steam-machine";
-    useNetworkd = true;
-    interfaces.wlp5s0.useDHCP = true;
+    # Wifi power saving trades latency spikes for battery this box doesn't have.
+    networkmanager.wifi.powersave = false;
+  };
+  # Nothing here needs the network before Steam starts; Steam waits on its own.
+  systemd.services.NetworkManager-wait-online.enable = false;
+
+  # Old CPU: never wait for the governor to ramp up mid-game.
+  powerManagement.cpuFreqGovernor = "performance";
+
+  # Steam Big Picture in cage, a single-app Wayland compositor, autologged in
+  # on tty1. Not gamescope: on NVIDIA its session mode corrupts Steam's
+  # translucent UI (the button legend that appears with a controller) --
+  # ValveSoftware/gamescope#1964 and #2309, both open. The same UI is clean
+  # under wlroots, which cage is built on.
+  #   -s  allow Ctrl+Alt+F2 to a text console for fixing things
+  services.cage = {
+    enable = true;
+    user = "mrgeotech";
+    program = steamSession;
+    extraArguments = ["-s"];
+  };
+  # Quitting Steam (or a crash) drops back into Steam instead of a black screen.
+  systemd.services.cage-tty1.serviceConfig = {
+    Restart = "always";
+    RestartSec = 2;
   };
 
-  programs = {
-    steam = {
-      enable = true;
-      remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-      dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
-      localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
-      gamescopeSession.enable = true;
-    };
-    gamescope = {
-      enable = true;
-      capSysNice = true;
-    };
-    gamemode.enable = true;
-    dconf.enable = true;
-  };
-  hardware.xone.enable = true; # support for the xbox controller USB dongle
-
-  # Load from display manager directly into steam gamemode
-  environment = {
-    systemPackages = with pkgs; [ mangohud ];
-    loginShellInit = ''
-      [[ "$(tty)" = "/dev/tty1" ]] && ./gamescope.sh
-    '';
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true;
+    localNetworkGameTransfers.openFirewall = true;
+    extraCompatPackages = [pkgs.proton-ge-bin];
   };
 
-  security.polkit.enable = true;
-
-  services = {
-    printing.enable = true;
-
-    blueman.enable = true;
-    gnome.gnome-keyring.enable = true;
-
-    udev.extraRules = ''
-      SUBSYSTEM=="usb", ATTR{idVendor}=="09fb", ATTR{idProduct}=="6001", MODE="0666"
-    '';
-
-    getty.autologinUser = "mrgeotech";
-    displayManager = {
-      autoLogin = {
-        enable = true;
-        user = "mrgeotech";
-      };
-    };
-    xserver = {
-      # Configure keymap in X11
-      enable = true;
-      videoDrivers = ["nvidia"];
-      xkb.options = "ctrl:nocaps";
-      xkb.layout = "us";
-      xkb.variant = "";
-      displayManager.lightdm.enable = true;
-      #desktopManager.xfce = {
-      #  enable = true;
-      #  enableWaylandSession = true;
-      #  enableScreensaver = false;
-      #  noDesktop = false;
-      #};
-    };
-  };
-
-  # Load nvidia driver for Xorg and Wayland
-  console.useXkbConfig = true;
-
+  # RTX 2070 SUPER (Turing): the open kernel module is NVIDIA's recommended
+  # one from Turing on. The default driver is the 595 production branch,
+  # which the gamescope reports above found better behaved than 610+.
+  services.xserver.videoDrivers = ["nvidia"];
   hardware = {
     nvidia = {
       open = true;
@@ -129,10 +88,7 @@
       enable = true;
       enable32Bit = true;
     };
-    bluetooth = {
-      enable = true;
-      powerOnBoot = true;
-    };
+    xone.enable = true; # Xbox wireless controller dongle
   };
 
   system.stateVersion = "26.05";
