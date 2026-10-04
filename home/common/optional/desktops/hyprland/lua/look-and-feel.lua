@@ -12,6 +12,20 @@ hl.config({
 })
 
 ------------------------------------------------------------
+-- HDR
+------------------------------------------------------------
+-- The desktop stays SDR; a fullscreen app that asks for HDR flips the
+-- monitor into HDR until it exits. Always-on HDR (cm = "hdr" on the
+-- monitor) is experimental and makes SDR windows look washed out on the
+-- G9's 10-zone edge-lit panel.
+-- prefer_hdr = 2 tells gamescope the output is already HDR; otherwise it
+-- starts in SDR and never triggers the auto switch.
+hl.config({
+  render = { cm_auto_hdr = 1 },
+  quirks = { prefer_hdr = 2 },
+})
+
+------------------------------------------------------------
 -- MONITORS
 ------------------------------------------------------------
 -- vars.monitors is a list of tables; one hl.monitor() call each.
