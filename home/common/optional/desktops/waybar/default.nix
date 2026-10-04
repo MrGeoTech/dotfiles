@@ -1,5 +1,5 @@
 # https://github.com/Alexays/Waybar
-{hostName, pkgs, ...}: {
+{config, pkgs, ...}: {
 
   home.packages = with pkgs; [
     wttrbar
@@ -26,9 +26,7 @@
         # used for my secondary monitor so HDMI is
         # exclusivly for secondary monitors and doesn't 
         # need a waybar
-        output = if hostName == "steam-machine" then [ 
-          "!eDP-1" # All displays
-        ] else [
+        output = [
           "eDP-1"
           "DP-1"
           "DP-2"
@@ -70,7 +68,7 @@
           format = "<i> </i>";
           separate-outputs = false;
           icon = true;
-          icon-size = if hostName == "mrgeotech-zenbook" then 18 else 12;
+          icon-size = config.host.fontSize;
         };
 
         # Module configuration: Center

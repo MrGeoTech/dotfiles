@@ -11,6 +11,7 @@
     ./cli
     ./shells
     ./fonts.nix
+    ./host.nix
   ];
 
   nixpkgs = {

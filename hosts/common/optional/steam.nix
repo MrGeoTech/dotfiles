@@ -11,12 +11,22 @@
   '';
 
   programs.gamemode.enable = true;
+  # The WSI layer is what lets games inside gamescope see HDR surfaces
+  # (`gamescope --help`: --hdr-enabled "needs Gamescope WSI layer").
+  # capSysNice stays off: it breaks the Steam overlay and strips Vulkan env
+  # vars from gamescope (ArchWiki), and the NixOS wiki's HDR example also
+  # leaves it off.
+  programs.gamescope = {
+    enable = true;
+    enableWsi = true;
+  };
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
     localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
-    gamescopeSession.enable = true;
+    # Shows up as "GE-Proton" in Steam's compatibility tool list.
+    extraCompatPackages = [pkgs.proton-ge-bin];
     # SteamVR's vrwebhelper (CEF: settings, dashboard, pairing) exits 127
     # without these; `ldd` inside steam-run shows them missing from the FHS env.
     extraPackages = with pkgs; [
