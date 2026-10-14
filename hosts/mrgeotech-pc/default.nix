@@ -23,8 +23,23 @@
     # User config
     ../common/users/mrgeotech
   ];
-  powerManagement.cpuFreqGovernor = "performance";
+  # Dynamic instead of pinned: amd-pstate-epp's powersave governor still
+  # boosts on demand, steered by EPP. gamemode flips the governor to
+  # performance while a game runs and back afterwards.
+  powerManagement.cpuFreqGovernor = "powersave";
   powerManagement.enable = true;
+  systemd.tmpfiles.rules = [
+    "w /sys/devices/system/cpu/cpu*/cpufreq/energy_performance_preference - - - - balance_performance"
+  ];
+
+  boot.kernel.sysctl = {
+    # Don't stall split-lock-heavy games (some Proton titles) with the
+    # kernel's deliberate split-lock slowdown.
+    "kernel.split_lock_mitigate" = 0;
+    # zram swap is cheap to hit, so let the kernel prefer it over dropping
+    # page cache (the value the zram docs / Fedora use).
+    "vm.swappiness" = 180;
+  };
 
   # Bootloader.
   boot = {
