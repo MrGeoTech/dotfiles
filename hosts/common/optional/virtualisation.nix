@@ -11,6 +11,8 @@
   # VM's OEM payload (~/.config/winapps/oem) on every activation.
   installerDir = "/var/lib/winix-installers";
 
+  rdpPasswordToken = "@WINIX_RDP_PASSWORD@";
+
   releaseAsset = file: "https://github.com/MrGeoTech/dotfiles/releases/download/winix-installers/${file}";
 
   # Like winix.apps, plus an optional `installer` = { url, hash, encrypted,
@@ -107,6 +109,36 @@ in {
   };
   system.activationScripts.winixConfig.deps = [ "winixInstallers" ];
 
+  # The real RDP/Windows password lives in sops. winix only ever sees
+  # `rdpPasswordToken` (so that's all that reaches /nix/store and GitHub),
+  # and this swaps it for the decrypted secret in the two files winix just
+  # wrote, both of which stay readable only by mrgeotech. Read it with
+  #   sudo cat /run/secrets/winix-rdp-password
+  # Keep it alphanumeric: it's pasted unescaped into a double-quoted shell
+  # var (winapps.conf) and a double-quoted YAML string (compose.yaml).
+  sops.secrets."winix-rdp-password".sopsFile = ./secrets/winix.yaml;
+
+  system.activationScripts.winixRdpPassword = {
+    deps = [ "winixConfig" "setupSecrets" ];
+    text = ''
+      (
+        set -e
+        secret=/run/secrets/winix-rdp-password
+        dir=/home/mrgeotech/.config/winapps
+        if [ -r "$secret" ]; then
+          pw="$(cat "$secret")"
+          for f in "$dir/winapps.conf" "$dir/compose.yaml"; do
+            ${pkgs.gnused}/bin/sed -i "s|${rdpPasswordToken}|$pw|g" "$f"
+            chmod 600 "$f"
+          done
+        else
+          echo "winix: $secret missing, RDP password left as a placeholder" >&2
+          exit 1
+        fi
+      ) || _localstatus=$?
+    '';
+  };
+
   winix = {
     enable = true;
     systemUser = "mrgeotech";
@@ -115,9 +147,8 @@ in {
 
     rdp = {
       user = "mrgeotech";
-      # Plaintext by design in winix v1 -- lands world-readable in
-      # /nix/store. Fine for a VM only reachable on 127.0.0.1. Change it.
-      password = "changeme123";
+      # Not the real password -- see winixRdpPassword above.
+      password = rdpPasswordToken;
     };
 
     vm = {
