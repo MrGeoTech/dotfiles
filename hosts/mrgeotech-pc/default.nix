@@ -15,6 +15,7 @@
 
     # Optional configs
     ../common/optional
+    ../common/optional/virtualisation.nix
     (import ../common/optional/wireguard.nix {
       ip = "5";
     })
