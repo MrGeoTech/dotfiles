@@ -96,8 +96,8 @@
       # attenuating in software (preserves bit depth).
       "bluez5.enable-hw-volume" = true;
 
-      # Prefer high-quality playback; only fall back to the low-quality
-      # bidirectional headset profile when something actually opens the mic.
+      # Every role stays available, so the headset mic can still be picked by
+      # hand (switch the card to its headset profile in wiremix/pavucontrol).
       "bluez5.roles" = [
         "a2dp_sink"
         "a2dp_source"
@@ -112,6 +112,15 @@
       # Codec preference order. PipeWire negotiates the best mutually
       # supported one; listing them makes the intent explicit.
       "bluez5.codecs" = [ "ldac" "aptx_hd" "aptx" "aac" "sbc_xq" "sbc" ];
+    };
+  };
+
+  # Don't drop to the low-quality headset profile just because something
+  # opened a microphone. Steam does that at startup, and the A2DP -> HFP
+  # switch tore the headphones' audio transport down every launch.
+  services.pipewire.wireplumber.extraConfig."11-bluez-no-autoswitch" = {
+    "wireplumber.settings" = {
+      "bluetooth.autoswitch-to-headset-profile" = false;
     };
   };
 

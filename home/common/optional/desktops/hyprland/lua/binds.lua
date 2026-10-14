@@ -34,7 +34,7 @@ keys.map(mods.main, {
   { "T", hl.dsp.exec_cmd(terminal) },
   { "B", hl.dsp.exec_cmd(browser) },
   { "F", hl.dsp.exec_cmd(files) },
-  { "G", hl.dsp.exec_cmd("steam") },
+  { "G", hl.dsp.exec_cmd("steam-full") },
   { "Y", hl.dsp.exec_cmd("flatpak run com.hypixel.HytaleLauncher") },
   { "W", hl.dsp.exec_cmd("systemctl --user restart waybar") },
   { "Q", hl.dsp.window.close() },

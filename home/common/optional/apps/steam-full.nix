@@ -21,18 +21,47 @@
 }: let
   nestedArgs = [
     "-f" # some games crash in a windowed gamescope (ArchWiki)
-    "--force-grab-cursor" # without it, mouselook breaks in some -f games (ArchWiki)
+    "--mangoapp" # performance overlay; configured by programs.mangohud.settings
   ];
 
-  # nixpkgs' own default for programs.steam.gamescopeSession. -gamepadui is
-  # Big Picture, the UI gamescope's Steam integration (-e) is built around.
-  steamArgs = ["-gamepadui" "-pipewire-dmabuf"];
+  # -gamepadui is Big Picture, the UI gamescope's Steam integration (-e) is
+  # built around. -steamos3 turns on the SteamOS power menu, whose "Switch to
+  # Desktop" is the only way out of Big Picture under gamescope. Same flags
+  # as ChimeraOS's gamescope-session-steam, minus the Steam Deck spoofing.
+  steamArgs = ["-gamepadui" "-steamos3" "-pipewire-dmabuf"];
+
+  # The SteamOS commands Steam calls under -steamos3. Stand-ins modelled on
+  # ChimeraOS's: "Switch to Desktop" just quits Steam (ending gamescope),
+  # and there are no OS updates or branches to offer.
+  steamosStubs = pkgs.symlinkJoin {
+    name = "steamos-stubs";
+    paths = [
+      (pkgs.writeShellScriptBin "steamos-session-select" "exec steam -shutdown")
+      (pkgs.writeShellScriptBin "steamos-select-branch" "exit 0")
+      (pkgs.writeShellScriptBin "steamos-update" ''
+        # --supports-duplicate-detection is a capability probe; anything else
+        # is a check or an update, and 7 tells Steam there is nothing to do.
+        [ "''${1-}" = --supports-duplicate-detection ] && exit 0
+        exit 7
+      '')
+    ];
+  };
+
+  # gamescope starts mangoapp with its own environment, which still has
+  # Hyprland's WAYLAND_DISPLAY. GLFW then picks Wayland, but mangoapp only
+  # works on gamescope's X server, so it crashes ("X11: Platform not
+  # initialized") and no overlay ever shows. gamescope finds mangoapp on
+  # PATH, so shadow it with one that drops the variable.
+  mangoapp = pkgs.writeShellScriptBin "mangoapp" ''
+    unset WAYLAND_DISPLAY
+    exec ${pkgs.mangohud}/bin/mangoapp "$@"
+  '';
 
   envArgs = lib.mapAttrsToList (k: v: "${k}=${v}") env;
 
   steam-full = pkgs.writeShellApplication {
     name = "steam-full";
-    runtimeInputs = [pkgs.jq pkgs.procps];
+    runtimeInputs = [pkgs.jq pkgs.procps mangoapp];
     text = ''
       # Steam is single-instance: a second launch hands off to the running
       # client and exits, which would take gamescope down with it.
@@ -53,8 +82,29 @@
         size=(-W "$w" -H "$h" -r "$r")
       fi
 
-      exec gamescope -e ${lib.escapeShellArgs (nestedArgs ++ gamescopeArgs)} "''${size[@]}" \
-        -- env ${lib.escapeShellArgs envArgs} steam ${lib.escapeShellArgs steamArgs}
+      # Under -steamos3, Restart and Shut Down in Steam's power menu just
+      # drop these files and quit, leaving the actual reboot to the session.
+      runtime=''${XDG_RUNTIME_DIR:-/tmp}
+      export STEAMOS_STEAM_REBOOT_SENTINEL=$runtime/steam-full-reboot
+      export STEAMOS_STEAM_SHUTDOWN_SENTINEL=$runtime/steam-full-shutdown
+      rm -f "$STEAMOS_STEAM_REBOOT_SENTINEL" "$STEAMOS_STEAM_SHUTDOWN_SENTINEL"
+
+      # Under -steamos3, Steam also manages the default audio device, which
+      # fights WirePlumber and can knock Bluetooth headphones off.
+      export STEAM_DISABLE_AUDIO_DEVICE_SWITCHING=1
+
+      # Steam's sandbox keeps the outer PATH, so the stubs are visible inside.
+      gamescope -e ${lib.escapeShellArgs (nestedArgs ++ gamescopeArgs)} "''${size[@]}" \
+        -- env PATH="${steamosStubs}/bin:$PATH" ${lib.escapeShellArgs envArgs} \
+        steam ${lib.escapeShellArgs steamArgs} || true
+
+      if [ -e "$STEAMOS_STEAM_REBOOT_SENTINEL" ]; then
+        rm -f "$STEAMOS_STEAM_REBOOT_SENTINEL"
+        systemctl reboot
+      elif [ -e "$STEAMOS_STEAM_SHUTDOWN_SENTINEL" ]; then
+        rm -f "$STEAMOS_STEAM_SHUTDOWN_SENTINEL"
+        systemctl poweroff
+      fi
     '';
   };
 in {
