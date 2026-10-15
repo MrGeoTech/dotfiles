@@ -1,11 +1,4 @@
-# Import with args, like wireguard.nix:
-#   (import ../common/optional/virtualisation.nix { })                     -- runs the Windows VM here
-#   (import ../common/optional/virtualisation.nix { vmHost = "10.0.1.5"; }) -- uses another machine's VM over wireguard
-{ vmHost ? null }: {inputs, config, pkgs, lib, ...} : let
-  # No vmHost: this machine runs the VM (docker, installers, the lot).
-  # With vmHost: only winapps + the app shortcuts, RDP'ing to vmHost.
-  runsVm = vmHost == null;
-
+{inputs, config, pkgs, lib, ...} : let
   # Same age identity sops-nix uses (see hosts/common/users/mrgeotech).
   # Every `encrypted = true` installer is encrypted to its public half,
   # the recipient in .sops.yaml:
@@ -63,7 +56,7 @@
     }
   ];
 
-  withInstaller = lib.optionals runsVm (builtins.filter (app: app ? installer) apps);
+  withInstaller = builtins.filter (app: app ? installer) apps;
 
   fetchInstaller = app: pkgs.fetchurl {
     name = "winix-${app.name}-installer${lib.optionalString app.installer.encrypted ".age"}";
@@ -108,15 +101,15 @@ in {
 
   # dockur/windows (the VM winix drives) needs /dev/kvm + NET_ADMIN/NET_RAW +
   # a tun device -- simplest with a normal rootful dockerd, not rootless.
-  virtualisation.docker.enable = runsVm;
+  virtualisation.docker.enable = true;
 
-  # The VM machine publishes RDP (and the noVNC viewer on 8006) on its wg
-  # address too, so other wireguard machines can use it. Not 0.0.0.0:
+  # Publish RDP (and the noVNC viewer on 8006) on the wg address too, so
+  # other wireguard machines can use this machine's VM. Not 0.0.0.0:
   # docker-published ports skip the NixOS firewall, so that would put
   # Windows RDP on the LAN. ip_nonlocal_bind lets docker bind the wg
   # address even if wg0 isn't up yet (e.g. no network at boot) instead of
   # refusing to start the container.
-  boot.kernel.sysctl."net.ipv4.ip_nonlocal_bind" = lib.mkIf runsVm 1;
+  boot.kernel.sysctl."net.ipv4.ip_nonlocal_bind" = 1;
 
   system.activationScripts.winixInstallers = {
     deps = [ "users" ];
@@ -133,20 +126,13 @@ in {
   # var (winapps.conf) and a double-quoted YAML string (compose.yaml).
   sops.secrets."winix-rdp-password".sopsFile = ./secrets/winix.yaml;
 
-  # winix hardcodes 127.0.0.1 in both files; fix them up after it writes them.
-  system.activationScripts.winixRemote = {
+  # winix hardcodes 127.0.0.1 in compose.yaml; add a wg-address copy of
+  # each published port after it writes the file.
+  system.activationScripts.winixWireguard = {
     deps = [ "winixConfig" "winixRdpPassword" ];
-    text = let
-      dir = "/home/mrgeotech/.config/winapps";
-      sed = "${pkgs.gnused}/bin/sed";
-    in if runsVm then ''
+    text = ''
       wgIp=${lib.escapeShellArg (lib.head (lib.splitString "/" (lib.head config.networking.wg-quick.interfaces.wg0.address)))}
-      ${sed} -i "s|^\( *\)- \"127.0.0.1:\([0-9]*:[0-9/a-z]*\)\"$|&\n\1- \"$wgIp:\2\"|" ${dir}/compose.yaml
-    '' else ''
-      # "manual" = just RDP to RDP_IP; don't look for a local container.
-      # (AUTOPAUSE is ignored in manual mode -- the VM's own machine does that.)
-      ${sed} -i -e 's|^WAFLAVOR=.*|WAFLAVOR="manual"|' \
-        -e 's|^RDP_IP=.*|RDP_IP="${vmHost}"|' ${dir}/winapps.conf
+      ${pkgs.gnused}/bin/sed -i "s|^\( *\)- \"127.0.0.1:\([0-9]*:[0-9/a-z]*\)\"$|&\n\1- \"$wgIp:\2\"|" /home/mrgeotech/.config/winapps/compose.yaml
     '';
   };
 
@@ -201,7 +187,7 @@ in {
 
     apps = map (app:
       builtins.removeAttrs app [ "installer" ]
-      // lib.optionalAttrs (runsVm && app ? installer) {
+      // lib.optionalAttrs (app ? installer) {
         installer = "installer.exe";
         installArgs = app.installer.args or [ ];
       }
