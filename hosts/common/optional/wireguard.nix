@@ -1,6 +1,9 @@
 {ip, ...}: {
     networking.firewall = {
         allowedUDPPorts = [ 29566 ];
+        # Everything on the tunnel is ours: let any service on this
+        # machine be reached from the other wireguard machines.
+        trustedInterfaces = [ "wg0" ];
     };
     # Enable wireguard
     networking.wg-quick.interfaces = {

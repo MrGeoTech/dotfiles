@@ -16,7 +16,8 @@ outputs,
 
     # Optional configs
     ../common/optional
-    ../common/optional/virtualisation.nix
+    # Windows VM lives on the pc; reach it over wireguard
+    (import ../common/optional/virtualisation.nix { vmHost = "10.0.1.5"; })
     (import ../common/optional/wireguard.nix {
       ip = "3";
     })
