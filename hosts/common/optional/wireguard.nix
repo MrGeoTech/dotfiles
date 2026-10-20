@@ -1,4 +1,8 @@
 {ip, ...}: {
+    # ssh only over the tunnel: port 22 stays shut on every other
+    # interface, wg0 being trusted lets it through there.
+    services.openssh.openFirewall = false;
+
     networking.firewall = {
         allowedUDPPorts = [ 29566 ];
         # Everything on the tunnel is ours: let any service on this
