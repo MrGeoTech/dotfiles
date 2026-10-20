@@ -9,6 +9,7 @@
     inputs.hardware.nixosModules.common-cpu-amd
     inputs.hardware.nixosModules.common-gpu-amd
     ./hardware-configuration.nix
+    ./headless.nix
 
     # Common config
     ../common/core
