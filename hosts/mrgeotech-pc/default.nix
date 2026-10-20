@@ -20,6 +20,7 @@
     (import ../common/optional/wireguard.nix {
       ip = "5";
     })
+    (import ../common/optional/ups.nix {})
 
     # User config
     ../common/users/mrgeotech
