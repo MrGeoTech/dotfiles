@@ -20,7 +20,12 @@
     (import ../common/optional/wireguard.nix {
       ip = "5";
     })
-    (import ../common/optional/ups.nix {})
+    ../common/optional/ups.nix
+    # VictoriaMetrics on the weaponized_autism VM, reached over wg0.
+    (import ../common/optional/metrics.nix {
+      url = "http://10.0.1.50:8428";
+      user = "wa";
+    })
 
     # User config
     ../common/users/mrgeotech
