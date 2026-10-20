@@ -21,10 +21,9 @@
       ip = "5";
     })
     ../common/optional/ups.nix
-    # VictoriaMetrics on the weaponized_autism VM, reached over wg0.
-    (import ../common/optional/metrics.nix {
-      url = "http://10.0.1.50:8428";
-      user = "wa";
+    ../common/optional/metrics.nix
+    (import ../common/optional/dashboards.nix {
+      pc = "http://10.0.1.5:8428";
     })
 
     # User config
