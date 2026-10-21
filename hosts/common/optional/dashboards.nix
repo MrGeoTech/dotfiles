@@ -7,7 +7,7 @@
 # servers: VictoriaMetrics (or any Prometheus API) to read from. `name` is
 # what a dashboard query uses as its datasourceID.
 #   { name = "wa"; ip = "10.0.1.50"; port = 8428; user = "wa";
-#     password = "wa-metrics-password"; }
+#     password = "metrics-password"; }
 # port defaults to 8428; user and password only if it wants a login.
 # password is a key in secrets/metrics.yaml (sops), set it with
 #   sops set hosts/common/optional/secrets/metrics.yaml '["<key>"]' '"<pw>"'

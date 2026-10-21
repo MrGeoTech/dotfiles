@@ -25,7 +25,7 @@
     (import ../common/optional/dashboards.nix {
       servers = [
         { name = "pc"; ip = "10.0.1.5"; }
-        { name = "wa"; ip = "10.0.1.50"; user = "wa"; password = "wa-metrics-password"; }
+        { name = "wa"; ip = "10.0.1.50"; user = "wa"; password = "metrics-password"; }
       ];
       dashboards = [
         (import ../common/optional/dashboards/ups.nix { server = "pc"; })
