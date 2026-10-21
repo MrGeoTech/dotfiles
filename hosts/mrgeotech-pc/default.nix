@@ -23,7 +23,12 @@
     ../common/optional/ups.nix
     ../common/optional/metrics.nix
     (import ../common/optional/dashboards.nix {
-      pc = "http://10.0.1.5:8428";
+      servers = [
+        { name = "pc"; ip = "10.0.1.5"; }
+      ];
+      dashboards = [
+        (import ../common/optional/dashboards/ups.nix { server = "pc"; })
+      ];
     })
 
     # User config
