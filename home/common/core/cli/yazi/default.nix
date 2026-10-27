@@ -60,7 +60,7 @@
       # extra argv, so shell-style "$@"/"$1" here always expand empty.
       opener = {
         edit = [{ run = "nvim %s"; block = true; desc = "nvim"; }];
-        play = [{ run = "mpv --force-window %s"; orphan = true; desc = "mpv"; }];
+        play = [{ run = "vlc %s"; orphan = true; desc = "vlc"; }];
         pdf = [{ run = "zathura %s"; orphan = true; desc = "zathura"; }];
         image = [{ run = "imv %s"; orphan = true; desc = "imv"; }];
         extract = [{ run = "ouch decompress %s"; desc = "extract here"; }];
