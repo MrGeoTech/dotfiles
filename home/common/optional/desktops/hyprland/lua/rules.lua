@@ -2,10 +2,14 @@
 -- Window and layer rules. Rules now take a `name`, which shows up in
 -- `hyprctl rules` and makes them addressable at runtime.
 
--- Dim the desktop behind rofi.
-hl.window_rule({
-  name = "dim-around-rofi",
-  match = { title = "^(.*rofi.*)$" },
+-- Rofi is a layer surface on Wayland. Blur what's behind its translucent
+-- box (ignore_alpha keeps the blur inside the rounded corners) and dim the
+-- rest of the desktop so the eye goes straight to it.
+hl.layer_rule({
+  name = "glass-rofi",
+  match = { namespace = "^rofi$" },
+  blur = true,
+  ignore_alpha = 0.01,
   dim_around = true,
 })
 

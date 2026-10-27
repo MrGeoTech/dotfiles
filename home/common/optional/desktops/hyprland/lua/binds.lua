@@ -28,7 +28,8 @@ local screenshot = "~/.config/hypr/scripts/screenshot.sh"
 ------------------------------------------------------------
 -- NOTE: this is SUPER held + the Super key itself, exactly as in the old
 -- config. For a bare Super tap, bind "SUPER_L" with no modifier instead.
-hl.bind(mods.main .. " + SUPER_L", hl.dsp.exec_cmd("rofi -show run"))
+-- `apps` is the launch script mode (home/common/core/cli/launch.nix).
+hl.bind(mods.main .. " + SUPER_L", hl.dsp.exec_cmd("rofi -show apps"))
 
 keys.map(mods.main, {
   { "T", hl.dsp.exec_cmd(terminal) },

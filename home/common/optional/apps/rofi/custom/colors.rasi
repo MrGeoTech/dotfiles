@@ -1,12 +1,27 @@
+/* Catppuccin Mocha. Same palette as hyprland/colors.nix. */
 * {
-    BG:    #191724ff;
-    BGA:   #31748fff;
-    FG:    #e0def4ff;
-    FGA:   #191724ff;
-    BDR:   #ebbcbaff;
-    SEL:   #31748fff;
-    UGT:   #eb6f92ff;
-    IMG:   #e0def4ff;
-    OFF:   #575268ff;
-    ON:    #ABE9B3ff;
+    base:       #1e1e2e;
+    mantle:     #181825;
+    crust:      #11111b;
+    surface0:   #313244;
+    surface1:   #45475a;
+    overlay0:   #6c7086;
+    overlay1:   #7f849c;
+    subtext0:   #a6adc8;
+    subtext1:   #bac2de;
+    text:       #cdd6f4;
+    mauve:      #cba6f7;
+    red:        #f38ba8;
+
+    /* Translucent layers. Hyprland blurs what's behind the window
+       (layer rule in hyprland/lua/rules.lua), which gives the glass look. */
+    glass:      #1e1e2ee0;
+    well:       #11111b80;
+    edge:       #cba6f740;
+    pick:       #cba6f726;
+
+    /* Older names, still used by runner.rasi. */
+    BG:  @base;   BGA: @surface0; FG:  @text;    FGA: @base;
+    BDR: @mauve;  SEL: @mauve;    UGT: @red;     IMG: @text;
+    OFF: @overlay0; ON: #a6e3a1;
 }

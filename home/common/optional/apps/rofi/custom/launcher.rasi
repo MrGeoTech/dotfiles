@@ -1,130 +1,114 @@
+/* One centered box: search field, an info panel that only appears when
+   there's something to say (launch's confirm screen), then the list.
+   Used by `rofi -show apps` (launch), window and ssh. */
+
 configuration {
-    show-icons:                     true;
-    display-drun: 		    "";
-    drun-display-format:            "{icon} {name}";
-    disable-history:                false;
-    click-to-exit: 		    true;
-    location:                       0;
+    show-icons:                 true;
+    icon-theme:                 "Papirus-Dark";
+    display-window:             "";
+    display-ssh:                "󰣀";
+    disable-history:            false;
+    click-to-exit:              true;
+    hover-select:               true;
+    me-select-entry:            "";
+    me-accept-entry:            "MousePrimary";
 }
 
 @import "colors.rasi"
 
 * {
-    font: "Iosevka 13";
+    font:                       "Iosevka Nerd Font 13";
+    background-color:           transparent;
+    text-color:                 @text;
 }
 
 window {
-    transparency:                   "real";
-    background-color:               @BG;
-    text-color:                     @FG;
-    border-color:                   @BDR;
-    width:                          500px;
-    anchor:                         center;
-}
-
-prompt {
-    enabled: 			    false;
-}
-
-textbox-prompt-colon {
-    expand: 			    false;
-}
-
-entry {
-    background-color:               @BG;
-    text-color:                     @FG;
-    placeholder-color:              @FG;
-    expand:                         true;
-    horizontal-align:               0;
-    placeholder:                    "Search...";
-    blink:                          true;
-}
-
-inputbar {
-    children: 		            [ textbox-prompt-colon, prompt, entry ];
-    background-color:               @BG;
-    text-color:                     @FG;
-    expand:                         false;
-    position:                       center;
-}
-
-case-indicator {
-    background-color:               @BG;
-    text-color:                     @FG;
-    spacing:                        0;
-}
-
-
-listview {
-    background-color:               @BG;
-    columns:                        1;
-    lines:			                7;
-    spacing:                        4px;
-    cycle:                          false;
-    dynamic:                        true;
-    layout:                         vertical;
+    location:                   center;
+    anchor:                     center;
+    width:                      720px;
+    border:                     1px;
+    border-color:               @edge;
+    border-radius:              18px;
+    background-color:           @glass;
 }
 
 mainbox {
-    background-color:               @BG;
-    children:                       [ inputbar, listview ];
-    spacing:                        15px;
-    padding:                        15px;
+    padding:                    14px;
+    spacing:                    10px;
+    children:                   [ inputbar, message, listview ];
+}
+
+inputbar {
+    padding:                    12px 16px;
+    spacing:                    12px;
+    border-radius:              12px;
+    background-color:           @well;
+    children:                   [ prompt, entry ];
+}
+
+prompt {
+    text-color:                 @mauve;
+    vertical-align:             0.5;
+}
+
+entry {
+    placeholder:                "Search apps and nixpkgs";
+    placeholder-color:          @overlay0;
+    cursor:                     text;
+    vertical-align:             0.5;
+}
+
+message {
+    padding:                    14px 16px;
+    border-radius:              12px;
+    background-color:           @well;
+}
+
+textbox {
+    markup:                     true;
+    text-color:                 @subtext1;
+    vertical-align:             0.5;
+}
+
+listview {
+    lines:                      7;
+    columns:                    1;
+    fixed-height:               true;
+    dynamic:                    true;
+    cycle:                      true;
+    scrollbar:                  false;
+    spacing:                    2px;
 }
 
 element {
-    background-color:               @BG;
-    text-color:                     @FG;
-    orientation:                    horizontal;
-    border-radius:                  4px;
-    padding:                        6px 6px 6px 6px;
+    padding:                    8px 12px;
+    spacing:                    14px;
+    border:                     1px;
+    border-radius:              10px;
+    border-color:               transparent;
+    cursor:                     pointer;
 }
 
-element-icon {
-    background-color: 	            inherit;
-    text-color:       		        inherit;
-    horizontal-align:               0.5;
-    vertical-align:                 0.5;
-    size:                           24px;
-    border:                         0px;
-}
-
-element-text {
-    background-color: 		        inherit;
-    text-color:       		        inherit;
-    expand:                         true;
-    horizontal-align:               0;
-    vertical-align:                 0.5;
-    margin:                         2px 0px 2px 2px;
+element selected.normal,
+element selected.active {
+    background-color:           @pick;
+    border-color:               @edge;
 }
 
 element normal.urgent,
-element alternate.urgent {
-    background-color:               @UGT;
-    text-color:                     @FG;
-    border-radius:                  9px;
-}
-
-element normal.active,
-element alternate.active {
-    background-color:               @BGA;
-    text-color:                     @FG;
-}
-
-element selected {
-    background-color:               @BGA;
-    text-color:                     @FGA;
-    border:                  	    0px 0px 0px 0px;
-    border-radius:                  10px;
-    border-color:                   @BDR;
-}
-
+element alternate.urgent,
 element selected.urgent {
-    background-color:               @UGT;
-    text-color:                     @FG;
+    text-color:                 @red;
 }
 
-element selected.active {
-    background-color:               @BGA;
-    color:                          @FG;
+element-icon {
+    size:                       32px;
+    vertical-align:             0.5;
+    cursor:                     inherit;
+}
+
+element-text {
+    vertical-align:             0.5;
+    text-color:                 inherit;
+    cursor:                     inherit;
 }
