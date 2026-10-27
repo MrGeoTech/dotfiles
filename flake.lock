@@ -163,6 +163,23 @@
         "type": "github"
       }
     },
+    "nix-launch": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1793131667,
+        "narHash": "sha256-elMYy1nM/YJqaUV8XT/pw1WvLzQyQkjRVQ1DJIEP33c=",
+        "path": "/home/mrgeotech/Projects/nix-launch",
+        "type": "path"
+      },
+      "original": {
+        "path": "/home/mrgeotech/Projects/nix-launch",
+        "type": "path"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1789044656,
@@ -212,6 +229,7 @@
         "home-manager": "home-manager",
         "labrador": "labrador",
         "nix-index-database": "nix-index-database",
+        "nix-launch": "nix-launch",
         "nixpkgs": "nixpkgs_3",
         "sops-nix": "sops-nix",
         "winix": "winix"

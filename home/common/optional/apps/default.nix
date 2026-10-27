@@ -1,28 +1,4 @@
-{ pkgs, lib, inputs, outputs, stdenv, ... }:
-let
-  sandbox = import ../../lib/sandbox-apps.nix { inherit pkgs lib; };
-
-  # Occasional-use tools: CAD/office/media apps, compilers, IDEs, and
-  # other "not part of the base system" software. Wrapped so `nix shell`
-  # fetches/builds them on first use instead of every home-manager
-  # generation carrying (and rebuilding) the whole set.
-  sandboxedApps = sandbox.mkSandboxedApps [
-    { attr = "octaveFull"; bin = "octave"; } # note: the statistics/signal forge packages the plain package used to bundle aren't included here; `pkg install -forge ...` them at runtime if needed
-    { attr = "kicad"; }
-    { attr = "jetbrains.idea"; bin = "idea"; } # good for java 25 development
-    { attr = "gradle_9"; bin = "gradle"; } # ships with its own default JDK (jdk25), no JAVA_HOME needed
-    { attr = "openjdk25"; bin = "java"; }
-    { attr = "openjdk25"; bin = "javac"; }
-    { attr = "drawio"; }
-    { attr = "inkscape"; }
-    { attr = "obs-studio"; bin = "obs"; }
-    { attr = "vlc"; }
-    { attr = "appimage-run"; }
-    { attr = "libreoffice-fresh"; bin = "libreoffice"; }
-    #{ attr = "quartus-prime-lite"; }
-  ];
-in
-  {
+{ pkgs, lib, inputs, outputs, stdenv, ... }: {
   imports = [
     ./ghostty
     ./rofi
@@ -37,7 +13,32 @@ in
     udisks
     # Tools
     claude-code
-  ] ++ sandboxedApps;
+  ];
+
+  # Occasional-use tools: CAD/office/media apps, compilers, IDEs, and
+  # other "not part of the base system" software. Fetched on first use
+  # instead of every home-manager generation carrying (and rebuilding) the
+  # whole set, and run in a bwrap sandbox (see core/cli/launch.nix for the
+  # `files` profile). Listing them here is the approval: no prompt.
+  programs.launch.apps = {
+    # note: the statistics/signal forge packages the plain package used to
+    # bundle aren't included here; `pkg install -forge ...` them at runtime
+    octave = { attr = "octaveFull"; bin = "octave"; profile = "files"; };
+    kicad.profile = "files";
+    idea = { attr = "jetbrains.idea"; profile = "files"; }; # good for java 25 development
+    gradle = { attr = "gradle_9"; profile = "files"; }; # ships with its own default JDK (jdk25), no JAVA_HOME needed
+    java = { attr = "openjdk25"; bin = "java"; };
+    javac = { attr = "openjdk25"; bin = "javac"; };
+    drawio.profile = "files";
+    inkscape.profile = "files";
+    libreoffice = { attr = "libreoffice-fresh"; profile = "files"; };
+    vlc.access.args = "ro"; # just the file it was asked to play
+    # Screen capture goes through portals and the GPU, and AppImages need
+    # FUSE; neither works inside bwrap.
+    obs = { attr = "obs-studio"; backend = "none"; };
+    appimage-run.backend = "none";
+    #quartus = { attr = "quartus-prime-lite"; };
+  };
 
   services.mpris-proxy.enable = true;
 }

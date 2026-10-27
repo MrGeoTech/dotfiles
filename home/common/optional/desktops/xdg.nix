@@ -1,6 +1,4 @@
 {pkgs, lib, ...} : let
-  sandbox = import ../../lib/sandbox-apps.nix { inherit pkgs lib; };
-
   editorDesktopFile = pkgs.writeTextFile {
     name = "nvim.desktop";
     destination = "/share/applications/nvim.desktop";
@@ -22,12 +20,9 @@
   documentDesktop = "org.pwmt.zathura.desktop";
   imageDesktop = "imv.desktop";
   fileManagerDesktop = "yazi.desktop";
-
-  sandboxedApps = sandbox.mkSandboxedApps [
-    { attr = "zathura"; }
-  ];
 in {
-  home.packages = sandboxedApps;
+  # The default PDF viewer, fetched on first use; sees only the file opened.
+  programs.launch.apps.zathura.access.args = "ro";
 
   xdg.enable = true;
 

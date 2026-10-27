@@ -4,21 +4,7 @@
   lib,
   inputs,
   ...
-}: 
-let
-  sandbox = import ../../lib/sandbox-apps.nix { inherit pkgs lib; };
-
-  sandboxedApps = sandbox.mkSandboxedApps [
-    { attr = "grim"; }
-    { attr = "slurp"; }
-    { attr = "ncdu"; }
-    { attr = "pciutils"; }
-    { attr = "usbutils"; }
-    { attr = "bottom"; }
-    { attr = "man-pages"; }
-    { attr = "man-pages-posix"; }
-  ];
-in {
+}: {
   imports = [
     ./atuin.nix
     ./bat
@@ -29,6 +15,7 @@ in {
     ./fzf.nix
     ./gh.nix
     ./git.nix
+    ./launch.nix
     ./lazygit.nix
     ./nvim
     ./ripgrep.nix
@@ -46,5 +33,18 @@ in {
     gnumake
     libnotify
     libxcrypt
-  ] ++ sandboxedApps;
+    # Plain documentation, so `man 2 open` / `man 3p printf` work. These
+    # used to be on-demand wrappers, but they ship no program to run.
+    man-pages
+    man-pages-posix
+  ];
+
+  # Fetched on first use (see ./launch.nix). System inspection tools run
+  # unsandboxed: they exist to look at the real /proc, /sys and disks.
+  programs.launch.apps = {
+    ncdu.backend = "none";
+    lspci = { attr = "pciutils"; backend = "none"; };
+    lsusb = { attr = "usbutils"; backend = "none"; };
+    btm = { attr = "bottom"; backend = "none"; };
+  };
 }

@@ -19,11 +19,19 @@
     catppuccin.url = "github:catppuccin/nix";
 
     # Prebuilt nixpkgs file->package index, kept up to date automatically
-    # via `nix flake update`. Backs `comma`/command-not-found so unknown
+    # via `nix flake update`. Backs `launch`/`comma` so unknown
     # commands can be searched and run sandboxed without ever having to
     # build a local index.
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # App launcher (rofi + terminal) over installed apps and all of nixpkgs,
+    # see home/common/core/cli/launch.nix. Local checkout for now; switch to
+    # github:<you>/nix-launch once it's pushed.
+    nix-launch = {
+      url = "path:/home/mrgeotech/Projects/nix-launch";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

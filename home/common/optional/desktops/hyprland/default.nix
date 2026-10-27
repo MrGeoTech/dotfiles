@@ -1,13 +1,5 @@
 # https://github.com/hyprwm/Hyprland
-{pkgs, lib, ...}:
-let
-  sandbox = import ../../../lib/sandbox-apps.nix { inherit pkgs lib; };
-
-  sandboxedApps = sandbox.mkSandboxedApps [
-    { attr = "grim"; }
-    { attr = "slurp"; }
-  ];
-in {
+{pkgs, lib, ...}: {
   imports = [
     ./config.nix
     ./hyprpaper.nix
@@ -44,7 +36,14 @@ in {
     xdg-desktop-portal-gtk
     xdg-desktop-portal-hyprland
     gcr_4 # Provides org.gnome.keyring.SystemPrompter
-  ] ++ sandboxedApps;
+  ];
+
+  # Screenshot tools for hypr/scripts/screenshot.sh, fetched on first use.
+  # Unsandboxed: they need the compositor and write wherever they're told.
+  programs.launch.apps = {
+    grim.backend = "none";
+    slurp.backend = "none";
+  };
 
   # Auto-login keyring
   services.gnome-keyring.enable = true;
