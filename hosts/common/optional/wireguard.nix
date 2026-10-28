@@ -8,6 +8,16 @@
         # Everything on the tunnel is ours: let any service on this
         # machine be reached from the other wireguard machines.
         trustedInterfaces = [ "wg0" ];
+        # ssh from the lan too, so a dead wireguard server doesn't lock
+        # us out. Private ranges only: never the open internet.
+        extraCommands = ''
+            for net in 10.0.0.0/8 172.16.0.0/12 192.168.0.0/16; do
+                iptables -A nixos-fw -p tcp --dport 22 -s "$net" -j nixos-fw-accept
+            done
+            for net in fe80::/10 fc00::/7; do
+                ip6tables -A nixos-fw -p tcp --dport 22 -s "$net" -j nixos-fw-accept
+            done
+        '';
     };
     # Enable wireguard
     networking.wg-quick.interfaces = {
