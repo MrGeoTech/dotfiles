@@ -31,7 +31,7 @@
     # see home/common/core/cli/launch.nix. Local checkout for now; switch to
     # github:<you>/nix-launch once it's pushed.
     nix-launch = {
-      url = "path:/home/mrgeotech/Projects/nix-launch";
+      url = "github:MrGeoTech/nix-launch";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

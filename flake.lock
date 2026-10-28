@@ -170,14 +170,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1793131667,
-        "narHash": "sha256-elMYy1nM/YJqaUV8XT/pw1WvLzQyQkjRVQ1DJIEP33c=",
-        "path": "/home/mrgeotech/Projects/nix-launch",
-        "type": "path"
+        "lastModified": 1793155281,
+        "narHash": "sha256-2IzIQL3xTkbplj/ss4iiwu+XJCEFlQtUXyctjl7dTzA=",
+        "owner": "MrGeoTech",
+        "repo": "nix-launch",
+        "rev": "e30cb47930f9b0401e4ce83df970556311bf95df",
+        "type": "github"
       },
       "original": {
-        "path": "/home/mrgeotech/Projects/nix-launch",
-        "type": "path"
+        "owner": "MrGeoTech",
+        "repo": "nix-launch",
+        "type": "github"
       }
     },
     "nixpkgs": {
