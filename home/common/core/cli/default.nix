@@ -46,5 +46,8 @@
     lspci = { attr = "pciutils"; backend = "none"; };
     lsusb = { attr = "usbutils"; backend = "none"; };
     btm = { attr = "bottom"; backend = "none"; };
+    # Needs ~/.config/sops/age/keys.txt and opens $EDITOR (nvim, with its
+    # config), so it runs like an installed tool.
+    sops.backend = "none";
   };
 }
