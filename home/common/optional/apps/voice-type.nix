@@ -1,7 +1,10 @@
 # `voice-type`: hold SUPER + V, talk, let go. A local whisper.cpp model
-# turns the take into text and wtype types it into whatever has focus, as if
-# it came from the keyboard. Everything around the focused window is dimmed
-# while it listens and thinks.
+# turns the take into text and dotool types it into whatever has focus
+# through a uinput keyboard, so apps see plain key presses. Everything around
+# the focused window is dimmed while it listens and thinks.
+#
+# dotool needs /dev/uinput. systemd's seat ACL already gives the logged-in
+# user that, so there is no daemon or group to set up.
 #
 # Import with arguments from home/<hostname>.nix, like steam-full.nix:
 #   (import ./common/optional/apps/voice-type.nix { model = "small.en"; gpu = "vulkan"; })
@@ -66,6 +69,13 @@
       }
     else model;
 
+  # Silero voice activity detection. Without it whisper hears a silent take
+  # (a quick tap, a pause) as "Thank you." and types that.
+  vadModel = pkgs.fetchurl {
+    url = "https://huggingface.co/ggml-org/whisper-vad/resolve/main/ggml-silero-v6.2.0.bin";
+    sha256 = "2aa269b785eeb53a82983a20501ddf7c1d9c48e33ab63a41391ac6c9f7fb6987";
+  };
+
   whisper =
     if gpu == null
     then pkgs.whisper-cpp
@@ -73,7 +83,7 @@
 
   voice-type = pkgs.writeShellApplication {
     name = "voice-type";
-    runtimeInputs = [whisper pkgs.pipewire pkgs.wtype pkgs.jq pkgs.coreutils pkgs.gnused];
+    runtimeInputs = [whisper pkgs.pipewire pkgs.dotool pkgs.glibc.bin pkgs.jq pkgs.coreutils pkgs.gnused];
     text = ''
       dir=''${XDG_RUNTIME_DIR:-/tmp}/voice-type
       wav=$dir/take.wav
@@ -110,19 +120,31 @@
 
         # Drop whisper's non-speech tags like [BLANK_AUDIO] and (music),
         # then fold the lines into one.
-        text=$(whisper-cli -m ${modelFile} -l ${lib.escapeShellArg language} -nt -np -f "$wav" 2>/dev/null \
+        text=$(whisper-cli -m ${modelFile} -l ${lib.escapeShellArg language} -nt -np --vad -vm ${vadModel} -f "$wav" 2>/dev/null \
           | sed -E 's/\[[^]]*\]//g; s/\([^)]*\)//g' \
           | tr -s ' \n' ' ' \
           | sed -E 's/^ +//; s/ +$//') || true
         [ -n "$text" ] || exit 0
 
-        # Typing while the real SUPER is still down risks SUPER + letter.
+        # dotool is a real keyboard to Hyprland, so typing while SUPER is
+        # still held would fire SUPER + letter binds.
         for _ in $(seq 100); do
           super_down || break
           sleep 0.05
         done
 
-        wtype -- "$text"
+        # dotool can only press keys on the layout (us), so fold the rest to
+        # ASCII: café -> cafe, curly quotes -> straight. iconv turns what it
+        # can't fold into "?", so park the real ones first and drop those.
+        text=$(printf '%s' "$text" \
+          | tr '?' '\001' \
+          | LC_ALL=C.UTF-8 iconv -f UTF-8 -t ASCII//TRANSLIT \
+          | tr -d '?' \
+          | tr '\001' '?') || true
+
+        # wtype was tried first: its made-up keymap lands some letters on
+        # Tab's keycode, and ghostty types a Tab for them.
+        printf 'type %s\n' "$text" | dotool
         ;;
       stop)
         # A quick tap can land here before `start` has a recorder going.
