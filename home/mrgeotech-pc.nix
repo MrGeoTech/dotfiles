@@ -11,6 +11,13 @@
       gamescopeArgs = ["--hdr-enabled" "--adaptive-sync" "-F" "fsr"];
       env.DXVK_HDR = "1";
     })
+
+    # Hold SUPER + V to dictate. The RX card runs whisper over Vulkan, so the
+    # big turbo model is still quick.
+    (import ./common/optional/apps/voice-type.nix {
+      model = "large-v3-turbo-q5_0";
+      gpu = "vulkan";
+    })
   ];
 
   host = {

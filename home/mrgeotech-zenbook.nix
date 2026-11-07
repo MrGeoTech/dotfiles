@@ -8,6 +8,9 @@
     (import ./common/optional/apps/steam-full.nix {
       gamescopeArgs = ["-F" "fsr"];
     })
+
+    # Hold SUPER + V to dictate. CPU only: base.en keeps it snappy.
+    (import ./common/optional/apps/voice-type.nix {})
   ];
 
   host = {
