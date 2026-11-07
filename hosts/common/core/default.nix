@@ -29,7 +29,16 @@
   };
 
   services = {
-    openssh.enable = true;
+    openssh = {
+      enable = true;
+      # Only the id_ed25519 key trusted in each user's authorizedKeys can
+      # log in -- no password/keyboard-interactive fallback, so a stolen
+      # password can't be used to reach any of these machines over ssh.
+      settings = {
+        PasswordAuthentication = false;
+        KbdInteractiveAuthentication = false;
+      };
+    };
 
     devmon.enable = true;
     gvfs.enable = true;

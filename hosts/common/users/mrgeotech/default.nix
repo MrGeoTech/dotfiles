@@ -16,6 +16,14 @@ in {
     shell = pkgs.zsh;
     extraGroups = ["networkmanager" "wheel" "dialout"] ++ ifTheyExist ["wireshark" "docker" "libvirtd" "mysql" "network" "git"];
     packages = [pkgs.home-manager];
+
+    # Trust the public half of the sops-managed id_ed25519 key (see below)
+    # for pubkey auth, so connecting with it skips the password prompt
+    # entirely. The public key isn't secret, so it's safe to commit here
+    # even though the private key stays encrypted in secrets/ssh.yaml.
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAw43YeqhowGit24ka7hY1ZgotwQ3dhIiRynoNxp7yKx git-mail@isaacgeorge.com"
+    ];
   };
 
   sops = {
